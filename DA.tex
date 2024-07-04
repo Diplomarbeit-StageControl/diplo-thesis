@@ -1,0 +1,155 @@
+% 
+%
+%	Hint:
+%	Configuration: in TexStudio: Preferences -> Build -> Default Bibliography Tool -> Biber
+%
+%
+
+
+%\documentclass[12pt,draft]{article}
+\documentclass[a4paper]{report}
+
+% Spracheinstellungen
+\usepackage[english, austrian]{babel} % your native language must be the last one!!
+
+\usepackage{lmodern}
+%für Referenzen im Text
+\usepackage{csquotes}
+%für Grafiken
+\usepackage[final]{graphicx}
+%für erweiterte Tabellen
+\usepackage{tabularx}
+%für angepasste Header
+\usepackage{fancyhdr}
+%für korrekte Urlumbrüche
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{nameref}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{fontawesome}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\usepackage{tcolorbox}
+\usepackage{menukeys}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{multirow}
+
+\usepackage[backend=biber,style=apa]{biblatex}
+%für Grafiken
+\setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
+\setcounter{biburlucpenalty}{9000}% Großbuchstaben
+%Literaturdatenbank einbinden
+\addbibresource{Bibliography.bib}
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{\dimexpr#1\linewidth-2\tabcolsep}}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,      % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{green}\textit,    % comment style
+	deletekeywords={...},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=tb,	                   	   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	%keywordstyle=\color{black}\bfseries,       % keyword style
+	language=csh,                 % the language of the code (can be overrided per snippet)
+	otherkeywords={*,...},           % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{blue}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{blue}, % string literal style
+	tabsize=2,	                   % sets default tabsize to 2 spaces
+	title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+	columns=fixed,                    % Using fixed column width (for e.g. nice alignment)
+	showspaces=false, 
+	morekeywords={ abstract, event, new, struct,
+		as, explicit, null, switch,
+		base, extern, object, this,
+		bool, false, operator, throw,
+		break, finally, out, true,
+		byte, fixed, override, try,
+		case, float, params, typeof,
+		catch, for, private, uint,
+		char, foreach, protected, ulong,
+		checked, goto, public, unchecked,
+		class, if, readonly, unsafe,
+		const, implicit, ref, ushort,
+		continue, in, return, using,
+		decimal, int, sbyte, virtual,
+		default, interface, sealed, volatile,
+		delegate, internal, short, void,
+		do, is, sizeof, while,
+		double, lock, stackalloc,
+		else, long, static,x
+		enum, namespace, string},
+	keywordstyle=\color{cyan},
+	identifierstyle=\color{blue},
+	backgroundcolor=\color{white},
+}
+
+\begin{document}
+	
+\linespread{1.5} \normalsize
+\include{titlepage}
+\linespread{1.25} \normalsize
+
+
+\clearpage
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 2pt minus 1pt}
+\pagenumbering{Alph}
+\include{erklaerung}
+\include{kurzfassung}
+\include{danksagung}
+\pagenumbering{roman}
+\tableofcontents
+
+\cleardoublepage 
+\pagenumbering{arabic}
+\setcounter{page}{1} \setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 2pt minus 1pt}
+
+\include{einleitung}
+\include{doku}
+
+\newpage
+\phantomsection
+\printbibliography[heading=bibintoc]
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+
+
+\include{begleitprotokoll}
+\include{anhang}
+		
+\end{document}

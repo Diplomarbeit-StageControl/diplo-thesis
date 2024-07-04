@@ -1,0 +1,145 @@
+\chapter{Zielsetzung und Aufgabenstellung}
+
+Individuelle Zielsetzung und Aufgabenstellung mit Terminplan der einzelnen Teammitglieder.
+
+\chapter{Grundlagen und Methoden}
+
+Im \textbf{Kapitel 3} werden die \textbf{Grundlagen und Methoden} geklärt.
+
+\begin{itemize}
+ \item IST-Situation
+ \item Lösungsansätze
+ \item Begründung der gewählten Methodik
+\end{itemize}
+
+Nutze Bilder inkl. Beschriftung, Tabellen und Boxen zur Inhaltsstrukturierung. Alle nötigen
+Formate und Stile stehen bereit. Die Abbildungen werden automatisch fortlaufend
+nummeriert.
+
+
+\begin{figure}[!ht]
+ \begin{center}
+  \epsfig{figure=images/ECG8e_board_2.eps, width=10cm, angle=0}
+  \caption{Grafiken immer beschriften.}
+  \label{Verweisbezeichnung der Grafik}
+ \end{center}
+\end{figure}
+
+\section{Hinweise für Neulinge}
+
+Compiliert werden muss in diesem Archiv nur das File main.tex.
+
+Empfohlen für Linux:
+\begin{itemize}
+ \item Editor: kile
+ \item Pakete: texlive-full
+ \item Viewer: okular
+ \end{itemize}
+
+Empfohlene Windows Pakete, in dieser Reihenfolge installieren:
+\begin{itemize}
+ \item GSView
+ \item Ghostscript
+ \item Miktex
+ \item Editoren: WinEdt oder TCXSetup oder LEdBeta oder TeXaide
+\end{itemize}
+
+Wenn möglich sollten Vektorgrafiken im eps Format eingebunden werden.
+
+Der Ablauf zur Erzeugung eines hochwertigen Dokumentes gestaltet sich folgendermaßen:
+
+% Makro um in vorgegebener Spaltenbreite zentrieren zu können
+%\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\begin{center}
+
+ \begin{tabular}{|C{50mm}|C{30mm}|p{50mm}|}
+  \hline
+  Quellcode & main.tex & z.B. in kile geschrieben\\
+  \hline
+ \end{tabular}
+ 
+ $\downarrow$
+ 
+  \LaTeX \\
+ 
+ $\downarrow$
+ 
+ \begin{tabular}{|C{50mm}|C{30mm}|p{50mm}|}
+  \hline
+  device independent file format & main.dvi & Vorschau de facto in Echtzeit z.B. in okular verfügbar\\
+  \hline
+ \end{tabular}
+ 
+ $\downarrow$
+ 
+ dvips
+ 
+ $\downarrow$
+ 
+ \begin{tabular}{|C{50mm}|C{30mm}|p{50mm}|}
+  \hline
+  post script file format & main.ps & hohe Qualität, Bilder unkomprimiert, kann direkt gedruckt werden, Ansicht z.B. in okular\\
+  \hline
+ \end{tabular}
+ 
+ $\downarrow$
+ 
+ ps2pdf
+ 
+ $\downarrow$
+ 
+  \begin{tabular}{|C{50mm}|C{30mm}|p{50mm}|}
+  \hline
+  portable document format & main.pdf & verlustbehaftet komprimiert\\
+  \hline
+ \end{tabular}
+ 
+\end{center}
+
+Es sollte also während des Editierens nur der \LaTeX - Button gedrückt werden und daneben die aktuelle .dvi Vorschau betrachtet werden.
+Nach Abschluss der Setzarbeit kann der rechenaufwändige vollständige Ablauf beschritten werden.
+In kile kann dazu in den Settings zuvor der QuickBuild-Button mit der empfohlenen Sequenz belegt werden.
+
+\section{Vertiefendes Wissen:}
+
+\begin{itemize}
+ \item Grundkurs \url{https://portal.sz-ybbs.ac.at/%7Eszauner/Latex/latex_basic.pdf}
+ \item Fortgeschrittenenkurs \url{https://portal.sz-ybbs.ac.at/%7Eszauner/Latex/latex_advanced.pdf}
+ \item Allgemeiner Kurs \url{https://portal.sz-ybbs.ac.at/%7Eszauner/Latex/latex-kurs.pdf}
+ \item Symbolliste \url{https://portal.sz-ybbs.ac.at/%7Eszauner/Latex/symbols-a4.pdf}
+ \item Das kleine TeX Buch: \url{https://portal.sz-ybbs.ac.at/%7Eszauner/Latex/TeXbuch.pdf}
+\end{itemize}
+
+
+
+\chapter{Ergebnisdokumentation}
+
+Versuche nun, eine neue Seite mit automatischem Textfluss zu erzeugen.
+
+\section{Hilfsformate}
+
+\begin{itemize}
+ \item Hilfsformat Brüche: 1/4 = $\frac{1}{4}$
+ \item Markierungen: \color{black}\colorbox{red}{rote Markierung}
+\end{itemize}
+
+
+\textcolor{red}{Farbiger Text.}
+
+
+\chapter*{Quellen und Literatur}
+
+Bibliography
+
+\textbf{Nachname, Vorname: Titel. Untertitel. - Verlagsort: Verlag, Jahr.}
+
+\textbf{Nachname, Vorname} (Herausgeber): Titel. Untertitel. Auflage - Verlagsort: Verlag, Jahr.
+
+\textbf{Nachname, Vorname des Autors des bearbeiteten Artikels: Titel des Artikels. In: Titel der
+Zeitschrift, Heftnummer, Jahrgang, Seite} (eventuell: Verlagsort, Verlag).
+
+\textbf{Nachname, Vorname des Autors: Titel. Online in Internet: URL: www-Adresse, Datum.}\\
+(Autor und Titel wenn vorhanden, Online in Internet: URL: www-Adresse, Datum auf jeden Fall)
+
+

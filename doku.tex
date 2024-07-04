@@ -1,0 +1,121 @@
+
+\pagestyle{fancy} \frenchspacing
+\lhead{Name 1, Name 2, Name 3 (2022/2023)}
+\lfoot{Name 1}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.999}
+\renewcommand{\topfraction}{0.7}
+\renewcommand{\bottomfraction}{0.999}
+
+\chapter{Grundlagen und Methoden}
+
+\section{IST Situation}
+%DOKA App Ökosystem
+\subsection{Subsection 1}
+
+Introductory Text.....
+
+According to the report, businesses face significant damages due to cyber crime as depicted by \emph{Table 1} below: 
+
+According to \textcite{embroker}, $\frac{2}{3}$ of companies...
+
+$\frac{2}{3}$ of all companies experienced a cyberattack within the past 4 years \parencite{embroker}
+
+\begin{table} [H]
+	\begin{tabular}{ |p{2cm}|p{11.0cm}| }
+		\hline
+		\textbf{Percent Affected}& \textbf{Issues Experienced}\\
+		\hline
+		45 \% & Report their countermeasures are inefficient  \\ 
+		66 \% & Report they have been affected by a cyber attack in the previous year  \\  
+		69 \% & Claim the attacks become increasingly targeted \\  
+		\hline
+	\end{tabular}
+	\caption{\label{tab:CyberSecReport}Ponemon Institute State of Cybersecurity Report Statistics.}
+\end{table}
+
+.... more text ....  (see \emph{Table 2}):
+
+\begin{table} [H]
+	\begin{tabular}{ |p{2cm}| p{11.0cm}| }
+		\hline
+		\textbf{\#}& \textbf{Security Risk}\\
+		\hline
+		1 & Broken Access Control \\
+		2 & Cryptographic Failures \\
+		3 & Injection (Database) \\
+		\hline
+	\end{tabular}
+	\caption{\label{tab:OWASP2021} OWASP Top 10 Web Application Security Risks 2021}
+\end{table}
+
+\begin{lstlisting}
+System.out.printlin("Some code..." );
+\end{lstlisting}
+
+
+
+A sample figure: \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/SZ-Ybbs-Logo}
+	\caption[Short Description]{Short Description}
+	\label{fig:sz-ybbs-logo}
+\end{figure}
+
+\chapter{Ergebnisdokumentation}
+\lfoot{Name 2}
+
+Sample Table without label:
+
+\begin{itemize}
+	\item 	Item 1
+	\item 	Item 2
+\end{itemize}
+
+Sample Math Formula: \\
+
+$4 + 4 = ?$ \\
+
+
+Text citation sample
+\textcite{Vigna}. \\
+
+
+\textbf{Bold Text Example}
+
+Another text citation \textcite{OWASP},  \\
+
+( ...  ) \\
+
+Parencite Example \parencite{embroker}. \\
+
+\textbf{Constructivism}
+
+( ...  ) Third textcite \textcite{DeciRyan} \emph{Table 3}:
+
+\begin{table} [H]
+	\begin{tabular}{ |p{4cm}| p{9.0cm}| }
+		\hline
+		\textbf{Model}& \textbf{Characteristics}\\
+		\hline
+		Behaviorism & Wanted output is triggered by an appropriate input. Authoritarian model; the teacher knows what to do and shall find ways to impose his ideas on the student. \\
+		Cognitivism & The learner solves given tasks on their own The teacher attends the learning process, observes, where necessary provides aid. \\
+		Constructivism & Focus on personal experience. The learner is tasked with solving complex problems and have to find solutions on their own. The teacher fulfills a 	role akin to a coach. The Teacher provides aid by means of his experience and expertise in solving complex problems. \\
+		\hline
+	\end{tabular}
+	\caption{\label{tab:learningModelComparison} Comparing Lerning Models}
+\end{table}
+
+\begin{lstlisting}
+	System.console.write("Hello world");
+\end{lstlisting}
+
+( ... )
+
+
+
+
