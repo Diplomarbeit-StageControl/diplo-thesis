@@ -1,6 +1,6 @@
 ## Core:
 .DS_Store
-*.pdf
+.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
