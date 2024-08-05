@@ -45,14 +45,14 @@ Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponent
 Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. PLA (Polylactide, ein Kunststoff) oder Metallen. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit, die Vor- und Nachteile sowie den Nutzen dieser Produktionsarten für StageControl eingegangen.
 
 \subsection{3D-Druck}
-Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist. \cite{kaffka20223d}
+Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist.
 
 Die wichtigsten und gängigsten Drucktechnologien im Überblick:
 
 \begin{itemize}
 	\item \textbf{FFF:} (Fused Filament Fabrication) oder \textbf{FDM} (Fused Deposition Modelling): Hierbei wird Kunststofffilament \emph{(eine einzelne Faser beliebig lang)} verwendet.
 	\item \textbf{SLA:} Diese Technologie verwendet lichtempfindliches Harz, das sich verfestigt.
-	\item \textbf{PBF:} Eine Möglichkeit, diese pulverbasierte Technologie zu nutzen, ist, das Pulver mittels Laser miteinander zu verschmelzen. 
+	\item \textbf{PBF:} Eine Möglichkeit, diese pulverbasierte Technologie zu nutzen, ist, das Pulver mittels Laser miteinander zu verschmelzen. \cite{kaffka} \cite{3ds}
 \end{itemize}
 
 
@@ -72,29 +72,38 @@ Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten b
 \item 3D-Druck Material (Filament)
 \item Computer
 \end{itemize}
-Auf diese Punkte wird in auf den nächsten Seiten näher eingegangen.
+Auf diese Punkte wird in auf den nächsten Seiten näher eingegangen. \cite{3ds}
 
 \section{3D-Drucker}
 Work in progress...
 
 
 \section{3D-Modellierungsprogramme}
-Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad (https://www.tinkercad.com/learn/overview/O8XV0X1IRXTXGIH?type=designs), das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia (https://www.cad-programme.com), das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen 
+Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia (https://www.cad-programme.com), das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \cite{CAD-Programme}, \cite{3D-Printing-Software}
 
 \subsection{Vergleich verschiedener 3D-MOdellierungsprogramme}
 
 \subsubsection{Autodesk Fusion}
-Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht.
+Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. \cite{AutodeskFusion}
 
 \textbf{Vorteile}
 \begin{itemize}
 	\item Genutzt von vielen Namhaften Unternehmen wie zb. Yamaha oder Panasonic
 	\item Große Community
 	\item Kostenlose Version für Schulen
-\end{itemize}
+\end{itemize} 
+
+\textbf{Nachteile}
+\begin{itemize}
+	\item Cloud Based; Kann zu Problemen führen, wenn offline genutzt 
+	\item Benötigt eine schnelle Internetverbindung
+	\item Hoher Anspruch an die Hardware des Computers \cite{AutodeskFusionReviews}
+	\end{itemize}
+
+
 
 \subsubsection{Blender} 
-Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. 
+Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. \cite{Blender}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -108,11 +117,11 @@ Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Ani
 \textbf{Nachteile}
 \begin{itemize}
 	\item Kein Industriestandard - wird nicht von großen Unternehmen genutzt
-	\item Nicht die Benutzerfreundlichste UI
-\end{itemize}}
+	\item Nicht die Benutzerfreundlichste UI \cite{BlenderPros&Cons}
+\end{itemize}
 
 \subsubsection{FreeCAD}
-FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert. 
+FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert. \cite{FreeCAD} 
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -126,12 +135,11 @@ FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hi
 \begin{itemize}
 	\item weniger Nutzer als die bereits genannten Programme
 	\item kein Industriestandard
-	\item 	limitierte Funktionalitäten im Vergleich mit bezahl Software
-	\item Aktive Community	 
+	\item 	limitierte Funktionalitäten im Vergleich mit bezahl Software \cite{FreeCADReviews}
 \end{itemize}
 
 \subsubsection{Autodesk Tinkercad}
-Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. (https://productdesignonline.com/tips-and-tricks/what-is-tinkercad) Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik.
+Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. (https://productdesignonline.com/tips-and-tricks/what-is-tinkercad) Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \cite{Tinkercad}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -145,7 +153,7 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
 \textbf{Nachteile}
 \begin{itemize}
 	\item Weniger professionell
-	\item kein Industriestandard
+	\item kein Industriestandard \cite{TinkercadReviews}
 \end{itemize}
 
 --------------------------------------------------------------------------------------------------------
@@ -250,6 +258,5 @@ Parencite Example \parencite{embroker}. \\
 ( ... )
 
 Bibliography{.}
-
 
 
