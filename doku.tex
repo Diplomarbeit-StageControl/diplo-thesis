@@ -45,43 +45,76 @@ Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponent
 Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. PLA (Polylactide, ein Kunststoff) oder Metallen. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit, die Vor- und Nachteile sowie den Nutzen dieser Produktionsarten für StageControl eingegangen.
 
 \subsection{3D-Druck}
+\subsubsection{Wie funktioniert 3D-Druck}
 Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist.
 
-Die wichtigsten und gängigsten Drucktechnologien im Überblick:
+\subsection{Technische Voraussetzungen}
+Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
+\begin{itemize} 
+	\item 3D-Drucker, bei der durchführung dieser Diplomarbeit stehen uns diese 2 Modelle zur Verfügung: Creality Ender 3 Pro und \emph{Schulmodell einfügen}
+	\item 3D-Modellierungsprogramm
+	\item 3D-Druck Material (Filament)
+	\item Computer
+\end{itemize}
+Auf den nächsten Seiten wird auf diese Punkte näher eingegangen und Vergleiche erstellt um dessen Vor- und Nachteile besser zu veranschaulichen. \cite{3ds}
+
+
+\subsection{Druckverfahren}
+
+Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten, das Ausgangsmaterial in die gewünschte Form zu bringen. Die gängigsten und weitverbreitesten Verfahren im Überblick: 
 
 \begin{itemize}
-	\item \textbf{FFF:} (Fused Filament Fabrication) oder \textbf{FDM} (Fused Deposition Modelling): Hierbei wird Kunststofffilament \emph{(eine einzelne Faser beliebig lang)} verwendet.
-	\item \textbf{SLA:} Diese Technologie verwendet lichtempfindliches Harz, das sich verfestigt.
+	\item \textbf{FFF:} (Fused Filament Fabrication) oder \textbf{FDM} (Fused Deposition Modelling): Hierbei wird Kunststofffilament \emph{(eine einzelne Faser beliebig lang)} verwendet und Schicht für Schicht aufgetragen.
+	\item \textbf{SLA:} Diese Technologie verwendet lichtempfindliches Kunstharz, das sich verfestigt. Wird ebenfalls Schicht für Schicht aufgetragen.
 	\item \textbf{PBF:} Eine Möglichkeit, diese pulverbasierte Technologie zu nutzen, ist, das Pulver mittels Laser miteinander zu verschmelzen. \cite{kaffka} \cite{3ds}
 \end{itemize}
 
 
 \subsection{Vorteile des 3D-Drucks}
-
+3D-Druck bietet viele Vorteile für Privat und auch Unternehmen. Folgende Vorteile zählen zu den Aussagekräftigsten:
 \begin{itemize}
-	\item Möglichkeit, komplexe Objekte herzustellen.
+	\item Möglichkeit, komplexe Objekte relativ schnell herzustellen.
 	\item Keine Vorlaufzeit nötig, d.h. keine Werkzeugproduktion erforderlich.
 	\item Rapid Prototyping \emph{(deutsch „schnelle Prototypenherstellung“)}
-\end{itemize}
+	\item Kostengünstige Produktion
+	\item Herstellung induvidueller Objekte
+\end{itemize} \cite{3D-Druck-Vorteile}
 
-\subsection{Technische Voraussetzungen}
-Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
-\begin{itemize} 
-\item 3D-Drucker 
-\item 3D-Modellierungsprogramm
-\item 3D-Druck Material (Filament)
-\item Computer
-\end{itemize}
-Auf diese Punkte wird in auf den nächsten Seiten näher eingegangen. \cite{3ds}
 
 \section{3D-Drucker}
-Work in progress...
 
+\subsection{Vergleich der 3D-Drucker}
+Wie in der Einleitung des Kapitels \emph{("Hardware im Zusammenhang mit Stagecontrol")} ist eine Möglichkeit der Herstellung, der benötigten Hardware, das Drucken mittels 3D-Druckers. Um die bereits erwähnten 3D-Drucker \emph{Creality Ender 3 Pro, Schulmodell einfügen} im Vergleich zu setzen, werden folgende Kriterien zum Vergleichen herangezogen: Material (Nylon/Kohlefaser - Filament) und ob diese verarbeitet werden können.
+
+\begin{table} [H]
+	\begin{tabular}{ |p{5.5cm}|p{5.5cm}| }
+		\hline
+		\textbf{Creality Ender 3 Pro,}& \textbf{Schulmodell einfügen}\\
+		\hline
+		 &   \\ 
+		 &   \\  
+		 &  \\  
+		\hline
+	\end{tabular}
+	\caption{Vergleich Creality Ender 3 Pro und }
+\end{table}
+
+\subsection{Slicer}
+\subsubsection{Was ist ein Slicer?}
+Ein Slicer ist ein Stück Software, die es erst möglich macht 3D-Modelle auszudrucken, indem es sogenannten G-Code erstellt. G-Code ist die Programmiersprache die von Computern verwendet wird um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungnen ausführen sollen. \cite{Slicer_G-Code}
+
+\subsection{Werkstoffe}
+3D-Drucker benötigen zum Drucken eines Objektes Material, das sie verbrauchen können, um das Objekt herzustellen. Im Rahmen dieser Diploarbeit werden 2 Werkstoffe ganuer analysiert, nämlich Nylon und Kohlefaser.
+
+\subsubsection{Nylon}
+Nylon \emph{(techn. Polyamid)} ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Auseneinwirkungen auszeichnet. Nylon gibt es in unterschiedlichen Ausführung zb. als Filament, Draht oder Pulver mit unterschiedlcihen eigenschaften. \cite{Nylon}
+\subsubsection{Kohlefaser}
+Kohlefasern besthen in der Regel aus Grundpolymeren wie zb. Nylon mit Kohlefasern versetzt. Dieser Zusatz versteift das Material zusätlich und verleiht ihm ein matten Aussehen. \cite{Kohlefasern}
 
 \section{3D-Modellierungsprogramme}
-Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia (https://www.cad-programme.com), das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \cite{CAD-Programme}, \cite{3D-Printing-Software}
+Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \cite{CAD-Programme}, \cite{3D-Printing-Software}
 
-\subsection{Vergleich verschiedener 3D-MOdellierungsprogramme}
+\subsection{Vergleich verschiedener 3D-Modellierungsprogramme}
 
 \subsubsection{Autodesk Fusion}
 Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. \cite{AutodeskFusion}
@@ -139,7 +172,7 @@ FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hi
 \end{itemize}
 
 \subsubsection{Autodesk Tinkercad}
-Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. (https://productdesignonline.com/tips-and-tricks/what-is-tinkercad) Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \cite{Tinkercad}
+Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \cite{Tinkercad}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -155,6 +188,8 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
 	\item Weniger professionell
 	\item kein Industriestandard \cite{TinkercadReviews}
 \end{itemize}
+
+
 
 --------------------------------------------------------------------------------------------------------
 
