@@ -46,7 +46,7 @@ Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unters
 
 \section{3D-Druck}
 \subsection{Wie funktioniert 3D-Druck}
-Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist.
+Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Dabei wird aus einer Düse das heiße Material aufgetragen, bis aus vielen Schichten das gewünschte Objekt erstellt wurde. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist.
 
 \subsection{Vorteile des 3D-Drucks}
 3D-Druck bietet viele Vorteile für Privatkunden und Unternehmen. Die nachfolgenden Vorteile zählen zu den wichtigsten:
@@ -62,7 +62,7 @@ Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Materia
 Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
 \begin{itemize} 
 	\item 3D-Drucker, bei der durchführung dieser Diplomarbeit stehen uns diese 2 Modelle zur Verfügung: Bambu Lab X1-Carbon  und \emph{Ultimaker 2 Extended+}
-	\item 3D-Modellierungsprogramm
+	\item CAD-Programm
 	\item 3D-Druck Material (Filament)
 	\item Computer
 \end{itemize}
@@ -112,11 +112,64 @@ Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Fi
 Ein Slicer ist ein Stück Software, die es erst möglich macht 3D-Modelle auszudrucken, indem es sogenannten G-Code erstellt. G-Code ist die Programmiersprache die von Computern verwendet wird um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungnen ausführen soll. 
 \cite{Slicer_G-Code}
 
-\section{3D-Modellierungsprogramme}
-Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen.
+
+\section{CNC-Fräsen}
+
+Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageControl benötigt wird, ist das CNC-Fräsen (\emph{engl. "Computerized Numerical Control"}). Diese Technologie wird vor allem in der metallverarbeitenden Industrie angewendet, da sie äußerst genau und kostengünstig arbeitet. Zudem beschränkt sich das CNC-Fräsen nicht nur auf Metall; es kann auch bei der Bearbeitung von Kunststoffen und Holz eingesetzt werden. Anders als bei der 3D-Druck-Technologie handelt es sich hier nicht um ein additives, sondern um ein subtraktives Verfahren \cite{CNC-Fräsen} \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
+
+\subsection{Wie funktioniert CNC-Fräsen?}
+Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt. Der Fräser trägt dann Schicht für Schicht Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
+
+\subsubsection{Einsatzmöglichkeiten}
+CNC-Fräsmaschinen können vielseitig eingesetzt werden und eine Vielzahl von Objekten in unterschiedlichsten Größen und Formen herstellen. Zu den typischen Anwendungsbereichen zählen unter anderem:
+
+\begin{itemize}
+	\item Maschinenteilherstellung: Komponenten von Maschinen, die nur geringe Toleranzen zulassen.
+	\item Prototypen: Herstellung von ersten Modellen in geringen Stückzahlen.
+\end{itemize}
+
+Durch den Einsatz von CNC-Fräsen können menschliche Fehler und die Ausschussrate minimiert werden. Dies führt zu relativ niedrigen Stückkosten, was sich besonders bei der Serienfertigung bemerkbar macht \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
+
+\subsubsection{Vorteile des CNC-Fräsens}
+
+
+
+
+
+
+
+
+
+
+\subsection{Werkstoffe}
+Bei der CNC-Fräsung können die unterschiedlichsten Materialien verwendet werden. Materialien, die eine CNC-Fräse verarbeiten kann, sind zerspanbar. Zu den gängigsten zählen:
+
+\begin{itemize}
+	\item Metalle, z. B. Stahl, Aluminium, Titan, Bronze, Messing.
+	\item Holz.
+	\item Zerspanbare Kunststoffe, z. B. PEI (\emph{Polyetherimid}), die sich durch ihre mechanische Festigkeit und Steifigkeit auszeichnen.
+\end{itemize}
+\cite{CNC-Fräsen_3} \cite{PEIZerspannung} \cite{PEIKunststoff-Polyetherimid}
+
+\subsection{Fertigungsmöglichkeiten}
+
+\subsubsection{3-Achs-Fräsung}
+Hierbei kann sich der Fräser auf drei Achsen bewegen, nämlich auf der X-, Y- und Z-Achse. So kann das Material von allen drei Seiten bearbeitet werden. Es handelt sich um das einfachste Fräsverfahren. Zwar können auch komplexere Objekte erstellt werden, dies erfordert jedoch ein mehrfaches Umspannen des Werkstücks.
+
+\subsubsection{4-Achs-Fräsung}
+Zusätzlich zu den bereits bekannten drei Achsen kann nun eine vierte Achse integriert werden, nämlich das Schwenken der Aufspannung des Frästeils. Dadurch kann das Umspannen, das bei der 3-Achs-Fräsung notwendig ist, vermieden werden.
+
+\subsubsection{5-Achs-Fräsung}
+Bei der 5-Achs-Fräsung kann nicht nur die Aufspannung des Frästeils zum Schwenken gebracht werden sonder der Maschinentisch selbst ist rotierbar. So kann das Werkstück von 5 Seiten in einer Aufspannung bearbeitet werden. Diese Fräsen werden eingestzt bei der Produktion höchstkomplexer Strukturen.
+
+\cite{Fräsen-3/4/5-Achs}
+
+
+\section{CAD-Programme}
+Auf dem Markt rund um CAD-Programme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen.
 \cite{CAD-Programme}, \cite{3D-Printing-Software}
 
-\subsection{Vergleich verschiedener 3D-Modellierungsprogramme}
+\subsection{Vergleich verschiedener CAD-Programme}
 
 \subsubsection{Autodesk Fusion}
 Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. 
@@ -134,12 +187,12 @@ Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellu
 	\item Cloud Based; Kann zu Problemen führen, wenn offline genutzt 
 	\item Benötigt eine schnelle Internetverbindung
 	\item Hoher Anspruch an die Hardware des Computers
-	\end{itemize}
- \cite{AutodeskFusionReviews}
+\end{itemize}
+\cite{AutodeskFusionReviews}
 
 
 \subsubsection{Blender} 
-Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. 
+Blender bietet vielseitige Anwendungsmöglichkeiten, von dellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. 
 \cite{Blender}
 
 \textbf{Vorteile}
@@ -160,8 +213,8 @@ Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Ani
 
 
 \subsubsection{FreeCAD}
-FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert.
- \cite{FreeCAD}  \cite{FreeCAD_2}
+FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der dellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert.
+\cite{FreeCAD}  \cite{FreeCAD_2}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -177,7 +230,7 @@ FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hi
 	\item kein Industriestandard
 	\item limitierte Funktionalitäten im Vergleich mit bezahl Software
 \end{itemize}
- \cite{FreeCADReviews}
+\cite{FreeCADReviews}
 
 \subsubsection{Autodesk Tinkercad}
 Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. 
@@ -198,9 +251,6 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
 	\item kein Industriestandard 
 \end{itemize}
 \cite{TinkercadReviews}
-
-\section{CNC-Fräsen}
-Ein anderer Ansatz der Hardware bzw. Prototypenherstellung, die für StageControl benötigt wird, wäre die CNC-Fräsung \emph{(engl. "Computerized Numerical Control")}. Diese Technologie 
 
 
 
@@ -254,6 +304,7 @@ A sample figure: \\
 	\caption[Short Description]{Short Description}
 	\label{fig:sz-ybbs-logo}
 \end{figure}
+
 
 \chapter{Ergebnisdokumentation}
 \lfoot{Name 2}
