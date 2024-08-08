@@ -42,10 +42,10 @@ An den erlangten Antworten, kann man erkennen, dass es noch keine automatisierte
 Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponenten, sondern auch hergestellte Konstruktionen, die das Funktionieren der Software bzw. der angesteuerten Komponenten erst möglich machen.
 
 \subsection{Möglichkeiten der Hardwareproduktion}
-Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. PLA (Polylactide, ein Kunststoff) oder Metallen. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit, die Vor- und Nachteile sowie den Nutzen dieser Produktionsarten für StageControl eingegangen.
+Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. PLA (Polylactide, ein Kunststoff) oder Metallen. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich 3D-Druck und  für StageControl eingegangen.
 
-\subsection{3D-Druck}
-\subsubsection{Wie funktioniert 3D-Druck}
+\section{3D-Druck}
+\subsection{Wie funktioniert 3D-Druck}
 Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Diese Art der Produktion wird auch als „Additive Fertigung“ bezeichnet, im Gegensatz zum CNC-Fräsen, das als „subtraktive Fertigung“ bekannt ist.
 
 \subsection{Vorteile des 3D-Drucks}
@@ -85,38 +85,42 @@ Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten,
 \subsubsection{Nylon}
 Nylon \emph{(techn. Polyamid)} ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Auseneinwirkungen auszeichnet. Nylon gibt es in unterschiedlichen Ausführung zb. als Filament, Draht oder Pulver mit unterschiedlcihen eigenschaften. \cite{Nylon}
 \subsubsection{Kohlefaser}
-Kohlefasern besthen in der Regel aus Grundpolymeren wie zb. Nylon mit Kohlefasern versetzt. Dieser Zusatz versteift das Material zusätlich und verleiht ihm ein matten Aussehen. \cite{Kohlefasern}
+Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern. \cite{Kohlefasern}
 
 
-\section{3D-Drucker}
+\subsection{3D-Drucker}
 
 \subsection{Vergleich der 3D-Drucker}
-Wie in der Einleitung des Kapitels \emph{("Hardware im Zusammenhang mit Stagecontrol")} ist eine Möglichkeit der Herstellung, der benötigten Hardware, das Drucken mittels 3D-Druckers. Um die bereits erwähnten 3D-Drucker \emph{Bambu Lab X1-Carbon, Ultimaker 2 Extended+} im Vergleich zu setzen. Als Ausgangsmaterial wird bei beiden 3D-Druckern Kohlefaserverstärktes Nylon-Filament verwendet. Es werden folgende Kriterien zum Vergleich herangezogen: Ob das Material verarbeitet werden können und die Druckgeschwindigkeit. Diese Punkte werden in gleicher Reihenfolge, in der untenstehenden Tabelle,  verglichen.
+Wie in der Einleitung des Kapitels \emph{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die bereits erwähnten 3D-Drucker (\emph{Bambu Lab X1-Carbon, Ultimaker 2 Extended+}) miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm. 
+
+Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Filament verwendet.
 
 \begin{table} [H]
-	\begin{tabular}{ |p{5.5cm}|p{5.5cm}| }
+	\begin{tabular}{ |p{2cm} |p{5cm}|p{5cm}| }
 		\hline
-		\textbf{Bambu Lab X1-Carbon 3 Pro,}& \textbf{Ultimaker 2 Extended+}\\
+		 \textbf{Kriterien} & \textbf{Ultimaker 2 Extended+}& \textbf{Bambu Lab X1-Carbon 3 Pro}\\
 		\hline
-		 &   \\ 
-		 &   \\  
-		 &  \\  
+		\textbf{Material} & Material kann verarbeitet werden & Materiel kann verarbeitet werden   \\ 
+		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16mm\textsuperscript{3}/s & Druckt mit einer Geschwindigkeit von 32mm\textsuperscript{3}/s   \\  
 		\hline
 	\end{tabular}
-	\caption{Vergleich Creality Ender 3 Pro und }
+	\caption{Vergleich  Ultimaker 2 Extended+ und Bambu Lab X1-Carbon 3 Pro}
 \end{table}
 
 \subsection{Slicer}
 \subsubsection{Was ist ein Slicer?}
-Ein Slicer ist ein Stück Software, die es erst möglich macht 3D-Modelle auszudrucken, indem es sogenannten G-Code erstellt. G-Code ist die Programmiersprache die von Computern verwendet wird um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungnen ausführen sollen. \cite{Slicer_G-Code}
+Ein Slicer ist ein Stück Software, die es erst möglich macht 3D-Modelle auszudrucken, indem es sogenannten G-Code erstellt. G-Code ist die Programmiersprache die von Computern verwendet wird um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungnen ausführen soll. 
+\cite{Slicer_G-Code}
 
 \section{3D-Modellierungsprogramme}
-Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \cite{CAD-Programme}, \cite{3D-Printing-Software}
+Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen.
+\cite{CAD-Programme}, \cite{3D-Printing-Software}
 
 \subsection{Vergleich verschiedener 3D-Modellierungsprogramme}
 
 \subsubsection{Autodesk Fusion}
-Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. \cite{AutodeskFusion}
+Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung. Zudem wird Fusion 360 von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. 
+\cite{AutodeskFusion}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -129,13 +133,14 @@ Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellu
 \begin{itemize}
 	\item Cloud Based; Kann zu Problemen führen, wenn offline genutzt 
 	\item Benötigt eine schnelle Internetverbindung
-	\item Hoher Anspruch an die Hardware des Computers \cite{AutodeskFusionReviews}
+	\item Hoher Anspruch an die Hardware des Computers
 	\end{itemize}
-
+ \cite{AutodeskFusionReviews}
 
 
 \subsubsection{Blender} 
-Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. \cite{Blender}
+Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden verwendet, weil es viele Einsatzmöglichkeiten bietet und Gratis zugänglich für jeden ist. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. 
+\cite{Blender}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -149,11 +154,14 @@ Blender bietet vielseitige Anwendungsmöglichkeiten, von 3D-Modellierung und Ani
 \textbf{Nachteile}
 \begin{itemize}
 	\item Kein Industriestandard - wird nicht von großen Unternehmen genutzt
-	\item Nicht die Benutzerfreundlichste UI \cite{BlenderPros&Cons}
+	\item Nicht die Benutzerfreundlichste Oberfläche
 \end{itemize}
+\cite{BlenderPros&Cons}
+
 
 \subsubsection{FreeCAD}
-FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert. \cite{FreeCAD}  \cite{FreeCAD_2}
+FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert.
+ \cite{FreeCAD}  \cite{FreeCAD_2}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -167,11 +175,13 @@ FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der 3D-Modellierung bis hi
 \begin{itemize}
 	\item weniger Nutzer als die bereits genannten Programme
 	\item kein Industriestandard
-	\item 	limitierte Funktionalitäten im Vergleich mit bezahl Software \cite{FreeCADReviews}
+	\item limitierte Funktionalitäten im Vergleich mit bezahl Software
 \end{itemize}
+ \cite{FreeCADReviews}
 
 \subsubsection{Autodesk Tinkercad}
-Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \cite{Tinkercad}
+Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler, Lehrer und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. 
+\cite{Tinkercad}
 
 \textbf{Vorteile}
 \begin{itemize}
@@ -185,8 +195,12 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
 \textbf{Nachteile}
 \begin{itemize}
 	\item Weniger professionell
-	\item kein Industriestandard \cite{TinkercadReviews}
+	\item kein Industriestandard 
 \end{itemize}
+\cite{TinkercadReviews}
+
+\section{CNC-Fräsen}
+Ein anderer Ansatz der Hardware bzw. Prototypenherstellung, die für StageControl benötigt wird, wäre die CNC-Fräsung \emph{(engl. "Computerized Numerical Control")}. Diese Technologie 
 
 
 
