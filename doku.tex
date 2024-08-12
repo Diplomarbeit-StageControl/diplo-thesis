@@ -38,11 +38,11 @@ An den erlangten Antworten, kann man erkennen, dass es noch keine automatisierte
 	\item \textbf{Stufe 3: }Standort auf bestimmten Punkt auf vorhin genannter Bühne eingeschränkt
 \end{itemize}
 
-\section{Hardware im Zusammenhang mit StageControl}
-Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponenten, sondern auch hergestellte Konstruktionen, die das Funktionieren der Software bzw. der angesteuerten Komponenten erst möglich machen.
+\section{Hardwareproduktion}
+Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponenten, sondern auch speziell hergestellte Konstruktionen, die das Funktionieren der Software bzw. der angesteuerten Komponenten erst ermöglichen. So benötigen wir eine Konstruktion, die es ermöglicht, die Servomotoren, die die Schieberegler steuern um den gewünschten Stereoeffekt erzeugen, möglichst einfach zu montieren. 
 
 \subsection{Möglichkeiten der Hardwareproduktion}
-Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. PLA (Polylactide, ein Kunststoff) oder Metallen. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich 3D-Druck und  für StageControl eingegangen.
+Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichsten Materialien wie z. B. Kunststoff, Metall oder Holz. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedenste Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich 3D-Druck und  für StageControl eingegangen.
 
 \section{3D-Druck}
 \subsection{Wie funktioniert 3D-Druck}
@@ -61,7 +61,8 @@ Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Materia
 \subsection{Technische Voraussetzungen}
 Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
 \begin{itemize} 
-	\item 3D-Drucker, bei der durchführung dieser Diplomarbeit stehen uns diese 2 Modelle zur Verfügung: Bambu Lab X1-Carbon  und \emph{Ultimaker 2 Extended+}
+	\item 3D-Drucker
+	\item Slicer
 	\item CAD-Programm
 	\item 3D-Druck Material (Filament)
 	\item Computer
@@ -118,7 +119,7 @@ Ein Slicer ist ein Stück Software, die es erst möglich macht 3D-Modelle auszud
 Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageControl benötigt wird, ist das CNC-Fräsen (\emph{engl. "Computerized Numerical Control"}). Diese Technologie wird vor allem in der metallverarbeitenden Industrie angewendet, da sie äußerst genau und kostengünstig arbeitet. Zudem beschränkt sich das CNC-Fräsen nicht nur auf Metall; es kann auch bei der Bearbeitung von Kunststoffen und Holz eingesetzt werden. Anders als bei der 3D-Druck-Technologie handelt es sich hier nicht um ein additives, sondern um ein subtraktives Verfahren \cite{CNC-Fräsen} \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
 
 \subsection{Wie funktioniert CNC-Fräsen?}
-Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt. Der Fräser trägt dann Schicht für Schicht Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt. Wie beim 3D-Druck wird hier auch G-Code als Steuerung der Maschine eingestzt. \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
+Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt. Der Fräser trägt dann das Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt. Wie beim 3D-Druck wird hier auch G-Code als Steuerung der Maschine eingestzt. \cite{CNC-Fräsen_2} \cite{CNC-Fräsen_3}.
 
 \subsubsection{Einsatzmöglichkeiten}
 CNC-Fräsmaschinen können vielseitig eingesetzt werden und eine Vielzahl von Objekten in unterschiedlichsten Größen und Formen herstellen. Zu den typischen Anwendungsbereichen zählen unter anderem:
@@ -132,9 +133,15 @@ Durch den Einsatz von CNC-Fräsen können menschliche Fehler und die Ausschussra
 
 \subsubsection{Vorteile des CNC-Fräsens}
 CNC-Fräsen bietet im Vergleich zum herkömmlichen, manuellen Fräsen einige Vorteile. Wie bei jeder manuellen Arbeit können Arbeitsunfälle passieren. Durch den Einsatz moderner CNC-Fräsen, die aus der Ferne gesteuert werden können, lassen sich solche Unfälle jedoch vermeiden. Ein weiterer Vorteil des CNC-Fräsens ist seine gleichbleibende Genauigkeit, da die CNC-Fräse computergesteuert ist. Diese Technologie wird vor allem bei Werkstücken eingesetzt, die nur wenig Toleranz in der Genauigkeit zulassen. CNC-Fräsen arbeiten mit einer Präzision von 0,01 bis 0,03 mm.
+\cite{CNC-Fräsen_Vorteile}
 
-\subsection{Varianten des CNC-Fräsens}
+\subsection{CNC gesteuerte Maschinen}
+Es gibt nicht nur CNC-Fräser oder Dreher, sondern alle Maschinen die durch CNC (\emph{rechnergestützte numerische Steuerung}) gesteuerten werden. Durch den Einsatz von CNC lassen sich die verschiedensten Maschinen Computergestützt steuern. Zu diesen Maschinen zählen unteranderem CNC-Bohrmaschinen,  CNC-Laserschneidmaschinen, CNC-Schleifmaschinen, CNC-Wasserstrahlschneidmaschinen oder der 3D-Drucker.
+\cite{Arten_CNC_Maschinen}
 
+\subsection{Unterschied zwischen CNC-Fräsen und CNC-Drehen}
+Beim CNC-Drehen wird ein Spannfutter anstatt des Schneidewerkzeugs eingesetzt. Dies ermöglicht die Herstellung von runden, zylindrische oder konische Formen. Mit diesem Verfahren lassen sich keine Objekte herstellen die eine hohe Präzision erfordern. Im Gegensatz zur CNC-Fräsmaschine arbeitet das CNC-Drehen nur auf zwei Achsen. Zudem dreht sich das Material und der Fräser ist fixiert, so wird das Material wie bei der CNC-Fräse abgetragen.
+\cite{CNC-Drehen_Unterschied}
 
 
 \subsection{Werkstoffe}
@@ -161,8 +168,8 @@ Bei der 5-Achs-Fräsung kann nicht nur die Aufspannung des Frästeils zum Schwen
 \cite{Fräsen-3/4/5-Achs}
 
 
-\section{CAD-Programme}
-Auf dem Markt rund um CAD-Programme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen.
+\section{3D-Modellierungsprogramme}
+Auf dem Markt rund um C3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Von dem anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen.
 \cite{CAD-Programme}, \cite{3D-Printing-Software}
 
 \subsection{Vergleich verschiedener CAD-Programme}
@@ -248,59 +255,44 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
 \end{itemize}
 \cite{TinkercadReviews}
 
+\section{Mischpult}
+ Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Mischpulte, auch Mixer genannt, gibt es in ganz unterschiedlichen Größen. Die Größe hängt meist von der Anzahl der Kanäle ab, die das Mischpult bietet. Mischpulte werden immer dann verwendet, wenn mehrere Audiosignale verarbeitet werden müssen, wie auf Bühnen oder in Proberäumen. Bei allen Mischpulten gibt es eine sogenannte Leserichtung, die den Aufbau des Mischpults beschreibt. Von links nach rechts findet man die einzelnen Kanäle, und von oben nach unten die Bearbeitungsmöglichkeiten des Tons. Dazu kommt noch der sogannte Masterbereich. Hier wird alles gesteuert das Zentral gereglt werden muss, diese Einstellungen gelten dann für alle Kanäle.
+\cite{Mischpult_Information}  \cite{Mischpult_Master}
 
+\subsection{Wie funktioniert ein Mischpult}
+Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann diese Signal über die Tonanlage ausgegeben werden. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Regler für jeden Kanal, diese sind wie vorher schon Erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird nicht auf dies genauer eingagangen.
+\cite{Mischpult_Erklärung}
 
---------------------------------------------------------------------------------------------------------
+\subsection{Einsatzmöglichkeiten}
+Mischpulte finden eine Vielzahl von Anwendungsmöglichkeiten, wie z.b. auf Bühnen oder in Proberäumen. Mischpulte übernehmen eine bandbreite von Aufgaben. Die Folgenden gehören zu den wichtigsten:
+\begin{itemize}
+	\item Signalverstärkung
+	\item Bearbeitung von Signalen
+	\item Signale zum Aufnahmesystem schicken
+\end{itemize}
+Diese und viele mehr Aufgaben kann ein Mischpult übernehemen.
+\cite{Mischpult_Verwendungszweck}
 
-According to the report, businesses face significant damages due to cyber crime as depicted by \emph{Table 1} below: 
+\subsection{Unterschied Digital/Analog}
+\subsubsection{Digital}
+Unter einem digitalen Mischpult versteht man ein Mischpult, das analoge Signale in digitale Signale umwandelt und diese Signale mittels Software bearbeitet. Um ein digitales Signal wieder über eine Tonanlage auszugeben, muss es erneut in ein analoges Signal umgewandelt werden. Dies führt wiederum zu Latenzzeiten bei der Ausgabe des Signals.
+\subsubsection{Analog}
+Im Gegensatz dazu steht das analoge Mischpult. Es wandelt die Signale nicht in digitale um, sondern behält deren ursprüngliche analoge Form bei und bearbeitet sie ohne Software weiter. Ohne diese Umwandlung gibt es nahezu keine Latenzzeit bei der Ausgabe der Signale.
+\cite{Mischpult_Analog/Digital}
 
-According to \textcite{embroker}, $\frac{2}{3}$ of companies...
+\subsection{Anforderungen für StageControl}
+Für StageControl ist es besonders wichitg das 
+\subsection{Vergleich 2er Modelle}
 
-$\frac{2}{3}$ of all companies experienced a cyberattack within the past 4 years \parencite{embroker}
+\section{Lichtsteuerung}
+\subsection{Lichtanlagen bei StageControl}
+\subsection{Ansteuerung von Lichtanlagen}
 
-\begin{table} [H]
-	\begin{tabular}{ |p{2cm}|p{11.0cm}| }
-		\hline
-		\textbf{Percent Affected}& \textbf{Issues Experienced}\\
-		\hline
-		45 \% & Report their countermeasures are inefficient  \\ 
-		66 \% & Report they have been affected by a cyber attack in the previous year  \\  
-		69 \% & Claim the attacks become increasingly targeted \\  
-		\hline
-	\end{tabular}
-	\caption{\label{tab:CyberSecReport}Ponemon Institute State of Cybersecurity Report Statistics.}
-\end{table}
-
-.... more text ....  (see \emph{Table 2}):
-
-\begin{table} [H]
-	\begin{tabular}{ |p{2cm}| p{11.0cm}| }
-		\hline
-		\textbf{\#}& \textbf{Security Risk}\\
-		\hline
-		1 & Broken Access Control \\
-		2 & Cryptographic Failures \\
-		3 & Injection (Database) \\
-		\hline
-	\end{tabular}
-	\caption{\label{tab:OWASP2021} OWASP Top 10 Web Application Security Risks 2021}
-\end{table}
-
-\begin{lstlisting}
-System.out.printlin("Some code..." );
-\end{lstlisting}
-
-
-
-A sample figure: \\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\linewidth]{images/SZ-Ybbs-Logo}
-	\caption[Short Description]{Short Description}
-	\label{fig:sz-ybbs-logo}
-\end{figure}
-
+\section{Servomotoren}
+\subsection{Was ist ein Servomotor}
+\subsection{Einsatz von Servos bei StageCotrol}
+\subsection{Modelle}
+\subsection{Software zur Ansteuerung}
 
 \chapter{Ergebnisdokumentation}
 \lfoot{Name 2}
