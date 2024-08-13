@@ -1,7 +1,7 @@
 
 \pagestyle{fancy} \frenchspacing
 \lhead{StageControl - automatisierte Steuerung von Ton- und Lichtanlagen (2024/2025)}
-\lfoot{Name 1}
+\lfoot{}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
 \renewcommand{\textfraction}{0}
@@ -58,6 +58,16 @@ Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Materia
 	\item Herstellung induvidueller Objekte
 \end{itemize} \cite{3D-Druck-Vorteile}
 
+\subsection{Nachteile des 3D-Druck}
+3D-Druck bietet aber nicht nur Vorteile, sondern hat wie alle Technologien seine Nachteile und Schwächen.
+\begin{itemize}
+	\item Nachbearbeitung der Konstruktionen nötig.
+	\item Nicht so genau wie subtraktive Fertigungverfahren.
+	\item Lange Fertigungszeiten
+	\item Begrenztes Bauvolumen
+\end{itemize}
+\cite{3D-Druck-Nachteile}
+
 \subsection{Technische Voraussetzungen}
 Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
 \begin{itemize} 
@@ -84,29 +94,35 @@ Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten,
 3D-Drucker benötigen zum Drucken eines Objektes Material, das sie verbrauchen können, um das Objekt herzustellen. Im Rahmen dieser Diploarbeit werden 2 Werkstoffe ganuer analysiert, nämlich Nylon und Kohlefaser.
 
 \subsubsection{Nylon}
-Nylon \emph{(techn. Polyamid)} ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Auseneinwirkungen auszeichnet. Nylon gibt es in unterschiedlichen Ausführung zb. als Filament, Draht oder Pulver mit unterschiedlcihen eigenschaften. \cite{Nylon}
+Nylon \emph{(techn. Polyamid)} ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Auseneinwirkungen auszeichnet. Nylon gibt es in unterschiedlichen Ausführung zb. als Filament, Draht oder Pulver mit unterschiedlichen eigenschaften. \cite{Nylon}
 \subsubsection{Kohlefaser}
 Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern. \cite{Kohlefasern}
 
 
 \subsection{3D-Drucker}
 
-\subsection{Vergleich der 3D-Drucker}
+\subsubsection{Vergleich der 3D-Drucker}
 Wie in der Einleitung des Kapitels \emph{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die bereits erwähnten 3D-Drucker (\emph{Bambu Lab X1-Carbon, Ultimaker 2 Extended+}) miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm. 
 
 Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Filament verwendet.
 
 \begin{table} [H]
-	\begin{tabular}{ |p{2cm} |p{5cm}|p{5cm}| }
+	\begin{tabular}{ |p{2.7cm} |p{4.8cm}|p{4.8cm}| }
 		\hline
 		 \textbf{Kriterien} & \textbf{Ultimaker 2 Extended+}& \textbf{Bambu Lab X1-Carbon 3 Pro}\\
 		\hline
 		\textbf{Material} & Material kann verarbeitet werden & Materiel kann verarbeitet werden   \\ 
+		\hline
 		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16mm\textsuperscript{3}/s & Druckt mit einer Geschwindigkeit von 32mm\textsuperscript{3}/s   \\  
+		\hline
+		\textbf{Druckvolumen} & 223 x 223 x 205 mm & 256 x 256 x 256 mm \\
+		\hline
+		\textbf{Betriebssysteme} & MacOS, Windows, and Linux & Windows, MacOS \\
 		\hline
 	\end{tabular}
 	\caption{Vergleich  Ultimaker 2 Extended+ und Bambu Lab X1-Carbon 3 Pro}
 \end{table}
+\cite{BambuLabX1-Carbon3DPrinter-Specifications}, \cite{Ultimaker2Extended+-Specification}
 
 \subsection{Slicer}
 \subsubsection{Was ist ein Slicer?}
@@ -281,7 +297,8 @@ Im Gegensatz dazu steht das analoge Mischpult. Es wandelt die Signale nicht in d
 \cite{Mischpult_Analog/Digital}
 
 \subsection{Anforderungen für StageControl}
-Für StageControl ist es besonders wichitg das 
+Für StageControl ist es besonders wichitg das dass verwendete Mischpult entweder jeden Kanal einzeln pannen kann oder das der Master mindestens zwei Lautsprecher einer Tonanlage einzeln ansteuern kann. Somit kann der von uns gewünschte Stereoeffekt erzeugt werden.
+
 \subsection{Vergleich 2er Modelle}
 
 \section{Lichtsteuerung}
