@@ -336,20 +336,36 @@ Wie am Anfang des Kapitels "Mischpult" beschrieben benötigt StageControl ein Mi
 \cite{Mischpult_Kriterien_1204}, \cite{Mischpult_Kriterien_1402}
 
 \section{Lichtsteuerung}
-Ein weiterer Apekt dieser Diplomarbeit ist die gleichzeitige Ansteuerung von Lichtanlagen, wie z.b einem Spotlight (\emph{deutsch Verfolgungsscheinwerfer}), das den Künstler auf der Bühne verfolgt. Auf Bühnen wird nicht nur ein Sporlight eingesetzt, sondern ganze Anlagen von Lichtern. Dies wird gemacht, um für den Zuschauer eine immersive Vorstellung zu bieten. 
+Ein weiterer Apekt dieser Diplomarbeit ist die gleichzeitige Ansteuerung von Ton- und Lichtanlagen, wie z.b einem Spotlight (\emph{deutsch Verfolgungsscheinwerfer}), das den Künstler auf der Bühne verfolgt. Auf Bühnen wird nicht nur ein Sporlight eingesetzt, sondern ganze Anlagen von Lichtern. Dies wird gemacht, um für den Zuschauer eine immersive Vorstellung zu bieten. 
 
 \subsection{Lichtanlagen bei StageControl}
-Im Fall von StageControl wird keine vollständige Lichtanlage verwendet; es kommt lediglich ein Spotlight zum Einsatz, um die Beleuchtung des Künstlers zu ermöglichen. So erhalten wird die perfekte Abstimmung des Tons und des Lichts auf den Künstler.
+Im Fall von StageControl wird keine vollständige Lichtanlage verwendet; es kommt lediglich ein Scheinwerfer zum Einsatz, um die Beleuchtung des Künstlers via Positionsverfolgung zu ermöglichen. So erhalten wir die genaue Abstimmung von Ton und Licht auf den Künstler.
 
 \subsection{Ansteuerung von Lichtanlagen}
-Die gängiste Art der Ansteuerung von Lichtanlagen ist DMX-Protokoll (\emph{Digital Multiplex}) oder RDM-Protokoll (\emph{Remote Device Management}). Zur Ansteuerung der Lichtanlgen selbst, wird ein DMX-Controller benötigt, der die Scheinwerfer steuert. Es wird ein DMX Controller mit einem DMX-Ausgang und Schweinwerfer mit einem DMX-Eingang benötigt.\\
-\textbf{DMX} ist das am häufisten Verwendete Protokoll zur Lichansteuerung in der Bühnentechnik. Moving-Heads, Lichteffekte und viele mehr werden in der Regel mit Hilfe von Lichtsteuerpulten über das DMX-Protokoll angesteuert und/oder programmiert. \\
-\textbf{RDM} basiert auf dem DMX-PRotokoll erlaubt  aber im Halbduplex Rückmeldungen, so kann das Einrichten deutlich erleichtert werden.
+Die gängigste Art der Ansteuerung von Lichtanlagen ist das DMX-Protokoll (\emph{Digital Multiplex}) oder das RDM-Protokoll (\emph{Remote Device Management}). Zur Ansteuerung der Lichtanlagen selbst wird ein DMX-Controller benötigt, der die Scheinwerfer steuert. Es wird ein DMX-Controller mit einem DMX-Ausgang und ein Scheinwerfer mit einem DMX-Eingang benötigt.\
+\textbf{DMX} ist das am häufigsten verwendete Protokoll zur Lichtansteuerung in der Bühnentechnik. Moving-Heads, Lichteffekte und viele mehr werden in der Regel mithilfe von Lichtsteuerpulten über das DMX-Protokoll angesteuert und/oder programmiert.\
+\textbf{RDM} basiert auf dem DMX-Protokoll, erlaubt aber im Halbduplexbetrieb Rückmeldungen, was das Einrichten deutlich erleichtern kann.\\
+\cite{Lichtanlage_RDM_DMX}
+
+\subsection{Hartes bzw. Weiches Licht}
+Es gibt zwei Lichtarten, die man in der Lichttechnik unterscheiden kann, nämlich hartes und weiches Licht. Beide Arten bieten sich für unterschiedlichste Einsatzmöglichkeiten an. Weiches Licht wird meist eingesetzt, um größere Bereiche auszuleuchten. Auf der anderen Seite der Lichtskala gibt es das harte Licht, das sehr präzise eingesetzt werden kann, wie im Fall von StageControl bei der Verfolgung des Künstlers/der Künstler auf einer Bühne. Bei Scheinwerfern, die hartes Licht ausstrahlen, kommt das Licht von einem Punkt aus. Hingegen wird weiches Licht von einer Fläche aus abgestrahlt.\\
+\cite{Hartes_Weiches_Licht}
+
+\subsection{Arten von Scheinwerfern}
+In der Lichttechnik gibt es verschiedenste Scheinwerfertypen, die unterschiedliche Aufgaben besonders gut erfüllen. Zwei Scheinwerfertypen, die im Rahmen dieser Diplomarbeit zum Einsatz kommen, werden genauer erklärt.
+
+\subsubsection{Verfolgerscheinwerfer}
+Der Verfolgerscheinwerfer wird verwendet, um Künstler auf Bühnen zu verfolgen. Diese Scheinwerfer werden nicht wie andere Scheinwerfer fix montiert, sondern lassen sich bewegen, um den gewünschten Verfolgungseffekt zu bieten. Dies geschieht nicht automatisch, sondern wird manuell von einem Beleuchter während der Show durchgeführt. Es gibt verschiedenste Lösungsansätze zur Bewegung von Movinglights (\emph{deutsch „Bewegbare Lichter“}). \ Bei Konzerten wird ein Verfolgerscheinwerfer oberhalb der Bühne gemeinsam mit dem Beleuchter platziert. Dieser steuert dann das Licht über ein Bedienfeld während der Performance.\\
+\cite{Verfolgerscheinwerfer}
+
+\subsubsection{Profilscheinwerfer}
+Dieser Scheinwerfertyp wird vorallem im Theaterbereich eingesetzt. Ein enormer Vorteil des Profilscheinwerfers ist das es ein hartes und exates Licht ausstrahlt. Außerdem ist das Streulichtaufkommen deutlich geringer als bei anderen Scheinwerfer. Streulicht ist das Licht das außerhalb des Eigenlichen Lichtkegels auftritt. Zudem verfügen Profilscheinwerfer über einen Zoom, der manuell oder automatisch erfolgen kann. Dieser Scheinwerfertyp bieten zusätlich eine Scharfstellfunktion/Fokus mittels Linsenverschiebung an, diese wird durch den Linsentubus ermöglicht.\\
+\cite{Profilscheinwerfer}
 
 \section{Servomotoren}
-\subsection{Was ist ein Servomotor}
 \subsection{Einsatz von Servos bei StageCotrol}
-\subsection{Modelle}
+\subsection{Was ist ein Servomotor}
+\subsection{Arten von Servomotor}
 \subsection{Software zur Ansteuerung}
 
 
