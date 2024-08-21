@@ -144,7 +144,7 @@ Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageCont
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{images/CNC.jpg}
+	\includegraphics[width=0.8\linewidth]{images/CNC.jpg}
 	\caption[cnc-fraese]{cnc-fraese}
 	\label{fig:cnc-fraese}
 \end{figure}
@@ -292,8 +292,15 @@ Autodesk Tinkercad ist ein für Anfänger und Schüler entwickeltes Online-Tool.
  Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Mischpulte, auch Mixer genannt, gibt es in ganz unterschiedlichen Größen. Die Größe hängt meist von der Anzahl der Kanäle ab, die das Mischpult bietet. Mischpulte werden immer dann verwendet, wenn mehrere Audiosignale verarbeitet werden müssen, wie auf Bühnen oder in Proberäumen. Bei allen Mischpulten gibt es eine sogenannte Leserichtung, die den Aufbau des Mischpults beschreibt. Von links nach rechts findet man die einzelnen Kanäle, und von oben nach unten die Bearbeitungsmöglichkeiten des Tons. Dazu kommt noch der sogannte Masterbereich. Hier wird alles gesteuert das Zentral gereglt werden muss, diese Einstellungen gelten dann für alle Kanäle. \\
 \cite{Mischpult_Information}  \cite{Mischpult_Master}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/mischpult.jpg}
+	\caption[Mischpult]{Mischpult}
+	\label{fig:Mischpult}
+\end{figure}
+
 \subsection{Wie funktioniert ein Mischpult}
-Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann diese Signal über die Tonanlage ausgegeben werden. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Regler für jeden Kanal, diese sind wie vorher schon Erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird nicht auf dies genauer eingagangen. \\
+Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann diese Signal über die Tonanlage ausgegeben werden. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Regler für jeden Kanal, diese sind wie schon Erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird nicht auf dies genauer eingagangen. \\
 \cite{Mischpult_Erklaerung}
 
 \subsection{Einsatzmöglichkeiten}
@@ -362,21 +369,41 @@ In der Lichttechnik gibt es verschiedenste Scheinwerfertypen, die unterschiedlic
 Der Verfolgerscheinwerfer wird verwendet, um Künstler auf Bühnen zu verfolgen. Diese Scheinwerfer werden nicht wie andere Scheinwerfer fix montiert, sondern lassen sich bewegen, um den gewünschten Verfolgungseffekt zu bieten. Dies geschieht nicht automatisch, sondern wird manuell von einem Beleuchter während der Show durchgeführt. Es gibt verschiedenste Lösungsansätze zur Bewegung von Movinglights (\emph{deutsch „Bewegbare Lichter“}). \ Bei Konzerten wird ein Verfolgerscheinwerfer oberhalb der Bühne gemeinsam mit dem Beleuchter platziert. Dieser steuert dann das Licht über ein Bedienfeld während der Performance.\\
 \cite{Verfolgerscheinwerfer}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Verfolgerscheinwerfer.jpg}
+	\caption[Verfolgerscheinwerfer]{Verfolgerscheinwerfer}
+	\label{fig:Verfolgerscheinwerfer}
+\end{figure}
+
 \subsubsection{Profilscheinwerfer}
 Dieser Scheinwerfertyp wird vorallem im Theaterbereich eingesetzt. Ein enormer Vorteil des Profilscheinwerfers ist das es ein hartes und exates Licht ausstrahlt. Außerdem ist das Streulichtaufkommen deutlich geringer als bei anderen Scheinwerfer. Streulicht ist das Licht das außerhalb des Eigenlichen Lichtkegels auftritt. Zudem verfügen Profilscheinwerfer über einen Zoom, der manuell oder automatisch erfolgen kann. Dieser Scheinwerfertyp bieten zusätlich eine Scharfstellfunktion/Fokus mittels Linsenverschiebung an, diese wird durch den Linsentubus ermöglicht.\\
 \cite{Profilscheinwerfer}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Profilscheinwerfer.jpg}
+	\caption[Profilscheinwerfer]{Profilscheinwerfer}
+	\label{fig:Profilscheinwerfer}
+\end{figure}
 
 \section{Servomotoren}
 \subsection{Einsatz von Servos bei StageCotrol}
 Servomotoren werden für die Ausführung der physischen Bewegung des Künstlers, in mechanische Bewegung des Servomotors benötigt, um so die Abstimmung und Ausrichtung des Tons zu automatisieren. Diese Servomotoren werden oberhalb des Mischpult plaziert mithilfe des Gerüsts, wie in Kapitel 2.2.1 beschrieben.
 
 \subsection{Was ist ein Servomotor}
-Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielmehr spezielle Eigenschaften. Diese Eigenschaften sind: Strom-, Drehzahl- und/oder Positionsgeregelt. Ein Servomotor ist immer elektrisch betrieben. Diese Motoren geben Rückmeldungen an die Regelelektronik, diese Rückmeldung enthalten Informationen über Winkelposition der Motorwelle, der Drehgeschwindigkeit und der Beschleunigung. Die Regelelektronik kann anhand dieser zurückgemeldeten Daten wieder an die Sollparameter, die zuvor eingegeben wurden, zurückkehren. \\
+Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielmehr spezielle Eigenschaften. Diese Eigenschaften sind: Strom-, Drehzahl- und/oder Positionsgeregelt. Ein Servomotor ist immer elektrisch betrieben. Diese Motoren geben Rückmeldungen an die Regelelektronik, diese Rückmeldungen enthalten Informationen über Winkelposition der Motorwelle, der Drehgeschwindigkeit und der Beschleunigung. Die Regelelektronik kann anhand dieser zurückgemeldeten Daten wieder die Daten der Sollparameter an den Motor schicken, die zuvor eingegeben wurden. \\
 \cite{Servomotor_Info}
 
-\subsection{Arten von Servomotor}
+\subsection{Anforderungen für StageControl}
+Für den Einsatz bei StageControl gibt es Vorraussetzungen die die Servomotoren erfüllen müssen, ehe sie in Erwegung gezogen werden. Diese Kriterien sind: Drehung des Motors im und gegen den Uhrzeigersinn, die Kompaktheit, einen passenenden Eingang (Bus/Analog/Digital) für die Eingabe der Sollzustände und. Diese Kriterien sind essentiell für die Durchführung dieser Diplomarbeit.
 
-\subsection{Software zur Ansteuerung}
+\subsection{Arten von Servomotoren}
+
+
+\subsection{Ansteuerung von Servos}
+Servomotoren werden in der Regel über Schnittstellen mit einem Steuergerät verbunden, in diesem Fall, ein Computer/Laptop. ....\\
+\cite{Servomotor_Ansteuerung}
 
 
 
@@ -389,13 +416,16 @@ Es gibt verschiedene Möglichkeiten der Umsetzung einer Android App. Folgende Pr
 
 \section{Frameworks und Entwicklungumgebungen}
 \subsection{Android Studio}
-Android Studio ist nicht wirklich ein Framework, es handelt sich mehr um eine Entwicklungsumgebung, welche auf IntelliJ IEDA Community Edition zurückgreift und von Google entwickelt wurde. Die Hauptprogrammiersprachen sind Java und Kotlin. \cite{Android Studio}
+Android Studio ist nicht wirklich ein Framework, es handelt sich mehr um eine Entwicklungsumgebung, welche auf IntelliJ IEDA Community Edition zurückgreift und von Google entwickelt wurde. Die Hauptprogrammiersprachen sind Java und Kotlin.\\
+ \cite{Android Studio}
 
 \subsection{React Native}
-React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript. \cite{React Native}
+React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.\\
+\cite{React Native}
 
 \subsection{Flutter}
-Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist. Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart. \cite{Flutter}
+Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist. Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart.\\
+\cite{Flutter}
 
 
 \chapter{Ergebnisdokumentation}
