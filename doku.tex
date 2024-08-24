@@ -399,10 +399,15 @@ Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielme
 Für den Einsatz bei StageControl gibt es Vorraussetzungen die die Servomotoren erfüllen müssen, ehe sie in Erwegung gezogen werden. Diese Kriterien sind: Drehung des Motors im und gegen den Uhrzeigersinn, die Kompaktheit, einen passenenden Eingang (Bus/Analog/Digital) für die Eingabe der Sollzustände und. Diese Kriterien sind essentiell für die Durchführung dieser Diplomarbeit.
 
 \subsection{Arten von Servomotoren}
+Es gibt einige Unterschiedliche Arten von Servos, die wichtigsten drei sind: Gleichstrom, Kernlose und Bürstenlose Motoren. \\
+Bei Gleichstrom Servos handelt sich um die billigste und gängiste Art der Motoren. Dieser Servotyp besteht aus Eisenkernen um den Kupferdraht gewickelt ist, sowie einem Kommutator Ring, Bürsten, diese Bürsten werden zu Umschaltung der Felder benötigt und einem Gehäuse. \\
+Kernlose Motoren sind erheblich teuerer in der Produktion als Gleichstrom Motoren, da diese aus teurern Materialien bestehen. Ihr großer Vorteil gegenüber herkörmlicher Gleichstrom Motoren ist, das diese deutlich schneller beschleunigen und abbremsen können. \\
+Anstelle der Bürsten und dem Metalring bei Bürsten Servos, wird bei den Bürstenlosen Servos Elektronik, die den Motor steuert, eingebaut um die selbe Zuverlässigkeit zu gewährleisten. Der Einbau von Elektronik zeichnet sich durch die längere Lebensdauer des Servos aus. Durch die Elektronik fallen diese Motoren deutlich teurer aus als Gleichstrom Motoren. \\
+\cite{Servomotor_Arten}
 
 
 \subsection{Ansteuerung von Servos}
-Servomotoren werden in der Regel über Schnittstellen mit einem Steuergerät verbunden, in diesem Fall, ein Computer/Laptop. ....\\
+Servomotoren werden über ein sogennantes PWM-Signal (\emph{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet das der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion dieser fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Controler verbunden. Das erste Kabel ist das Massekabel, dies ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, dies versorgt den Servomotor mit der nötigen elektrischen Spannung. Das dritte Kabel ist das Signalleitungskabel, dieses Kabel leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
 \cite{Servomotor_Ansteuerung}
 
 
