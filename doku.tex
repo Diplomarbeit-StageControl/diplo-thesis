@@ -128,7 +128,8 @@ Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Fi
 		\hline
 		\textbf{Material} & Material kann verarbeitet werden & Material kann verarbeitet werden   \\ 
 		\hline
-		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16mm\textsuperscript{3}/s & Druckt mit einer Geschwindigkeit von 32mm\textsuperscript{3}/s   \\  
+		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16mm\textsuperscript{3}/s &
+		 Druckt mit einer Geschwindigkeit von 32mm\textsuperscript{3}/s   \\  
 		\hline
 		\textbf{Druckvolumen} & 223 x 223 x 205 mm & 256 x 256 x 256 mm \\
 		\hline
@@ -432,6 +433,173 @@ Anstelle der Bürsten und dem Metallring bei Bürstenservos, wird bei den Bürst
 Servomotoren werden über ein sogenanntes PWM-Signal (\emph{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, dies ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, dies versorgt den Servomotor mit der nötigen elektrischen Spannung. Das dritte Kabel ist das Signalleitungskabel, dieses Kabel leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
 \cite{Servomotor_Ansteuerung}
 
+\section{Navigation}
+
+Um die Licht- und Audioanlagentechnik richtig zu koordinieren benötigt man eine Art von Navigation. Da es sich meist um Bühnen im Innenbereich handelt, kann man keine übliche Technologie verwenden.
+
+
+\subsection{GPS}
+GPS (\emph{=engl. Global Positioning System}) wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
+\cite{GPS}
+
+\textbf{Funktionsweise des GPS}
+
+Es gibt GPS-Satelliten die, die Erde zweimal pro Tag umkreisen in einer genauen Umlaufbahn. Diese Satelliten senden eindeutige Signale und Bahnparameter aus, somit können die genauen Postionen der GPS-Geräte bestimmt werden. 
+In so gut wie jeden neuen Geräten ist das GPS-standart und werden für die verschiedensten Funktionen verwendet. Durch die Positionsermittlung können folgende andere Informationen berechnet werden:
+
+\begin{itemize}
+	\item Geschwindigkeit
+	\item Peilung
+	\item Track
+	\item Reisedistanz
+	\item Distanz zum Ziel
+	\item Zeiten von Sonnenaufgang und Sonnenuntergang
+\end{itemize}
+
+\textbf{Signal}
+
+Wenn GPS-Signale die Erde erreichen, sind die gesendeten Signale sehr schwach. Deshalb kommt es auch zu Problemen beim Durchdringen von Objekten wie Gebäuden o. Ä. Bei modernen GPS-Empfängern ist eine Indoor-Ortung möglich.
+
+\textbf{Fehlerquellen für die Genauigkeit der GPS-Signale}
+
+Es gibt einige relevante Fehlerquellen für GPS-Signale darunter fallen:
+\begin{itemize}
+	\item Position der Satelliten
+	\item Signaleffekt der Umgebung
+\end{itemize}
+
+\textbf{Position der Satelliten}
+
+Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und einen weiteren, um etwägige Fehler zu beseitigen. Grundsätzlich gilt: Desto mehr Satelliten, desto genauer die GPS-Genauigkeit. Außerdem sollte das Signal von gleichmäßig verteilten Satelliten kommen, ist die GPS-Genauigkeit höher. Für die Berechnung dieser Genauigkeit gibt es den Dilution of Precision (= DOP) Wert.  Je kleiner dieser Wert, desto genauer ist das GPS-Signal.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Satellitenposition.jpg}
+	\caption[Satellitenpositionierung]{Satellitenpositionierung}
+	\label{fig:Satellitenposition}
+\end{figure}
+
+\textbf{Signaleffekt der Umgebung}
+
+Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Stecke zurück, die Ausbreitungsumgebung beinflusst nicht nur die Siganlestärke, sondern auch die Genauigkeit, stark. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Satelliteneinfluss.jpg}
+	\caption[Satelliteneinfluss]{Satelliteneinfluss}
+	\label{fig:Satelliteneinfluss}
+\end{figure}
+\cite{GPS Fehlerquellen}
+
+\subsection{ESP32}
+
+ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino kommunizieren. Der ESP32 zeichnet sich mit folgenden Dingen aus:
+
+\begin{itemize}
+	\item niedrige Anschaffungskosten
+	\item geringer Stromverbrauch
+	\item Wi-Fi
+	\item Bluetooth
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/ESP32.jpg}
+	\caption[ESP32]{ESP32}
+	\label{fig:ESP32}
+\end{figure}
+
+\textbf{Anschaffungskosten \& Stromverbrauch}
+
+Der Mikrocontroller ist bereits ab einem Preis von \$6 erhältlich. Außerdem verbraucht dieser im Vergleich zu anderen Mikrocontrollern sehr wenig Strom und unterstützt Energiesparmodule, wie Tiefschlaf.
+
+\textbf{Funktionen}
+
+Der Mikrocontroller bietet nicht nur Wi-Fi (\emph{=Wireless Local Area Network}), sondern auch Bluetooth. Mit der Wireless Local Area Network Funktionen kann man einfach und drahtlos eine Verbindung zu einem Netzwerk herstellen und somit eine Kommunikation von vielen Geräten möglich machen. Außerdem verfügt der Mikrocontroller über Bluetooth-Classic.
+
+\subsection{ESP32-Spezifikationen}
+
+\begin{itemize}
+	\item Bluetooth Classic und Bluetooth Low Energy
+	\item Tensilica Xtensa Dual-Core 32-Bit LX6 Mikroprozessor, 160 oder 240 MHz
+	\item ROM:  448 KB
+	\item SRAM:  520 KB 
+\end{itemize}
+\cite{ESP32}
+
+\subsection{MPU-6050}
+
+Für weitere Funktionen benötigt man z.B. die Erweiterungsplatine MPU-6050, diese bringt einen Beschleunigungssensor und ein Gyroskop mit. Diese Platine beläuft sich auf einen Preis von ca. \$3.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/MPU6050.jpg}
+	\caption[MPU6050]{MPU-6050}
+	\label{fig:MPU6050}
+\end{figure}
+
+
+\textbf{Gyroskop}
+
+Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\emph{kurz MEMS}) verwendet. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Beschleunigungssensor.png}
+	\caption[Beschleunigungssensor]{Beschleunigungssensor}
+	\label{fig:Beschleunigungssensor}
+\end{figure}
+
+\textbf{Beschleunigungssensor}
+
+Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop. Der einzige Unterschied ist, dass der Sensor die Beschleunigung in Richtung der x-, y- und z-Achse deklariert. Ein Gyroskop bezieht sich lediglich auf die Bewegung, um die Achsen, also befindet es sich in Ruhestellung, liefert es den Wert Null für alle drei Dimensionen (x,y,z). Die Module haben die Achsen aufgedruckt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Modul.jpg}
+	\caption[Modul]{Modul}
+	\label{fig:Modul}
+\end{figure}
+
+\cite{MPU6050}
+
+\subsection{Trägheitsnavigation}
+
+Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. Es ist immer nur die Anfangsposition bekannt, anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
+
+\cite{Traegheitsnavigation}
+
+
+\section{Software}
+
+
+\subsection{Mobil Apps Grundlagen}
+
+\textbf{Native Apps}
+
+Native Apps (\emph{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. 
+
+\cite{NativeApps}
+
+
+\textbf{Android}
+
+
+\textbf{iOS}
+
+\subsection{Cross-Platform-Apps}
+
+\textbf{Flutter}
+
+Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist. Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart.
+
+\cite{Flutter}
+
+\textbf{React Native}
+
+React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
+
+\cite{React Native}
 
 
 
