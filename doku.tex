@@ -44,8 +44,7 @@ Um die Licht- und Audioanlagentechnik richtig zu koordinieren benötigt man eine
 
 
 \subsection{GPS}
-GPS (\emph{=engl. Global Positioning System}) wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
-\cite{GPS}
+GPS (\emph{=engl. Global Positioning System}) \textcite{GPS} wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
 
 \textbf{Funktionsweise des GPS}
 
@@ -67,11 +66,12 @@ Wenn GPS-Signale die Erde erreichen, sind die gesendeten Signale sehr schwach. D
 
 \textbf{Fehlerquellen für die Genauigkeit der GPS-Signale}
 
-Es gibt einige relevante Fehlerquellen für GPS-Signale darunter fallen:
+Es gibt einige relevante Fehlerquellen für GPS-Signale darunter fallen \textcite{GPSFehlerquellen}:
 \begin{itemize}
 	\item Position der Satelliten
 	\item Signaleffekt der Umgebung
 \end{itemize}
+
 
 \textbf{Position der Satelliten}
 
@@ -85,18 +85,18 @@ Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein
 
 \textbf{Signaleffekt der Umgebung}
 
-Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Stecke zurück, die Ausbreitungsumgebung beinflusst nicht nur die Siganlestärke, sondern auch die Genauigkeit, stark. 
+Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Stecke zurück, die Ausbreitungsumgebung beinflusst nicht nur die Siganlestärke, sondern auch die Genauigkeit, stark.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Satelliteneinfluss.jpg}
 	\caption[Satelliteneinfluss]{Satelliteneinfluss}
 	\label{fig:Satelliteneinfluss}
 \end{figure}
-\cite{GPSFehlerquellen}
+
 
 \subsection{ESP32}
 
-ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino kommunizieren. Der ESP32 zeichnet sich mit folgenden Dingen aus:
+ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino kommunizieren. Der ESP32 \textcite{ESP32} zeichnet sich mit folgenden Dingen aus:
 
 \begin{itemize}
 	\item niedrige Anschaffungskosten
@@ -129,7 +129,6 @@ Der Mikrocontroller bietet nicht nur Wi-Fi (\emph{=Wireless Local Area Network})
 	\item ROM:  448 KB
 	\item SRAM:  520 KB 
 \end{itemize}
-\cite{ESP32}
 
 \subsection{MPU-6050}
 
@@ -157,7 +156,7 @@ Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird des
 
 \textbf{Beschleunigungssensor}
 
-Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop. Der einzige Unterschied ist, dass der Sensor die Beschleunigung in Richtung der x-, y- und z-Achse deklariert. Ein Gyroskop bezieht sich lediglich auf die Bewegung, um die Achsen, also befindet es sich in Ruhestellung, liefert es den Wert Null für alle drei Dimensionen (x,y,z). Die Module haben die Achsen aufgedruckt.
+Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop. Der einzige Unterschied ist, dass der Sensor die Beschleunigung in Richtung der x-, y- und z-Achse deklariert. Ein Gyroskop bezieht sich lediglich auf die Bewegung, um die Achsen, also befindet es sich in Ruhestellung, liefert es den Wert Null für alle drei Dimensionen (x,y,z). \textcite{MPU6050} Die Module haben die Achsen aufgedruckt.
 
 \begin{figure}[H]
 	\centering
@@ -166,14 +165,9 @@ Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop
 	\label{fig:Modul}
 \end{figure}
 
-\cite{MPU6050}
-
 \subsection{Trägheitsnavigation}
 
-Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. Es ist immer nur die Anfangsposition bekannt, anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
-
-\cite{Traegheitsnavigation}
-
+Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. \textcite{Traegheitsnavigation} Es ist immer nur die Anfangsposition bekannt, anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
 
 
 \section{Software}
@@ -183,40 +177,32 @@ Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um
 
 \textbf{Native Apps}
 
-Native Apps (\emph{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. 
-\cite{NativeApps}
+Native Apps (\emph{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. \textcite{NativeApps}
 
 \textbf{Android}
 
-Android ist einer der weltweit Bekanntesten Betriebssysteme, es ist akutell auf 2,5 Milliarden aktiven Geräten installiert. Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
-\cite{Android}
+Android ist einer der weltweit Bekanntesten Betriebssysteme, es ist akutell auf 2,5 Milliarden aktiven Geräten installiert. \textcite{Android} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
 
 \textbf{iOS}
 
-Das Betriebssystem iOS wurde von Apple im Jahre 2007 veröffentlicht. Die Software wird bei iPhone und iPad verwendet. Anders wie bei Android ist iOS nicht quelloffen, außerdem werden keine Betriebssystem-Lizenzen vergeben. Man benötigt eine gültige Apple-ID, um das Gerät zu verwenden.
-\cite{iOS}
+Das Betriebssystem iOS wurde von Apple im Jahre 2007 veröffentlicht. \textcite{iOS} Die Software wird bei iPhone und iPad verwendet. Anders wie bei Android ist iOS nicht quelloffen, außerdem werden keine Betriebssystem-Lizenzen vergeben. Man benötigt eine gültige Apple-ID, um das Gerät zu verwenden.
 
 \subsection{Cross-Platform-Apps}
 
 \textbf{Flutter}
 
-Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist. Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart.
-
-\cite{Flutter}
+Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist.\textcite{Flutter} Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart.
 
 \textbf{React Native}
 
-React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
-
-\cite{ReactNative}
+React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. \textcite{ReactNative} Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
 
 \subsection{App-Entwicklung}
 
 Für die App-Entwicklung wird Android Studio verwendet. 
 
-Um Android Studio verwenden zu können muss man eine SDK (\emph{=engl. Software Development Kit}) installieren. Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\emph{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler, selbst, entscheidet darüber, welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
+Um Android Studio verwenden zu können muss man eine SDK (\emph{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\emph{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler, selbst, entscheidet darüber, welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
 
-\cite{AppEntwicklung}
 
 \textbf{IntelliJ IDEA}
 
@@ -228,7 +214,7 @@ Es gibt zwei verschiedene Versionen:
 	\item IntelliJ IDEA Ultimate
 \end{itemize}
 
-Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version bietet z.B. JavaScript Integration oder "duplicate detection".
+Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version bietet z.B. JavaScript Integration oder "duplicate detection". \textcite{IntelliJ}
 
 \begin{figure}[H]
 	\centering
@@ -237,11 +223,9 @@ Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version biete
 	\label{fig:IntelliJ}
 \end{figure}
 
-\cite{IntelliJ}
-
 \textbf{Eclipse}
 
-Eclipse ist eine weitere bekannte IDE, die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform, Linux, macOS oder Windows \parencite{Eclipse}, \textcite{Eclipse}.
+Eclipse ist eine weitere bekannte IDE, die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform, Linux, macOS oder Windows, \textcite{Eclipse}.
 
 \begin{figure}[H]
 	\centering
