@@ -430,7 +430,7 @@ Anstelle der Bürsten und dem Metallring bei Bürstenservos, wird bei den Bürst
 
 
 \subsection{Ansteuerung von Servos}
-Servomotoren werden über ein sogenanntes PWM-Signal (\emph{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, dies ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, dies versorgt den Servomotor mit der nötigen elektrischen Spannung \textcite{ServomotorAnsteuerung}. Das dritte Kabel ist das Signalleitungskabel, dieses Kabel leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
+Servomotoren werden über ein sogenanntes PWM-Signal (\emph{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, es ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, das den Servomotor mit der nötigen elektrischen Spannung versorgt. \textcite{ServomotorAnsteuerung}. Das dritte Kabel ist das Signalleitungskabel, dieses  leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
 
 
 \begin{figure}[H]
@@ -450,8 +450,8 @@ GPS (\emph{=engl. Global Positioning System}) \textcite{GPS} wird für die Stand
 
 \textbf{Funktionsweise des GPS}
 
-Es gibt GPS-Satelliten die, die Erde zweimal pro Tag umkreisen in einer genauen Umlaufbahn. Diese Satelliten senden eindeutige Signale und Bahnparameter aus, somit können die genauen Postionen der GPS-Geräte bestimmt werden. 
-In so gut wie jeden neuen Geräten ist das GPS-standart und werden für die verschiedensten Funktionen verwendet. Durch die Positionsermittlung können folgende andere Informationen berechnet werden:
+Es gibt GPS-Satelliten, die die Erde zweimal pro Tag in einer genauen Umlaufbahn umkreisen. Diese Satelliten senden eindeutige Signale und Bahnparameter aus, somit können die genauen Postionen der GPS-Geräte bestimmt werden. 
+In so gut wie allen neuen Geräten ist das GPS Standard, sie werden für die verschiedensten Funktionen verwendet. Durch die Positionsermittlung können folgende andere Informationen berechnet werden:
 
 \begin{itemize}
 	\item Geschwindigkeit
@@ -459,7 +459,7 @@ In so gut wie jeden neuen Geräten ist das GPS-standart und werden für die vers
 	\item Track
 	\item Reisedistanz
 	\item Distanz zum Ziel
-	\item Zeiten von Sonnenaufgang und Sonnenuntergang
+	\item Zeiten von Sonnenauf- und untergang
 \end{itemize}
 
 \textbf{Signal}
@@ -468,7 +468,7 @@ Wenn GPS-Signale die Erde erreichen, sind die gesendeten Signale sehr schwach. D
 
 \textbf{Fehlerquellen für die Genauigkeit der GPS-Signale}
 
-Es gibt einige relevante Fehlerquellen für GPS-Signale darunter fallen \textcite{GPSFehlerquellen}:
+Es gibt einige relevante Fehlerquellen für GPS-Signale, darunter fallen \textcite{GPSFehlerquellen}:
 \begin{itemize}
 	\item Position der Satelliten
 	\item Signaleffekt der Umgebung
@@ -477,7 +477,7 @@ Es gibt einige relevante Fehlerquellen für GPS-Signale darunter fallen \textcit
 
 \textbf{Position der Satelliten}
 
-Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und einen weiteren, um etwägige Fehler zu beseitigen. Grundsätzlich gilt: Desto mehr Satelliten, desto genauer die GPS-Genauigkeit. Außerdem sollte das Signal von gleichmäßig verteilten Satelliten kommen, ist die GPS-Genauigkeit höher. Für die Berechnung dieser Genauigkeit gibt es den Dilution of Precision (= DOP) Wert.  Je kleiner dieser Wert, desto genauer ist das GPS-Signal.
+Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein weiterer, um etwaige Fehler zu beseitigen. Grundsätzlich gilt: Je mehr Satelliten, desto besser die GPS-Genauigkeit. Außerdem sollte das Signal von gleichmäßig verteilten Satelliten kommen, dann ist die GPS-Genauigkeit höher. Für die Berechnung dieser Genauigkeit gibt es den Dilution of Precision (= DOP) Wert.  Je kleiner dieser Wert, desto genauer ist das GPS-Signal.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Satellitenposition.jpg}
@@ -488,7 +488,7 @@ Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein
 \textbf{Signaleffekt der Umgebung}
 
 
-Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Stecke zurück, die Ausbreitungsumgebung beinflusst nicht nur die Siganlestärke, sondern auch die Genauigkeit, stark.
+Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Strecke zurück. Die Ausbreitungsumgebung beeinflusst nicht nur die Signalstärke, sondern auch die Genauigkeit.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Satelliteneinfluss.jpg}
@@ -498,7 +498,7 @@ Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen
 
 \subsection{ESP32}
 
-ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino bzw. der Programmiersprache C kommunizieren. Der ESP32 \textcite{ESP32} zeichnet sich mit folgenden Dingen aus:
+ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino bzw. der Programmiersprache C kommunizieren. Der ESP32 \textcite{ESP32} zeichnen sich mit folgenden Dingen aus:
 
 \begin{itemize}
 	\item niedrige Anschaffungskosten
@@ -521,7 +521,7 @@ Der Mikrocontroller ist bereits ab einem Preis von \$6 erhältlich. Außerdem ve
 
 \textbf{Funktionen}
 
-Der Mikrocontroller bietet nicht nur Wi-Fi (\emph{=Wireless Local Area Network}), sondern auch Bluetooth. Mit der Wireless Local Area Network Funktionen kann man einfach und drahtlos eine Verbindung zu einem Netzwerk herstellen und somit eine Kommunikation von vielen Geräten möglich machen. Außerdem verfügt der Mikrocontroller über Bluetooth-Classic.
+Der Mikrocontroller bietet nicht nur Wi-Fi (\emph{=Wireless Local Area Network}), sondern auch Bluetooth. Mit der Wireless Local Area Network Funktion kann man einfach und drahtlos eine Verbindung zu einem Netzwerk herstellen und somit eine Kommunikation von vielen Geräten möglich machen. Außerdem verfügt der Mikrocontroller über Bluetooth-Classic.
 
 \subsection{ESP32-Spezifikationen}
 
@@ -558,7 +558,7 @@ Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird des
 
 \textbf{Beschleunigungssensor}
 
-Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop. Der einzige Unterschied ist, dass der Sensor die Beschleunigung in Richtung der x-, y- und z-Achse deklariert. Ein Gyroskop bezieht sich lediglich auf die Bewegung, um die Achsen, also befindet es sich in Ruhestellung, liefert es den Wert Null für alle drei Dimensionen (x,y,z). \textcite{MPU6050} Die Module haben die Achsen aufgedruckt.
+Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop. Der einzige Unterschied ist, dass der Sensor die Beschleunigung in Richtung der x-, y- und z-Achse deklariert. Ein Gyroskop bezieht sich lediglich auf die Bewegung, um die Achsen, also befindet es sich in Ruhestellung und liefert den Wert Null für alle drei Dimensionen (x,y,z). \textcite{MPU6050} Die Module haben die Achsen aufgedruckt.
 
 \begin{figure}[H]
 	\centering
@@ -583,7 +583,7 @@ Native Apps (\emph{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell 
 
 \textbf{Android}
 
-Android ist einer der weltweit Bekanntesten Betriebssysteme, es ist akutell auf 2,5 Milliarden aktiven Geräten installiert. \textcite{Android} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
+Android ist einer der weltweit bekanntesten Betriebssysteme, es ist aktuell auf 2,5 Milliarden aktiven Geräten installiert. \textcite{Android} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
 
 \textbf{iOS}
 
@@ -597,18 +597,18 @@ Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist.\
 
 \textbf{React Native}
 
-React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. \textcite{ReactNative} Es wurde entwickelt, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
+React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. \textcite{ReactNative} Es wurde entworfen, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
 
 \subsection{App-Entwicklung}
 
 Für die App-Entwicklung wird Android Studio verwendet. 
 
-Um Android Studio verwenden zu können muss man eine SDK (\emph{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\emph{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler, selbst, entscheidet darüber, welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
+Um Android Studio verwenden zu können muss man eine SDK (\emph{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\emph{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
 
 
 \textbf{IntelliJ IDEA}
 
-IntelliJ IDEA ist einer der beliebtesten IDEs für Java und Kotlin, die es auf den Markt gibt. Das Unternehmen, welches die Software entwickelt hat, heißt JetBrains. 
+IntelliJ IDEA ist einer der beliebtesten IDEs für Java und Kotlin, die es auf dem Markt gibt. Das Unternehmen, welches die Software entwickelt hat, heißt JetBrains. 
 
 Es gibt zwei verschiedene Versionen:
 \begin{itemize}
@@ -627,8 +627,7 @@ Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version biete
 
 \textbf{Eclipse}
 
-Eclipse ist eine weitere bekannte IDE, die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform, Linux, macOS oder Windows, \textcite{Eclipse}.
-Eclipse ist eine weitere bekannte IDE, die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform, Linux, macOS oder Windows.
+Eclipse ist eine weitere bekannte IDE. Die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform wie Linux, macOS oder Windows, \textcite{Eclipse}.
 
 \begin{figure}[H]
 	\centering
@@ -672,7 +671,7 @@ Die umfangreiche Verbreitung und Beliebtheit von Java hat im Laufe der Zeit zu e
 
 \textbf{Vorteile}
 \begin{itemize}
-	\item plattformunabhängigkeit durch die Ausführung über einer virtuellen Java-Maschine
+	\item Plattformunabhängigkeit durch die Ausführung über einer virtuellen Java-Maschine
 	\item objektorientierte Programmierung, die eine klare Strukturierung und eine effektive Wiederverwendung von bestehendem Code ermöglicht
 	\item Fehlererkennung und integrierte Sicherheitsmaßnahmen sorgen für hohe Sicherheit und Robustheit
 	\item kein manuelles Speichermanagement erforderlich
@@ -712,7 +711,7 @@ C\# ist eine stark typisierte Programmiersprache, sie erfordert zwar einen grö�
 \begin{itemize}
 	\item dauerhafte Weiterentwicklung mit neuen Features
 	\item große Community, die viele Tools und Unterstützungen anbieten
-	\item integration in die Microsoft Umgebung und dessen verbundenen Ressourcen
+	\item Integration in die Microsoft Umgebung und deren verbundenen Ressourcen
 	\item breites .NET-Framework mit großer Bibliothek und einigen Tools, sowie Funktionen
 \end{itemize}
 
@@ -723,7 +722,7 @@ C\# ist eine stark typisierte Programmiersprache, sie erfordert zwar einen grö�
 \end{itemize}
 
 \subsection{C/C++}
-Die Programmiersprache C ist eine der wenigen, die sich zum Programmieren von Betriebssystemen eignet. Weiters ist C bis heute der Standard für Betriebssysteme, Treiber und Embedded Systeme. C++ kombiniert die Vorteile der Kontrolle über die Hardware mit den Konzepten der objektorientierten Programmierung. Wird in Bereichen wie Spieleentwicklung über die Grafikprogrammierung bis hin zu Echtzeit Systemen zum Einsatz gebracht. \textcite{Programmiersprachen}
+Die Programmiersprache C ist eine der wenigen, die sich zum Programmieren von Betriebssystemen eignet. Weiters ist C bis heute der Standard für Betriebssysteme, Treiber und Embedded Systeme. C++ kombiniert die Vorteile der Kontrolle über die Hardware mit den Konzepten der objektorientierten Programmierung. Sie wird in Bereichen wie Spieleentwicklung über die Grafikprogrammierung bis hin zu Echtzeitsystemen zum Einsatz gebracht. \textcite{Programmiersprachen}
 
 \textbf{Vorteile}
 \begin{itemize}
