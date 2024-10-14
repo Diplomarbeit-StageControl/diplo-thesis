@@ -11,7 +11,7 @@
 \chapter{Grundlagen und Methoden}
 
 \section{Etablierte Lösungsansätze}
-Das Kapitel listet etablierte Lösungsansätze zur Standortermittlung einer Person auf einer Bühne und erklärt diese genauer. Ebenso wie Vor- und Nachteile anhand eines Beispieles.
+Das Kapitel listet etablierte Lösungsansätze zur Standortermittlung einer Person auf einer Bühne und erklärt diese genauer, ebenso wie Vor- und Nachteile anhand eines Beispieles.
 
 \subsection{Ausgangsituation des Praxisbeispiels}
 
@@ -43,18 +43,19 @@ Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponent
 \subsection{Gerüst}
  So benötigen wir eine Konstruktion/Gerüst, welche uns ermöglicht, die Servomotoren, die Schieberegler steuern, die die Bewegung des Künstlers bzw. der Künstlerin in mechanische Bewegung übertragen, um den gewünschten Stereoeffekt erzeugen. Dies soll möglichst einfach oberhalb des benötigten Mischpults zu montieren sein.
 
+/TODO: Bild einfügen
 
 \subsection{Möglichkeiten der Hardwareproduktion}
-Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichen Materialien wie z. B. Kunststoff, Metall oder Holz. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedene Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO®. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich auf 3D-Druck und CNC-Fräsen eingegangen.
+Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichen Materialien wie z. B. Kunststoff, Metall oder Holz. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedene Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich auf 3D-Druck und CNC-Fräsen eingegangen.
 
 \section{3D-Druck}
-\subsection{Wie funktioniert 3D-Druck}
+\subsection{Funktionsweise}
 Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Dabei wird aus einer Düse das heiße Material aufgetragen, bis aus vielen Schichten das gewünschte Objekt erstellt wurde. Diese Art der Produktion wird auch als additive Fertigung bezeichnet, im Gegensatz zum CNC-Fräsen, das als subtraktive Fertigung bekannt ist.
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/3D-Drucker.png}
+	\includegraphics[width=0.5\linewidth]{images/3D-Drucker.png}
 	\caption[Bambu Lab X1-Carbon 3 Pro]{Bambu Lab X1-Carbon 3 Pro}
 	\label{fig:3D-Druck}
 \end{figure}
@@ -65,10 +66,10 @@ Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Materia
 \begin{itemize}
 	\item Möglichkeit, komplexe Objekte relativ schnell herzustellen.
 	\item Keine Vorlaufzeit nötig, d.h. keine Werkzeugproduktion erforderlich.
-	\item Rapid Prototyping \emph{(deutsch „schnelle Prototypenherstellung“)}
+	\item Rapid Prototyping (\textit{deutsch „schnelle Prototypenherstellung“})
 	\item Kostengünstige Produktion
 	\item Herstellung individueller Objekte
-\end{itemize} \textcite{3DDruckVorteile}
+\end{itemize} \parencite{3DDruckVorteile}
 
 \subsection{Nachteile des 3D-Druck}
 3D-Druck bietet aber nicht nur Vorteile, sondern hat wie alle Technologien seine Nachteile und Schwächen.
@@ -78,7 +79,7 @@ Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Materia
 	\item Lange Fertigungszeiten
 	\item Begrenztes Bauvolumen
 \end{itemize}
-\textcite{3DDruckNachteile}
+\parencite{3DDruckNachteile}
 
 \subsection{Technische Voraussetzungen}
 Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten benötigt:
@@ -89,15 +90,15 @@ Um den 3D-Druck technisch durchführen zu können, werden folgende Komponenten b
 	\item 3D-Druck Material (Filament)
 	\item Computer
 \end{itemize}
-Auf den nächsten Seiten wird auf diese Punkte näher eingegangen und ein Vergleich erstellt um die Vor- und Nachteile \textcite{3ds} der genannten 3D-Drucker zu veranschaulichen. 
+Auf den nächsten Seiten wird auf diese Punkte näher eingegangen und ein Vergleich erstellt um die Vor- und Nachteile \parencite{3ds} der genannten 3D-Drucker zu veranschaulichen. 
 
 
 \subsection{Druckverfahren}
 
-Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten, das Ausgangsmaterial \textcite{3ds} in die gewünschte Form zu bringen. Die gängigsten und weitverbreitesten Verfahren \textcite{kaffka} im Überblick: 
+Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten, das Ausgangsmaterial \parencite{3ds} in die gewünschte Form zu bringen. Die gängigsten und weitverbreitesten Verfahren \parencite{kaffka} im Überblick: 
 
 \begin{itemize}
-	\item \textbf{FFF:} (Fused Filament Fabrication) oder \textbf{FDM} (Fused Deposition Modelling): Hierbei wird Kunststofffilament \emph{(eine einzelne Faser beliebig lang)} verwendet und Schicht für Schicht aufgetragen.
+	\item \textbf{FFF:} (Fused Filament Fabrication) oder \textbf{FDM} (Fused Deposition Modelling): Hierbei wird Kunststofffilament (\textit{eine einzelne Faser beliebig lang}) verwendet und Schicht für Schicht aufgetragen.
 	\item \textbf{SLA:} Diese Technologie verwendet lichtempfindliches Kunstharz, das sich verfestigt. Wird ebenfalls Schicht für Schicht aufgetragen.
 	\item \textbf{PBF:} Eine Möglichkeit, diese pulverbasierte Technologie zu nutzen, ist, das Pulver mittels Laser miteinander zu verschmelzen.  
 \end{itemize}
@@ -107,16 +108,16 @@ Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten,
 3D-Drucker benötigen zum Drucken eines Objektes Material, das sie verbrauchen können, um das Objekt herzustellen. Im Rahmen dieser Diplomarbeit werden zwei Werkstoffe ganuer analysiert, nämlich Nylon und Kohlefaser.
 
 \subsubsection{Nylon}
-Nylon \emph{(techn. Polyamid)} ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Außeneinwirkungen auszeichnet \textcite{Nylon}. Nylon gibt es in unterschiedlichen Ausführungen zb. als Filament, Draht oder Pulver mit unterschiedlichen Eigenschaften. 
+Nylon (\textit{techn. Polyamid}) ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Außeneinwirkungen auszeichnet \parencite{Nylon}. Nylon gibt es in unterschiedlichen Ausführungen: als Filament, Draht oder Pulver mit unterschiedlichen Eigenschaften. 
 \subsubsection{Kohlefaser}
-Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet \textcite{Kohlefasern} um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern.\\
+Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet \parencite{Kohlefasern} um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern.\\
  
 
 
 \subsection{3D-Drucker}
 
 \subsubsection{Vergleich der 3D-Drucker}
-Wie in der Einleitung des Kapitels \emph{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die bereits erwähnten 3D-Drucker (\emph{Bambu Lab X1-Carbon, Ultimaker 2 Extended+})  \textcite{Ultimaker2ExtendedSpecification} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \textcite{BambuLabX1Carbon3DPrinterSpecifications}. 
+Wie in der Einleitung des Kapitels \textit{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die bereits erwähnten 3D-Drucker (\textit{Bambu Lab X1-Carbon, Ultimaker 2 Extended+})  \parencite{Ultimaker2ExtendedSpecification} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \parencite{BambuLabX1Carbon3DPrinterSpecifications}. 
 
 Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Filament verwendet.
 
@@ -125,10 +126,10 @@ Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Fi
 		\hline
 		 \textbf{Kriterien} & \textbf{Ultimaker 2 Extended+}& \textbf{Bambu Lab X1-Carbon 3 Pro}\\
 		\hline
-		\textbf{Material} & Material kann verarbeitet werden & Material kann verarbeitet werden   \\ 
+		\textbf{Material (Nylon-Filament)} & Kann verarbeitet werden & Kann verarbeitet werden   \\ 
 		\hline
-		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16mm\textsuperscript{3}/s &
-		 Druckt mit einer Geschwindigkeit von 32mm\textsuperscript{3}/s   \\  
+		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16 mm\textsuperscript{3}/s &
+		 Druckt mit einer Geschwindigkeit von 32 mm\textsuperscript{3}/s   \\  
 		\hline
 		\textbf{Druckvolumen} & 223 x 223 x 205 mm & 256 x 256 x 256 mm \\
 		\hline
@@ -141,103 +142,122 @@ Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Fi
 
 \subsection{Slicer}
 \subsubsection{Was ist ein Slicer?}
-Ein Slicer ist ein Stück Software, das es erst möglich macht 3D-Modelle auszudrucken, indem es einen sogenannten G-Code erstellt \textcite{SlicerGCode}. G-Code ist die Programmiersprache, die von Computern verwendet wird, um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungen ausführen soll. \\
+Ein Slicer ist ein Stück Software, das es erst möglich macht 3D-Modelle auszudrucken, indem es einen sogenannten G-Code erstellt . G-Code ist die Programmiersprache, die von Computern verwendet wird, um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungen ausführen soll. \parencite{SlicerGCode} \\
 
 
 
 \section{CNC-Fräsen}
 
-Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageControl benötigt wird, ist das CNC-Fräsen (\emph{engl. "Computerized Numerical Control"}). Diese Technologie wird vor allem in der metallverarbeitenden Industrie angewendet \textcite{CNCFraesen}, da sie äußerst genau und kostengünstig arbeitet. Zudem beschränkt sich das CNC-Fräsen nicht nur auf Metall; es kann auch bei der Bearbeitung von Kunststoffen und Holz eingesetzt werden \textcite{CNCFraesen2}. Anders als bei der 3D-Druck-Technologie handelt es sich hier nicht um ein additives, sondern um ein subtraktives Verfahren  \textcite{CNCFraesen3}..\\  
+Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageControl benötigt wird, ist das CNC-Fräsen (\textit{engl. "Computerized Numerical Control"}). Diese Technologie wird vor allem in der metallverarbeitenden Industrie angewendet \parencite{CNCFraesen}, da sie äußerst genau und kostengünstig arbeitet. Zudem beschränkt sich das CNC-Fräsen nicht nur auf Metall, es kann auch bei der Bearbeitung von Kunststoffen und Holz eingesetzt werden \parencite{CNCFraesen2}. Anders als bei der 3D-Druck-Technologie handelt es sich hier nicht um ein additives, sondern um ein subtraktives Verfahren.\\  \parencite{CNCFraesen3}
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/CNC.jpg}
+	\includegraphics[width=0.6\linewidth]{images/CNC.jpg}
 	\caption[CNC-Fräse]{CNC-Fräse}
 	\label{fig:cnc-fraese}
 \end{figure}
 
-\subsection{Wie funktioniert CNC-Fräsen?}
-Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt \textcite{CNCFraesen2}. Der Fräser trägt dann das Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt  \textcite{CNCFraesen3}. Wie beim 3D-Druck wird hier auch G-Code als Steuerung der Maschine eingestzt. \\
+\subsection{Funktionsweise}
+Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt \parencite{CNCFraesen2}. Der Fräser trägt dann das Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt  \parencite{CNCFraesen3}. Wie beim 3D-Druck wird hier auch G-Code als Steuerung der Maschine eingestzt. \\
 
 
 
 \subsubsection{Einsatzmöglichkeiten}
-CNC-Fräsmaschinen können vielseitig eingesetzt werden und eine Vielzahl von Objekten in unterschiedlichsten Größen und Formen herstellen  \textcite{CNCFraesen2}. Zu den typischen Anwendungsbereichen zählen unter anderem:
+CNC-Fräsmaschinen können vielseitig eingesetzt werden und eine Vielzahl von Objekten in unterschiedlichsten Größen und Formen herstellen  \parencite{CNCFraesen2}. Zu den typischen Anwendungsbereichen zählen unter anderem:
 
 \begin{itemize}
 	\item Maschinenteilherstellung: Komponenten von Maschinen, die nur geringe Toleranzen zulassen.
 	\item Prototypen: Herstellung von ersten Modellen in geringen Stückzahlen.
 \end{itemize}
 
-Durch den Einsatz von CNC-Fräsen können menschliche Fehler und die Ausschussrate minimiert werden. Dies führt zu niedrigeren Stückkosten, was sich besonders bei der Serienfertigung bemerkbar macht  \textcite{CNCFraesen3}..\\
+Durch den Einsatz von CNC-Fräsen können menschliche Fehler und die Ausschussrate minimiert werden. Dies führt zu niedrigeren Stückkosten, was sich besonders bei der Serienfertigung bemerkbar macht.\\  \parencite{CNCFraesen3}
 
 
 \subsubsection{Vorteile des CNC-Fräsens}
-CNC-Fräsen bietet im Vergleich zum herkömmlichen, manuellen Fräsen einige Vorteile. Wie bei jeder manuellen Arbeit können Arbeitsunfälle passieren. Durch den Einsatz moderner CNC-Fräsen, die aus der Ferne gesteuert werden können, lassen sich solche Unfälle reduzieren \textcite{CNCFraesenVorteile}. Ein weiterer Vorteil des CNC-Fräsens ist seine gleichbleibende Genauigkeit, da die CNC-Fräse computergesteuert ist. Diese Technologie wird vor allem bei Werkstücken eingesetzt, die nur wenig Toleranz in der Genauigkeit zulassen. CNC-Fräsen arbeiten mit einer Präzision von 0,01 bis 0,03 mm. \\
+CNC-Fräsen bietet im Vergleich zum herkömmlichen, manuellen Fräsen einige Vorteile. Wie bei jeder manuellen Arbeit können Arbeitsunfälle passieren. Durch den Einsatz moderner CNC-Fräsen, die aus der Ferne gesteuert werden können, lassen sich solche Unfälle reduzieren \parencite{CNCFraesenVorteile}. Ein weiterer Vorteil des CNC-Fräsens ist seine gleichbleibende Genauigkeit, da die CNC-Fräse computergesteuert ist. Diese Technologie wird vor allem bei Werkstücken eingesetzt, die nur wenig Toleranz in der Genauigkeit zulassen. CNC-Fräsen arbeiten mit einer Präzision von 0,01 bis 0,03 mm. \\
 
 
 \subsection{CNC gesteuerte Maschinen}
-Es gibt nicht nur CNC-Fräser oder Drehen, sondern alle Maschinen die durch CNC (\emph{engl. Computerized Numerical Control}) gesteuert werden, können als solche bezeichnet werden. Durch den Einsatz von CNC lassen sich die verschiedensten Maschinen computergestützt steuern. Zu diesen Maschinen zählen unter anderem CNC-Bohrmaschinen,  CNC-Laserschneidmaschinen, CNC-Schleifmaschinen, CNC-Wasserstrahlschneidmaschinen oder der 3D-Drucker \textcite{ArtenCNCMaschinen}
+Es gibt nicht nur CNC-Fräsen oder Drehen, sondern alle Maschinen die durch CNC (\textit{engl. Computerized Numerical Control}) gesteuert werden, können als solche bezeichnet werden. Durch den Einsatz von CNC lassen sich die verschiedensten Maschinen computergestützt steuern. Zu diesen Maschinen zählen unter anderem CNC-Bohrmaschinen,  CNC-Laserschneidmaschinen, CNC-Schleifmaschinen, CNC-Wasserstrahlschneidmaschinen oder der 3D-Drucker \parencite{ArtenCNCMaschinen}
 . \\
 
 
 \subsection{Unterschied zwischen CNC-Fräsen und CNC-Drehen}
-Beim CNC-Drehen wird ein Spannfutter anstatt des Schneidewerkzeugs eingesetzt. Dies ermöglicht die Herstellung von runden, zylindrischen oder konischen Formen. Mit diesem Verfahren lassen sich keine Objekte herstellen die eine hohe Präzision erfordern. Im Gegensatz zur CNC-Fräsmaschine arbeitet das CNC-Drehen nur auf zwei Achsen \textcite{CNCDrehenUnterschied}. Zudem dreht sich das Material und der Fräser ist fixiert, so wird das Material wie bei der CNC-Fräse abgetragen. \\
+Beim CNC-Drehen wird ein Spannfutter anstatt des Schneidewerkzeugs eingesetzt. Dies ermöglicht die Herstellung von runden, zylindrischen oder konischen Formen. Mit diesem Verfahren lassen sich keine Objekte herstellen die eine hohe Präzision erfordern. Im Gegensatz zur CNC-Fräsmaschine arbeitet das CNC-Drehen nur auf zwei Achsen \parencite{CNCDrehenUnterschied}. Zudem dreht sich das Material und der Fräser ist fixiert, so wird das Material wie bei der CNC-Fräse abgetragen. \\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/CNCDrehenFraesen.png}
+	\caption[CNC-Fräse / CNC-Dreher]{CNC-Fräse / CNC-Dreher}
+	\label{fig:CNC Drehen vs Fraesen}
+\end{figure}
 
 
 \subsection{Werkstoffe}
-Bei der CNC-Fräsung können die unterschiedlichsten Materialien verwendet werden. Materialien, die eine CNC-Fräse verarbeiten kann, sind zerspanbar  \textcite{PEIZerspannung}. Zu den gängigsten zählen:
+Bei der CNC-Fräsung können die unterschiedlichsten Materialien verwendet werden. Materialien, die eine CNC-Fräse verarbeiten kann, sind zerspanbar  \parencite{PEIZerspannung}. Zu den gängigsten zählen:
 
 \begin{itemize}
-	\item Metalle, z. B. Stahl, Aluminium, Titan, Bronze, Messing \textcite{CNCFraesen3}.
-	\item Holz => Drechseln
-	\item Zerspanbare Kunststoffe, z. B. PEI (\emph{Polyetherimid}), die sich durch ihre mechanische Festigkeit und Steifigkeit auszeichnen  \textcite{PEIKunststoffPolyetherimid}.
+	\item Metalle, z. B. Stahl, Aluminium, Titan, Bronze, Messing \parencite{CNCFraesen3}.
+	\item Holz
+	\item Zerspanbare Kunststoffe, z. B. PEI (\textit{Polyetherimid}), die sich durch ihre mechanische Festigkeit und Steifigkeit auszeichnen \parencite{PEIKunststoffPolyetherimid}.
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Filamente.jpg}
+	\caption[Filamente]{Filamente}
+	\label{fig:Kunststoff Filamente}
+\end{figure}
 
 
 \subsection{Fertigungsmöglichkeiten}
 
 \subsubsection{3-Achs-Fräsung}
-Hierbei kann sich der Fräser auf drei Achsen bewegen, nämlich auf der X-, Y- und Z-Achse \textcite{Fraesen345Achs}. So kann das Material von allen drei Seiten bearbeitet werden. Es handelt sich um das einfachste Fräsverfahren. Zwar können auch komplexere Objekte erstellt werden, dies erfordert jedoch ein mehrfaches Umspannen des Werkstücks.
+Hierbei kann sich der Fräser auf drei Achsen bewegen, nämlich auf der X-, Y- und Z-Achse \parencite{Fraesen345Achs}. So kann das Material von allen drei Seiten bearbeitet werden. Es handelt sich um das einfachste Fräsverfahren. Zwar können auch komplexere Objekte erstellt werden, dies erfordert jedoch ein mehrfaches Umspannen des Werkstücks.
 
 \subsubsection{4-Achs-Fräsung}
-Zusätzlich zu den bereits bekannten drei Achsen kann nun eine vierte Achse integriert werden, nämlich das Schwenken der Aufspannung des Frästeils \textcite{Fraesen345Achs}. Dadurch kann das Umspannen, das bei der 3-Achs-Fräsung notwendig ist, vermieden werden.
+Zusätzlich zu den bereits bekannten drei Achsen kann nun eine vierte Achse integriert werden, nämlich das Schwenken der Aufspannung des Frästeils \parencite{Fraesen345Achs}. Dadurch kann das Umspannen, das bei der 3-Achs-Fräsung notwendig ist, vermieden werden.
 
 \subsubsection{5-Achs-Fräsung}
-Bei der 5-Achs-Fräsung kann nicht nur die Aufspannung des Frästeils zum Schwenken gebracht werden sondern auch der Maschinentisch selbst ist rotierbar. So kann das Werkstück von 5 Seiten in einer Aufspannung bearbeitet werden \textcite{Fraesen345Achs}. Diese Fräsen werden bei der Produktion höchstkomplexer Strukturen eingestzt.\\
+Bei der 5-Achs-Fräsung kann nicht nur die Aufspannung des Frästeils zum Schwenken gebracht werden sondern auch der Maschinentisch selbst ist rotierbar. So kann das Werkstück von 5 Seiten in einer Aufspannung bearbeitet werden \parencite{Fraesen345Achs}. Diese Fräsen werden bei der Produktion höchstkomplexer Strukturen eingesetzt.\\
 
-
+\newpage
 
 \section{3D-Modellierungsprogramme}
-Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Vom anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia  \textcite{3DPrintingSoftware}, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird, ist alles dabei \textcite{CADProgramme},. Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \\
+Auf dem Markt rund um 3D-Modellierungsprogramme gibt es eine große Auswahl an den verschiedensten Programmen. Vom anfängerfreundlichen Tinkercad, das durch seine einfache Bedienbarkeit und zahlreiche Tutorials überzeugt, bis hin zu einem der führenden CAD-Programme wie Catia  \parencite{3DPrintingSoftware}, das in der Industrie für seine leistungsstarken und umfangreichen Funktionen geschätzt wird. \parencite{CADProgramme} Im Rahmen dieser Diplomarbeit wurden einige der Marktführer recherchiert und miteinander verglichen. \\
 
 
 \subsection{Vergleich verschiedener Software}
 
 \subsubsection{Autodesk Fusion}
-Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung.  Fusion 360 wird von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet \textcite{AutodeskFusion}. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. \\
-
+Es eröffnet zahlreiche Anwendungsmöglichkeiten, die von der Prototypenerstellung bis hin zur Entwicklung von Konsumgütern reichen. Dieses Programm bietet umfangreiche Werkzeuge für Design, Engineering und Fertigung.  Fusion 360 wird von vielen internationalen und nationalen Unternehmen verwendet, weil es vielseitig einsetzbar ist und sowohl in kleinen als auch in großen Projekten hervorragende Unterstützung bietet. \parencite{AutodeskFusion}. Dank seiner cloudbasierten Plattform ermöglicht Fusion 360 eine nahtlose Zusammenarbeit und den einfachen Austausch von Projektdaten, was es zu einer bevorzugten Wahl in der modernen Produktentwicklung macht. \\
 
 \textbf{Vorteile}
 \begin{itemize}
 	\item Genutzt von vielen namhaften Unternehmen wie zb. Yamaha oder Panasonic
 	\item Große Community
-	\item Kostenlose Version für Schulen \textcite{AutodeskFusionReviews}
+	\item Kostenlose Version für Schulen \parencite{AutodeskFusionReviews}
 \end{itemize} 
 
 \textbf{Nachteile}
 \begin{itemize}
 	\item Cloud Based; Kann zu Problemen führen, wenn offline genutzt 
 	\item Benötigt eine schnelle Internetverbindung
-	\item Hoher Anspruch an die Hardware des Computers \textcite{AutodeskFusionReviews}
+	\item Hoher Anspruch an die Hardware des Computers \parencite{AutodeskFusionReviews}
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/Fusion360.png}
+	\caption[Fusion360]{Fusion360}
+	\label{fig:Autodesk Fusion}
+\end{figure}
 
 
 
 \subsubsection{Blender} 
-Blender bietet vielseitige Anwendungsmöglichkeiten, von Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie unabhängigen Kunden bzw. Kundinnen verwendet, weil es viele Einsatzmöglichkeiten bietet und gratis zugänglich ist \textcite{Blender}. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. \\
+Blender bietet vielseitige Anwendungsmöglichkeiten, von Modellierung und Animation bis hin zur Spieleentwicklung und visuellen Effekten. Dieses Open-Source-Programm bietet umfassende Werkzeuge für Modellierung, Simulation, Rendering, Compositing und Motion Tracking. Zudem wird Blender von vielen internationalen und nationalen Unternehmen sowie privaten Kunden bzw. Kundinnen verwendet, weil es viele Einsatzmöglichkeiten bietet und gratis zugänglich ist \parencite{Blender}. Dank seiner aktiven Community und regelmäßigen Updates bleibt Blender immer auf dem neuesten Stand der Technik. \\
 
 
 \textbf{Vorteile}
@@ -246,19 +266,27 @@ Blender bietet vielseitige Anwendungsmöglichkeiten, von Modellierung und Animat
 	\item Open Source Software
 	\item Funktioniert auf allen gängigen Betriebssystemen
 	\item Regelmäßige Updates
-	\item große Community \textcite{BlenderProsUndCons}
+	\item große Community \parencite{BlenderProsUndCons}
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/Logo_Blender.png}
+	\caption[Blender Logo]{Blender Logo}
+	\label{fig:Blender}
+\end{figure}
+
 
 \textbf{Nachteile}
 \begin{itemize}
 	\item Kein Industriestandard - wird nicht von großen Unternehmen genutzt
-	\item Nicht die benutzerfreundlichste Oberfläche \textcite{BlenderProsUndCons}
+	\item Nicht die benutzerfreundlichste Oberfläche \parencite{BlenderProsUndCons}
 \end{itemize}
 
 
 
 \subsubsection{FreeCAD}
-FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden \textcite{FreeCAD}. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern und Entwicklerinnen genutzt, weil es flexible Einsatzmöglichkeiten bietet. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert   \textcite{FreeCAD2}. \\
+FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden \parencite{FreeCAD}. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern und Entwicklerinnen genutzt. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert.   \parencite{FreeCAD2}. \\
 
 
 \textbf{Vorteile}
@@ -266,52 +294,52 @@ FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der Modellierung bis hin z
 	\item Open Source Software
 	\item Gratis
 	\item Funktionsfähig für alle gängigen Betriebssysteme
-	\item Aktive Community \textcite{FreeCADReviews}
+	\item Aktive Community \parencite{FreeCADReviews}
 \end{itemize}
 
 \textbf{Nachteile}
 \begin{itemize}
 	\item weniger Nutzer und Nutzerinnen als die bereits genannten Programme
 	\item kein Industriestandard
-	\item limitierte Funktionalitäten im Vergleich zu Bezahlsoftware \textcite{FreeCADReviews}
+	\item limitierte Funktionalitäten im Vergleich zu Bezahlsoftware \parencite{FreeCADReviews}
 \end{itemize}
 
 \subsubsection{Autodesk Tinkercad}
-Autodesk Tinkercad ist ein für Anfänger und Anfängerinnen und Schüler und Schülerinnen entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler und Schülerinnen, Lehrer und Lehrerinnen und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist \textcite{Tinkercad}. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \\
+Autodesk Tinkercad ist ein für Anfänger und Anfängerinnen und Schüler und Schülerinnen entwickeltes Online-Tool. Wie der Name es schon verrät, ist es ein Produkt von Autodesk, wie das vorher genannte Autodesk Fusion 360. Dieses webbasierte Programm erfüllt alle grundlegenden Anforderungen und bietet intuitive Werkzeuge für Schüler und Schülerinnen, Lehrer und Lehrerinnen und Privatpersonen. Zudem wird Tinkercad von vielen Bildungseinrichtungen verwendet, weil es leicht zugänglich und einfach zu erlernen ist \parencite{Tinkercad}. Dank seiner klaren Benutzeroberfläche und umfangreichen Tutorials ermöglicht Tinkercad einen schnellen Einstieg in die Welt des 3D-Designs und der Elektronik. \\
 
 
 \textbf{Vorteile}
 \begin{itemize}
 	\item Gratis
-	\item Benutzerfreundliches UserInterface (\emph{Nutzeroberfläche})
+	\item Benutzerfreundliches UserInterface
 	\item intuitives Design
 	\item Online Tool - kein Download 	
-	\item viele einsteigerfreundliche Tutorials \textcite{TinkercadReviews}
+	\item viele einsteigerfreundliche Tutorials \parencite{TinkercadReviews}
 \end{itemize}
 
 \textbf{Nachteile}
 \begin{itemize}
 	\item Weniger professionell
-	\item kein Industriestandard \textcite{TinkercadReviews}
+	\item kein Industriestandard \parencite{TinkercadReviews}
 \end{itemize}
 
 \section{Mischpult}
- Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Mischpulte, auch Mixer genannt, gibt es in ganz unterschiedlichen Größen. Die Größe hängt meist von der Anzahl der Kanäle ab, die das Mischpult bietet. Mischpulte werden immer dann verwendet, wenn mehrere Audiosignale verarbeitet werden müssen, wie auf Bühnen oder in Proberäumen \textcite{MischpultInformation}. Bei allen Mischpulten gibt es eine sogenannte Leserichtung, die den Aufbau des Mischpults beschreibt. Von links nach rechts findet man die einzelnen Kanäle, und von oben nach unten die Bearbeitungsmöglichkeiten des Tons. Dazu kommt noch der sogannte Masterbereich. Hier wird alles gesteuert, was zentral gereglt werden muss. Diese Einstellungen gelten dann für alle Kanäle  \textcite{MischpultMaster}. \\
+ Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Mischpulte, auch Mixer genannt, gibt es in ganz unterschiedlichen Größen. Das Ausmaß hängt meist von der Anzahl der Kanäle ab, die das Mischpult bietet. Diese technologie wird immer dann verwendet, wenn mehrere Audiosignale verarbeitet werden müssen, wie auf Bühnen. \parencite{MischpultInformation} Bei allen Mischpulten gibt es eine sogenannte Leserichtung, die den Aufbau des Mischpults beschreibt. Von links nach rechts findet man die einzelnen Kanäle, und von oben nach unten die Bearbeitungsmöglichkeiten des Tons. Dazu kommt noch der sogannte Masterbereich. Hier wird alles gesteuert, was zentral gereglt werden muss. Diese Einstellungen gelten dann für alle Kanäle.  \parencite{MischpultMaster} \\
  
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/mischpult.jpg}
+	\includegraphics[width=0.6\linewidth]{images/mischpult.jpg}
 	\caption[Mischpult]{Mischpult}
 	\label{fig:Mischpult}
 \end{figure}
 
 \subsection{Funktionsweise eines Mischpults}
-Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann dieses Signal über die Tonanlage ausgegeben werden \textcite{MischpultErklaerung}. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Reglern für jeden Kanal, diese sind wie schon erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird auf dies nicht genauer eingagangen. \\
+Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann dieses Signal über die Tonanlage ausgegeben werden \parencite{MischpultErklaerung}. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Reglern für jeden Kanal, diese sind wie schon erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird auf dies nicht genauer eingegangen. \\
 
 
 \subsection{Einsatzmöglichkeiten}
-Mischpulte finden eine Vielzahl von Anwendungsmöglichkeiten, wie z.B. auf Bühnen oder in Proberäumen. Mischpulte übernehmen eine Bandbreite von Aufgaben \textcite{MischpultVerwendungszweck}. Die folgenden gehören zu den Wichtigsten:
+Mischpulte finden eine Vielzahl von Anwendungsmöglichkeiten, wie z.B. auf Bühnen oder in Proberäumen. Mischpulte übernehmen eine Bandbreite von Aufgaben \parencite{MischpultVerwendungszweck}. Die folgenden gehören zu den Wichtigsten:
 \begin{itemize}
 	\item Signalverstärkung
 	\item Bearbeitung von Signalen
@@ -323,17 +351,25 @@ Mischpulte finden eine Vielzahl von Anwendungsmöglichkeiten, wie z.B. auf Bühn
 \subsubsection{Digital}
 Unter einem digitalen Mischpult versteht man ein Mischpult, das analoge Signale in digitale Signale umwandelt und diese Signale mittels Software bearbeitet. Um ein digitales Signal wieder über eine Tonanlage auszugeben, muss es erneut in ein analoges Signal umgewandelt werden. Dies führt wiederum zu Latenzzeiten bei der Signalausgabe.
 \subsubsection{Analog}
-Im Gegensatz dazu steht das analoge Mischpult. Es wandelt die Signale nicht in digitale um, sondern behält deren ursprüngliche analoge Form bei und bearbeitet sie ohne Software weiter \textcite{MischpultAnalogDigital}. Ohne diese Umwandlung gibt es nahezu keine Latenzzeit bei der Ausgabe der Signale. \\
+Im Gegensatz dazu steht das analoge Mischpult. Es wandelt die Signale nicht in digitale um, sondern behält deren ursprüngliche analoge Form bei und bearbeitet sie ohne Software weiter \parencite{MischpultAnalogDigital}. Ohne diese Umwandlung gibt es nahezu keine Latenzzeit bei der Ausgabe der Signale. \\
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/DigitalMixerAnalogMixer.png}
+	\caption[Digitales vs Analoges Mischpult]{Digitales vs Analoges Mischpult}
+	\label{fig:Digitales vs. Analoges Mischpult}
+\end{figure}
 
 
 \subsection{Anforderungen für StageControl}
-Für StageControl ist es besonders wichtig, dass das verwendete Mischpult entweder jeden Kanal einzeln panen (\emph{Regler zu Ausrichtung des Tons (links/Rechts)}) kann oder das der Master mindestens zwei Lautsprecher einer Tonanlage einzeln ansteuern kann. Somit kann der von uns gewünschte Stereoeffekt erzeugt werden. \\
+Für StageControl ist es besonders wichtig, dass das verwendete Mischpult entweder jeden Kanal einzeln panen (\textit{Regler zu Ausrichtung des Tons (links/Rechts)}) kann oder das der Master mindestens zwei Lautsprecher einer Tonanlage einzeln ansteuern kann. Somit kann der von uns gewünschte Stereoeffekt erzeugt werden. \\
 Für StageControl wird ein Mischpult mit Drehreglern verwendet, da diese häufig in kostengünstigeren Mischpulten zu finden sind und für die Anforderungen dieser Arbeit vollkommen ausreichen. 
 
 
 
 \subsection{Vergleich zweier Modelle}
-Wie am Anfang des Kapitels \emph{Mischpult} beschrieben benötigt StageControl ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Hierzu werden zwei Mischpulte herangezogen \textcite{MischpultKriterien1204}, die unseren Kriterien entsprechen und  verglichen  \textcite{MischpultKriterien1402}.
+Wie am Anfang des Kapitels \textit{Mischpult} beschrieben benötigt StageControl ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Hierzu werden zwei Mischpulte herangezogen \parencite{MischpultKriterien1204}, die unseren Kriterien entsprechen und  verglichen  \parencite{MischpultKriterien1402}.
 
 \begin{table} [H]
 	\begin{tabular}{ |p{3.1cm} |p{4.8cm}|p{4.8cm}| }
@@ -354,61 +390,68 @@ Wie am Anfang des Kapitels \emph{Mischpult} beschrieben benötigt StageControl e
 	\caption{Vergleich Behringer Xenyx 1204USB und the t.mix xmix 1402 USB} 
 \end{table} 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/the.t.mix.xmix1402-Behringer1204USB.png}
+	\caption[Vergleich Behringer Xenyx 1204USB und the t.mix xmix 1402 USB]{Vergleich Behringer Xenyx 1204USB und the t.mix xmix 1402 USB}
+	\label{fig:Behringer Xenyx 1204USB-the t.mix xmix 1402 USB}
+\end{figure}
+
 \section{Lichtsteuerung}
-Ein weiterer Aspekt dieser Diplomarbeit ist die gleichzeitige Ansteuerung von Ton- und Lichtanlagen, wie z.B. einem Spotlight (\emph{deutsch Verfolgungsscheinwerfer}), das den Künstler bzw. der Künstlerin auf der Bühne verfolgt. Auf Bühnen wird nicht nur ein Spotlight eingesetzt, sondern ganze Anlagen von Lichtern. Dies wird gemacht, um für den Zuschauer eine immersive Vorstellung zu bieten. 
+Ein weiterer Aspekt dieser Diplomarbeit ist die gleichzeitige Ansteuerung von Ton- und Lichtanlagen, wie z.B. einem Spotlight (\textit{deutsch Verfolgungsscheinwerfer}), das den Künstler bzw. die Künstlerin auf der Bühne verfolgt. Auf Bühnen wird nicht nur ein Spotlight eingesetzt, sondern ganze Anlagen von Lichtern. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/DMX_Controller.jpg}
+	\includegraphics[width=0.7\linewidth]{images/DMXController.jpg}
 	\caption[DMX Controller]{DMX Controller}
-	\label{fig:DMX_Controller}
+	\label{fig:DMXController}
 \end{figure}
 
 \subsection{Lichtanlagen bei StageControl}
-Im Fall von StageControl wird keine vollständige Lichtanlage verwendet; es kommt lediglich ein Scheinwerfer zum Einsatz, um die Beleuchtung des Künstlers bzw. der Künstlerin via Positionsverfolgung zu ermöglichen. So erhalten wir die genaue Abstimmung von Ton und Licht auf die Person.
+Im Fall von StageControl wird keine vollständige Lichtanlage verwendet; es kommt lediglich ein Scheinwerfer zum Einsatz, um die Beleuchtung der Künstler bzw. der Künstlerinnen via Positionsverfolgung zu ermöglichen. So erhalten wir die genaue Abstimmung von Ton und Licht auf die Person.
 
 \subsection{Ansteuerung von Lichtanlagen}
 
-Die gängigsten Arten der Ansteuerung von Lichtanlagen sind das DMX-Protokoll (\emph{Digital Multiplex}) oder das RDM-Protokoll (\emph{Remote Device Management}). Zur Ansteuerung der Lichtanlagen selbst wird ein DMX-Controller benötigt, der die Scheinwerfer steuert. Es wird ein DMX-Controller mit einem DMX-Ausgang und ein Scheinwerfer mit einem DMX-Eingang gebraucht.
-\textbf{DMX} ist das am häufigsten verwendete Protokoll zur Lichtansteuerung in der Bühnentechnik. Moving-Heads, Lichteffekte und viele mehr werden in der Regel mithilfe von Lichtsteuerpulten über das DMX-Protokoll angesteuert und/oder programmiert \textcite{LichtanlageRDMDMX}.
+Die gängigsten Arten der Ansteuerung von Lichtanlagen sind das DMX-Protokoll (\textit{Digital Multiplex}) oder das RDM-Protokoll (\textit{Remote Device Management}). Zur Ansteuerung der Lichtanlagen selbst wird ein DMX-Controller benötigt, der die Scheinwerfer steuert. Es wird ein DMX-Controller mit einem DMX-Ausgang und ein Scheinwerfer mit einem DMX-Eingang gebraucht.
+\textbf{DMX} ist das am häufigsten verwendete Protokoll zur Lichtansteuerung in der Bühnentechnik. Moving-Heads, Lichteffekte und viele mehr werden in der Regel mithilfe von Lichtsteuerpulten über das DMX-Protokoll angesteuert und/oder programmiert \parencite{LichtanlageRDMDMX}.
 \textbf{RDM} basiert auf dem DMX-Protokoll, erlaubt aber im Halbduplexbetrieb Rückmeldungen, was das Einrichten deutlich erleichtern kann.\\
 
 
 \subsection{Hartes bzw. weiches Licht}
-Es gibt zwei Lichtarten, die man in der Lichttechnik unterscheiden kann, nämlich hartes und weiches Licht. Beide Arten bieten sich für unterschiedliche Einsatzmöglichkeiten an. Weiches Licht wird meist eingesetzt, um größere Bereiche auszuleuchten. Auf der anderen Seite der Lichtskala gibt es das harte Licht, das sehr präzise eingesetzt werden kann, wie im Fall von StageControl bei der Verfolgung des Künstlers/der Künstlerin auf einer Bühne. Bei Scheinwerfern, die hartes Licht ausstrahlen, kommt das Licht von einem Punkt aus \textcite{HartesWeichesLicht}. Hingegen wird weiches Licht von einer Fläche aus abgestrahlt.\\
+Es gibt zwei Lichtarten, die man in der Lichttechnik unterscheiden kann, nämlich hartes und weiches Licht. Beide Arten bieten sich für unterschiedliche Einsatzmöglichkeiten an. Weiches Licht wird meist eingesetzt, um größere Bereiche auszuleuchten. Im Gegensatz zu weichem Licht gibt es hartes Licht, das sehr präzise eingesetzt werden kann, wie im Fall von StageControl bei der Verfolgung des Künstlers oder der Künstlerin auf einer Bühne. Bei Scheinwerfern, die hartes Licht ausstrahlen, strahlt das Licht von einem Punkt aus \parencite{HartesWeichesLicht}. Hingegen wird weiches Licht von einer Fläche aus abgestrahlt.\\
 
 
 \subsection{Arten von Scheinwerfern}
 In der Lichttechnik gibt es verschiedenste Scheinwerfertypen, die unterschiedliche Aufgaben besonders gut erfüllen. Zwei Scheinwerfertypen, die im Rahmen dieser Diplomarbeit zum Einsatz kommen, werden genauer erklärt.
 
 \subsubsection{Verfolgerscheinwerfer}
-Der Verfolgerscheinwerfer wird verwendet, um Personen auf Bühnen zu verfolgen. Diese Scheinwerfer werden nicht wie andere Scheinwerfer fix montiert, sondern lassen sich bewegen, um den gewünschten Verfolgungseffekt zu bieten. Dies geschieht nicht automatisch, sondern wird manuell von einem Beleuchter während der Show durchgeführt \textcite{Verfolgerscheinwerfer}. Es gibt verschiedene Lösungsansätze zur Bewegung von Movinglights (\emph{deutsch „Bewegbare Lichter“}). \ Bei Konzerten wird ein Verfolgerscheinwerfer oberhalb der Bühne gemeinsam mit dem Beleuchter platziert. Dieser steuert dann das Licht über ein Bedienfeld während der Performance.\\
+Der Verfolgerscheinwerfer wird verwendet, um Personen auf Bühnen zu verfolgen. Diese Scheinwerfer werden nicht wie andere Scheinwerfer fix montiert, sondern lassen sich bewegen, um den gewünschten Verfolgungseffekt zu bieten. Dies geschieht nicht automatisch, sondern wird manuell von einem Beleuchter während der Show durchgeführt \parencite{Verfolgerscheinwerfer}. Es gibt verschiedene Lösungsansätze zur Bewegung von Movinglights (\textit{deutsch „Bewegbare Lichter“}).  Bei Konzerten wird ein Verfolgerscheinwerfer oberhalb der Bühne gemeinsam mit dem Beleuchter platziert. Dieser steuert dann das Licht über ein Bedienfeld während der Performance.\\
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/Verfolgerscheinwerfer.jpg}
+	\includegraphics[width=0.4\linewidth]{images/Verfolgerscheinwerfer.jpg}
 	\caption[Verfolgerscheinwerfer]{Verfolgerscheinwerfer}
 	\label{fig:Verfolgerscheinwerfer}
 \end{figure}
 
 \subsubsection{Profilscheinwerfer}
-Dieser Scheinwerfertyp wird vor allem im Theaterbereich eingesetzt. Ein enormer Vorteil des Profilscheinwerfers ist, dass er ein hartes und exaktes Licht ausstrahlt. Außerdem ist das Streulichtaufkommen deutlich geringer als bei anderen Scheinwerfern. Streulicht ist das Licht, das außerhalb des eigenlichen Lichtkegels auftritt. Zudem verfügen Profilscheinwerfer über einen Zoom, der manuell oder automatisch erfolgen kann \textcite{Profilscheinwerfer}. Dieser Scheinwerfertyp bietet zusätlich eine Scharfstellfunktion/Fokus mittels Linsenverschiebung an, diese wird durch den Linsentubus ermöglicht.\\
+Dieser Scheinwerfertyp wird vor allem im Theaterbereich eingesetzt. Ein enormer Vorteil des Profilscheinwerfers ist, dass er ein hartes und exaktes Licht ausstrahlt. Außerdem ist das Streulichtaufkommen deutlich geringer als bei anderen Scheinwerfern. Streulicht ist das Licht, das außerhalb des eigenlichen Lichtkegels auftritt. Zudem verfügen Profilscheinwerfer über einen Zoom, der manuell oder automatisch erfolgen kann \parencite{Profilscheinwerfer}. Dieser Scheinwerfertyp bietet zusätlich eine Scharfstellfunktion/Fokus mittels Linsenverschiebung an, diese wird durch den Linsentubus ermöglicht.\\
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/Profilscheinwerfer.jpg}
+	\includegraphics[width=0.4\linewidth]{images/Profilscheinwerfer.jpg}
 	\caption[Profilscheinwerfer]{Profilscheinwerfer}
 	\label{fig:Profilscheinwerfer}
 \end{figure}
 
 \section{Servomotoren}
 \subsection{Einsatz von Servos bei StageCotrol}
-Servomotoren werden für die Umwandlung der physischen Bewegung des Künstlers, in mechanische Bewegung des Servomotors benötigt, um so die Regler des Mischpults in Abstimmung und Ausrichtung des Künstlers mit dem Ton zu automatisieren. Diese Servomotoren werden oberhalb des Mischpult mithilfe des Gerüsts plaziert, wie in Kapitel 2.2.1 beschrieben. Diese Motoren sind essenziell für den Erfolg, da ohne diese Servos keine Automatisierung erfolgen kann.
+Servomotoren werden für die Umwandlung der physischen Bewegung des Künstlers, in mechanische Bewegung des Servomotors benötigt, um so die Regler des Mischpults in Abstimmung und Ausrichtung des Künstlers mit dem Ton zu automatisieren. Diese Servomotoren werden oberhalb des Mischpult mithilfe des Gerüsts plaziert, wie in Kapitel 2.2.1 beschrieben.
 
 \subsection{Was ist ein Servomotor}
-Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielmehr spezielle Eigenschaften. Diese Eigenschaften sind: Strom-, Drehzahl- und/oder Positionsgeregelt. Ein Servomotor ist immer elektrisch betrieben. Diese Motoren geben Rückmeldungen an die Regelelektronik. Diese Rückmeldungen enthalten Informationen über Winkelposition der Motorwelle, der Drehgeschwindigkeit und der Beschleunigung \textcite{ServomotorInfo}. Die Regelelektronik kann anhand dieser zurückgemeldeten Daten wieder die Daten der Sollparameter an den Motor schicken, die zuvor eingegeben wurden. \\
+Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielmehr spezielle Eigenschaften. Diese Eigenschaften sind: Strom-, Drehzahl- und/oder Positionsgeregelt. Ein Servomotor ist immer elektrisch betrieben. Diese Motoren geben Rückmeldungen an die Regelelektronik. Diese Rückmeldungen enthalten Informationen über Winkelposition der Motorwelle, der Drehgeschwindigkeit und der Beschleunigung \parencite{ServomotorInfo}. Die Regelelektronik kann anhand dieser zurückgemeldeten Daten wieder die Daten der Sollparameter an den Motor schicken, die zuvor eingegeben wurden. \\
 
 
 \subsection{Anforderungen für StageControl}
@@ -424,13 +467,20 @@ Für den Einsatz bei StageControl gibt es Vorraussetzungen, die die Servomotoren
 \subsection{Arten von Servomotoren}
 Es gibt einige unterschiedliche Arten von Servos, die wichtigsten drei sind: Gleichstrom, kernlose und bürstenlose Motoren. \\
 Bei Gleichstromservos handelt sich um die billigste und gängiste Art der Motoren. Dieser Servotyp besteht aus Eisenkernen um die Kupferdraht gewickelt ist, sowie einem Kommutator Ring und Bürsten. Diese Bürsten werden zur Umschaltung der Felder benötigt und einem Gehäuse. \\
-Kernlose Motoren sind erheblich teuerer in der Produktion als Gleichstrommotoren, da diese aus teurern Materialien bestehen. Ihr großer Vorteil gegenüber herkörmlicher Gleichstrommotoren ist, das diese deutlich schneller beschleunigen und abbremsen können \textcite{ServomotorArten}. \\
+Kernlose Motoren sind erheblich teuerer in der Produktion als Gleichstrommotoren, da diese aus teurern Materialien bestehen. Ihr großer Vorteil gegenüber herkörmlicher Gleichstrommotoren ist, das diese deutlich schneller beschleunigen und abbremsen können \parencite{ServomotorArten}. \\
 Anstelle der Bürsten und dem Metallring bei Bürstenservos, wird bei den Bürstenlosen Servos Elektronik, die den Motor steuert, eingebaut um die selbe Zuverlässigkeit zu gewährleisten. Der Einbau von Elektronik zeichnet sich durch die längere Lebensdauer des Servos aus. Durch die Elektronik fallen diese Motoren deutlich teurer aus als Gleichstrommotoren. \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/ServoArten.jpg}
+	\caption[Servo Arten]{Servo Arten}
+	\label{fig:Servo Arten}
+\end{figure}
 
 
 
 \subsection{Ansteuerung von Servos}
-Servomotoren werden über ein sogenanntes PWM-Signal (\emph{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, es ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, das den Servomotor mit der nötigen elektrischen Spannung versorgt. \textcite{ServomotorAnsteuerung}. Das dritte Kabel ist das Signalleitungskabel, dieses  leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
+Servomotoren werden über ein sogenanntes PWM-Signal (\textit{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, es ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, das den Servomotor mit der nötigen elektrischen Spannung versorgt. \parencite{ServomotorAnsteuerung}. Das dritte Kabel ist das Signalleitungskabel, dieses  leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
 
 
 \begin{figure}[H]
@@ -446,7 +496,7 @@ Um die Licht- und Audioanlagentechnik richtig zu koordinieren benötigt man eine
 
 
 \subsection{GPS}
-GPS (\emph{=engl. Global Positioning System}) \textcite{GPS} wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
+GPS (\textit{=engl. Global Positioning System}) \parencite{GPS} wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
 
 \textbf{Funktionsweise des GPS}
 
@@ -521,7 +571,7 @@ Der Mikrocontroller ist bereits ab einem Preis von \$6 erhältlich. Außerdem ve
 
 \textbf{Funktionen}
 
-Der Mikrocontroller bietet nicht nur Wi-Fi (\emph{=Wireless Local Area Network}), sondern auch Bluetooth. Mit der Wireless Local Area Network Funktion kann man einfach und drahtlos eine Verbindung zu einem Netzwerk herstellen und somit eine Kommunikation von vielen Geräten möglich machen. Außerdem verfügt der Mikrocontroller über Bluetooth-Classic.
+Der Mikrocontroller bietet nicht nur Wi-Fi (\textit{=Wireless Local Area Network}), sondern auch Bluetooth. Mit der Wireless Local Area Network Funktion kann man einfach und drahtlos eine Verbindung zu einem Netzwerk herstellen und somit eine Kommunikation von vielen Geräten möglich machen. Außerdem verfügt der Mikrocontroller über Bluetooth-Classic.
 
 \subsection{ESP32-Spezifikationen}
 
@@ -546,7 +596,7 @@ Für weitere Funktionen benötigt man z.B. die Erweiterungsplatine MPU-6050, die
 
 \textbf{Gyroskop}
 
-Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\emph{kurz MEMS}) verwendet. 
+Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\textit{kurz MEMS}) verwendet. 
 
 
 \begin{figure}[H]
@@ -579,7 +629,7 @@ Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um
 
 \textbf{Native Apps}
 
-Native Apps (\emph{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. \textcite{NativeApps}
+Native Apps (\textit{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. \textcite{NativeApps}
 
 \textbf{Android}
 
@@ -603,7 +653,7 @@ React Native ist eine Open-Source-Software, welche von Facebook entwickelt worde
 
 Für die App-Entwicklung wird Android Studio verwendet. 
 
-Um Android Studio verwenden zu können muss man eine SDK (\emph{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\emph{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
+Um Android Studio verwenden zu können muss man eine SDK (\textit{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\textit{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
 
 
 \textbf{IntelliJ IDEA}
