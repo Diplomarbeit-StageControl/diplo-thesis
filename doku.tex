@@ -496,12 +496,15 @@ Um die Licht- und Audioanlagentechnik richtig zu koordinieren benötigt man eine
 
 
 \subsection{GPS}
-GPS (\textit{=engl. Global Positioning System}) \parencite{GPS} wird für die Standortermittlung im Außenbereich verwendet und ist für unseren Fall nicht verwendbar. Für die genaue Bestimmung von Positionen werden Satelliten verwendet.
+GPS (\textit{=engl. Global Positioning System}) ist ein globale Navigationssystem, das die Bestimmung von Standort, Geschwindigkeit und Zeit ermöglicht und synchronisiert. Es wird für heutzutage fast überall verwendet im Auto, Smartphone oder Uhr und hilft dabei von A nach B zu gelangen. \parencite{GPS} Da zu aktuellem Zeitpunkt eine Standortermittlung indoor über GPS zu ungenau ist (um den Faktor 100 mehr gedämpft) können wir GPS nicht verwenden. \textcite{Indoor}
 
-\textbf{Funktionsweise des GPS}
+\textbf{Funktionsweise Global Navigation Satellite System}
 
-Es gibt GPS-Satelliten, die die Erde zweimal pro Tag in einer genauen Umlaufbahn umkreisen. Diese Satelliten senden eindeutige Signale und Bahnparameter aus, somit können die genauen Postionen der GPS-Geräte bestimmt werden. 
-In so gut wie allen neuen Geräten ist das GPS Standard, sie werden für die verschiedensten Funktionen verwendet. Durch die Positionsermittlung können folgende andere Informationen berechnet werden:
+Das Global Navigation Satellite System \textit{(=GNSS)} verwendet eine Technik namens Trilateration, diese benötigt zur Berechnung von Standort Geschwindigkeit und Höhe, Signale von Satelliten, um Positionen anzugeben. 
+
+Die erwähnten Satelliten, umkreisen die Erde und senden Singale, die von den jeweiligen GPS-Geräten auf der Erdoberfläche ausgewertet werden. Das Gerät muss das Signal von mindestens vier Satelliten lesen können, um die Position korrekt zu berechnen. \parencite{GPS} 
+
+Durch die Positionsermittlung können folgende andere Informationen berechnet werden:
 
 \begin{itemize}
 	\item Geschwindigkeit
@@ -512,13 +515,9 @@ In so gut wie allen neuen Geräten ist das GPS Standard, sie werden für die ver
 	\item Zeiten von Sonnenauf- und untergang
 \end{itemize}
 
-\textbf{Signal}
-
-Wenn GPS-Signale die Erde erreichen, sind die gesendeten Signale sehr schwach. Deshalb kommt es auch zu Problemen beim Durchdringen von Objekten wie Gebäuden o. Ä. Bei modernen GPS-Empfängern ist eine Indoor-Ortung möglich.
-
 \textbf{Fehlerquellen für die Genauigkeit der GPS-Signale}
 
-Es gibt einige relevante Fehlerquellen für GPS-Signale, darunter fallen \textcite{GPSFehlerquellen}:
+Es gibt einige relevante Fehlerquellen für GPS-Signale, darunter fallen \parencite{GPSFehlerquellen}:
 \begin{itemize}
 	\item Position der Satelliten
 	\item Signaleffekt der Umgebung
@@ -539,6 +538,9 @@ Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein
 
 
 Bis die Signale von Satelliten schlussendlich beim GPS-Empfänger ankommen legen sie eine lange Strecke zurück. Die Ausbreitungsumgebung beeinflusst nicht nur die Signalstärke, sondern auch die Genauigkeit.
+
+Um aktuell eine GPS-Genauigkeit von 5-10 Metern zu gewährleisten, muss das Signal von möglichst vielen Satelliten gleichzeitig empfangen werden. Je mehr Satelliten desto genauer ist die Ortung möglich. In Gebäuden, wo kein GPS-Signal empfangbar ist, kann man nicht mit einer genauen Standortbestimmung rechnen. \parencite{GPSGenauigkeit}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Satelliteneinfluss.jpg}
@@ -567,7 +569,7 @@ ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressi
 
 \textbf{Anschaffungskosten \& Stromverbrauch}
 
-Der Mikrocontroller ist bereits ab einem Preis von \$6 erhältlich. Außerdem verbraucht dieser im Vergleich zu anderen Mikrocontrollern sehr wenig Strom und unterstützt Energiesparmodule, wie Tiefschlaf.
+Der Mikrocontroller ist bereits ab einem Preis von 6\$ erhältlich. Außerdem verbraucht dieser im Vergleich zu anderen Mikrocontrollern sehr wenig Strom und unterstützt Energiesparmodule, wie Tiefschlaf.
 
 \textbf{Funktionen}
 
@@ -596,7 +598,7 @@ Für weitere Funktionen benötigt man z.B. die Erweiterungsplatine MPU-6050, die
 
 \textbf{Gyroskop}
 
-Jeder kennt die Wirkung eines Kreisel, ein Gyroskop hat genau diese und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\textit{kurz MEMS}) verwendet. 
+Ein Gyroskop ist wie ein Kreisel aufgebaut und hat somit die selbe Wirkung und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\textit{kurz MEMS}) verwendet. 
 
 
 \begin{figure}[H]
@@ -619,7 +621,7 @@ Ein Beschleunigungssensor funktioniert nach dem selben Prinzip, wie ein Gyroskop
 
 \subsection{Trägheitsnavigation}
 
-Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. \textcite{Traegheitsnavigation} Es ist immer nur die Anfangsposition bekannt, anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
+Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. \parencite{Traegheitsnavigation} Es ist immer nur die Anfangsposition bekannt, anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
 
 
 \section{Software}
@@ -629,15 +631,15 @@ Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um
 
 \textbf{Native Apps}
 
-Native Apps (\textit{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden. \textcite{NativeApps}
+Native Apps (\textit{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden.
 
 \textbf{Android}
 
-Android ist einer der weltweit bekanntesten Betriebssysteme, es ist aktuell auf 2,5 Milliarden aktiven Geräten installiert. \textcite{Android} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
+Android ist einer der weltweit bekanntesten Betriebssysteme. Das Betriebssystem fasst einen weltweiten Marktanteil von 71.31\% im April 2024. \parencite{AndroidVsiOS} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
 
 \textbf{iOS}
 
-Das Betriebssystem iOS wurde von Apple im Jahre 2007 veröffentlicht. \textcite{iOS} Die Software wird bei iPhone und iPad verwendet. Anders wie bei Android ist iOS nicht quelloffen, außerdem werden keine Betriebssystem-Lizenzen vergeben. Man benötigt eine gültige Apple-ID, um das Gerät zu verwenden.
+Das Betriebssystem iOS wurde von Apple im Jahre 2007 veröffentlicht und hat im April 2024 einen weiltweiten Marktanteil von 27.95\%. \parencite{AndroidVsiOS} Die Software wird auf den entwickelten Geräten von Apple verwendet. Anders wie bei Android ist iOS nicht quelloffen, außerdem werden keine Betriebssystem-Lizenzen vergeben. Man benötigt eine gültige Apple-ID, um das Gerät zu verwenden.
 
 \subsection{Cross-Platform-Apps}
 
@@ -651,9 +653,7 @@ React Native ist eine Open-Source-Software, welche von Facebook entwickelt worde
 
 \subsection{App-Entwicklung}
 
-Für die App-Entwicklung wird Android Studio verwendet. 
-
-Um Android Studio verwenden zu können muss man eine SDK (\textit{=engl. Software Development Kit}) installieren. \textcite{AppEntwicklung} Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\textit{=engl. Integrated Development Environment}) vorgesehen. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
+Um Android Studio verwenden zu können muss man eine SDK (\textit{=engl. Software Development Kit}) installieren. Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\textit{=engl. Integrated Development Environment}) vorgesehen und zu verwenden. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
 
 
 \textbf{IntelliJ IDEA}
@@ -666,18 +666,19 @@ Es gibt zwei verschiedene Versionen:
 	\item IntelliJ IDEA Ultimate
 \end{itemize}
 
-Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version bietet z.B. JavaScript Integration oder "duplicate detection". \textcite{IntelliJ}
+Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version bietet z.B. JavaScript Integration oder "duplicate detection".
 
-\begin{figure}[H]
+\begin{figure} [H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/intelliJ.png}
 	\caption[IntelliJ]{IntelliJ}
+	\vspace{1cm}
 	\label{fig:IntelliJ}
 \end{figure}
 
 \textbf{Eclipse}
 
-Eclipse ist eine weitere bekannte IDE. Die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform wie Linux, macOS oder Windows, \textcite{Eclipse}.
+Eclipse ist eine weitere bekannte IDE. Die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform wie Linux, macOS oder Windows. \parencite{Eclipse}
 
 \begin{figure}[H]
 	\centering
