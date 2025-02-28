@@ -1217,3 +1217,198 @@ Im File /etc/dnsmasq.conf wurde die Schnittstelle vom Internet eingerichtet:
 \end{lstlisting} 
 
 Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist eine Nummer von einem Endgerät, die spezifisch für ein Gerät ist. Anhand von dieser Nummer werden über die Verbindung laufende Daten den Geräten zugeordnet. Nach jeder Veränderung wurde der Raspberry Pi neugestartet. 
+
+
+\section{Gerüstbau}
+StageControl benötigt ein Gerüst, in dass ein Mischpult hineingestellt wird, um eine sichere Ausführung der automatisierten Tonausrichtung zu gewährleisten. 
+
+
+\textbf{FOTO!!!!}
+
+
+\subsection{Grundsätzliche Funktionalität}
+Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurde eine verschiebbare Stange befestigt, auf der ein Servomotor montiert werden kann.\\
+An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB zur Befestigung mittels Schrauben.
+
+
+\subsection{Verwendete Materialien}
+Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 10 × 10 × 1000 mm verwendet, um den Rahmen zu konstruieren. Die Stangen wurden mit Schrauben und Muttern befestigt.\\
+
+\begin{table} [H]
+	\begin{tabular}{ |p{3.1cm} |p{4.8cm}|p{4.8cm}| }
+		\hline
+		\textbf{Material} & \textbf{Menge}& \textbf{Maße}\\
+		\hline
+		\textbf{Aluminium Stangen} & 4x1m Aluminium Stangen & 10x10x1000mm  \\ 
+		\hline
+		\textbf{Holz-Grundplatte} & 2 Stück & 32x28cm   \\  
+		\hline
+		\textbf{Holz-Platte klein} & 1 Stück & 12x9.5cm   \\  
+		\hline
+		\textbf{Aluminium Flachprofil} & 1 Stück  & 1m \\
+		\hline
+		\textbf{Steckkappen Plastik} & Steckkappen & 10x10mm eckig  \\
+		\hline
+		\textbf{Befestigungswinkel}&  &  \\
+		\hline
+		\textbf{Schrauben}& 44 Schrauben für das gesamte Gerüst | 	Raspberry/ESP32 UWB Aufsatz & 42 Stück M4x20 | 2 Stück M4x40\\
+		\hline
+		\textbf{Muttern / Flügelmuttern}& 42 Muttern + 2 Flügelmuttern & \\
+		\hline	
+	\end{tabular}
+	\caption{Stückliste Verwendete Materialien} 
+\end{table} 
+
+Um die Servomotoren an unterschiedliche Mischpulte anzupassen, wurden die Servomotoren auf einer verstellbaren Aluminium Flachstange montiert, auf der diese verschoben werden können. Zusätzlich kann man die Servomotoren auch horizontal justieren, indem die Mutter, die die Servomotoren hält, löst. \\
+Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzplatten als Boden eingesetzt.
+
+
+\section{Servomotoren}
+Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der unseren Kriterien entspricht. Diese Servomotoren muss sehr robust sein damit er etwaige mechanische Einwirkung aushält. Außerdem müssen die Motoren wasserfest sein um auch bei außen Einsätzen nutzbar zu sein. 
+
+\subsection{Servomotoren Auswahl}
+
+Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer der Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \textit{"Steuerlogik"} detailliert erläutert.
+
+
+\textbf{FOTO!!!!}
+
+
+\section{Servomotoren Anpassungen}
+Die Servomotoren werden in einem eigens Angefertigten Gestell gelegt und dann mittels 2 M4x20 Schrauben niedergeschraubt. Durch dieses Gestell werden die Servomotoren vor etwaigen mechanischen Einflüssen geschützt. \\
+Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 10x10x1000mm Aluminiumstange mittels zwei Flügelmuttern niedergeschraubt.\\
+Außerdem musste bei den Servomotoren ein Teil des Originalen Gehäuses Abgeschliffen werden, um genug Platz für die Feststellschrauben zu haben.
+
+
+\section{Servomotor-Aufsatz}
+Um den zuverlässigen Betrieb des Servomotors zu gewährleisten, wurde ein Aufsatz für den Servomotor im 3D-Druckverfahren hergestellt. Der Aufsatz besteht aus einem 4cm Zylinder mit einer vertikalen Öffnung für die  Abtriebswelle (Spline Shaft)  und einem rechteckigen Oberteil das aus dem Zylinder im 45 Grad herausragt, auf das der originalen Aufsatz des Servomotors geschraubt werden kann. Der Zylinder wird so auf dem Drehpotentiometer platziert, dass die Aussparung des Potentiometers mit der Öffnung des Aufsatzes übereinstimmt. Dadurch wird ein Übersteuern des Servomotors verhindert.
+
+
+\subsection{Entwicklungsprozess}
+Um den idealen Aufsatz für die Drehpotentiometersteuerung zu entwickeln, waren einige Verbesserungen an der ersten Version erforderlich. Zunächst plante ich, den Aufsatz als Zylinder mit einer Höhe von 4 cm zu konstruieren und darauf einen kleineren Zylinder zu platzieren, der in die Spline Shaft gesteckt werden sollte. \\
+Beim Testen zeigten sich jedoch sofort einige Probleme: Da es keine feste Verbindung zwischen der Spline Shaft und dem Aufsatz gab, drehte dieser über dem Drehpotentiometer durch. Zudem fehlte eine Ausbuchtung für den hervorstehenden Teil des Drehpotentiometers, die für die manuelle Ausrichtung von Vorteil ist.\\
+Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verfügt nun über die in der Einleitung genannten Eigenschaften.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.189\linewidth]{images/ReglerV1.png}
+	\includegraphics[width=0.3\linewidth]{images/Regler.png}
+	\caption[Regler-Aufsätze Versionen]{Regler-Aufsätze Versionen}
+	\label{fig:Regler-Aufsätze Versionen}
+\end{figure}
+
+\subsection{Steuerlogik}
+Die Servomotoren werden dann immer bewegt wenn sich der Künstler auf der Bühne bewegt. Das bedeutet immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkel Grad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss vor dem Verarbeiten der Position das nur die X-Achse der Bühne betrachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkel Grad umgewandelt werden.
+\\Zur Veranschaulichung der Berechnung:\\\\
+Der Künstler befindet sich auf der Bühne bei der Position X=5m, die Extrempunkte der Bühne sind X1=0m und X2=10m.\\
+Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt und rechnet diese anhand des Extremwerts X2 in Winkel Grad um. Das bedeutet bei X2=10m und Position des Interpreten bei 5m, dass sich der Servo, der für genau den einen Künstler zuständig ist, auf 90° stellen muss. \\
+
+\begin{lstlisting}
+	def move_servo(value):
+	global max_x
+	
+	try:
+	if max_x is None or max_x == 0:
+	print(f"Invalid max_x value: {max_x}. Servo will not move.")
+	return
+	
+	angle = (value / max_x) * 180
+	angle = max(0, min(180, angle)) 
+	
+	duty = 2 + (angle / 18)
+	print(f"Moving servo to {angle} (Duty Cycle: {duty})")
+	
+	pwm.ChangeDutyCycle(duty)
+	sleep(0.3)
+	pwm.ChangeDutyCycle(0) 
+	
+	except Exception as e:
+	print(f"Error moving servo: {e}")
+\end{lstlisting}
+
+\section{ESP32-UWB Gehäuse und Stromversorgung}
+In diesem Kapitel wird die Gehäuseentwicklung für die ESP32 UWB-Module inklusive ihrer Stromversorgung, mittels wiederaufladbaren Akkus, eingegangen. Das Gehäuse schützt die ESP32 UWB-Module und die Akkupacks im aktiven Betrieb.
+
+\subsection{Generelle Überlegungen}
+Um ein sicheres Gehäuse für den ESP32 und dessen Stromversorgung zu schaffen, wurde ein 3D-Modell erstellt und ausgedruckt, in das der ESP32 mittels 4 Stück M2-Schrauben verschraubt werden kann. Dieser befindet sich dann in der Mitte des Gehäuses. Unterhalb des ESP32 liegt das Akkupack, das den ESP32 mit Strom versorgt.
+Um Akku und ESP32 vor  mechanischen Außeneinwirkungen zu schützen wurde Styropor an den beiden Plastikdeckel geklebt. Die Deckel werden mit 4 Stück M2 Schrauben. 
+Die Deckelmaße sind 82x83x2mm. An der Oberseite wurde ein Gürtelclip, ebenfalls 3D gedruckt, mittels M4x10 Schrauben befestigt. Das gesamte 
+
+\subsection{Entwicklungsprozess Gehäuse}
+Das erste Modell des Gehäuses Bestand aus 4 Seitenwänden und einer Bodenplatte. Der ESP32 wurde an den hervorstehenden Platten mittels 4 M2 Schrauben befestigt. Wie im fertigen Gehäuse wurde auch hier der Akkuplatz unterhalb des ESP32 angesetzt. Es wurde kein Deckel für diese Version angefertigt weil in der Planung kein Deckel vorhergesehen war, da der ESP32 über einen Display verfügt. \\
+Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Diese verfügt über vier Seitenwände und jeweils einem Deckel, um den Zugriff auf beide Seiten zu gewährleisten. Die Deckel sind aus Plastik und haben vier M2.5 Löcher die auf die Plastikplatten hinaufgeschraubt werden können.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/ESP32_Gehäuse.png}
+	\caption[ESP32-UWB Gehäuse]{ESP32-UWB Gehäuse}
+	\label{fig:ESP32-UWB Gehäuse}
+\end{figure}
+
+
+\subsection{Blender}
+Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen von StageControl gebraucht wurden. 
+
+\subsection{BambuLab A1 - 3D-Drucker}
+Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Dieser Drucker kam zum Einsatz, da er uns zur Verfügung stand und über die Kriterien erfüllte.
+
+\subsection{ESP32-UWB Stromversorgung}
+Die Externe Stromversorgung der ESP32 UWB Module erfolgt bei 4 von 5 Stück mittels 1900mAh wiederaufladbaren Akkus betrieben. Die ESPs werden mit einer Spannung von 4,8V betrieben. So wird gewährleistet, dass ein Auftritt auf einer Bühne reibungslos druchgeführt werden kann.\\
+Der letzte ESP32 wird mittels USB Kabel mit Stromversorgt, da der EPS am Gerüst neben dem Raspberry Pi angebracht wird und über diesem versorgt wird.\\
+
+Mit folgender Formel lässt sich der Stromverbauch für die ESP32 UWBs mit OLED Diplay berechnen:
+
+\[
+\text{Laufzeit (h)} = \frac{\text{Akkukapazität (mAh)}}{\text{Stromverbrauch (mA)}}
+\]
+
+Im Fall von Stagecontrol wird der ungefähre Stromverbauch eines ESP32 UWB Moduls mit einem Verbrauch von 300mAh bemessen:
+
+\[
+\text{Laufzeit} = \frac{1900 \text{ mAh}}{300 \text{ mA}} = 6,3 \text{ Stunden}
+\]
+
+Diese Akkaufzeit reicht in den meisten Fällen vollkommen aus, da viele Konzerte nicht länger als 3 Stunden am Stück dauern.
+
+Der Vorteil der Nutzung der ESP32 UWBs mit Akkus anstelle eines Netzteils liegt im mobilen Betrieb des Systems und die flexible Anpassung an die Bühneumgebung.
+
+Die Akkupacks werden mit dem ANSMANN Ladegerät ACS48, das speziell für 4- bis 8-zellige Akkupacks mit einer Spannung von 4,8 bis 9,6 V ausgelegt ist, sowie mit einem Notebook-Ladegerät geladen. Beide Ladegeräte wurden für das Aufladen der Akkupacks modifiziert. Die originalen Anschlüsse der Ladegeräte wurden abgetrennt und durch MiniAMP Anschlüsse ersetzt. Um die neue Verkabelung zu schützen, wurde zusätzlich ein Kabelschlauch um die Kabel angebracht.  
+
+\textbf{FOTO!!}
+
+Ebenfalls wurden die Akkupacks modifiziert. Der originale Anschluss (ein 3-poliger Steckverbinder) der Akkupacks war zu groß, um in die Stromversorgungsbuchse der ESPs zu passen. Daher wurden die Anschlüsse der Akkupacks entfernt und durch neue MiniAMP-Anschlüsse ersetzt, um in die Buchse der ESPs zu passen.
+
+\textbf{FOTO}
+
+\section{Raspberry Pi}
+Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden die Servomotoren per Jumper Wire verbunden, um die Servos mit Winkeldaten, Strom und einer Erdung zu versorgen. Zudem wird der am Gerüst befestigte ESP32 UWB \textit{(Anchor 0)} mittels USB C Kabel über dem Raspberry Pi mit Strom versorgt. 
+
+\subsection{Raspberry Pi Pins}
+Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
+Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires benötigt – eines pro Pin, das jeweils in den entsprechenden Female-Connector der Servomotoren gesteckt wird.
+
+
+\subsection{Signalverarbeitung}
+Der Raspberry Pi wird mit Positionsdaten versorgt, die dann, wie im Kapitel \textit{"Steuerlogik"} beschrieben, verarbeitet werden. Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches diese, wie im Kapitel \textit{"Raspberry Pi als Access Point"} beschrieben, an den verarbeitenden Raspberry Pi sendet.
+
+\section{Programmierung}
+\subsection{Thonny}
+Um die Servosteuerung zu Programmieren wurden die IDE Thonny verwendet. Diese eignete sich besonders, da die IDE bereits am Raspberry Pi vorinstalliert ist und sich einfach bedienen lässt.
+
+\subsection{Python}
+Für die Programmierung der Servosteuerung wurde Python verwendet, da Python über Libraries und Packages verfügt, die für die Servosteuerung von Vorteil sind. 
+
+Folgende Libraries wurden verwendet:
+
+\begin{lstlisting}
+	import RPi.GPIO as GPIO -> Wird verwendet um die GPIO Pins des Raspberry Pis anzusteuern.
+	from time import sleep -> Wird verwendet um ein delay hinzuzufügen
+	import socket -> Gebraucht für das Empfangen der Daten via UDP
+\end{lstlisting}
+
+
+
+\section{Mischpult}
+Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen.
+
