@@ -1390,14 +1390,15 @@ Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires b
 
 
 \subsection{Signalverarbeitung}
-Der Raspberry Pi wird mit Positionsdaten versorgt, die dann, wie im Kapitel \textit{"Steuerlogik"} beschrieben, verarbeitet werden. Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches diese, wie im Kapitel \textit{"Raspberry Pi als Access Point"} beschrieben, an den verarbeitenden Raspberry Pi sendet.
+In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \textit{Steuerlogik} beschriebenen Abläufen. \\
+Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches diese, wie im Kapitel \textit{"Raspberry Pi als Access Point"} beschrieben, an den Verarbeitenden Raspberry Pi sendet	.
 
 \section{Programmierung}
 \subsection{Thonny}
-Um die Servosteuerung zu Programmieren wurden die IDE Thonny verwendet. Diese eignete sich besonders, da die IDE bereits am Raspberry Pi vorinstalliert ist und sich einfach bedienen lässt.
+Um die Servosteuerung zu Programmieren wurden die IDE Thonny verwendet. Diese eignete sich besonders, da die IDE bereits am Raspberry Pi vorinstalliert ist und sich einfach bedienen lässt. Durch diese Vorinstallation des Programms konnte der Code direkt für die Hardware getestet werden, ohne etwaige Einstellungen zu treffen.
 
 \subsection{Python}
-Für die Programmierung der Servosteuerung wurde Python verwendet, da Python über Libraries und Packages verfügt, die für die Servosteuerung von Vorteil sind. 
+Für die Programmierung der Servosteuerung wurde Python verwendet, da Python über Libraries und Packages verfügt, die für die Servosteuerung von Vorteil sind. Diese Libraries sind eignen besonders, da sie direkt am Raspberry Pi einsetzbar sind und somit keine zusätzlichen Einstellungen getroffen werden müssen.
 
 Folgende Libraries wurden verwendet:
 
