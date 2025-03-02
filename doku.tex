@@ -1283,6 +1283,14 @@ Außerdem musste bei den Servomotoren ein Teil des Originalen Gehäuses Abgeschl
 \section{Servomotor-Aufsatz}
 Um den zuverlässigen Betrieb des Servomotors zu gewährleisten, wurde ein Aufsatz für den Servomotor im 3D-Druckverfahren hergestellt. Der Aufsatz besteht aus einem 4cm Zylinder mit einer vertikalen Öffnung für die  Abtriebswelle (Spline Shaft)  und einem rechteckigen Oberteil das aus dem Zylinder im 45 Grad herausragt, auf das der originalen Aufsatz des Servomotors geschraubt werden kann. Der Zylinder wird so auf dem Drehpotentiometer platziert, dass die Aussparung des Potentiometers mit der Öffnung des Aufsatzes übereinstimmt. Dadurch wird ein Übersteuern des Servomotors verhindert.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.25\linewidth]{images/Servomotor+Aufsatz.jpg}
+	\caption[Servomotor + Aufsatz]{Servomotor + Aufsatz}
+	\label{fig:Servomotor + Aufsatz}
+\end{figure}
+
+
 
 \subsection{Entwicklungsprozess}
 Um den idealen Aufsatz für die Drehpotentiometersteuerung zu entwickeln, waren einige Verbesserungen an der ersten Version erforderlich. Zunächst plante ich, den Aufsatz als Zylinder mit einer Höhe von 4 cm zu konstruieren und darauf einen kleineren Zylinder zu platzieren, der in die Spline Shaft gesteckt werden sollte. \\
@@ -1329,6 +1337,14 @@ Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt un
 
 \section{ESP32-UWB Gehäuse und Stromversorgung}
 In diesem Kapitel wird die Gehäuseentwicklung für die ESP32 UWB-Module inklusive ihrer Stromversorgung, mittels wiederaufladbaren Akkus, eingegangen. Das Gehäuse schützt die ESP32 UWB-Module und die Akkupacks im aktiven Betrieb.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/ESP32 UWB-1.jpg}
+	\includegraphics[width=0.2825\linewidth]{images/ESP32 UWB-2.jpg}
+	\caption[ESP32-UWB Gehäuse]{ESP32-UWB Gehäuse}
+	\label{fig:ESP32-UWB Gehäuse V2}
+\end{figure}
 
 \subsection{Generelle Überlegungen}
 Um ein sicheres Gehäuse für den ESP32 und dessen Stromversorgung zu schaffen, wurde ein 3D-Modell erstellt und ausgedruckt, in das der ESP32 mittels 4 Stück M2-Schrauben verschraubt werden kann. Dieser befindet sich dann in der Mitte des Gehäuses. Unterhalb des ESP32 liegt das Akkupack, das den ESP32 mit Strom versorgt.
@@ -1411,5 +1427,5 @@ Folgende Libraries wurden verwendet:
 
 
 \section{Mischpult}
-Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen.
+Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen. Zum Testen der Steuerung wurde das Behringer Xenyx 1204USB verwendet.
 
