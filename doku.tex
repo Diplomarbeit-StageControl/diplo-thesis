@@ -109,6 +109,7 @@ Um Hardware mittels 3D-Drucks zu erstellen, gibt es verschiedene Möglichkeiten,
 
 \subsubsection{Nylon}
 Nylon (\textit{techn. Polyamid}) ist ein langlebiges Material, das sich vorallem durch seine Widerstandfähigkeit gegen Hitze und mechanischen Außeneinwirkungen auszeichnet \parencite{Nylon}. Nylon gibt es in unterschiedlichen Ausführungen: als Filament, Draht oder Pulver mit unterschiedlichen Eigenschaften. 
+
 \subsubsection{Kohlefaser}
 Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet \parencite{Kohlefasern} um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern.\\
 
@@ -117,27 +118,30 @@ Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet \parencite{K
 \subsection{3D-Drucker}
 
 \subsubsection{Vergleich der 3D-Drucker}
-Wie in der Einleitung des Kapitels \textit{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die bereits erwähnten 3D-Drucker (\textit{Bambu Lab X1-Carbon, Ultimaker 2 Extended+})  \parencite{Ultimaker2ExtendedSpecification} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \parencite{BambuLabX1Carbon3DPrinterSpecifications}. 
+Wie in der Einleitung des Kapitels \textit{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die 3D-Drucker (\textit{Bambu Lab X1-Carbon, Ultimaker 2 Extended+, Bambu Lab A1})  \parencite{Ultimaker2ExtendedSpecification} \parencite{BambuLabA1} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \parencite{BambuLabX1Carbon3DPrinterSpecifications}. 
 
-Als Ausgangsmaterial wird bei beiden 3D-Druckern kohlefaserverstärktes Nylon-Filament verwendet.
-
+Als Ausgangsmaterial wird bei allen 3D-Druckern PLA verwendet.
 \begin{table} [H]
-	\begin{tabular}{ |p{2.7cm} |p{4.8cm}|p{4.8cm}| }
+	\begin{tabular}{ |p{2.7cm} |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\textbf{Kriterien} & \textbf{Ultimaker 2 Extended+}& \textbf{Bambu Lab X1-Carbon 3 Pro}\\
+		\textbf{Kriterien} & \textbf{Ultimaker 2 Extended+} & \textbf{Bambu Lab X1-Carbon 3 Pro} & \textbf{Bambu Lab A1} \\
 		\hline
-		\textbf{Material (Nylon-Filament)} & Kann verarbeitet werden & Kann verarbeitet werden   \\ 
+		\textbf{Material (PLA)} & Kann verarbeitet werden & Kann verarbeitet werden & Kann verarbeitet werden \\
 		\hline
-		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16 mm\textsuperscript{3}/s &
-		Druckt mit einer Geschwindigkeit von 32 mm\textsuperscript{3}/s   \\  
+		\textbf{Drucktempo} & Druckt mit einer Geschwindigkeit von 16 mm\textsuperscript{3}/s & Druckt mit einer Geschwindigkeit von 32 mm\textsuperscript{3}/s & Druckt mit einer Geschwindigkeit von 18 mm\textsuperscript{3}/s \\
 		\hline
-		\textbf{Druckvolumen} & 223 x 223 x 205 mm & 256 x 256 x 256 mm \\
+		\textbf{Druckvolumen} & 223 x 223 x 205 mm & 256 x 256 x 256 mm & 256 x 256 x 256 mm \\
 		\hline
-		\textbf{Betriebssysteme} & MacOS, Windows, and Linux & Windows, MacOS \\
+		\textbf{Betriebssysteme} & MacOS, Windows, und Linux & Windows, MacOS & Windows, MacOS \\
+		\hline
+		\textbf{Druck-technologie} & FDM (Fused Deposition Modeling) & FDM (Fused Deposition Modeling) & FDM (Fused Deposition Modeling) \\
+		\hline
+		\textbf{Anschluss-möglichkeiten} & USB, SD-Karte & Wi-Fi, Ethernet, USB-C & Wi-Fi, USB, Ethernet \\
 		\hline
 	\end{tabular}
-	\caption{Vergleich  Ultimaker 2 Extended+ und Bambu Lab X1-Carbon 3 Pro}
+	\caption{Vergleich Ultimaker 2 Extended+, Bambu Lab X1-Carbon 3 Pro und Bambu Lab A1}
 \end{table}
+
 
 
 \subsection{Slicer}
@@ -950,7 +954,7 @@ Eine SD-Karte ist eine kleine Speicherkarten, die in einigen tragbaren Geräten 
 Eine Sicherungskopie wird vorgenommen, wenn nur kleine Daten von einer SD-Karte zum Sichern sind. Hierbei wird der SD-Kartenleser an den Computer angeschlossen und die Datei auf das Laufwerk des Computers kopiert. Doch um größere Dateien zu sichern, reicht diese Methode nicht aus. \parencite{SD-KartenSicherung}
 
 \subsection{Klonen einer SD-Karte}
- Hierbei wird eine identische Kopie des Quelllaufwerks erstellt und alle Inhalte der SD-Karte werden auf das Ziellaufwerk kopiert. Die am häufigsten verwendete Programme dafür sind Win32 Disk Imager und Balena Etcher. \parencite{SD-KartenSicherung}
+Hierbei wird eine identische Kopie des Quelllaufwerks erstellt und alle Inhalte der SD-Karte werden auf das Ziellaufwerk kopiert. Die am häufigsten verwendete Programme dafür sind Win32 Disk Imager und Balena Etcher. \parencite{SD-KartenSicherung}
 
 \subsection{Vergleich von Win32 Disk Imager und Balena Etcher}
 Beide Programme sind kostenlos nutzbar und sind Open-Source Anwendungen. Sie sind beide einfach zu bedienen. Bei der Benutzerfreundlichkeit sind beide Programme ident, sowie die Schritte zum Sichern der SD-Karte. Balena Etcher und Win32 Disk Imager können beide Image-Dateien auf USB Flash Laufwerke, SD-Karten und Wechseldatenträger schreiben. Der Unterschied von den zwei Programmen liegt darin, dass Win32 Disk Imager die SD-Karten oder USB-Sticks wiederherstellen kann. \parencite{VergleichvonWin32DiskImagerundBalenaEtcher}
@@ -1003,7 +1007,7 @@ Die Unternehmensfarben und das Logo repräsentieren das Unternehmen nach innen u
 
 \subsubsection{Unternehmensschrift}
 Die Unternehemnsschrift ist zwar ein Teil des Erscheinungsbilds, jedoch ist dieser Teil nicht so wichtig. Es können bestehende Schriften, aber auch eine neue Schrift verwendet werden. Innerhalb des Unternehmens sollte jedoch eine Schriftart für alle Werbemittel oder Medien festgelegt werden. Die Schriftart sollte gut leserlich sein und zu dem Produkt oder der Tätigkeit passen. \parencite{Unternehmensschrift}
- 
+
 \subsection{Corporate Communication}
 Die Corporate Communication vermittelt die Unternehmensidentität durch eine einheitliche Kommunikation nach innen und außen. Die Kommunikation inner- und außerhalb des Unternehmens wirkt sich auf die Betriebsatmosphäre aus. Dies wird durch einen Slogan wiedergegeben.
 
@@ -1134,19 +1138,19 @@ Auf den nächsten beiden Seiten befindet sich die Informationsseite. Auf der lin
 
 Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der Abbildung \ref{fig:Teamseite} ersichtlich ist. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen des Lesers zu gewinnen. Außerdem bekommt der Leser einen ersten Einblick vom Team und kann hiermit schon feststellen, ob ihm das Team, sowie das Konzept zusagt. Weiters wird das Team von StageControl beschrieben und erklärt wie wir es geschafft haben, uns dieser Herausforderung zu stellen.
 
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.5\linewidth]{images/Teamseite.png}
- 	\caption[Teamseite]{Teamseite}
- 	\label{fig:Teamseite}
- \end{figure} 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Teamseite.png}
+	\caption[Teamseite]{Teamseite}
+	\label{fig:Teamseite}
+\end{figure} 
 
 Die einzelnen Themen im Flyer sind wichtig, um somit dem Leser einen umfassenden Einblick in StageControl zu geben und sie zu begeistern StageControl zu verwenden. Durch der Kombination von Informationen und des Designs wurde ein informativer Flyer entwickelt. 
 
 \section{Logo Animation}
 Für die Erstellung einer Animation vom Logo wurde das Programm Adobe After Effects verwendet. Als erstes wurde die Illustratordatei von dem Logo importiert, indem eine neue Komposition erstellt wurde. Wobei hier darauf geachtet werden muss, dass die Ebenengrößen beibehalten werden. Die Kompositionsdateien werden links im Projekt-Panel angezeigt, wie in der nächsten Abbildung \ref{fig:Projekt-Panel} zu sehen ist.
 
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/Projekt-Panel.png}
 	\caption[Projekt-Panel]{Projekt-Panel}
@@ -1155,7 +1159,7 @@ Für die Erstellung einer Animation vom Logo wurde das Programm Adobe After Effe
 
 Mit einem Doppelklick auf die Animationskomposition, wird die Datei geöffnet und in der Zeitleiste, die sich unten befindet, werden alle Ebenen angezeigt. 
 
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/Zeitleiste.png}
 	\caption[Zeitleiste]{Zeitleiste}
@@ -1164,7 +1168,7 @@ Mit einem Doppelklick auf die Animationskomposition, wird die Datei geöffnet un
 
 Da jeder Balken und Buchstabe eine eigene Ebene war, konnte in der Zeitleiste einfach die jeweilige Ebene an die gewünschte Position hingeschoben werden. Somit konnte die Annordnung der Balken und Buchstaben in Sekundenabständen mittels einem Verlauf dargestellt werden. Mithilfe des Vorschau-Panels konnte das Ergebnis der Animation direkt angeschaut werden. 
 
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/Vorschau-Panel.png}
 	\caption[Vorschau-Panel]{Vorschau-Panel}
@@ -1264,11 +1268,11 @@ Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzpla
 
 
 \section{Servomotoren}
-Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der unseren Kriterien entspricht. Diese Servomotoren muss sehr robust sein damit er etwaige mechanische Einwirkung aushält. Außerdem müssen die Motoren wasserfest sein um auch bei außen Einsätzen nutzbar zu sein. 
+Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der unseren Kriterien entspricht. Diese Servomotoren müssen sehr robust sein damit er etwaige mechanische Einwirkung aushält. Außerdem müssen die Motoren wasserfest sein um auch bei außen Einsätzen nutzbar zu sein. 
 
 \subsection{Servomotoren Auswahl}
 
-Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer der Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \textit{"Steuerlogik"} detailliert erläutert.
+Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \textit{"Steuerlogik"} detailliert erläutert.
 
 
 \textbf{FOTO!!!!}
@@ -1363,13 +1367,25 @@ Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Diese verf
 \end{figure}
 
 
-\subsection{Blender}
-Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen von StageControl gebraucht wurden. 
+\section{3D Prototyping}
+Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen von StageControl gebraucht wurden, wie die Gehäuse für die ESP32 UWBs und der Clip zum Anstecken an der Hose. Diese Modelle wurden dann in das STL Dateiformat exportiert um es für das Sclicer Programm Bambu Studio lesbar zu machen. Danach wurde die gesclicte Datei an den Bambu Lab A1 via WLAN geschickt und ausgedruckt.
+
+\subsection{Bambu Studio}
+Bambu Studio wurde verwendet da dieses Programm explizit für die Bambu Lab Drucker entwickelt wurde und über wichtige Funktionen verfügt die das Drucken mit einem Bambu Lab Drucker erst ermöglichen. Wie zum Beispiel: Sclicing der STL Datei in G-Code, Druckersteuerung und Überwachung des Druckvorgangs und Filamentverwaltung bei der verschiedene Filamenttypen mit unterschiedlichen Temperaturprofilen eingestellt werden können.
+
+\subsection{Einstellungen Bambu Studio}
+Im Programm Bambu Studio wurde die STL Datei importiert. Unter dem Menüpunkt Preview kann nun das Modell angeschaut werden. Danach wurde im linken Abschnitt des Printer Menüs um Unterpunkt Support, Enable Support angeklickt um Support-Stützen zu aktivieren, damit die herausstehende Auflage, auf die der ESP32 UWB hinauf geschraubt wird, gedruckt werden kann. Zusätlich wurde so sicher gestellt, dass die unteren Löcher für die M2.5 Gewinde auch gedruckt werden konnten. mit diesen Einstellungen kann vermieden werden, das der Drucker fehlerhaft druckt und der Druck abgebrochen und Neugestartet werden muss.
+
+
+\subsection{PLA}
+Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet. Dieses Filament bietet folgende Eigenschaften
+
+Sclicer PLA Einstellungen in BambuLab (Stützstruckturen) Drucker Settings 
 
 \subsection{BambuLab A1 - 3D-Drucker}
-Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Dieser Drucker kam zum Einsatz, da er uns zur Verfügung stand und über die Kriterien erfüllte.
+Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210°C am Extruder und ca 60° auf der Druckplatte. Dies ist nötig um einen idealen Druckvorgang Seitens des 3D Druckers zu gewährleisten.
 
-\subsection{ESP32-UWB Stromversorgung}
+\section{ESP32-UWB Stromversorgung}
 Die Externe Stromversorgung der ESP32 UWB Module erfolgt bei 4 von 5 Stück mittels 1900mAh wiederaufladbaren Akkus betrieben. Die ESPs werden mit einer Spannung von 4,8V betrieben. So wird gewährleistet, dass ein Auftritt auf einer Bühne reibungslos druchgeführt werden kann.\\
 Der letzte ESP32 wird mittels USB Kabel mit Stromversorgt, da der EPS am Gerüst neben dem Raspberry Pi angebracht wird und über diesem versorgt wird.\\
 
@@ -1385,17 +1401,29 @@ Im Fall von Stagecontrol wird der ungefähre Stromverbauch eines ESP32 UWB Modul
 \text{Laufzeit} = \frac{1900 \text{ mAh}}{300 \text{ mA}} = 6,3 \text{ Stunden}
 \]
 
-Diese Akkaufzeit reicht in den meisten Fällen vollkommen aus, da viele Konzerte nicht länger als 3 Stunden am Stück dauern.
+Diese Akkulaufzeit reicht in den meisten Fällen vollkommen aus, da viele Konzerte nicht länger als 3 Stunden am Stück dauern.
 
-Der Vorteil der Nutzung der ESP32 UWBs mit Akkus anstelle eines Netzteils liegt im mobilen Betrieb des Systems und die flexible Anpassung an die Bühneumgebung.
+Der Vorteil der Nutzung der ESP32 UWBs mit Akkus anstelle eines Netzteils liegt im mobilen Betrieb des Systems und die flexible Anpassung an die Bühnenumgebung.
 
 Die Akkupacks werden mit dem ANSMANN Ladegerät ACS48, das speziell für 4- bis 8-zellige Akkupacks mit einer Spannung von 4,8 bis 9,6 V ausgelegt ist, sowie mit einem Notebook-Ladegerät geladen. Beide Ladegeräte wurden für das Aufladen der Akkupacks modifiziert. Die originalen Anschlüsse der Ladegeräte wurden abgetrennt und durch MiniAMP Anschlüsse ersetzt. Um die neue Verkabelung zu schützen, wurde zusätzlich ein Kabelschlauch um die Kabel angebracht.  
 
-\textbf{FOTO!!}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.21\linewidth]{images/Stromversorgung-4.jpg}
+	\includegraphics[width=0.2214\linewidth]{images/Stromversorgung-3.jpg}
+	\caption[Akkupacks]{Akkupacks}
+	\label{fig:Akkupacks}
+\end{figure}
 
 Ebenfalls wurden die Akkupacks modifiziert. Der originale Anschluss (ein 3-poliger Steckverbinder) der Akkupacks war zu groß, um in die Stromversorgungsbuchse der ESPs zu passen. Daher wurden die Anschlüsse der Akkupacks entfernt und durch neue MiniAMP-Anschlüsse ersetzt, um in die Buchse der ESPs zu passen.
 
-\textbf{FOTO}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.254\linewidth]{images/Stromversorgung-1.jpg}
+	\includegraphics[width=0.4\linewidth]{images/Stromversorgung-2.jpg}
+	\caption[Netzteil]{Netzteil}
+	\label{fig:Netzteil}
+\end{figure}
 
 \section{Raspberry Pi}
 Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden die Servomotoren per Jumper Wire verbunden, um die Servos mit Winkeldaten, Strom und einer Erdung zu versorgen. Zudem wird der am Gerüst befestigte ESP32 UWB \textit{(Anchor 0)} mittels USB C Kabel über dem Raspberry Pi mit Strom versorgt. 
@@ -1403,7 +1431,6 @@ Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden
 \subsection{Raspberry Pi Pins}
 Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
 Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires benötigt – eines pro Pin, das jeweils in den entsprechenden Female-Connector der Servomotoren gesteckt wird.
-
 
 \subsection{Signalverarbeitung}
 In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \textit{Steuerlogik} beschriebenen Abläufen. \\
@@ -1424,8 +1451,13 @@ Folgende Libraries wurden verwendet:
 	import socket -> Gebraucht für das Empfangen der Daten via UDP
 \end{lstlisting}
 
-
-
 \section{Mischpult}
 Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen. Zum Testen der Steuerung wurde das Behringer Xenyx 1204USB verwendet.
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/Mischpult-Behringer.jpg}
+	\caption[Mischpult-Behringer]{Mischpult-Behringer}
+	\label{fig: Mischpult-Behringer}
+\end{figure}
