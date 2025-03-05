@@ -146,11 +146,46 @@
 
 
 
-
-
-
 % Einbinden einer Schriftart mit angepasster Kerningtabelle und guten Ligaturen
 \usepackage{lmodern}
+
+%  Define Java sytle
+\lstdefinestyle{java}{
+	language=Java,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{gray}\itshape,
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=5pt,
+	backgroundcolor=\color{white},
+	rulecolor=\color{black},
+	breaklines=true,
+	showstringspaces=false,
+	captionpos=b,
+	escapeinside={\%*}{*)}
+}
+
+% Define C++ style
+\lstdefinestyle{c++}{
+	language=C++,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{purple}\bfseries,
+	commentstyle=\color{green}\itshape,
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	numbersep=5pt,
+	backgroundcolor=\color{white},
+	rulecolor=\color{black},
+	breaklines=true,
+	showstringspaces=false,
+	captionpos=b,
+	escapeinside={\%*}{*)}
+}
 
 \begin{document}
 	

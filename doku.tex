@@ -1034,6 +1034,435 @@ Adobe After Effects wird für Motion Design, Animationen und visuelle Effekte ve
 Alles in allem bietet Adobe After Effects einige Funktionen, die es ermöglicht eine hochwertige Animation zu erstellen. Diese wird in dem Werbeclip verwendet. 
 
 \chapter{Ergebnisdokumentation}
+\section{Einleitung}
+\subsection{Was ist StageControl?}
+StageControl ist eine GUI-App für die Indoor-Navigation auf einer Bühne. Sie verwendet ESP32 UWB Sensoren und Trilateration, um den Standort des Musikers zu bestimmen. Mit einer grafischen Darstellung des Standortes bietet StageControl eine benutzerfreundliche Erfahrung. Wichtig zu betonen ist, dass die App derzeit noch als Proof-of-Concept des System dient und kein fertiges Projekt darstellt. 
+
+\subsection{Themenabgrenzung}
+StageControl ist eine neue Idee. Es existiert nach unserer Recherche keine Anwendungen wie StageControl. StageControl bezweckt eine technische Indoor-Navigation auf einer Bühne mit GUI-Visualisierung. 
+
+\subsection{Entwicklungsprozesse}
+Die Umsetzung der Diplomarbeit StageControl folgt nach dem Wasserfall-Modell. Dieses Modell besagt, dass die Arbeitspakete im Vorfeld geplant werden und durchgeführt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder unabhängig durchgeführt werden. 
+
+Um den Programmcode für die App und alles weitere fortlaufend zu dokumentieren, wird das Versionskontrollsystem GitHub verwendet. 
+
+\section{Entwicklung}
+Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
+
+\textbf{Arduino IDE} \ – IDE für ESP32 UWB Entwicklung \\
+\textbf{IntelliJ IDEA} \ – IDE für Entwicklung des GUI \\
+\textbf{Java} \ – Programmiersprache für GUI \\
+\textbf{FXML} \ – Auszeichnungssprache für die Szenen der GUI \\
+\textbf{C++} \ – Programmiersprache für ESP32 UWB \\
+\textbf{PostgreSQL} \ – Datenbank \\
+\textbf{VMware Workstation Pro} \ - Virtuelle Maschine
+
+\subsection{JavaFX statt Android Studio}
+Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee haben wir aufgrund von diversen Gründen (Kompatibilität, Plattformübergreifende UIs, Neuerlernung, usw.) verworfen. Da sich JavaFX besonders für die Desktop-Entwicklung eignet haben wir uns schlussendlich dafür entschieden.
+
+\section{Verschiedene Arten von UWB Sensoren}
+
+Es gibt verschiedene Arten von ESP32 UWB Modulen mit denen wir uns beschäftigt haben:
+
+\begin{table}[h]
+	\centering
+	\small
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Feature} & \textbf{UWB Pro} & \textbf{UWB Pro with Display} & \textbf{UWB DW3000} \\
+		\hline
+		CPU & ESP32-WROVER & ESP32-WROVER & ESP32-WROOM/WROVER \\
+		\hline
+		Core UWB & DW1000 & DW1000 & DW3000 \\
+		\hline
+		Screen & N & Y & N \\
+		\hline
+		Measuring Distance (m) & 200 & 200 & 20 \\
+		\hline
+		Battery Socket & N & Y & N \\
+		\hline
+		UWB Channel & 2/5 & 2/5 & 5/9 \\
+		\hline
+		Apple Interoperable & N & N & Y \\
+		\hline
+		Suitable for & Long distance needed & Long distance needed & Product development \\
+		\hline
+	\end{tabular}
+	\caption{Comparison of UWB Modules}
+	\label{tab:uwb_comparison}
+	\parencite{ArtenSensorn}
+\end{table}
+
+\subsection{ESP32 mit MPU-6050}
+Die Grundidee war es mit Hilfe eines Beschleunigungssensor (MPU-6050) die genau Position über Trägheitsnavigation zu ermitteln. Dabei ist bei der Berechnung außerdem zu beachten, dass man die Erdbeschleunigung wegrechnen muss. Der MPU-6050 liefert Beschleunigungsdaten, diese müssten zu Positionsdaten umgerechnet werden, was schlussendlich nicht ohne diverese und unerklärlichen Fehlerakkumulation führte. Deshalb wurde diese Idee verworfen und wir sind mit der UWB-Technolgie fortgefahren. \parencite{MPU6050}
+
+\subsection{ESP32 UWB Pro}
+
+Der ESP32 wurde bereits in 2.9.2 thematisiert. Wichtig ist aber zu sagen, dass wir einen ESP32 mit UWB (=Ultrawideband) Funktion und der DW1000Ranging Bibliothek verwendet haben, um uns die Distanzen zwischen Anchor und Tag angeben lassen können. Diese Module unterscheiden sich wie folgt:
+
+\textbf{Tag}
+
+Um einen Tag zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
+\begin{lstlisting}[style=C++, caption=Tag Initialisierung, captionpos=b]
+	#define TAG_ADD "7D:00:22:EA:82:60:3B:9C"
+	DW1000Ranging.startAsTag(TAG_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER);
+\end{lstlisting}  
+
+\textbf{Anchor}
+
+Um einen Anchor zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
+\begin{lstlisting}[style=C++, caption=Anchor Initialisierung, captionpos=b]
+	#define ANCHOR_ADD "86:17:5B:D5:A9:9A:E2:9C"
+	DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER, false);
+\end{lstlisting} 
+
+Die Funktion \textit{.startAsAnchor} erhält die folgenden Parameter: den Modus – in unserem Fall \textit{LONGDATA\textunderscore RANGE\textunderscore LOWPOWER} – sowie den Boolean-Wert \textit{false}. Dieser Wert bedeutet, dass keine zufällige Kurzadresse zugewiesen wird, sodass der Tag erkennen kann, welcher Anchor es ist.
+
+Dieser Modi ist jedoch der einzige, welcher die richtigen Abstandwerte zwischen Anchor und Tag liefert, deshalb haben wir uns dafür entschieden.
+
+Wichtig zu beachten ist, dass der Tag einen ähnlichen Code verwendet. Allerdings bleibt der Parameter für die Kurzadresse leer, um Verbindungsprobleme zu vermeiden. Der Modus muss dabei identisch sein.
+
+\textbf{UWB}
+
+UWB steht für Ultrawideband und ist eine Funktechnologie aus den 1960er Jahren. Diese Art von Kommunikationstechnologie ist darauf spezialisiert superschnell kurze Distanzen auszutauschen. Die hohe Präzesion kann bis auf wenige Zentimeter genau verwendert werden. \parencite{UWB}
+
+\textbf{Pinbelegung}
+
+Zu beachten ist, dass die Pinbelegung wichtig ist, die Module kommunizieren über diese und müssen, sowohl beim Anchor als auch Tag Modul gleich belegt werden. Außerdem ist zu betonen, dass jedes Modul, egal ob Anchor oder Tag eine eindeutige und einzigartige ID benötigt, um im System zu funktionieren.Um die Mikrocontroller zu programmieren, wurde als IDE Arduino verwendet, die Programmiersprache ist C++.
+
+\textbf{Anchor:}
+\begin{lstlisting}[style=C++, caption=Pinbelegung für Anchor, captionpos=b]
+	#define SPI_SCK 18
+	#define SPI_MISO 19
+	#define SPI_MOSI 23
+	
+	#define UWB_SS 21
+	#define UWB_RST 27
+	#define UWB_IRQ 34 
+	
+	#define I2C_SDA 4
+	#define I2C_SCL 5
+\end{lstlisting}
+
+
+\textbf{Tag:}
+\begin{lstlisting}[style=C++, caption=Pinbelegung für Tag, captionpos=b]
+	#define SPI_SCK 18
+	#define SPI_MISO 19
+	#define SPI_MOSI 23
+	
+	#define UWB_SS 21
+	#define UWB_RST 27
+	#define UWB_IRQ 34 
+	
+	#define I2C_SDA 4
+	#define I2C_SCL 5
+\end{lstlisting}
+
+\section{Arduino Entwicklung}
+Um Mikrocontroller ansprechen und programmieren zu können, muss man sich für eine IDE entscheiden, hierbei ist die Arduino IDE, \textcite{Arduino}
+die Bekannteste und Einfachste.
+
+Um ein ESP32 zu verwenden, muss man die vom Hersteller Espressif bereitgestellte Bibliothek \texttt{Arduino\_ESP32\_OTA} installieren. Anschließend verbindet man den Mikrocontroller mit einem USB-C-Kabel mit dem Computer. In der Arduino IDE kann man den ESP32 dann auswählen und Code auf den Mikrocontroller übertragen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/ArduinoLib.png}
+	\caption[ESP32Library]{ESP32 Library}
+	\label{fig:ESP32Lib}
+\end{figure}
+
+\subsection{Arduino Bibliotheken}
+Um den ESP32 zu compilen, die Funktion von UWB und andere Funktionen zu verwenden, muss man Biblotheken im Code verwenden: 
+\begin{lstlisting}[style=C++, caption=Biblotheken, captionpos=b]
+	#include <SPI.h>
+	#include "DW1000Ranging.h"
+	#include "DW1000.h"
+	#include <Wire.h>
+	#include <Adafruit_GFX.h>
+	#include <Adafruit_SSD1306.h>
+\end{lstlisting}
+
+\textbf{\texttt{SPI.h}} \ – Standardbibliothek für die SPI-Kommunikation (Serial Peripheral Interface) \\
+\textbf{\texttt{DW1000Ranging.h}} \& \textbf{\texttt{DW1000.h}} \ – Bibliotheken für UWB-Technologie (Ultra-Wideband) zur Entfernungsmessung \\
+\textbf{\texttt{Wire.h}} \ – Bibliothek für I2C-Kommunikation \\
+\textbf{\texttt{Adafruit\_GFX.h}} \& \textbf{\texttt{Adafruit\_SSD1306.h}} \ – Bibliotheken zur Steuerung eines OLED-Displays mit SSD1306-Treiber
+
+
+
+\section{Setup des Projektes}
+In diesem Abschnitt wird das Setup des Projektes, also Bühneneinrichtung, Kalibrierung, usw. thematisiert.
+
+\subsection{Anchor \& Tag Setup}
+Um das Setup zu starten, muss man auf einige Dichte achten (Aufstellung der Anchors siehe Grafik \ref{fig:AnchorTagSetup}, siehe \ref{Einrichtung Bühne} Einrichtung der Bühne, siehe \ref{KalibrierungDerAnchor} Kalibrierung der Anchor). In nachfolgender Grafik ist das grundlegende Setup dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/AnchorTagSetup.png}
+	\caption[AnchorTagSetup]{Anchor \& Tag Setup}
+	\label{fig:AnchorTagSetup}
+\end{figure}
+
+Die roten Kreise stellen die Anchors dar, welche immer in einem Dreieck platziert werden müssen. Die blauen Kreise sind die Tags, welche beliebig hinzugefügt werden können. Die schwarzen Linien sind die Abstände zwischen den Tags und den Anchors, diese werden für die Trilateration benötigt, diese werden für die genaue Bestimmung auf der Bühne benötigt. 
+
+\subsection{Kalibrierung der Anchor}
+\label{KalibrierungDerAnchor}
+Die Kalibrierung erfolgt im Code des jeweiligen Anchors. Dieser erstellt einen Mittelwert aus vier rohen Rangedaten und sendet diese dann an den Tag, welcher wiederum die Daten an das GUI für die Berechnung schickt. In unserem Fall gehen wir immer von Werten zwischen 0,5 und 50,0m aus, diese können, aber im Code variable verändert werden.
+
+\begin{lstlisting}[style=C++, caption=Kalibrierung der Anchor, captionpos=b]
+	#define RANGE_HISTORY_SIZE 4
+	
+	float rangeHistory[RANGE_HISTORY_SIZE] = {0};
+	int rangeIndex = 0;
+	bool historyFilled = false;
+	
+	void newRange() {
+		float range = DW1000Ranging.getDistantDevice()->getRange();
+		
+		const float MIN_VALID_RANGE = 0.5;
+		const float MAX_VALID_RANGE = 50.0;
+		
+		if (range > MIN_VALID_RANGE && range < MAX_VALID_RANGE) {
+			rangeHistory[rangeIndex] = range;
+			rangeIndex = (rangeIndex + 1) % RANGE_HISTORY_SIZE;
+			
+			if (rangeIndex == 0) historyFilled = true;
+			
+			float sum = 0;
+			int count = historyFilled ? RANGE_HISTORY_SIZE : rangeIndex;
+			for (int i = 0; i < count; i++) {
+				sum += rangeHistory[i];
+			}
+			float avgRange = sum / count;
+			
+			Serial.print("From: ");
+			Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
+			Serial.print("\t Avg Range: ");
+			Serial.print(avgRange);
+			Serial.println(" m");
+		}
+	}
+\end{lstlisting}
+
+
+\subsection{Einrichtung Bühne}
+\label{Einrichtung Bühne}
+Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position zu bestimmen. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 auf immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von "Abschreiten" definiert und über das GUI (=Graphical User Interface) per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, kann die Visualisierung funktionieren.
+
+\subsection{Positionsbestimmung auf einer Bühne}
+Die Positionsbestimmung wurde nicht wie ursprünglich mit Trägheitsnavigations umgesetzt, sondern mithilfe von Trilateration. 
+
+\textbf{Trilateration}
+
+Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen, dadurch, dass wir diese  bereits bei der Einrichtung der Bühne definiert haben, können wir mit folgender Berechnung die Position des Tags bestimmen. In d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
+
+Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt, die getrennten Daten werden dann in d1, d2 und d3 eingetragen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/EintragungVariablen.png}
+	\caption[EintragungVariablen]{Eintragung in die Variablen}
+	\label{fig:Variableneintragung}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/JSONData.png}
+	\caption[JSONData]{JSON Datenstruktur}
+	\label{fig:JSONData}
+\end{figure}
+
+\begin{lstlisting}[style=Java, caption=Trilateration in Java, captionpos=b]
+	private double[] trilaterate(double d1, double d2, double d3) {
+		double x1 = ANCHORS[0][0], y1 = ANCHORS[0][1];
+		double x2 = ANCHORS[1][0], y2 = ANCHORS[1][1];
+		double x3 = ANCHORS[2][0], y3 = ANCHORS[2][1];
+		
+		double A = 2 * (x2 - x1);
+		double B = 2 * (y2 - y1);
+		double C = d1 * d1 - d2 * d2 - x1 * x1 - y1 * y1 + x2 * x2 + y2 * y2;
+		
+		double D = 2 * (x3 - x1);
+		double E = 2 * (y3 - y1);
+		double F = d1 * d1 - d3 * d3 - x1 * x1 - y1 * y1 + x3 * x3 + y3 * y3;
+		
+		double denominator = (A * E - B * D);
+		if (denominator == 0) {
+			System.out.println("ERROR: Denominator is zero, positions may be collinear!");
+			return new double[]{-1, -1};
+		}
+		
+		double x = (C * E - F * B) / denominator;
+		double y = (C * D - A * F) / denominator;
+		System.out.println("Calculated Tag Position: (" + x + ", " + y + ")");
+		return new double[]{x, y};
+	}
+\end{lstlisting}
+\section{GUI}
+In diesem Abschnitt wird das GUI thematisiert.
+
+\subsection{GUI-Setup}
+Um das Programm zu verwenden, muss sich der Benutzer zunächst einloggen \ref{fig:StageControlViewGUI}. Die Benutzerkonten werden zuvor von einem Administrator in der Datenbank \ref{tab:users} \texttt{users} angelegt.  
+
+Nach dem Login gelangt man zu einer Übersicht, in der ein oder zwei Geräte (Tags) hinzugefügt werden können. Anschließend müssen die Anchors festgelegt werden. Dazu bewegt man den Tag auf der Bühne zu einer Ecke und betätigt den Knopf „xy“. Danach wiederholt man diesen Schritt für eine weitere Ecke (oben in der Mitte), indem man erneut den Knopf „xy“ drückt. Sobald alle Anchors gesetzt sind, wird der MaxX-Wert zwischen Anchor1 und Anchor2 bestimmt, um den Servo zu steuern. Dies geschieht durch einen Klick auf den Knopf „xy“.  
+
+Nach diesen Schritten sind sowohl die Visualisierung als auch die Servosteuerung funktionsfähig.
+
+%% Bilder!!!
+
+\subsection{GUI-Entwicklung}
+Für die GUI-Entwicklung verwenden wir IntelliJ IDEA mit JavaFX, da uns das bereits vom Unterricht bekannt ist und wir somit nicht die Grundlagen einer anderen IDE lernen mussten.
+
+Die GUI wird in verschiedene Szenen aufgeteilt, in unserem Fall in \textit{anlagen-view.fxml}, \textit{splash-view.fxml} \& \textit{stagecontrol-view.fxml}
+Anbei ein Auszug aus der \textit{stagecontrol-view}:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/stagecontrol-view.png}
+	\caption[Auszug aus Stagecontrol-View.fxml]{Auszug aus Stagecontrol-View.fxml}
+	\label{fig:Stagecontrolview}
+\end{figure}
+
+Dieser Code stell diese Szene dar:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/StagecontrolViewGUI.png}
+	\caption[StageControl GUI View]{StageControl GUI View}
+	\label{fig:StageControlViewGUI}
+\end{figure}
+
+
+Jede Klasse bekommt einen Controller. Zum Beispiel: \textit{Main.java} hat einen Controller \textit{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren.
+
+\subsection{GUI-Design}
+Um alle Szenen korrekt zu laden haben wir eine Logo-Animation eingefügt. Damit schaffen wir außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters um ein einheitliches Design zu gewährleisten, wurde jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Expierence wurde vereinfacht und für den Enduser optimiert.   
+
+%% Bild von fertiger GUI
+
+\section{Transferprotokolle}
+In diesem Abschnitt werden die Transferprotokolle thematisiert.
+
+\subsection{UDP}
+UDP (=User Datagram Protocol) ist ein Kommunikationsprotokoll, welches Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Wir verwenden es, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür verwenden wir eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst. Über den Port 80 sendet der ESP32 UWB, dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet sich aus den Daten die Position des Tags. Wiederrum sendet das GUI wieder über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
+
+\subsection{MQTT}
+MQTT (=Message Queuing Telemetry Transport) ist ein offenes Protokoll für Verbindungen in unzuverlässige Netzwerke oder eingeschränkten Bandbreitenressourcen. \parencite{MQTT}
+
+\subsection{MQTT vs UDP}
+In der unteren Tabelle sieht man die Unterschiede zwischen MQTT und UDP.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|}
+		\hline
+		\textbf{Merkmal} & \textbf{UDP} & \textbf{MQTT} \\
+		\hline
+		Verbindungstyp & Verbindungslos & Verbindung \\
+		\hline
+		Zuverlässigkeit & Niedrig & Wählbar (QoS) \\
+		\hline
+		Sicherheit & Keine Garantie & Wählbar (QoS) \\
+		\hline
+		Verzögerung & Gering & Gering (leichtgewichtig) \\
+		\hline
+		Anwendung & Streaming, Online-Spiele & IoT, Benachrichtigungen \\
+		\hline
+		Modus & Peer-to-Peer & Publish/Subscribe \\
+		\hline
+	\end{tabular}
+	\caption{Vergleich von UDP und MQTT}
+	\label{tab:udp_mqtt}
+	\textcite{MQTTvsUDP}
+\end{table}
+
+\section{Datenbank}
+Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{PostgreSQL}, ein wichtiger Aspekt für unsere Diplomarbeit. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/postgres-logo.png}
+	\caption[PostgreSQL Logo]{PostgreSQL Logo}
+	\label{fig:PostgreSQLLogo}
+\end{figure}
+
+\subsection{VMware Workstation Pro}
+Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der unsere PostgreSQL-Datenbank läuft. Da wir weder Ressourcen noch den Zugang zu einem physischen Server haben, haben wir uns für eine digitale Lösung entschieden. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
+
+\subsection{Datenbankstruktur}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Column} & \textbf{Type} \\
+		\hline
+		id & integer \\
+		\hline
+		device\_id & integer \\
+		\hline
+		maxdistance & double precision \\
+		\hline
+		timestamp & timestamp without time zone \\
+		\hline
+	\end{tabular}
+	\caption{Übersicht der Spalten und Datentypen der Tabelle \texttt{stagedata}.}
+	\label{tab:stagedata}
+\end{table}
+
+Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
+
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Column} & \textbf{Type} \\
+		\hline
+		device\_id & integer \\
+		\hline
+		device\_name & character varying(255) \\
+		\hline
+		device\_type & character varying(100) \\
+		\hline
+		created\_at & timestamp without time zone \\
+		\hline
+	\end{tabular}
+	\caption{Übersicht der Spalten und Datentypen der Tabelle \texttt{devices}.}
+	\label{tab:devices}
+\end{table}
+
+Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät (Tag) erhält eine eindeutige \texttt{device\_id}. Zusätzlich gibt es einen Gerätenamen (\texttt{device\_name}) und einen Gerätetyp (\texttt{device\_type}). Der Zeitstempel \texttt{created\_at} wird automatisch mit dem aktuellen Zeitpunkt gesetzt.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Column} & \textbf{Type} \\
+		\hline
+		id & integer \\
+		\hline
+		username & character varying(50) \\
+		\hline
+		password & character varying(255) \\
+		\hline
+	\end{tabular}
+	\caption{Übersicht der Spalten und Datentypen der Tabelle \texttt{users}.}
+	\label{tab:users}
+\end{table}
+
+Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto erhält eine eindeutige \texttt{id}. Der \texttt{username} dient als Anmeldekennung und hat eine maximale Länge von 50 Zeichen. Das Feld \texttt{password} speichert das Passwort in gehashter Version des Benutzers, um sich dann folglich in der GUI anmelden zu können.
+
+\subsection{Beziehung zwischen \texttt{devices} und \texttt{stagedata}}
+
+Die Tabellen \texttt{devices} und \texttt{stagedata} stehen in einer 1-zu-N-Beziehung. Jedes Gerät in der Tabelle \texttt{devices} kann mehrere zugehörige Sensordaten in der Tabelle \texttt{stagedata} besitzen. Dies wird durch die Spalte \texttt{device\_id} in \texttt{stagedata} realisiert, die als Fremdschlüssel auf \texttt{device\_id} in \texttt{devices} verweist. Dadurch wird ermöglicht, dass jede die Daten einem existierenden Gerät zugeordnet ist. 
+
+\subsection{Nützliche Befehle für PostgreSQL}
+\textbf{psql} \ – connects you to the psql shell. \\
+\textbf{\textbackslash{c}} \ – connects to the database. \\
+\textbf{\textbackslash{l}} \ – shows all databases. \\
+\textbf{\textbackslash{d}} \ – shows all tables. \\
+\textbf{\textbackslash{d} tablename} \ – shows table details. \\
+\textbf{\textbackslash{q}} \ – quit the psql.
+
+Diese Funktionen sind die Grundlagen und helfen dabei sich in einer Datenbank, wie PostgreSQL zu recht zu finden.
 
 \section{Corporate Identity}
 Bei der Corporate Identity beschäftigt sich Stage Control mit der Namensfindung, Farben, Logo, sowie der Schriftart. Nach der Namensfindung wurden die passenden Farben und das Logo geplant, sowie gestaltet.
