@@ -1668,9 +1668,9 @@ An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und eine
 Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 10 × 10 × 1000 mm verwendet, um den Rahmen zu konstruieren. Die Stangen wurden mit Schrauben und Muttern befestigt.\\
 
 \begin{table} [H]
-	\begin{tabular}{ |p{3.1cm} |p{4.8cm}|p{4.8cm}| }
+	\begin{tabular}{ |p{3.3cm} |p{4.8cm}|p{4.8cm}| }
 		\hline
-		\textbf{Material} & \textbf{Menge}& \textbf{Maße}\\
+		\textbf{Material} & \textbf{Menge}& \textbf{Maße pro Stück}\\
 		\hline
 		\textbf{Aluminium Stangen} & 4x1m Aluminium Stangen & 10x10x1000mm  \\ 
 		\hline
@@ -1678,11 +1678,11 @@ Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 
 		\hline
 		\textbf{Holz-Platte klein} & 1 Stück & 12x9.5cm   \\  
 		\hline
-		\textbf{Aluminium Flachprofil} & 1 Stück  & 1m \\
+		\textbf{Aluminium Flachprofil} & 2 Stück  & 1m \\
 		\hline
-		\textbf{Steckkappen Plastik} & Steckkappen & 10x10mm eckig  \\
+		\textbf{Steckkappen Plastik} & 8 Stück & 10x10mm eckig  \\
 		\hline
-		\textbf{Befestigungswinkel}&  &  \\
+		\textbf{Befestigungswinkel}& 12 Stück für das Gerüst, 4 Stück zum Befestigen der Holzplatten   &  \\
 		\hline
 		\textbf{Schrauben}& 44 Schrauben für das gesamte Gerüst | 	Raspberry/ESP32 UWB Aufsatz & 42 Stück M4x20 | 2 Stück M4x40\\
 		\hline
@@ -1702,7 +1702,6 @@ Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrich
 \subsection{Servomotoren Auswahl}
 
 Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \textit{"Steuerlogik"} detailliert erläutert.
-
 
 \textbf{FOTO!!!!}
 
@@ -1802,17 +1801,36 @@ Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen
 \subsection{Bambu Studio}
 Bambu Studio wurde verwendet da dieses Programm explizit für die Bambu Lab Drucker entwickelt wurde und über wichtige Funktionen verfügt die das Drucken mit einem Bambu Lab Drucker erst ermöglichen. Wie zum Beispiel: Sclicing der STL Datei in G-Code, Druckersteuerung und Überwachung des Druckvorgangs und Filamentverwaltung bei der verschiedene Filamenttypen mit unterschiedlichen Temperaturprofilen eingestellt werden können.
 
+
 \subsection{Einstellungen Bambu Studio}
 Im Programm Bambu Studio wurde die STL Datei importiert. Unter dem Menüpunkt Preview kann nun das Modell angeschaut werden. Danach wurde im linken Abschnitt des Printer Menüs um Unterpunkt Support, Enable Support angeklickt um Support-Stützen zu aktivieren, damit die herausstehende Auflage, auf die der ESP32 UWB hinauf geschraubt wird, gedruckt werden kann. Zusätlich wurde so sicher gestellt, dass die unteren Löcher für die M2.5 Gewinde auch gedruckt werden konnten. mit diesen Einstellungen kann vermieden werden, das der Drucker fehlerhaft druckt und der Druck abgebrochen und Neugestartet werden muss.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/BambuStudio.jpg}
+	\caption[BambuStudio]{BambuStudio}
+	\label{fig:BambuStudio} 
+\end{figure}
 
 \subsection{PLA}
-Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet. Dieses Filament bietet folgende Eigenschaften
+Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet. Dieses Filament bietet folgende Eigenschaften: Robustheit, kratzfest, geringen Verzug (Warping), farbecht \parencite{PLAEigenschaften}. Warping ist das verziehen des Materials, meist nach oben. Dies tritt dann auf wenn, unterschiedliche Temperaturen und Abkühlgeschwindigkeiten der einzelnen Schichten vorliegen. Während des Kühlprozesses kommt es zur Schrumpfung des Materials, wobei Warping begünstigt wird \parencite{Warping}.
 
-Sclicer PLA Einstellungen in BambuLab (Stützstruckturen) Drucker Settings 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/PLA.jpg}
+	\caption[PLA]{PLA}
+	\label{fig:PLA} 
+\end{figure}
+
 
 \subsection{BambuLab A1 - 3D-Drucker}
 Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210°C am Extruder und ca 60° auf der Druckplatte. Dies ist nötig um einen idealen Druckvorgang Seitens des 3D Druckers zu gewährleisten.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/BambuLabA1.jpg}
+	\caption[BambuLabA1]{BambuLabA1}
+	\label{fig: BambuLabA1}
+\end{figure}
 
 \section{ESP32-UWB Stromversorgung}
 Die Externe Stromversorgung der ESP32 UWB Module erfolgt bei 4 von 5 Stück mittels 1900mAh wiederaufladbaren Akkus betrieben. Die ESPs werden mit einer Spannung von 4,8V betrieben. So wird gewährleistet, dass ein Auftritt auf einer Bühne reibungslos druchgeführt werden kann.\\
@@ -1861,6 +1879,14 @@ Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden
 Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
 Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires benötigt – eines pro Pin, das jeweils in den entsprechenden Female-Connector der Servomotoren gesteckt wird.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/Mischpult-Behringer.jpg}
+	\caption[Raspberry Pi Pins]{Raspberry Pi Pins}
+	\label{fig: Raspberry Pi Pins}
+\end{figure}
+
+
 \subsection{Signalverarbeitung}
 In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \textit{Steuerlogik} beschriebenen Abläufen. \\
 Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches diese, wie im Kapitel \textit{"Raspberry Pi als Access Point"} beschrieben, an den Verarbeitenden Raspberry Pi sendet	.
@@ -1878,7 +1904,11 @@ Folgende Libraries wurden verwendet:
 	import RPi.GPIO as GPIO -> Wird verwendet um die GPIO Pins des Raspberry Pis anzusteuern.
 	from time import sleep -> Wird verwendet um ein delay hinzuzufügen
 	import socket -> Gebraucht für das Empfangen der Daten via UDP
+	import psycopg2 -> Stellt die Verbindung zwischen Python script und Datenbak her
 \end{lstlisting}
+
+\subsection{Datenbankverbindung}
+Um bei einem Ausfall des Systems und bei einem folgenden Neustart nicht den Prozess des Kalibrierens während einer Bühnenperformance durchführen zu müssen, werden die Abstände ,\textit{( in der Datenbank: "maxDistances")}, aus der Datenbank über eine Select-Anweisung geholt. So kann nach einem Ausfall der Betrieb wiederh . Vom Raspberry Pi werden keine Daten an die Datenbank geschickt da dies zu viel Bandbreite und einen Negativen Einfluss auf die Geschwindigkeit der Datenbank hat.
 
 \section{Mischpult}
 Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen. Zum Testen der Steuerung wurde das Behringer Xenyx 1204USB verwendet.
