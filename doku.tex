@@ -11,18 +11,17 @@
 \chapter{Grundlagen und Methoden}
 
 \section{Etablierte Lösungsansätze}
-Das Kapitel listet etablierte Lösungsansätze zur Standortermittlung einer Person auf einer Bühne und erklärt diese genauer, ebenso wie Vor- und Nachteile anhand eines Beispieles.
 
-\subsection{Ausgangsituation des Praxisbeispiels}
+\subsection{Ausgangssituation}
 
-Man befindet sich auf der Bühne in der Stadthalle in Ybbs. Folgende Informationen sind wichtig.
+Man befindet sich auf einer Bühne. 
 \begin{itemize}
-	\item \textbf{Gerät zur Standortermittlung: } Android Smartphone
-	\item \textbf{Koordinaten der Position: } TBD  
+	\item \textbf{Gerät zur Standortermittlung: } 
+	\item \textbf{Koordinaten der Position: }
 \end{itemize}
 
 \subsection{Manuelle Steuerung}
-Eine Person steht auf der Bühne der XY. Eine Möglichkeit die Steuerung der Ton- und Lichtanlagen ist diese für das Event vorher zu programmieren oder manuell während der Show zu steuern. Nun fragt sich die Person: "Wie kann ich diese Ton- und Lichtanlagen steuern?" Die Antworten folgen:
+Eine Person steht auf einer Bühne. Eine Möglichkeit die Steuerung der Tonanlagen ist diese für das Event vorher zu programmieren oder manuell während der Show zu steuern. Nun fragt sich die Person: "Wie kann ich diese Ton- und Lichtanlagen steuern?" Die Antworten folgen:
 
 \begin{itemize}
 	\item "Manuelle Steuerung der Tonanlage"
@@ -1036,15 +1035,17 @@ Alles in allem bietet Adobe After Effects einige Funktionen, die es ermöglicht 
 \chapter{Ergebnisdokumentation}
 \section{Einleitung}
 \subsection{Was ist StageControl?}
-StageControl ist eine GUI-App für die Indoor-Navigation auf einer Bühne. Sie verwendet ESP32 UWB Sensoren und Trilateration, um den Standort des Musikers zu bestimmen. Mit einer grafischen Darstellung des Standortes bietet StageControl eine benutzerfreundliche Erfahrung. Wichtig zu betonen ist, dass die App derzeit noch als Proof-of-Concept des System dient und kein fertiges Projekt darstellt. 
+StageControl ist eine innovative Lösung zur Automatisierung von Tonausrichtung auf Bühnen. Aktuell wird die Steuerung von Tonanlagen meist manuell von einem Tontechniker übernommen, um den gewünschten Stereo-Effekt zu erzielen.
+
+Durch ESP32 UWB-Sensoren wird die Position des Künstlers auf der Bühne bestimmt. Die Höhe, Breite und Länge der Bühne werden dabei durch den Darsteller abgeschritten. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels der Servomotoren zu ermöglichen.
 
 \subsection{Themenabgrenzung}
-StageControl ist eine neue Idee. Es existiert nach unserer Recherche keine Anwendungen wie StageControl. StageControl bezweckt eine technische Indoor-Navigation auf einer Bühne mit GUI-Visualisierung. 
+StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. Es kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellern oder Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
 
-\subsection{Entwicklungsprozesse}
-Die Umsetzung der Diplomarbeit StageControl folgt nach dem Wasserfall-Modell. Dieses Modell besagt, dass die Arbeitspakete im Vorfeld geplant werden und durchgeführt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder unabhängig durchgeführt werden. 
+\subsection{Entwicklungsprozesse}  
+Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermöglicht eine strukturierte Planung der Arbeitspakete, die anschließend schrittweise umgesetzt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder effizient und unabhängig erfolgen.  
 
-Um den Programmcode für die App und alles weitere fortlaufend zu dokumentieren, wird das Versionskontrollsystem GitHub verwendet. 
+Zur kontinuierlichen Dokumentation des Programmcodes sowie aller weiteren Entwicklungsfortschritte wird das Versionskontrollsystem GitHub verwendet. Dies stellt eine transparente Nachverfolgbarkeit der Änderungen sicher und erleichtert die Zusammenarbeit im Team.
 
 \section{Entwicklung}
 Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
