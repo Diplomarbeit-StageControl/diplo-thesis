@@ -1666,12 +1666,12 @@ StageControl benötigt ein Gerüst, in dass ein Mischpult hineingestellt wird, u
 
 
 \subsection{Grundsätzliche Funktionalität}
-Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurde eine verschiebbare Stange befestigt, auf der ein Servomotor montiert werden kann.\\
-An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB zur Befestigung mittels Schrauben.
+Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurden zwei verschiebbare Stangen befestigt, auf der die Servomotoren montiert werden können.\\
+An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/Gerüst-2.jpg}
+	\includegraphics[width=0.6\linewidth]{images/Gerüst-2.jpg}
 	\caption[Gerüst]{Gerüst}
 	\label{fig:Gerüst-1}
 \end{figure}
@@ -1714,7 +1714,7 @@ Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzpla
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.3\linewidth]{images/Gerüst-3.jpg}
+	\includegraphics[width=0.5\linewidth]{images/Gerüst-3.jpg}
 	\caption[Gerüst]{Gerüst}
 	\label{fig:Gerüst-2}
 \end{figure}
@@ -1725,16 +1725,24 @@ Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrich
 
 \subsection{Servomotoren Auswahl}
 
-Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.
+Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servomotoren verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.\\
+Die ersten Tests der Steuerung wurden mit den Standard Servomotoren von BerryBase, mit der Bezeichnung SG92R Micro Servo, durchgeführt.
 
 \section{Servomotoren Anpassungen}
 Die Servomotoren werden in einem eigens Angefertigten Gestell gelegt und dann mittels 2 M4x20 Schrauben niedergeschraubt. Durch dieses Gestell werden die Servomotoren vor etwaigen mechanischen Einflüssen geschützt. \\
+Das Servomotorgestell bestehst aus einem Stahl Aufnahmeteil, einem Motorklemmteil und einem Kopplungsstück zwischen dem Servomotor und dem Aufnahmeteil.\\
 Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 10x10x1000mm Aluminiumstange mittels zwei Flügelmuttern niedergeschraubt.\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Servo-Gestell.jpg}
+	\caption[Servomotoren Anpassungen]{Servomotoren Anpassungen}
+	\label{fig:Servomotoren Gestell}
+\end{figure}
 Außerdem musste bei den Servomotoren ein Teil des Originalen Gehäuses abgeschliffen werden, um genug Platz für die Feststellschrauben zu haben.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/Servo-Anpassungen.jpg}
+	\includegraphics[width=0.5\linewidth]{images/Servo-Anpassungen.jpg}
 	\caption[Servomotoren Anpassungen]{Servomotoren Anpassungen}
 	\label{fig:Servomotoren Anpassungen}
 \end{figure}
@@ -1745,8 +1753,8 @@ Um den zuverlässigen Betrieb des Servomotors zu gewährleisten, wurde ein Aufsa
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.25\linewidth]{images/Servomotor+Aufsatz.jpg}
-	\includegraphics[width=0.324\linewidth]{images/Aufsatz-Servo.jpg}
+	\includegraphics[width=0.3\linewidth]{images/Servomotor+Aufsatz.jpg}
+	\includegraphics[width=0.39\linewidth]{images/Aufsatz-Servo.jpg}
 	\caption[Servomotor + Aufsatz]{Servomotor + Aufsatz}
 	\label{fig:Servomotor + Aufsatz}
 \end{figure}
@@ -1761,8 +1769,8 @@ Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verf
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.189\linewidth]{images/ReglerV1.png}
-	\includegraphics[width=0.3\linewidth]{images/Regler.png}
+	\includegraphics[width=0.25\linewidth]{images/ReglerV1.png}
+	\includegraphics[width=0.398\linewidth]{images/Regler.png}
 	\caption[Regler-Aufsätze Versionen]{Regler-Aufsätze Versionen}
 	\label{fig:Regler-Aufsätze Versionen}
 \end{figure}
@@ -1818,14 +1826,14 @@ Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Diese verf
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/ESP32_Gehäuse.png}
+	\includegraphics[width=0.5\linewidth]{images/ESP32_Gehäuse.png}
 	\caption[ESP32-UWB Gehäuse]{ESP32-UWB Gehäuse}
 	\label{fig:ESP32-UWB Gehäuse}
 \end{figure}
 
 
 \section{3D Prototyping}
-Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen von StageControl gebraucht wurden, wie die Gehäuse für die ESP32 UWBs und der Clip zum Anstecken an der Hose. Diese Modelle wurden dann in das STL Dateiformat exportiert um es für das Sclicer Programm Bambu Studio lesbar zu machen. Danach wurde die gesclicte Datei an den Bambu Lab A1 via WLAN geschickt und ausgedruckt.
+Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert die im Rahmen von StageControl gebraucht wurden, wie die Gehäuse für die ESP32 UWBs, der Servomotoraufsatz und der Clip zum Anstecken an der Hose. Diese Modelle wurden dann in das STL Dateiformat exportiert um es für das Sclicer Programm Bambu Studio lesbar zu machen. Danach wurde die gesclicte Datei an den Bambu Lab A1 via WLAN geschickt und ausgedruckt.
 
 \subsection{Bambu Studio}
 Bambu Studio wurde verwendet da dieses Programm explizit für die Bambu Lab Drucker entwickelt wurde und über wichtige Funktionen verfügt die das Drucken mit einem Bambu Lab Drucker erst ermöglichen. Wie zum Beispiel: Sclicing der STL Datei in G-Code, Druckersteuerung und Überwachung des Druckvorgangs und Filamentverwaltung bei der verschiedene Filamenttypen mit unterschiedlichen Temperaturprofilen eingestellt werden können.
@@ -1846,7 +1854,7 @@ Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstec
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.3\linewidth]{images/PLA.jpg}
+	\includegraphics[width=0.4\linewidth]{images/PLA.jpg}
 	\caption[PLA]{PLA}
 	\label{fig:PLA} 
 \end{figure}
@@ -1856,7 +1864,7 @@ Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstec
 Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210°C am Extruder und ca 60° auf der Druckplatte. Dies ist nötig um einen idealen Druckvorgang Seitens des 3D Druckers zu gewährleisten.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/BambuLabA1.jpg}
+	\includegraphics[width=0.6\linewidth]{images/BambuLabA1.jpg}
 	\caption[BambuLabA1]{BambuLabA1}
 	\label{fig: BambuLabA1}
 \end{figure}
@@ -1906,11 +1914,11 @@ Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden
 
 \subsection{Raspberry Pi Pins}
 Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
-Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires benötigt – eines pro Pin, das jeweils in den entsprechenden Female-Connector der Servomotoren gesteckt wird.
+Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires benötigt: sechs für die direkte Verbindung und drei zusätzliche zur Verlängerung der Kabel für den zweiten Servomotor. Die Jumper-Wires vom Raspberry Pi werden in die entsprechenden Female-Connectoren der Servomotoren bzw. der Verlängerungskabel gesteckt.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/RaspiPins.jpg}
+	\includegraphics[width=0.6\linewidth]{images/RaspiPins.jpg}
 	\caption[Raspberry Pi Pins]{Raspberry Pi Pins}
 	\label{fig: Raspberry Pi Pins}
 \end{figure}
@@ -1945,7 +1953,11 @@ Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Dre
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.3\linewidth]{images/Mischpult-Behringer.jpg}
+	\includegraphics[width=0.4\linewidth]{images/Mischpult-Behringer.jpg}
 	\caption[Mischpult-Behringer]{Mischpult-Behringer}
 	\label{fig: Mischpult-Behringer}
 \end{figure}
+
+
+\section{Lichtsteuerung}
+Bei der Umsetzung von StageControl stand uns weder eine Lichtanlage noch ein DMX-Controller zur Verfügung, weshalb dieser ursprünglich geplante Teil des Projekts gestrichen wurde.
