@@ -1,16 +1,20 @@
 \chapter{Einleitung}
-\section{Ausgangslage}
-Aktuell werden Ton- und Licht-Anlagen auf Bühnen manuell von einem Techniker gesteuert. Das Ziel dieses Technikers ist, den gewünschten Stereo-Effekt  und die Verfolgung per Spotlight der Künstler zu erreichen. Mit unserem Projekt wollen wir diese manuelle Arbeitsweise obsolet machen.
+\section{Derzeitiger Stand}
+Aktuell werden Tonanlagen auf Bühnen manuell von einem Techniker gesteuert. Das Ziel dieses Technikers ist es, den gewünschten Stereo-Effekt zu erreichen. Mit unserem Projekt wollen wir diese manuelle Arbeitsweise obsolet machen.
 
-\section{Problemstellung}
-Die Steuerung von Ton- und Lichtanlagen auf großen Bühnen wird meist von mehreren Benutzer beeinflusst und kann dadurch einen unvorsehbaren hohen Arbeitsaufwand und Fehler hervorführen. Derzeit gibt es für diese potenziellen Probleme noch keine Lösung.
+\section{Vorgeschlagene Lösung}
+Unsere Lösung ist ein System zur automatisierten Tonausrichtung und Künstlerverfolgung. Mithilfe von Sensoren wird die Position der Künstler in Echtzeit erfasst und an die datenverarbeitende Schnittstelle übermittelt. Diese verarbeitet die Daten und steuert automatisch die Tonanlage. Dadurch entfällt die manuelle Anpassung durch einen Techniker, und eine präzisere sowie effizientere Bühnensteuerung wird ermöglicht.
 
 \section{Individuelle Themenstellung}
-\textbf{Michael Becksteiner} setzt sich mit der Android App, einem entsprechendem User-Interface und der Standortermittlung auseinander. 
+\textbf{Michael Becksteiner} setzt sich mit der GUI Entwicklung (JavaFX) und der Standortermittlung (ESP32 UWB) mithilfe von Trilateration auseinander. 
 
-\textbf{Leo Pirringer} ist verantwortlich für die Umsetzung der erforderlichen Hardware und Implementierung dieser an der Schnittstelle zwischen Steuerungsgerät und Mischpult. 
+\textbf{Leo Pirringer} ist verantwortlich für die Umsetzung der erforderlichen Hardware und Implementierung dieser an der Schnittstelle zwischen Steuerungsgerät und Mischpult. Sowie für den Gerüstbau in dass das Mischpult hineingestellt wird.
 
-\textbf{Carina Pospichal} beschäftigt sich mit der Umsetzung der Kommunikation zwischen der Hard- und Software. Sowie dem Logodesign und der Flyer Gestaltung. 
+\textbf{Carina Pospichal} beschäftigt sich mit der Umsetzung der Datenbank und der Einrichtung eines lokalen Netzwerks. Sowie dem Logodesign, Logoanimation und der Flyer Gestaltung. 
 
 \section{Vorgehensweise} 
-\textbf{TBD}
+Die Vorgehensweise von StageControl basiert auf einer Kombination aus Positionsbestimmung per Sensoren und einer automatisierten Steuerung von Tonanlagen. Zunächst werden die Bühnenmaße erfasst, indem Breite und Länge der Bühne bestimmt werden. Dies dient als Grundlage für die spätere Navigation. Der Künstler trägt einen Standotsender, der kontinuierlich Signale an mehrere Positionsermittler sendet. Mithilfe von Berechnungen wird die exakte Position des Künstlers berechnet und anschließend an einen Datenverarbeiter übermittelt.  
+
+Der Datenverarbeiter verarbeitet diese Positionsdaten und steuert daraufhin die Bühnentechnik. Die Lautsprecher passen den Klang automatisch an die Position des Künstlers an, um den optimalen Stereo-Effekt zu erzeugen.  Zusätzlich werden die Bewegungsdaten in einer Benutzeroberfläche visualisiert, wodurch eine übersichtliche Kontrolle  ermöglicht wird.  
+
+Durch diesen automatisierten Ablauf ersetzt StageControl die manuelle Steuerung durch den Tontechniker und sorgt für eine präzisere, effizientere und fehlerfreie Bühnenperformance.

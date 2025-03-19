@@ -11,18 +11,17 @@
 \chapter{Grundlagen und Methoden}
 
 \section{Etablierte Lösungsansätze}
-Das Kapitel listet etablierte Lösungsansätze zur Standortermittlung einer Person auf einer Bühne und erklärt diese genauer, ebenso wie Vor- und Nachteile anhand eines Beispieles.
 
-\subsection{Ausgangsituation des Praxisbeispiels}
+\subsection{Ausgangssituation}
 
-Man befindet sich auf der Bühne in der Stadthalle in Ybbs. Folgende Informationen sind wichtig.
+Man befindet sich auf einer Bühne. 
 \begin{itemize}
-	\item \textbf{Gerät zur Standortermittlung: } Android Smartphone
-	\item \textbf{Koordinaten der Position: } TBD  
+	\item \textbf{Gerät zur Standortermittlung: } 
+	\item \textbf{Koordinaten der Position: }
 \end{itemize}
 
 \subsection{Manuelle Steuerung}
-Eine Person steht auf der Bühne der XY. Eine Möglichkeit die Steuerung der Ton- und Lichtanlagen ist diese für das Event vorher zu programmieren oder manuell während der Show zu steuern. Nun fragt sich die Person: "Wie kann ich diese Ton- und Lichtanlagen steuern?" Die Antworten folgen:
+Eine Person steht auf einer Bühne. Eine Möglichkeit die Steuerung der Tonanlagen ist diese für das Event vorher zu programmieren oder manuell während der Show zu steuern. Nun fragt sich die Person: "Wie kann ich diese Ton- und Lichtanlagen steuern?" Die Antworten folgen:
 
 \begin{itemize}
 	\item "Manuelle Steuerung der Tonanlage"
@@ -1036,15 +1035,17 @@ Alles in allem bietet Adobe After Effects einige Funktionen, die es ermöglicht 
 \chapter{Ergebnisdokumentation}
 \section{Einleitung}
 \subsection{Was ist StageControl?}
-StageControl ist eine GUI-App für die Indoor-Navigation auf einer Bühne. Sie verwendet ESP32 UWB Sensoren und Trilateration, um den Standort des Musikers zu bestimmen. Mit einer grafischen Darstellung des Standortes bietet StageControl eine benutzerfreundliche Erfahrung. Wichtig zu betonen ist, dass die App derzeit noch als Proof-of-Concept des System dient und kein fertiges Projekt darstellt. 
+StageControl ist eine innovative Lösung zur Automatisierung von Tonausrichtung auf Bühnen. Aktuell wird die Steuerung von Tonanlagen meist manuell von einem Tontechniker übernommen, um den gewünschten Stereo-Effekt zu erzielen.
+
+Durch ESP32 UWB-Sensoren wird die Position des Künstlers auf der Bühne bestimmt. Die Höhe, Breite und Länge der Bühne werden dabei durch den Darsteller abgeschritten. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels der Servomotoren zu ermöglichen.
 
 \subsection{Themenabgrenzung}
-StageControl ist eine neue Idee. Es existiert nach unserer Recherche keine Anwendungen wie StageControl. StageControl bezweckt eine technische Indoor-Navigation auf einer Bühne mit GUI-Visualisierung. 
+StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. Es kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellern oder Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
 
-\subsection{Entwicklungsprozesse}
-Die Umsetzung der Diplomarbeit StageControl folgt nach dem Wasserfall-Modell. Dieses Modell besagt, dass die Arbeitspakete im Vorfeld geplant werden und durchgeführt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder unabhängig durchgeführt werden. 
+\subsection{Entwicklungsprozesse}  
+Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermöglicht eine strukturierte Planung der Arbeitspakete, die anschließend schrittweise umgesetzt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder effizient und unabhängig erfolgen.  
 
-Um den Programmcode für die App und alles weitere fortlaufend zu dokumentieren, wird das Versionskontrollsystem GitHub verwendet. 
+Zur kontinuierlichen Dokumentation des Programmcodes sowie aller weiteren Entwicklungsfortschritte wird das Versionskontrollsystem GitHub verwendet. Dies stellt eine transparente Nachverfolgbarkeit der Änderungen sicher und erleichtert die Zusammenarbeit im Team.
 
 \section{Entwicklung}
 Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
@@ -1656,12 +1657,26 @@ Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist eine Numme
 StageControl benötigt ein Gerüst, in dass ein Mischpult hineingestellt wird, um eine sichere Ausführung der automatisierten Tonausrichtung zu gewährleisten. 
 
 
-\textbf{FOTO!!!!}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.483\linewidth]{images/Gerüst-7.jpg}
+	\includegraphics[width=0.4\linewidth]{images/Gerüst-8.jpg}
+	\caption[Gerüstbau]{Gerüstbau}
+	\label{fig:Gerüstbau}
+\end{figure}
 
 
 \subsection{Grundsätzliche Funktionalität}
 Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurde eine verschiebbare Stange befestigt, auf der ein Servomotor montiert werden kann.\\
 An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB zur Befestigung mittels Schrauben.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/Gerüst-2.jpg}
+	\caption[Gerüst]{Gerüst}
+	\label{fig:Gerüst-1}
+\end{figure}
+
 
 
 \subsection{Verwendete Materialien}
@@ -1692,8 +1707,18 @@ Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 
 	\caption{Stückliste Verwendete Materialien} 
 \end{table} 
 
+
+
+
 Um die Servomotoren an unterschiedliche Mischpulte anzupassen, wurden die Servomotoren auf einer verstellbaren Aluminium Flachstange montiert, auf der diese verschoben werden können. Zusätzlich kann man die Servomotoren auch horizontal justieren, indem die Mutter, die die Servomotoren hält, löst. \\
 Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzplatten als Boden eingesetzt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/Gerüst-3.jpg}
+	\caption[Gerüst]{Gerüst}
+	\label{fig:Gerüst-2}
+\end{figure}
 
 
 \section{Servomotoren}
@@ -1701,15 +1726,19 @@ Die Servomotoren sind das Stück Hardware, ohne dass die automatische Tonausrich
 
 \subsection{Servomotoren Auswahl}
 
-Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \textit{"Steuerlogik"} detailliert erläutert.
-
-\textbf{FOTO!!!!}
-
+Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servo verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.
 
 \section{Servomotoren Anpassungen}
 Die Servomotoren werden in einem eigens Angefertigten Gestell gelegt und dann mittels 2 M4x20 Schrauben niedergeschraubt. Durch dieses Gestell werden die Servomotoren vor etwaigen mechanischen Einflüssen geschützt. \\
 Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 10x10x1000mm Aluminiumstange mittels zwei Flügelmuttern niedergeschraubt.\\
-Außerdem musste bei den Servomotoren ein Teil des Originalen Gehäuses Abgeschliffen werden, um genug Platz für die Feststellschrauben zu haben.
+Außerdem musste bei den Servomotoren ein Teil des Originalen Gehäuses abgeschliffen werden, um genug Platz für die Feststellschrauben zu haben.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/Servo-Anpassungen.jpg}
+	\caption[Servomotoren Anpassungen]{Servomotoren Anpassungen}
+	\label{fig:Servomotoren Anpassungen}
+\end{figure}
 
 
 \section{Servomotor-Aufsatz}
@@ -1718,6 +1747,7 @@ Um den zuverlässigen Betrieb des Servomotors zu gewährleisten, wurde ein Aufsa
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.25\linewidth]{images/Servomotor+Aufsatz.jpg}
+	\includegraphics[width=0.324\linewidth]{images/Aufsatz-Servo.jpg}
 	\caption[Servomotor + Aufsatz]{Servomotor + Aufsatz}
 	\label{fig:Servomotor + Aufsatz}
 \end{figure}
@@ -1738,7 +1768,7 @@ Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verf
 	\label{fig:Regler-Aufsätze Versionen}
 \end{figure}
 
-\subsection{Steuerlogik}
+\subsection{Steuerlogik} \label{Steuerlogik}
 Die Servomotoren werden dann immer bewegt wenn sich der Künstler auf der Bühne bewegt. Das bedeutet immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkel Grad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss vor dem Verarbeiten der Position das nur die X-Achse der Bühne betrachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkel Grad umgewandelt werden.
 \\Zur Veranschaulichung der Berechnung:\\\\
 Der Künstler befindet sich auf der Bühne bei der Position X=5m, die Extrempunkte der Bühne sind X1=0m und X2=10m.\\
@@ -1881,7 +1911,7 @@ Insgesamt werden für die Inbetriebnahme der Servosteuerung sechs Jumper-Wires b
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/Mischpult-Behringer.jpg}
+	\includegraphics[width=0.4\linewidth]{images/RaspiPins.jpg}
 	\caption[Raspberry Pi Pins]{Raspberry Pi Pins}
 	\label{fig: Raspberry Pi Pins}
 \end{figure}
@@ -1916,7 +1946,7 @@ Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Dre
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/Mischpult-Behringer.jpg}
+	\includegraphics[width=0.3\linewidth]{images/Mischpult-Behringer.jpg}
 	\caption[Mischpult-Behringer]{Mischpult-Behringer}
 	\label{fig: Mischpult-Behringer}
 \end{figure}
