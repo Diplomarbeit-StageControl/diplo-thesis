@@ -1477,6 +1477,7 @@ Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{P
 Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der unsere PostgreSQL-Datenbank läuft. Da wir weder Ressourcen noch den Zugang zu einem physischen Server haben, haben wir uns für eine digitale Lösung entschieden. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
 
 \subsection{Datenbankstruktur}
+Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{|l|l|}
@@ -1496,9 +1497,7 @@ Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle 
 	\label{tab:stagedata}
 \end{table}
 
-Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
-
-
+Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät (Tag) erhält eine eindeutige \texttt{device\_id}. Zusätzlich gibt es einen Gerätenamen (\texttt{device\_name}) und einen Gerätetyp (\texttt{device\_type}). Der Zeitstempel \texttt{created\_at} wird automatisch mit dem aktuellen Zeitpunkt gesetzt.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{|l|l|}
@@ -1518,9 +1517,8 @@ Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eind
 	\label{tab:devices}
 \end{table}
 
-Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät (Tag) erhält eine eindeutige \texttt{device\_id}. Zusätzlich gibt es einen Gerätenamen (\texttt{device\_name}) und einen Gerätetyp (\texttt{device\_type}). Der Zeitstempel \texttt{created\_at} wird automatisch mit dem aktuellen Zeitpunkt gesetzt.
-
-\begin{table}[h]
+Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto erhält eine eindeutige \texttt{id}. Der \texttt{username} dient als Anmeldekennung und hat eine maximale Länge von 50 Zeichen. Das Feld \texttt{password} speichert das Passwort in gehashter Version des Benutzers, um sich dann folglich in der GUI anmelden zu können.
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|}
 		\hline
@@ -1537,19 +1535,17 @@ Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät
 	\label{tab:users}
 \end{table}
 
-Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto erhält eine eindeutige \texttt{id}. Der \texttt{username} dient als Anmeldekennung und hat eine maximale Länge von 50 Zeichen. Das Feld \texttt{password} speichert das Passwort in gehashter Version des Benutzers, um sich dann folglich in der GUI anmelden zu können.
-
 \subsection{Beziehung zwischen \texttt{devices} und \texttt{stagedata}}
 
 Die Tabellen \texttt{devices} und \texttt{stagedata} stehen in einer 1-zu-N-Beziehung. Jedes Gerät in der Tabelle \texttt{devices} kann mehrere zugehörige Sensordaten in der Tabelle \texttt{stagedata} besitzen. Dies wird durch die Spalte \texttt{device\_id} in \texttt{stagedata} realisiert, die als Fremdschlüssel auf \texttt{device\_id} in \texttt{devices} verweist. Dadurch wird ermöglicht, dass jede die Daten einem existierenden Gerät zugeordnet ist. 
 
 \subsection{Nützliche Befehle für PostgreSQL}
-\textbf{psql} \ – connects you to the psql shell. \\
-\textbf{\textbackslash{c}} \ – connects to the database. \\
-\textbf{\textbackslash{l}} \ – shows all databases. \\
-\textbf{\textbackslash{d}} \ – shows all tables. \\
-\textbf{\textbackslash{d} tablename} \ – shows table details. \\
-\textbf{\textbackslash{q}} \ – quit the psql.
+\textbf{psql} \ – verbindet dich mit der psql-Shell \\
+\textbf{\textbackslash{c}} \ – verbindet mit der Datenbank \\
+\textbf{\textbackslash{l}} \ – zeigt alle Datenbanken an \\
+\textbf{\textbackslash{d}} \ – zeigt alle Tabellen an \\
+\textbf{\textbackslash{d} tablename} \ – zeigt Tabellendetails an \\
+\textbf{\textbackslash{q}} \ – beendet psql
 
 Diese Funktionen sind die Grundlagen und helfen dabei sich in einer Datenbank, wie PostgreSQL zu recht zu finden.
 
