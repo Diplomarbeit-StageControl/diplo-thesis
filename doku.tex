@@ -8,6 +8,27 @@
 \renewcommand{\bottomfraction}{0.999}
 \lfoot{}
 
+
+\fancyhf{} % Leert Kopf- und Fußzeile
+\fancyfoot[C]{Seite \thepage} % Seitenzahl in der Mitte
+\fancyfoot[R]{% Autoren rechts
+	\ifthenelse{\value{page} < 26}{Pirringer}{%
+		\ifthenelse{\value{page} < 34}{Becksteiner}{%
+			\ifthenelse{\value{page} < 48}{Pospichal}{%
+				\ifthenelse{\value{page} < 67}{Becksteiner}{%
+					\ifthenelse{\value{page} < 82}{Pospichal}{%
+						\ifthenelse{\value{page} < 100}{Pirringer}{}
+					}%
+				}%
+			}%
+		}%
+	}%
+}
+
+
+
+
+
 \chapter{Grundlagen und Methoden}
 
 \section{Etablierte Lösungsansätze}
@@ -36,7 +57,7 @@ An den erlangten Antworten, kann man erkennen, dass es noch keine automatisierte
 	\item \textbf{Stufe 3: }Standort auf bestimmten Punkt auf der Bühne eingeschränkt
 \end{itemize}
 
-\section{Hardwareproduktion }
+\section{Hardwareproduktion} \label{Hardwareproduktion}
 Im Fall von StageControl versteht man unter Hardware nicht nur Computerkomponenten, sondern auch eine eigens hergestellte Konstruktion, die das Funktionieren der Software bzw. der angesteuerten Hardwarekomponenten erst möglich macht.
 
 \subsection{Gerüst}
@@ -47,6 +68,7 @@ So benötigen wir eine Konstruktion $\backslash$ Gerüst, welche uns ermöglicht
 \subsection{Möglichkeiten der Hardwareproduktion}
 Die Hardwareproduktion umfasst die Herstellung physischer Komponenten aus unterschiedlichen Materialien wie z. B. Kunststoff, Metall oder Holz. Diese Stoffe werden von Unternehmen eingesetzt, die sich mit der Herstellung von Hardware bzw. Prototypen befassen. Dabei gibt es verschiedene Möglichkeiten und Herangehensweisen in der Hardwareproduktion: 3D-Druck, Laser-Cutting, CNC-Fräsen und die Verwendung von Baukästen wie LEGO. Im folgenden Abschnitt wird genauer auf die Einsetzbarkeit/Verfügbarkeit, die Vor- und Nachteile zweier Produktionsarten, nämlich auf 3D-Druck und CNC-Fräsen eingegangen.
 
+\newpage
 \section{3D-Druck}
 \subsection{Funktionsweise}
 Beim 3D-Druck handelt es sich um ein Verfahren, das Schicht für Schicht Material aufträgt, um ein dreidimensionales Objekt zu erschaffen. Dabei wird aus einer Düse das heiße Material aufgetragen, bis aus vielen Schichten das gewünschte Objekt erstellt wurde. Diese Art der Produktion wird auch als additive Fertigung bezeichnet, im Gegensatz zum CNC-Fräsen, das als subtraktive Fertigung bekannt ist.
@@ -113,11 +135,11 @@ Nylon (\textit{techn. Polyamid}) ist ein langlebiges Material, das sich vorallem
 Kohlefasern wird in Grundpolymeren wie PLA oder Nylon eingearbeitet \parencite{Kohlefasern} um eine höhere Stabilität und Resistenz zu erzeugen wie zb. Nylon verstärkt mit Kohlefasern.\\
 
 
-
+\newpage
 \subsection{3D-Drucker}
 
 \subsubsection{Vergleich der 3D-Drucker}
-Wie in der Einleitung des Kapitels \textit{"Hardware im Zusammenhang mit StageControl"} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die 3D-Drucker (\textit{Bambu Lab X1-Carbon, Ultimaker 2 Extended+, Bambu Lab A1})  \parencite{Ultimaker2ExtendedSpecification} \parencite{BambuLabA1} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \parencite{BambuLabX1Carbon3DPrinterSpecifications}. 
+Wie in der Einleitung des Kapitels \ref{Hardwareproduktion} beschrieben, ist eine Möglichkeit zur Herstellung der benötigten Hardware das Drucken mittels eines 3D-Druckers. Um die 3D-Drucker (\textit{Bambu Lab X1-Carbon, Ultimaker 2 Extended+, Bambu Lab A1})  \parencite{Ultimaker2ExtendedSpecification} \parencite{BambuLabA1} miteinander zu vergleichen, werden folgende Kriterien herangezogen: die Verarbeitbarkeit des Ausgangsmaterials und die Druckgeschwindigkeit bei einem Düsendurchmesser von 0,4 mm \parencite{BambuLabX1Carbon3DPrinterSpecifications}. 
 
 Als Ausgangsmaterial wird bei allen 3D-Druckern PLA verwendet.
 \begin{table} [H]
@@ -148,7 +170,7 @@ Als Ausgangsmaterial wird bei allen 3D-Druckern PLA verwendet.
 Ein Slicer ist ein Stück Software, das es erst möglich macht 3D-Modelle auszudrucken, indem es einen sogenannten G-Code erstellt . G-Code ist die Programmiersprache, die von Computern verwendet wird, um mit Maschinen zu kommunizieren, wenn die Maschine Bewegungen ausführen soll. \parencite{SlicerGCode} \\
 
 
-
+\newpage
 \section{CNC-Fräsen}
 
 Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageControl benötigt wird, ist das CNC-Fräsen (\textit{engl. "Computerized Numerical Control"}). Diese Technologie wird vor allem in der metallverarbeitenden Industrie angewendet \parencite{CNCFraesen}, da sie äußerst genau und kostengünstig arbeitet. Zudem beschränkt sich das CNC-Fräsen nicht nur auf Metall, es kann auch bei der Bearbeitung von Kunststoffen und Holz eingesetzt werden \parencite{CNCFraesen2}. Anders als bei der 3D-Druck-Technologie handelt es sich hier nicht um ein additives, sondern um ein subtraktives Verfahren.\\  \parencite{CNCFraesen3}
@@ -165,7 +187,7 @@ Ein weiterer Ansatz zur Hardware- bzw. Prototypenherstellung, der für StageCont
 Wie bereits in der Einleitung zum CNC-Fräsen erläutert, handelt es sich um ein subtraktives Verfahren, bei dem Material entfernt wird. Das Ausgangsmaterial wird fest in die Maschine eingespannt, während sich der Fräser bewegt \parencite{CNCFraesen2}. Der Fräser trägt dann das Material ab, um die gewünschte Form herzustellen. Um besonders präzise Abrundungen zu erzeugen, wird nicht das Material, sondern der Fräskopf fixiert, während sich das Material bewegt  \parencite{CNCFraesen3}. Wie beim 3D-Druck wird hier auch G-Code als Steuerung der Maschine eingestzt. \\
 
 
-
+\newpage
 \subsubsection{Einsatzmöglichkeiten}
 CNC-Fräsmaschinen können vielseitig eingesetzt werden und eine Vielzahl von Objekten in unterschiedlichsten Größen und Formen herstellen  \parencite{CNCFraesen2}. Zu den typischen Anwendungsbereichen zählen unter anderem:
 
@@ -185,7 +207,7 @@ CNC-Fräsen bietet im Vergleich zum herkömmlichen, manuellen Fräsen einige Vor
 Es gibt nicht nur CNC-Fräsen oder Drehen, sondern alle Maschinen die durch CNC (\textit{engl. Computerized Numerical Control}) gesteuert werden, können als solche bezeichnet werden. Durch den Einsatz von CNC lassen sich die verschiedensten Maschinen computergestützt steuern. Zu diesen Maschinen zählen unter anderem CNC-Bohrmaschinen,  CNC-Laserschneidmaschinen, CNC-Schleifmaschinen, CNC-Wasserstrahlschneidmaschinen oder der 3D-Drucker \parencite{ArtenCNCMaschinen}
 . \\
 
-
+\newpage
 \subsection{Unterschied zwischen CNC-Fräsen und CNC-Drehen}
 Beim CNC-Drehen wird ein Spannfutter anstatt des Schneidewerkzeugs eingesetzt. Dies ermöglicht die Herstellung von runden, zylindrischen oder konischen Formen. Mit diesem Verfahren lassen sich keine Objekte herstellen die eine hohe Präzision erfordern. Im Gegensatz zur CNC-Fräsmaschine arbeitet das CNC-Drehen nur auf zwei Achsen \parencite{CNCDrehenUnterschied}. Zudem dreht sich das Material und der Fräser ist fixiert, so wird das Material wie bei der CNC-Fräse abgetragen. \\
 
@@ -291,7 +313,7 @@ Blender bietet vielseitige Anwendungsmöglichkeiten, von Modellierung und Animat
 \subsubsection{FreeCAD}
 FreeCAD hat vielseitige Anwendungsmöglichkeiten, von der Modellierung bis hin zur Erstellung technischer Zeichnungen und Simulationen. Diese Open-Source-Software bietet umfassende Werkzeuge für Ingenieure, Architekten, Produktdesigner und Privatkunden \parencite{FreeCAD}. Zudem wird FreeCAD von vielen Unternehmen sowie unabhängigen Entwicklern und Entwicklerinnen genutzt. Durch seine modulare Architektur und der aktiven Community wird FreeCAD kontinuierlich weiterentwickelt und verbessert.   \parencite{FreeCAD2}. \\
 
-
+\newpage
 \textbf{Vorteile}
 \begin{itemize}
 	\item Open Source Software
@@ -326,7 +348,7 @@ Autodesk Tinkercad ist ein für Anfänger und Anfängerinnen und Schüler und Sc
 	\item kein Industriestandard \parencite{TinkercadReviews}
 \end{itemize}
 
-\section{Mischpult}
+\section{Mischpult} \label{Mischpult}
 Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Mischpulte, auch Mixer genannt, gibt es in ganz unterschiedlichen Größen. Das Ausmaß hängt meist von der Anzahl der Kanäle ab, die das Mischpult bietet. Diese technologie wird immer dann verwendet, wenn mehrere Audiosignale verarbeitet werden müssen, wie auf Bühnen. \parencite{MischpultInformation} Bei allen Mischpulten gibt es eine sogenannte Leserichtung, die den Aufbau des Mischpults beschreibt. Von links nach rechts findet man die einzelnen Kanäle, und von oben nach unten die Bearbeitungsmöglichkeiten des Tons. Dazu kommt noch der sogannte Masterbereich. Hier wird alles gesteuert, was zentral gereglt werden muss. Diese Einstellungen gelten dann für alle Kanäle.  \parencite{MischpultMaster} \\
 
 
@@ -340,7 +362,7 @@ Für StageControl benötigen wir zur Ansteuerung einer Tonanlage ein Mischpult, 
 \subsection{Funktionsweise eines Mischpults}
 Im Grunde summiert ein Mischpult alle Tonquellen zu einen einzigen Signal. So kann dann dieses Signal über die Tonanlage ausgegeben werden \parencite{MischpultErklaerung}. Bei Mischpulten gibt es eine Vielzahl von Knöpfen und Reglern für jeden Kanal, diese sind wie schon erwähnt zur Bearbeitung des Tones da, im Rahmen dieser Diplomarbeit wird auf dies nicht genauer eingegangen. \\
 
-
+\newpage
 \subsection{Einsatzmöglichkeiten}
 Mischpulte finden eine Vielzahl von Anwendungsmöglichkeiten, wie z.B. auf Bühnen oder in Proberäumen. Mischpulte übernehmen eine Bandbreite von Aufgaben \parencite{MischpultVerwendungszweck}. Die folgenden gehören zu den Wichtigsten:
 \begin{itemize}
@@ -372,7 +394,7 @@ Für StageControl wird ein Mischpult mit Drehreglern verwendet, da diese häufig
 
 
 \subsection{Vergleich zweier Modelle}
-Wie am Anfang des Kapitels \textit{Mischpult} beschrieben benötigt StageControl ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Hierzu werden zwei Mischpulte herangezogen \parencite{MischpultKriterien1204}, die unseren Kriterien entsprechen und  verglichen  \parencite{MischpultKriterien1402}.
+Wie am Anfang des Kapitels \ref{Mischpult} beschrieben benötigt StageControl ein Mischpult, um den von uns gewünschten Stereoeffekt zu erzeugen. Hierzu werden zwei Mischpulte herangezogen \parencite{MischpultKriterien1204}, die unseren Kriterien entsprechen und  verglichen  \parencite{MischpultKriterien1402}.
 
 \begin{table} [H]
 	\begin{tabular}{ |p{3.1cm} |p{4.8cm}|p{4.8cm}| }
@@ -413,6 +435,7 @@ Ein weiterer Aspekt dieser Diplomarbeit ist die gleichzeitige Ansteuerung von To
 \subsection{Lichtanlagen bei StageControl}
 Im Fall von StageControl wird keine vollständige Lichtanlage verwendet; es kommt lediglich ein Scheinwerfer zum Einsatz, um die Beleuchtung der Künstler bzw. der Künstlerinnen via Positionsverfolgung zu ermöglichen. So erhalten wir die genaue Abstimmung von Ton und Licht auf die Person.
 
+\newpage
 \subsection{Ansteuerung von Lichtanlagen}
 
 Die gängigsten Arten der Ansteuerung von Lichtanlagen sind das DMX-Protokoll (\textit{Digital Multiplex}) oder das RDM-Protokoll (\textit{Remote Device Management}). Zur Ansteuerung der Lichtanlagen selbst wird ein DMX-Controller benötigt, der die Scheinwerfer steuert. Es wird ein DMX-Controller mit einem DMX-Ausgang und ein Scheinwerfer mit einem DMX-Eingang gebraucht.
@@ -427,6 +450,7 @@ Es gibt zwei Lichtarten, die man in der Lichttechnik unterscheiden kann, nämlic
 \subsection{Arten von Scheinwerfern}
 In der Lichttechnik gibt es verschiedenste Scheinwerfertypen, die unterschiedliche Aufgaben besonders gut erfüllen. Zwei Scheinwerfertypen, die im Rahmen dieser Diplomarbeit zum Einsatz kommen, werden genauer erklärt.
 
+\newpage
 \subsubsection{Verfolgerscheinwerfer}
 Der Verfolgerscheinwerfer wird verwendet, um Personen auf Bühnen zu verfolgen. Diese Scheinwerfer werden nicht wie andere Scheinwerfer fix montiert, sondern lassen sich bewegen, um den gewünschten Verfolgungseffekt zu bieten. Dies geschieht nicht automatisch, sondern wird manuell von einem Beleuchter während der Show durchgeführt \parencite{Verfolgerscheinwerfer}. Es gibt verschiedene Lösungsansätze zur Bewegung von Movinglights (\textit{deutsch „Bewegbare Lichter“}).  Bei Konzerten wird ein Verfolgerscheinwerfer oberhalb der Bühne gemeinsam mit dem Beleuchter platziert. Dieser steuert dann das Licht über ein Bedienfeld während der Performance.\\
 
@@ -438,6 +462,7 @@ Der Verfolgerscheinwerfer wird verwendet, um Personen auf Bühnen zu verfolgen. 
 	\label{fig:Verfolgerscheinwerfer}
 \end{figure}
 
+\newpage
 \subsubsection{Profilscheinwerfer}
 Dieser Scheinwerfertyp wird vor allem im Theaterbereich eingesetzt. Ein enormer Vorteil des Profilscheinwerfers ist, dass er ein hartes und exaktes Licht ausstrahlt. Außerdem ist das Streulichtaufkommen deutlich geringer als bei anderen Scheinwerfern. Streulicht ist das Licht, das außerhalb des eigenlichen Lichtkegels auftritt. Zudem verfügen Profilscheinwerfer über einen Zoom, der manuell oder automatisch erfolgen kann \parencite{Profilscheinwerfer}. Dieser Scheinwerfertyp bietet zusätlich eine Scharfstellfunktion/Fokus mittels Linsenverschiebung an, diese wird durch den Linsentubus ermöglicht.\\
 
@@ -453,6 +478,7 @@ Dieser Scheinwerfertyp wird vor allem im Theaterbereich eingesetzt. Ein enormer 
 \subsection{Einsatz von Servos bei StageCotrol}
 Servomotoren werden für die Umwandlung der physischen Bewegung des Künstlers, in mechanische Bewegung des Servomotors benötigt, um so die Regler des Mischpults in Abstimmung und Ausrichtung des Künstlers mit dem Ton zu automatisieren. Diese Servomotoren werden oberhalb des Mischpult mithilfe des Gerüsts plaziert, wie in Kapitel 2.2.1 beschrieben.
 
+\newpage
 \subsection{Was ist ein Servomotor}
 Unter einem Servomotor wird keine Bauart eines Motors verstanden, sondern vielmehr spezielle Eigenschaften. Diese Eigenschaften sind: Strom-, Drehzahl- und/oder Positionsgeregelt. Ein Servomotor ist immer elektrisch betrieben. Diese Motoren geben Rückmeldungen an die Regelelektronik. Diese Rückmeldungen enthalten Informationen über Winkelposition der Motorwelle, der Drehgeschwindigkeit und der Beschleunigung \parencite{ServomotorInfo}. Die Regelelektronik kann anhand dieser zurückgemeldeten Daten wieder die Daten der Sollparameter an den Motor schicken, die zuvor eingegeben wurden. \\
 
@@ -467,6 +493,7 @@ Für den Einsatz bei StageControl gibt es Vorraussetzungen, die die Servomotoren
 	\label{fig:Servo}
 \end{figure}
 
+\newpage
 \subsection{Arten von Servomotoren}
 Es gibt einige unterschiedliche Arten von Servos, die wichtigsten drei sind: Gleichstrom, kernlose und bürstenlose Motoren. \\
 Bei Gleichstromservos handelt sich um die billigste und gängiste Art der Motoren. Dieser Servotyp besteht aus Eisenkernen um die Kupferdraht gewickelt ist, sowie einem Kommutator Ring und Bürsten. Diese Bürsten werden zur Umschaltung der Felder benötigt und einem Gehäuse. \\
@@ -481,7 +508,7 @@ Anstelle der Bürsten und dem Metallring bei Bürstenservos, wird bei den Bürst
 \end{figure}
 
 
-
+\newpage
 \subsection{Ansteuerung von Servos}
 Servomotoren werden über ein sogenanntes PWM-Signal (\textit{Pulsweitenmodulations-Signal}) gesteuert. Dies bedeutet, dass der Servomotor über elektrische Pulse angesteuert wird und so die Befehle erhält, auf welche Postion er fahren muss. Diese Motoren werden üblicherweise über drei Kabeln mit dem Steuerunggerät verbunden. Das erste Kabel ist das Massekabel, es ist für die Rückleitung der Pulse verantwortlich. Nummer zwei ist das Versorgungsspannungskabel, das den Servomotor mit der nötigen elektrischen Spannung versorgt. \parencite{ServomotorAnsteuerung}. Das dritte Kabel ist das Signalleitungskabel, dieses  leitet die Pulse an den Servo weiter, so wird dem Servo die anzufahrende Position mitgeteilt.\\
 
@@ -492,11 +519,10 @@ Servomotoren werden über ein sogenanntes PWM-Signal (\textit{Pulsweitenmodulati
 	\caption[Pin-Belegung Servo]{Pin-Belegung Servo}
 	\label{fig:PIN_Belegung}
 \end{figure}
-
+\newpage
 \section{Navigation}
 
 Um die Licht- und Audioanlagentechnik richtig zu koordinieren benötigt man eine Art von Navigation. Da es sich meist um Bühnen im Innenbereich handelt, kann man keine übliche Technologie verwenden.
-
 
 \subsection{GPS}
 GPS (\textit{=engl. Global Positioning System}) ist ein globale Navigationssystem, das die Bestimmung von Standort, Geschwindigkeit und Zeit ermöglicht und synchronisiert. Es wird für heutzutage fast überall verwendet im Auto, Smartphone oder Uhr und hilft dabei von A nach B zu gelangen. \parencite{GPS} Da zu aktuellem Zeitpunkt eine Standortermittlung indoor über GPS zu ungenau ist (um den Faktor 100 mehr gedämpft) können wir GPS nicht verwenden. \textcite{Indoor}
@@ -526,7 +552,7 @@ Es gibt einige relevante Fehlerquellen für GPS-Signale, darunter fallen \parenc
 	\item Signaleffekt der Umgebung
 \end{itemize}
 
-
+\newpage
 \textbf{Position der Satelliten}
 
 Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein weiterer, um etwaige Fehler zu beseitigen. Grundsätzlich gilt: Je mehr Satelliten, desto besser die GPS-Genauigkeit. Außerdem sollte das Signal von gleichmäßig verteilten Satelliten kommen, dann ist die GPS-Genauigkeit höher. Für die Berechnung dieser Genauigkeit gibt es den Dilution of Precision (= DOP) Wert.  Je kleiner dieser Wert, desto genauer ist das GPS-Signal.
@@ -537,6 +563,7 @@ Um ein Objekt zu positionieren sind mindestens drei Satelliten notwendig und ein
 	\label{fig:Satellitenposition}
 \end{figure}
 
+\newpage
 \textbf{Signaleffekt der Umgebung}
 
 
@@ -551,7 +578,8 @@ Um aktuell eine GPS-Genauigkeit von 5-10 Metern zu gewährleisten, muss das Sign
 	\label{fig:Satelliteneinfluss}
 \end{figure}
 
-\subsection{ESP32}
+\newpage
+\subsection{ESP32} \label{ESP32}
 
 ESP32 ist eine Reihe von Chip-Mikrocontrollern, die von dem Unternehmen Espressif entwickelt wurden und mit Hilfe von Arduino bzw. der Programmiersprache C kommunizieren. Der ESP32 \textcite{ESP32} zeichnen sich mit folgenden Dingen aus:
 
@@ -598,7 +626,7 @@ Für weitere Funktionen benötigt man z.B. die Erweiterungsplatine MPU-6050, die
 	\label{fig:MPU6050}
 \end{figure}
 
-
+\newpage
 \textbf{Gyroskop}
 
 Ein Gyroskop ist wie ein Kreisel aufgebaut und hat somit die selbe Wirkung und wird deshalb auch Kreiselinstrument genannt. Man nutzt die Wirkung, um die Lage eines Objektes zu bestimmen. Im Falle von einem MPU-6050 wird ein Sensor namens Micro-Electric-Mechanical Systems (\textit{kurz MEMS}) verwendet. 
@@ -632,25 +660,25 @@ Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um
 
 \subsection{Mobil Apps Grundlagen}
 
-\textbf{Native Apps}
+\subsubsection{Native Apps}
 
 Native Apps (\textit{=deu.: angepasste Anwendung}) sind Anwendungen, die speziell für ein Betriebssystem (Android, iOS) entwickelt wurden.
 
-\textbf{Android}
+\subsubsection{Android}
 
 Android ist einer der weltweit bekanntesten Betriebssysteme. Das Betriebssystem fasst einen weltweiten Marktanteil von 71.31\% im April 2024. \parencite{AndroidVsiOS} Weiters ist Android ein Open-Source Betriebssystem, es ist offen für Entwickler.  
 
-\textbf{iOS}
+\subsubsection{iOS}
 
 Das Betriebssystem iOS wurde von Apple im Jahre 2007 veröffentlicht und hat im April 2024 einen weiltweiten Marktanteil von 27.95\%. \parencite{AndroidVsiOS} Die Software wird auf den entwickelten Geräten von Apple verwendet. Anders wie bei Android ist iOS nicht quelloffen, außerdem werden keine Betriebssystem-Lizenzen vergeben. Man benötigt eine gültige Apple-ID, um das Gerät zu verwenden.
 
 \subsection{Cross-Platform-Apps}
 
-\textbf{Flutter}
+\subsubsection{Flutter}
 
 Flutter ist eine Open-Source-Software, welche von Google entwickelt worden ist.\textcite{Flutter} Der Vorteil dieses Frameworks ist, dass man mit einem Programmcode in Flutter mehreren Apps auf verschiedenen Plattformen (Android, iOS) erstellen kann. Die Hauptprogrammiersprache ist Dart.
 
-\textbf{React Native}
+\subsubsection{React Native}
 
 React Native ist eine Open-Source-Software, welche von Facebook entwickelt worden ist. \textcite{ReactNative} Es wurde entworfen, um Entwicklern mit Erfahrungen in React die Möglichkeit zu geben, einfacher Android Apps basierend auf React zu entwicklen. Die Hauptprogrammiersprachen sind JavaScript oder TypeScript.
 
@@ -658,8 +686,8 @@ React Native ist eine Open-Source-Software, welche von Facebook entwickelt worde
 
 Um Android Studio verwenden zu können muss man eine SDK (\textit{=engl. Software Development Kit}) installieren. Außerdem ist IntelliJ IDEA Community/Ultimate als IDE (\textit{=engl. Integrated Development Environment}) vorgesehen und zu verwenden. Diese enthält die wichtigsten Programmierwerkzeuge und Programmierbiblotheken. Der Entwickler selbst, entscheidet darüber welche Programmiersprache verwendet wird. Es besteht die Auswahl zwischen Java, Kotlin, Ruby oder sogar C++.
 
-
-\textbf{IntelliJ IDEA}
+\newpage
+\subsubsection{IntelliJ IDEA}
 
 IntelliJ IDEA ist einer der beliebtesten IDEs für Java und Kotlin, die es auf dem Markt gibt. Das Unternehmen, welches die Software entwickelt hat, heißt JetBrains. 
 
@@ -679,7 +707,7 @@ Die beiden Versionen unterscheiden sich minimal, denn die Ultimate Version biete
 	\label{fig:IntelliJ}
 \end{figure}
 
-\textbf{Eclipse}
+\subsubsection{Eclipse}
 
 Eclipse ist eine weitere bekannte IDE. Die Software umfasst 48\% des Marktanteils. Man kann nicht nur in Java programmieren, sondern mit den entsprechenden Plugins auch in Python, JavaScript oder C++. Außerdem läuft es auf jeder Platform wie Linux, macOS oder Windows. \parencite{Eclipse}
 
@@ -690,7 +718,7 @@ Eclipse ist eine weitere bekannte IDE. Die Software umfasst 48\% des Marktanteil
 	\label{fig:Eclipse}
 \end{figure}
 
-
+\newpage
 \section {Vergleich verschiedener Programmiersprachen}
 Wie aus der Statistik abzulesen sind Python, Java, JavaScript, C\# und C/C++ die 5 aktuell meistverwendeten Programmiersprachen der Welt. \parencite{meistProgrammiersprachen}
 
@@ -702,6 +730,7 @@ Wie aus der Statistik abzulesen sind Python, Java, JavaScript, C\# und C/C++ die
 	\label{fig:Programmiersprachen}
 \end{figure}
 
+\newpage
 \subsection{Python}
 Bei Python wird der Quellcode zur Laufzeit in Bytecode übersetzt und findet Anwendung in der Webentwicklung, Netzwerkprogrammierung sowie der Datenanalyse. Darüber hinaus wird diese Programmiersprache auch für die Automatisierung von Prozessen oder für Künstliche Intelligenz eingesetzt. \parencite{Programmiersprachen}
 
@@ -825,7 +854,7 @@ Gegenüber lokalen Entwicklungsumgebungen bieten \textbf{Web- oder Cloud basiert
 Sprachspezifische IDEs hingegen richten sich an Entwickler, die ausschließlich mit einer einzigen Programmiersprache arbeiten möchten. Beispiele hierfür sind Jikes und Jcreator für Java, CodeLite und C-Free für C/C++, sowie Idle für Python. \parencite{integrierteEntwicklungsumgebung}
 
 
-
+\newpage
 \section{Vergleich Single Board Computer und Mikrocontrollern}
 \subsection{Single Board Computer}
 Einplatinencomputer (Single-Board Computers, SBCs) sind Computersysteme, bei denen sämtliche notwendigen Komponenten, wie Prozessor, Speicher und Ein-/Ausgabeschnittstellen, auf einer einzigen Platine integriert sind. Diese Geräte fungieren oft als Hauptprozessor in eingebetteten Systemen oder werden als kostengünstige Allzweckcomputer eingesetzt.
@@ -870,6 +899,7 @@ Die meisten SBCs laufen mit Linux-basierten Betriebssystemen wie Raspbian, Ubunt
 	\label{fig:Single Board Computer}
 \end{figure}
 
+\newpage
 \subsection{Mikrocontroller}
 Sind kleine Computer-Systeme, die für eine begrenzte Anzahl von Aufgaben entwickelt wurden. Mikrocontroller enthalten einen Prozessor, Speicher und I/O-Ports. Häufig werden sie für einfachere Anwendungen wie die Steuerung von Geräten und Maschinen verwendet. \parencite{EinzelplatinencomputerVsMikrocontroller}
 
@@ -893,7 +923,7 @@ Sind kleine Computer-Systeme, die für eine begrenzte Anzahl von Aufgaben entwic
 	\label{fig:Mikrocontroller}
 \end{figure}
 
-
+\newpage
 \section{Vergleich von GitHub und GitLab}
 \subsection{GitHub}
 GitHub ist eine Cloud-basierte Plattform, auf der Code gespeichert, sowie geteilt wird und man mit anderen Personen zusammenarbeiten kann. Dateien werden in GitHub hochgeladen und in einem Repository gespeichert. Bei Änderungen der Dateien wird GitHub automatisch beginnen die Änderungen nachzuverfolgen und zu verwalten. Sobald mehrere Personen an einem Repository zusammenarbeiten, müssen die Änderungen von allen Mitarbeitern auf GitHub abgerufen, sowie die eigenen Änderungen an das Repository auf GitHub gepusht werden. \parencite{GitHubUndGit}
@@ -921,6 +951,7 @@ GitHub ist eine Cloud-basierte Plattform, auf der Code gespeichert, sowie geteil
 	\label{fig:GitHub}
 \end{figure}
 
+\newpage
 \section{GitLab}
 GitLab ist eine Alternative zu GitHub und wurde entwickelt, um Open Source Projekte zu hosten. Hosting für Wikis und Burg-Tracking Systeme werden angeboten und Berechtigungen für verschiedene Mitarbeiter können entsprechend ihrer Rolle festgelegt als auch geändert werden. Weiters kann man bei GitLab die eigenen Repos kostenlos hosten. GitLab bietet einige sehr interessante Funktionen und ist mittlerweile sehr beliebt geworden.   \parencite{GitHubVsGitLab}
 
@@ -947,7 +978,7 @@ GitLab ist eine Alternative zu GitHub und wurde entwickelt, um Open Source Proje
 
 Für StageControl wird GitHub verwendet, da es zahlreiche Vorteile bietet, wie oben genannt, und die Zusammenarbeit im Team erleichtert. So können mehrere Personen gleichzeitig an Unterschiedlichen Aspekten arbeiten, ohne dass sich ihre Änderungen gegenseitig beeinflussen.
 
-\section{SD-Karten Sicherung}
+\section{Backupstrategie}
 Eine SD-Karte ist eine kleine Speicherkarten, die in einigen tragbaren Geräten verwendet wird, wie zum Beispiel in Android Handys, Navi Systeme in einem Auto oder Digitalkameras. Es ist wichtig eine SD-Karte zu sichern, da die Daten aufgrund von pysischen Schäden an der SD-Karte oder Mailwareangriffen verloren gehen könnten. Wenn die Daten der SD-Karte verloren gehen, wäre ein Backup hilfreich, um diese verlorenen Daten wieder herzustellen.  \parencite{SD-KartenSicherung}
 
 \subsection{Sicherungskopie einer SD-Karte}
@@ -990,6 +1021,7 @@ Die Corporate Identity ist das wichtigste Merkmal, das ein Unternehmen kennzeich
 \subsection{Corporate Design}
 Das Corporate Design beschreibt das interne und externe Erscheinungsbild eines Unternehmens. Hierzu zählen die Farben, Schriften und das Logo, die das Unternehmen einheitlich präsentieren. \parencite{CorporateIdentity}
 
+\newpage
 \subsubsection{Logo}
 Das Logo ist eines der wichtigsten Bestandteile da es einen Wiedererkennungswert des Unternehmens hat. Das Unternehmenslogo soll auf die Tätigkeit und die Farben des Unternehmens hinweisen. Es soll einfach aufgebaut  und einprägsam sein. Darüber hinaus sollte das Logo so entworfen sein, sodass es auf den verschiedensten Werbemitteln dargestellt werden kann. Es gibt drei verschiedene Arten von einem Logo: Wortmarke, Bildmarke oder Kombinierte Marke. Wortmarken bestehen auf Buchstaben oder Zahlen. Hingegen eine Bildmarke nur aus einem Bild oder Zeichen besteht. Die Kombinierte Marke oder auch Wort-Bild-Marke genannt, ist eine Mischung aus Wortmarke und Bildmarke. \parencite{Firmenlogo} 
 
@@ -1037,10 +1069,10 @@ Alles in allem bietet Adobe After Effects einige Funktionen, die es ermöglicht 
 \subsection{Was ist StageControl?}
 StageControl ist eine innovative Lösung zur Automatisierung von Tonausrichtung auf Bühnen. Aktuell wird die Steuerung von Tonanlagen meist manuell von einem Tontechniker übernommen, um den gewünschten Stereo-Effekt zu erzielen.
 
-Durch ESP32 UWB-Sensoren wird die Position des Künstlers auf der Bühne bestimmt. Die Höhe, Breite und Länge der Bühne werden dabei durch den Darsteller abgeschritten. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels der Servomotoren zu ermöglichen.
+Durch ESP32 UWB-Sensoren wird die Position der/des Künstlerin/Künstlers auf der Bühne bestimmt. Die Kalibrierung erfolgt von der Aufführung dadurch, dass eine/ein Darstellerin/Darsteller die Bühne abschreiten muss um so die Breite und die Länge zu definieren. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels der Servomotoren zu ermöglichen.
 
 \subsection{Themenabgrenzung}
-StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. Es kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellern oder Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
+StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. Es kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellerinnen/Darstellern oder Musikerinnen/Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
 
 \subsection{Entwicklungsprozesse}  
 Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermöglicht eine strukturierte Planung der Arbeitspakete, die anschließend schrittweise umgesetzt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder effizient und unabhängig erfolgen.  
@@ -1059,11 +1091,11 @@ Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
 \textbf{VMware Workstation Pro} \ - Virtuelle Maschine
 
 \subsection{JavaFX statt Android Studio}
-Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee haben wir aufgrund von diversen Gründen (Kompatibilität, Plattformübergreifende UIs, Neuerlernung, usw.) verworfen. Da sich JavaFX besonders für die Desktop-Entwicklung eignet, haben wir uns schlussendlich dafür entschieden.
+Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee wurde aber aufgrund von diversen Gründen (Kompatibilität) verworfen. Schlussendlich fiel die Entscheidung auf JavaFX, da es sich in diesem Anwendungsfall besonders eignet. 
 
 \section{Verschiedene Arten von UWB Sensoren}
 
-Es gibt verschiedene Arten von ESP32 UWB Modulen mit denen wir uns beschäftigt haben:
+Es wurde mit verschiedene Arten von ESP32 UWB Modulen gearbeitet: 
 
 \begin{table}[h]
 	\centering
@@ -1095,13 +1127,13 @@ Es gibt verschiedene Arten von ESP32 UWB Modulen mit denen wir uns beschäftigt 
 \end{table}
 
 \subsection{ESP32 mit MPU-6050}
-Die Grundidee war es mit Hilfe eines Beschleunigungssensor (MPU-6050) die genau Position über Trägheitsnavigation zu ermitteln. Dabei ist bei der Berechnung außerdem zu beachten, dass man die Erdbeschleunigung wegrechnen muss. Der MPU-6050 liefert Beschleunigungsdaten, diese müssten zu Positionsdaten umgerechnet werden, was schlussendlich nicht ohne diverse und unerklärlichen Fehlern führte. Deshalb wurde diese Idee verworfen und wir sind mit der UWB-Technolgie fortgefahren. \parencite{MPU6050}
+Die Grundidee ist mit Hilfe eines Beschleunigungssensors (MPU-6050), die genaue Position über Trägheitsnavigation zu ermitteln. Dabei ist bei der Berechnung außerdem zu beachten, dass man die Erdbeschleunigung wegrechnen muss. Der MPU-6050 liefert Beschleunigungsdaten, diese mussten zu Positionsdaten umgerechnet werden, was schlussendlich zu diversen und unerklärlichen Fehlern führte. Deshalb wurde diese Idee verworfen und es wurde mit der UWB-Technolgie fortgefahren. \parencite{MPU6050}
 
 \subsection{ESP32 UWB Pro}
 
-Der ESP32 wurde bereits \ref{ESP32} thematisiert. Wichtig ist aber zu sagen, dass wir einen ESP32 mit UWB (=Ultrawideband) Funktion und DW1000Ranging Bibliothek verwendet haben, um uns die Distanzen zwischen Anchor und Tag angeben lassen zu können. Diese Module unterscheiden sich wie folgt:
+Der ESP32 wurde bereits \ref{ESP32} thematisiert. Es wurde ein ESP32 mit UWB (=Ultrawideband) Funktion und DW1000Ranging Bibliothek verwendet, um sich die Distanzen zwischen Anchor und Tag angeben lassen zu können. Diese Module unterscheiden sich wie folgt:
 
-\textbf{Tag}
+\subsubsection{Tag}
 
 Um einen Tag zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
 \begin{lstlisting}[style=C++, caption=Tag Initialisierung, captionpos=b]
@@ -1109,7 +1141,7 @@ Um einen Tag zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
 	DW1000Ranging.startAsTag(TAG_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER);
 \end{lstlisting}  
 
-\textbf{Anchor}
+\subsubsection{Anchor}
 
 Um einen Anchor zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
 \begin{lstlisting}[style=C++, caption=Anchor Initialisierung, captionpos=b]
@@ -1117,20 +1149,21 @@ Um einen Anchor zu initialisieren, muss im Code folgende Zeile hinzugefügt werd
 	DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER, false);
 \end{lstlisting} 
 
-Die Funktion \textit{.startAsAnchor} erhält die folgenden Parameter: den Modus – in unserem Fall \textit{LONGDATA\textunderscore RANGE\textunderscore LOWPOWER} – sowie den Boolean-Wert \textit{false}. Dieser Wert bedeutet, dass keine zufällige Kurzadresse zugewiesen wird, sodass der Tag erkennen kann, welcher Anchor es ist.
+Die Funktion \textit{.startAsAnchor} erhält die folgenden Parameter: den Modus – in diesem Fall \textit{LONGDATA\textunderscore RANGE\textunderscore LOWPOWER} – sowie den Boolean-Wert \textit{false}. Dieser Wert bedeutet, dass keine zufällige Kurzadresse zugewiesen wird, sodass der Tag erkennen kann, welcher Anchor es ist.
 
-Dieser Modus ist jedoch der einzige, welcher die richtigen Abstandwerte zwischen Anchor und Tag liefert, deshalb haben wir uns dafür entschieden.
+Dieser Modus ist jedoch der einzige, welcher die richtigen Abstandwerte zwischen Anchor und Tag liefert, deshalb wurde dieser gewählt.
 
 Wichtig zu beachten ist, dass der Tag einen ähnlichen Code verwendet. Allerdings bleibt der Parameter für die Kurzadresse leer, um Verbindungsprobleme zu vermeiden. Der Modus muss dabei identisch sein.
 
-\textbf{UWB}
+\subsubsection{UWB}
 
 UWB steht für Ultrawideband und ist eine Funktechnologie aus den 1960er Jahren. Diese Art von Kommunikationstechnologie ist darauf spezialisiert superschnell kurze Distanzen auszutauschen. Die hohe Präzision kann bis auf wenige Zentimeter genau verwendet werden. \parencite{UWB}
 
-\textbf{Pinbelegung}
+\subsubsection{Pinbelegung}
 
-Zu beachten ist, dass die Pinbelegung wichtig ist, die Module kommunizieren über diese und müssen, sowohl beim Anchor als auch Tag Modul gleich belegt werden. Außerdem ist zu betonen, dass jedes Modul, egal ob Anchor oder Tag eine eindeutige und einzigartige ID benötigt, um im System zu funktionieren.Um die Mikrocontroller zu programmieren, wurde als IDE Arduino verwendet, die Programmiersprache ist C++.
+Die Pinbelegung ist wichtig, da die Module über diese kommunizieren und müssen, sowohl beim Anchor als auch Tag Modul gleich belegt werden. Außerdem ist zu betonen, dass jedes Modul, egal ob Anchor oder Tag eine eindeutige und einzigartige ID benötigen, um im System zu funktionieren.Um die Mikrocontroller zu programmieren, wurde als IDE Arduino verwendet, die Programmiersprache ist C++.
 
+\newpage
 \textbf{Anchor:}
 \begin{lstlisting}[style=C++, caption=Pinbelegung für Anchor, captionpos=b]
 	#define SPI_SCK 18
@@ -1160,11 +1193,12 @@ Zu beachten ist, dass die Pinbelegung wichtig ist, die Module kommunizieren übe
 	#define I2C_SCL 5
 \end{lstlisting}
 
+\newpage
 \section{Arduino Entwicklung}
 Um Mikrocontroller ansprechen und programmieren zu können, muss man sich für eine IDE entscheiden, hierbei ist die Arduino IDE, \textcite{Arduino}
 die bekannteste und einfachste.
 
-Um ein ESP32 zu verwenden, muss man die vom Hersteller Espressif bereitgestellte Bibliothek \texttt{Arduino\_ESP32\_OTA} installieren. Anschließend verbindet man den Mikrocontroller mit einem USB-C-Kabel mit dem Computer. In der Arduino IDE kann man den ESP32 dann auswählen und Code auf den Mikrocontroller übertragen.
+Um ein ESP32 zu verwenden, muss man die vom Hersteller Espressif bereitgestellte Bibliothek \\ \texttt{Arduino\_ESP32\_OTA} installieren. Anschließend verbindet man den Mikrocontroller mit einem USB-C-Kabel mit dem Computer. In der Arduino IDE kann man den ESP32 dann auswählen und den Code auf den Mikrocontroller übertragen.
 
 \begin{figure}[H]
 	\centering
@@ -1173,9 +1207,10 @@ Um ein ESP32 zu verwenden, muss man die vom Hersteller Espressif bereitgestellte
 	\label{fig:ESP32Lib}
 \end{figure}
 
+\newpage
 \subsection{Arduino Bibliotheken}
 Um den ESP32 zu compilen, die Funktion von UWB und andere Funktionen zu verwenden, muss man Biblotheken im Code verwenden: 
-\begin{lstlisting}[style=C++, caption=Biblotheken, captionpos=b]
+\begin{lstlisting}[style=C++, caption=Bibliotheken, captionpos=b]
 	#include <SPI.h>
 	#include "DW1000Ranging.h"
 	#include "DW1000.h"
@@ -1190,11 +1225,11 @@ Um den ESP32 zu compilen, die Funktion von UWB und andere Funktionen zu verwende
 \textbf{\texttt{Adafruit\_GFX.h}} \& \textbf{\texttt{Adafruit\_SSD1306.h}} \ – Bibliotheken zur Steuerung eines OLED-Displays mit SSD1306-Treiber
 
 
-
+\newpage
 \section{Setup des Projektes}
 In diesem Abschnitt wird das Setup des Projektes, also Bühneneinrichtung, Kalibrierung, usw. thematisiert.
 
-\subsection{Anchor \& Tag Setup}
+\subsection{Anchor und Tag Setup}
 Um das Setup zu starten, muss man auf einige Dinge achten (Aufstellung der Anchors siehe Grafik \ref{fig:AnchorTagSetup}, siehe \ref{Einrichtung Bühne} Einrichtung der Bühne, siehe \ref{KalibrierungDerDaten} Kalibrierung der Daten). In nachfolgender Grafik ist das grundlegende Setup dargestellt.
 
 \begin{figure}[H]
@@ -1206,9 +1241,10 @@ Um das Setup zu starten, muss man auf einige Dinge achten (Aufstellung der Ancho
 
 Die roten Kreise stellen die Anchors dar, welche immer in einem Dreieck platziert werden müssen. Die blauen Kreise sind die Tags, welche beliebig hinzugefügt werden können. Die schwarzen Linien sind die Abstände zwischen den Tags und den Anchors, diese werden für die Trilateration und für die genaue Bestimmung auf der Bühne benötigt. 
 
+\newpage
 \subsection{Kalibrierung der Daten}
 \label{KalibrierungDerDaten}
-Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus vier rohen Rangedaten (in einem Array gespeichert). Die bereinigten Daten werden dann zur Berechnung der Position verwendet. In unserem Fall filtern wir Daten die < 0 und Daten, die über 50\% > als der Ursprungswert sind, heraus. Außerdem wird ein Counter (\texttt{faultCounter}) eingebaut, um ab einer gewissen Anzahl an Versuchen, ein neues Array zu erstellen. 
+Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus vier rohen Rangedaten (in einem Array gespeichert). Die bereinigten Daten werden dann zur Berechnung der Position verwendet. In unserem Fall filtern wir Daten die < 0 und Daten, die über 50 \% > als der Ursprungswert sind, heraus. Außerdem wird ein Counter (\texttt{faultCounter}) eingebaut, um ab einer gewissen Anzahl an Versuchen, ein neues Array zu erstellen. 
 
 \begin{lstlisting}[style=Java, caption=Kalibrierung der Daten, captionpos=b]
 	private void filter() {
@@ -1258,12 +1294,12 @@ Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus 
 
 \subsection{Einrichtung Bühne}
 \label{Einrichtung Bühne}
-Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position zu bestimmen. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von "Abschreiten" definiert und über das GUI (=Graphical User Interface) per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, startet die Visualisierung.
+Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position zu bestimmen. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von Abschreitung der Bühne und über das GUI (=Graphical User Interface) per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, startet die Visualisierung.
 
 \subsection{Berechnung der Anchorpositionen}
 Um die Anchorpositionen korrekt zu ermitteln wurden folgende Berechnungen für den yAnchor und den xAnchor durchgeführt.
 
-Bei dem yAnchor gehen wir immer von einem \textit{x = 0} aus, um die Grenze des Koordinatensystems zu setzen. Und setzen den \textit{y} Wert auf die letzte gemessen Distanz vom Base Anchor \textit{0,0}.
+Bei dem yAnchor gehen wir immer von einem \textit{x = 0} aus, um die Grenze des Koordinatensystems zu setzen. Und setzen den \textit{y} Wert auf die letzte gemessene Distanz vom Base Anchor \textit{0,0}.
 \begin{lstlisting}[style=Java, caption=Berechnung yAnchor, captionpos=b]
 	try {
 		yAnchor[1] = latestD2;
@@ -1280,7 +1316,8 @@ Bei dem yAnchor gehen wir immer von einem \textit{x = 0} aus, um die Grenze des 
 	}
 \end{lstlisting}
 
-Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei müssen wir uns zwei Dreiecke denken und es mithilfe von der Kreisgleichung berechnen \textit{(siehe Skizze]}
+\newpage
+Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Dreiecke vorstellen und dieses mithilfe der Kreisgleichung berechnen.
 \begin{lstlisting}[style=Java, caption=Berechnung xAnchor, captionpos=b]
 	private void setXAnchorPosition() {
 		try {
@@ -1307,13 +1344,13 @@ Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich kompliziert
 \end{lstlisting}
 
 
-
+\newpage
 \subsection{Positionsbestimmung auf einer Bühne}
 Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit Trägheitsnavigation umgesetzt, sondern mithilfe von Trilateration. 
 
 \textbf{Trilateration}
 
-Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen, dadurch, dass wir diese  bereits bei der Einrichtung der Bühne definiert haben, können wir mit folgender Berechnung die Position des Tags bestimmen. In den Variablen d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
+Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen, dadurch, dass diese  bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
 
 Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt, die getrennten Daten werden dann in die Variablen d1, d2 und d3 eingetragen und mit den bereits bekannten Punkten baseAnchor, yAnchor und xAnchor berechnet.
 
@@ -1339,6 +1376,7 @@ Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet 
 	\label{fig:Trilaterationskizze}
 \end{figure}
 
+\newpage
 \begin{lstlisting}[style=Java, caption=Trilateration in Java, captionpos=b]
 	private double[] trilaterate(double d1, double d2, double d3) {
 		double xBaseAnchor = baseAnchor[0];
@@ -1364,11 +1402,13 @@ Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet 
 		return new double[]{x, y};
 	}
 \end{lstlisting}
+
+\newpage
 \section{GUI}
 In diesem Abschnitt wird das GUI thematisiert.
 
 \subsection{GUI-Setup}
-Um das Programm zu verwenden, muss sich der Benutzer zunächst einloggen \ref{fig:StageControlViewGUI}. Die Benutzerkonten werden zuvor von einem Administrator in der Datenbank \ref{tab:users} \texttt{users} angelegt.  
+Um das Programm zu verwenden, muss sich die/der Benutzerin/Benutzer zunächst einloggen \ref{fig:StageControlViewGUI}. Die Benutzerkonten werden zuvor von einer/einem Administratorin/Administrator in der Datenbank \ref{tab:users} \texttt{users} angelegt.  
 
 Nach dem Login gelangt man zu einer Übersicht, in der ein oder zwei Geräte (Tags) hinzugefügt werden können. Anschließend müssen die Anchors festgelegt werden. Dazu bewegt man den Tag auf der Bühne zu einer Ecke und betätigt den Knopf „Set Anchor 1“. Danach wiederholt man diesen Schritt für eine weitere Ecke (oben in der Mitte), indem man den Knopf „Set Anchor 2“ drückt. Sobald alle Anchors gesetzt sind, wird der MaxX-Wert zwischen Anchor1 und Anchor2 bestimmt, um den Servo zu steuern. Dies geschieht durch einen Klick auf den Knopf „Set Max X“. Mit dem Knopf „Remove Device“, kann man die Visualisierung und die Servosteuerung beenden.   
 
@@ -1388,10 +1428,11 @@ Nach diesen Schritten sind sowohl die Visualisierung als auch die Servosteuerung
 	\label{fig:StageControlSetupAnchor}
 \end{figure}
 
+\newpage
 \subsection{GUI-Entwicklung}
-Für die GUI-Entwicklung verwenden wir IntelliJ IDEA mit JavaFX, da uns das bereits vom Unterricht bekannt ist und wir somit nicht die Grundlagen einer anderen IDE lernen mussten.
+Für die GUI-Entwicklung wird IntelliJ IDEA mit JavaFX verwendet, da dies bereits im Unterricht verwendet wurde und somit die Grundlagen bekannt waren.
 
-Die GUI wird in verschiedene Szenen aufgeteilt, in unserem Fall in \textit{anlagen-view.fxml}, \textit{splash-view.fxml} \& \textit{stagecontrol-view.fxml}
+Die GUI wird in verschiedene Szenen aufgeteilt, im vorliegenden Fall in \textit{anlagen-view.fxml}, \textit{splash-view.fxml} \& \textit{stagecontrol-view.fxml}
 Anbei ein Auszug aus der \textit{stagecontrol-view}:
 
 \begin{figure}[H]
@@ -1401,6 +1442,7 @@ Anbei ein Auszug aus der \textit{stagecontrol-view}:
 	\label{fig:Stagecontrolview}
 \end{figure}
 
+\newpage
 Dieser Code stellt diese Szene dar:
 \begin{figure}[H]
 	\centering
@@ -1410,10 +1452,11 @@ Dieser Code stellt diese Szene dar:
 \end{figure}
 
 
-Jede Klasse bekommt einen Controller. Zum Beispiel: \textit{Main.java} hat einen Controller \textit{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da wir Nezwerkoperationen durchführen wurde eine Klasse \textit{NetworkSocket} erstellt, um die Operationen in einem anderen Thread des Programmes abspielen zu lassen. 
+Jede Klasse bekommt einen Controller. Zum Beispiel: \textit{Main.java} hat einen Controller \textit{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Nezwerkoperationen durchngeführt werden, wurde eine Klasse \textit{NetworkSocket} erstellt, um die Operationen in einem anderen Thread des Programmes abspielen zu lassen. 
 
+\newpage
 \subsection{GUI-Design}
-Um alle Szenen korrekt zu laden haben wir eine Logo-Animation eingefügt. Damit schaffen wir außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters um ein einheitliches Design zu gewährleisten, wurde jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Expierence wurde vereinfacht und für den Enduser optimiert.   
+Um alle Szenen korrekt zu laden haben wurde eine Logo-Animation eingefügt. Damit schafft man außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters um ein einheitliches Design zu gewährleisten, wurde jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Expierence wurde vereinfacht und für den Enduser optimiert.   
 
 %% After setup hinzufügen
 \begin{figure}[H]
@@ -1423,16 +1466,16 @@ Um alle Szenen korrekt zu laden haben wir eine Logo-Animation eingefügt. Damit 
 	\label{fig:StageControlGUI}
 \end{figure}
 
-\section{Fehlerermittlung \& Korrektur}
+\section{Fehlerermittlung und Korrektur}
 Um eine korrekte Positionsbestimmung zu gewährleisten, müssen die ESP32-UWB-Sensoren eine Sichtverbindung haben, da die Frequenz durch Objekte gestört werden kann. Daher wird empfohlen, die Anchor mindestens zwei Meter über der Bühne zu positionieren.
 
-Aktuell kann es bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte bekommen kann. Dass verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
+ Es kommt bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte bekommen kann. Das verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
 
 \section{Transferprotokolle}
 In diesem Abschnitt werden die Transferprotokolle thematisiert.
 
 \subsection{UDP}
-UDP (=User Datagram Protocol) ist ein Kommunikationsprotokoll, welches Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Wir verwenden es, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür verwenden wir eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst. Über den Port 80 sendet der ESP32 UWB, dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet sich aus den Daten die Position des Tags. Wiederrum sendet das GUI über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
+UDP (=User Datagram Protocol) ist ein Kommunikationsprotokoll, welches eine Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Es wird verwendet, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür wird eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst verwendet. Über den Port 80 sendet der ESP32 UWB, dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet aus den Daten die Position des Tags. Wiederum sendet das GUI über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
 
 \subsection{MQTT}
 MQTT (=Message Queuing Telemetry Transport) ist ein offenes Protokoll für Verbindungen in unzuverlässige Netzwerke oder eingeschränkten Bandbreitenressourcen. \parencite{MQTT}
@@ -1463,8 +1506,9 @@ In der unteren Tabelle sieht man die Unterschiede zwischen MQTT und UDP.
 	\textcite{MQTTvsUDP}
 \end{table}
 
+\newpage
 \section{Datenbank}
-Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{PostgreSQL}, ein wichtiger Aspekt für unsere Diplomarbeit. 
+Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{PostgreSQL}, ein wichtiger Aspekt dieser Diplomarbeit. 
 
 \begin{figure}[H]
 	\centering
@@ -1474,7 +1518,7 @@ Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{P
 \end{figure}
 
 \subsection{VMware Workstation Pro}
-Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der unsere PostgreSQL-Datenbank läuft. Da wir weder Ressourcen noch den Zugang zu einem physischen Server haben, haben wir uns für eine digitale Lösung entschieden. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
+Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der die PostgreSQL-Datenbank läuft. Da weder Ressourcen noch der Zugang zu einem physischen Server zur Verfügung stand, fiel die Entscheidung auf eine digitale Lösung. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
 
 \subsection{Datenbankstruktur}
 Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
@@ -1497,6 +1541,7 @@ Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eind
 	\label{tab:stagedata}
 \end{table}
 
+\newpage
 Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät (Tag) erhält eine eindeutige \texttt{device\_id}. Zusätzlich gibt es einen Gerätenamen (\texttt{device\_name}) und einen Gerätetyp (\texttt{device\_type}). Der Zeitstempel \texttt{created\_at} wird automatisch mit dem aktuellen Zeitpunkt gesetzt.
 \begin{table}[h]
 	\centering
@@ -1517,7 +1562,7 @@ Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät
 	\label{tab:devices}
 \end{table}
 
-Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto erhält eine eindeutige \texttt{id}. Der \texttt{username} dient als Anmeldekennung und hat eine maximale Länge von 50 Zeichen. Das Feld \texttt{password} speichert das Passwort in gehashter Version des Benutzers, um sich dann folglich in der GUI anmelden zu können.
+Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto erhält eine eindeutige \texttt{id}. Der \texttt{username} dient als Anmeldekennung und hat eine maximale Länge von 50 Zeichen. Das Feld \texttt{password} speichert das Passwort in gehashter Version der/des Benutzerin/Benutzers, um sich dann folglich in der GUI anmelden zu können.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|}
@@ -1537,24 +1582,24 @@ Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto 
 
 \subsection{Beziehung zwischen \texttt{devices} und \texttt{stagedata}}
 
-Die Tabellen \texttt{devices} und \texttt{stagedata} stehen in einer 1-zu-N-Beziehung. Jedes Gerät in der Tabelle \texttt{devices} kann mehrere zugehörige Sensordaten in der Tabelle \texttt{stagedata} besitzen. Dies wird durch die Spalte \texttt{device\_id} in \texttt{stagedata} realisiert, die als Fremdschlüssel auf \texttt{device\_id} in \texttt{devices} verweist. Dadurch wird ermöglicht, dass jede die Daten einem existierenden Gerät zugeordnet ist. 
+Die Tabellen \texttt{devices} und \texttt{stagedata} stehen in einer 1-zu-N-Beziehung. Jedes Gerät in der Tabelle \texttt{devices} kann mehrere zugehörige Sensordaten in der Tabelle \texttt{stagedata} besitzen. Dies wird durch die Spalte \texttt{device\_id} in \texttt{stagedata} realisiert, die als Fremdschlüssel auf \texttt{device\_id} in \texttt{devices} verweist. Dadurch wird ermöglicht, dass alle einem existierenden Gerät zugeordnet sind. 
 
 \subsection{Nützliche Befehle für PostgreSQL}
-\textbf{psql} \ – verbindet dich mit der psql-Shell \\
+\textbf{psql} \ – verbindet die/den Userin/User mit der psql-Shell \\
 \textbf{\textbackslash{c}} \ – verbindet mit der Datenbank \\
 \textbf{\textbackslash{l}} \ – zeigt alle Datenbanken an \\
 \textbf{\textbackslash{d}} \ – zeigt alle Tabellen an \\
 \textbf{\textbackslash{d} tablename} \ – zeigt Tabellendetails an \\
 \textbf{\textbackslash{q}} \ – beendet psql
 
-Diese Funktionen sind die Grundlagen und helfen dabei sich in einer Datenbank, wie PostgreSQL zu recht zu finden.
+Diese Funktionen sind die Grundlagen und helfen dabei sich in einer Datenbank, wie PostgreSQL zurechtzufinden.
 
 \section{Corporate Identity}
-Bei der Corporate Identity beschäftigt sich Stage Control mit der Namensfindung, Farben, Logo, sowie der Schriftart. Nach der Namensfindung wurden die passenden Farben und das Logo geplant, sowie gestaltet.
+Bei der Corporate Identity beschäftigt sich StageControl mit der Namensfindung, Farben, Logo, sowie der Schriftart. Nach der Namensfindung wurden die passenden Farben und das Logo geplant und gestaltet.
 
 \subsection{Namensfindung}
-Ein sehr ausschlaggebender Teil einer Marke ist der Name, dieser sollte gut überlegt werden. Für die Namensfindung von Stage Control wurde ein Meeting mit dem Projektteam veranlasst, in welchem Namensvorschläge überlegt und präsentiert wurden. 
-Anfänglich lag der Fokus auf den Worten Stage, Automation und Sound, da es hauptsächlich um die Steuerung von Audioanlagen auf einer Bühne geht. In diesem Zusammenhang sammelten wir Namensideen, die in der nachstehenden Abbildung \ref{fig:Brainstorming_Namensfindung} aufgelistet sind. 
+Ein ausschlaggebender Teil einer Marke ist der Name, dieser sollte gut überlegt sein. Für die Namensfindung von StageControl wurde ein Meeting mit dem Projektteam veranlasst, in welchem Namensvorschläge überlegt und präsentiert wurden. 
+Anfänglich lag der Fokus auf den Worten ‘Stage‘, ‘Automation‘ und ‘Sound‘, da es hauptsächlich um die Steuerung von Audioanlagen auf einer Bühne geht. In diesem Zusammenhang sammelten wir Namensideen, die in der nachstehenden Abbildung \ref{fig:Brainstorming_Namensfindung} aufgelistet sind. 
 
 \begin{figure}[H]
 	\centering
@@ -1563,21 +1608,22 @@ Anfänglich lag der Fokus auf den Worten Stage, Automation und Sound, da es haup
 	\label{fig:Brainstorming_Namensfindung}
 \end{figure}
 
-Schlussendlich einigte sich unser Projektteam auf den Namen Stage Control, da es genau beschreibt um welche Tätigkeit es sich bei dieser Arbeit handelt. ‘Stage Control‘ ist Englisch und bedeutet Bühnensteuerung. 
+Schlussendlich einigte sich das Projektteam auf den Namen StageControl, da es genau beschreibt worum es geht.
 
+\newpage
 \subsection{Unternehmensfarben}
-Stage Control entschied sich für bläuliche Töne als Unternehmensfarben. Die Farbe Blau steht für Treue, Sicherheit, Kreativität, Produktivität und Technik. \parencite{BedeutungderFarbeBlau} Diese Merkmale möchte Stage Control damit ausstrahlen. Die ausgewählte Farbpalette von Stage Control ist in der Abbildung \ref{fig:Hexcode} zu sehen. 
+Das Team entschied sich für blaue Töne als Unternehmensfarben. Die Farbe Blau steht für Treue, Sicherheit, Kreativität, Produktivität und Technik. \parencite{BedeutungderFarbeBlau} Diese Merkmale möchte StageControl ausstrahlen. Die ausgewählte Farbpalette von StageControl ist in der Abbildung \ref{fig:Hexcode} zu sehen. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Hexcode.png}
-	\caption[Die Hex Codes von Stage Control]{Die Hex Codes von Stage Control}
+	\caption[Die Hex Codes von StageControl]{Die Hex Codes von StageControl}
 	\label{fig:Hexcode}
 \end{figure}
 
 
 \subsection{Logo}
-Nach der Festlegung des Projektteamnamens überlegte sich Stage Control Ideen, wie das Logo aussehen könnte. Aufgrund des ausgewählten Namens startete das Brainstorming mit einer Bühne im Logo. Der erste Entwurf ist in der nachstehenden Abbildung \ref{fig:Logoentwurf1} ersichtlich. 
+Nach der Festlegung des Projektteamnamens überlegte sich StageControl Ideen, wie das Logo aussehen könnte. Aufgrund des ausgewählten Namens startete das Brainstorming mit einer Bühne im Logo. Der erste Entwurf ist in der nachstehenden Abbildung \ref{fig:Logoentwurf1} ersichtlich. 
 
 \begin{figure}[H]
 	\centering
@@ -1586,9 +1632,10 @@ Nach der Festlegung des Projektteamnamens überlegte sich Stage Control Ideen, w
 	\label{fig:Logoentwurf1}
 \end{figure}
 
-Doch dieser Ansatz vom Logo passte nicht zu StageControl. Es war nichts Einzigartiges und es war uneinprägsam. Weiters beinhaltete der erste Entwurf zu viel Text. 
+Doch dieser Ansatz vom Logo passte nicht zu StageControl. Es war nichts Einzigartiges und es war nicht einprägsam. Weiters beinhaltete der erste Entwurf zu viel Text. 
 
-Als zweiten Entwurf wurden Soundbalken dargestellt, sodass die ursprüngliche Idee auch im Logo zu sehen ist. Da im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist um was es sich genau handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig, wodurch es nicht zu Stage Control passt. 
+\newpage
+Als zweiten Entwurf wurden Soundbalken dargestellt, sodass die ursprüngliche Idee auch im Logo zu sehen ist. Da im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist, worum es sich handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig, wodurch es nicht zu StageControl passt. 
 
 \begin{figure}[H]
 	\centering
@@ -1602,46 +1649,50 @@ Der dritte und letzte Entwurf bestand ebenfalls als Soundbalken. Nur wurde hier 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/Logo StageControl.png}
-	\caption[Logo von Stage Control]{Logo von Stage Control}
+	\caption[Logo von StageControl]{Logo von StageControl}
 	\label{fig:Logo StageControl}
 \end{figure}
 
+\newpage
 \subsubsection{Erstellung des Logos}
-Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkt setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein, sowie ausblenden. Zusätzlich haben wir in diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
+Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkte setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein, sowie ausblenden. Außerdem hat das Projektteam mit diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
 
-Nach der Wahl des Programmes wurde der erste Prototyp des Logos entworfen. Den Beginn der Logofertigstellung bildeten die Soundbalken in unterschiedlichsten Größen, hierfür wurde für jeden Balken eine eigene Ebene erstellt. Die Soundbalken wurden als Rechtecke eingefügt und die Ecken abgerundet. Nach dem Erstellen von diesen Balken wurden diese blau eingefärbt. 
+Nach der Wahl des Programmes wurde der erste Prototyp des Logos entworfen. Den Beginn der Logofertigstellung bildeten die Soundbalken in unterschiedlichen Größen, hierfür wurde für jeden Balken eine eigene Ebene erstellt. Die Soundbalken wurden als Rechtecke eingefügt und die Ecken abgerundet. Nach dem Erstellen dieser Balken wurden diese blau eingefärbt. 
 
 Danach wurde überlegt, ob der Projektname rechts, oben oder unten positioniert werden soll. Letztendlich wurde der Text unter den Soundbalken positioniert, da der Name hier am übersichtlichsten erscheint. Hierbei wurde auch jeder Buchstabe in einer eigenen Ebene angelegt. 
 
-Als nächstes stand die Wahl der Schriftart des Logos an. Wir entschieden uns für die Schrift „Futura PT Demi“ da diese gut zu unserem Logo und unserer Arbeit passte. Ein Anliegen war uns, dass die Schrift nicht zu dünn ist, sodass diese gut leserlich ist und nicht im Logo untergeht. Als Schriftgrße entschieden wir uns für 27pt, da der Text sonst im Logo untergehen würde. 
+Als nächstes stand die Wahl der Schriftart des Logos an. Die Entscheidung fiel auf die Schrift „Futura PT Demi“, da diese gut zum Logo und zur Arbeit passte. Die Schrift sollte nicht zu dünn sein, sodass diese gut leserlich ist und nicht im Logo untergeht. Als Schriftgröße wurde 27pt gewählt, da der Text sonst im Logo untergehen würde. 
 
-Schlussendlich fehlte noch ein Rahmen für das Logo. Hierbei sollte es nichts Einfaches sein, da ein Kreis oder Rechteck wenig Aufmerksamkeit erregt. Daher überlegten wir uns die Ecken des Rechteckes auf drei Seiten abzurunden. Somit wirkt das Logo modern, als würde eine Nachricht aufpoppen. 
+Schlussendlich fehlte noch ein Rahmen für das Logo. Es sollte nichts Einfaches sein, da ein Kreis oder ein Rechteck zuwenig Aufmerksamkeit erregt. Durch die drei abgerundeten Ecken  wirkt das Logo modern. Es scheint so, als würde eine Nachricht aufpoppen. 
 
 \section{Werbematerial}
-Um Interessenten von Stage Control zu überzeugen, wurde als Werbematerial ein Flyer erstellt. Der für die Bekanntheit der Marke sorgt.
+Um Interessentinnen/Interessenten von StageControl zu überzeugen, wurde als Werbematerial ein Flyer erstellt, der für die Bekanntheit der Marke sorgen soll.
 
 \subsection{Flyer}
-Der Flyer ist eines der wichtigsten Werbemitteln im Marketing. Ein Flyer sollte handlich sein und eine perfekte Größe zum Lesen haben. Es ist unabhängig vom Internet und billiger als große Plakatwerbungen oder Anzeigen. Weiters ist ein Flyer informativer als eine Anzeige und es lässt die Leser mehr über das Unternehmen oder das Projekt erfahren. Ein Flyer ist außerdem nicht nur ein Fließtext, es beinhaltet auch Bilder und verschiedenstes Design, welches zum Weiterlesen anregt. Der Flyer sollte nicht zu viel Text beinhalten, da dies oft für Leser zu kompliziert oder uninteressant wirken könnte. Besser wäre es, wenn ein Flyer schlicht und mit einem ansprechendem Design gestaltet wird. \parencite{VorteilevonFlyern}
+Der Flyer ist eines der wichtigsten Werbemitteln im Marketing. Ein Flyer muss handlich sein und eine perfekte Größe zum Lesen haben. Er ist unabhängig vom Internet und billiger als große Plakatwerbungen oder Anzeigen. Weiters ist ein Flyer informativer als eine Anzeige und es lässt die Leserinnen und Leser mehr über das Unternehmen oder das Projekt erfahren. Ein Flyer ist außerdem nicht nur ein Fließtext, er beinhaltet auch Bilder und verschiedene Designs, welche zum Weiterlesen anregen. Der Flyer soll nicht zu viel Text beinhalten, da dies zu kompliziert oder uninteressant wirken kann. Besser ist es, wenn ein Flyer schlicht und in einem ansprechenden Design gestaltet wird. \parencite{VorteilevonFlyern}
 
+\newpage
 \subsubsection{Erstellung des Flyers}
-Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Schon am Anfang stand fest, dass der Flyer 4 Seiten haben wird. Der nächste Schritt war die Planung des Flyers, wo beschlossen wurde welche Informationen vorhanden sein sollen und wie die Positionierung erfolgen wird. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Wir entschieden uns pro Seite für eine Höhe von 210mm und einer Breite von 100mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Um alle vier Seiten des Flyers bearbeiten zu können, verfügt das Dokument zwei Seiten. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
+Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Schon am Anfang stand fest, dass der Flyer 4 Seiten haben wird. Der nächste Schritt war die Planung des Flyers, wo beschlossen wurde welche Informationen vorhanden sein sollen und wie die Positionierung erfolgen wird. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Wir entschieden uns pro Seite für eine Höhe von 210 mm und einer Breite von 100 mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Um alle vier Seiten des Flyers bearbeiten zu können, verfügt das Dokument zwei Seiten. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
 
 Das Design und das Layout wurden sorgfältig ausgewählt, um ein einheitliches Erscheinungsbild darzustellen. Die Farben wurden von den Unternehmensfarben verwendet. Zudem wurde auch das Logo von Stage Control verwendet. Als Designelemente entschieden wir uns für Dreiecke, da diese gut zu unserem Design passten. 
 
-Die Schriftart Genos wird für die Textinhalte des Flyers verwendet. Diese Schriftart bietet eine gut leserliche und moderne Schrift für den Text. Durch die Kombination von selbstgemachten Fotos, Formen, Farben und der modernen Schriftart wirkt der Flyer sehr ansprechend. 
+Die Schriftart Genos wird für die Textinhalte des Flyers verwendet. Diese Schriftart ist gut leserlich. Durch die Kombination von selbstgemachten Fotos, Formen, Farben und der modernen Schriftart wirkt der Flyer sehr ansprechend. 
 
+\newpage
 \subsubsection{Inhalt des Flyers}
-Die Titelseite des Flyers beinhaltet rechts oben das Logo von StageControl. Wie in der Abbildung \ref{fig:Titelseite} zu sehen ist, wurde ein Foto von einem Mischpult fotografiert. Welches mit Dreiecken ansprechend umschlossen wird, dies hat nicht nur eine ästethische Wirkung, sondern weckt auch das Interesse der Leser, da man auf dem ersten Augenblick erkennen kann um was es sich hierbei handelt. 
-Die Schriftgröße des Namens wurde mit 34pt verwendet, da es eines der wesentlichsten Details von der Titelseite ist. Der Name wurde von der Kurzbeschreibung, welche mit 19pt geschrieben wird, mittels einer Linie getrennt. Somit ist die Kurzbeschreibung abgetrennt von der Überschrift und die Titelseite wirkt ansprechender.
+Die Titelseite des Flyers beinhaltet rechts oben das Logo von StageControl. Wie in der Abbildung \ref{fig:Titelseite} zu sehen ist, wurde ein Foto von einem Mischpult verwendet. Rund um das Foto wurden Dreiecke als Designobjekte verwendet, da diese dynamisch und modern wirken. Weiters soll die grafische Gestaltung das Interesse am Flyer bzw. am Produkt wecken. 
+Als Schriftgröße des Namens wurde 34pt verwendet, da es eines der wesentlichen Details der Titelseite. Der Name wurde von der Kurzbeschreibung mit 19pt geschrieben ist und ist mittels einer Linie getrennt. Somit ist die Kurzbeschreibung abgetrennt von der Überschrift und die Titelseite wirkt ansprechender.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/Titelseite.png}
+	\includegraphics[width=0.4\linewidth]{images/Titelseite.png}
 	\caption[Titelseite]{Titelseite}
 	\label{fig:Titelseite}
 \end{figure}
 
-Auf den nächsten beiden Seiten befindet sich die Informationsseite. Auf der linken Innenseite wird erklärt, was StageControl macht und wieso es wichtig ist, dass diese Arbeitsweise automatisiert wird. Auf der rechten Innenseite wird erklärt wie StageControl funktioniert. Es dient als Anleitung, sodass der Leser eine kurze Beschreibung hat. Somit ist ersichtlich, wie die Steuerung von Tonanlagen mit StageControl umgesetzt werden. Um in diesen Innenseiten des Flyers auch etwas Farbe zu bekommen, wurden hier dieselben Dreiecke wie auf der Titelseite verwendet. Somit wirkt es nicht kalt, da der Text mithilfe von den Dreiecken umschlossen wird. Um die Innenseiten ansprechender zu gestalten, überlegte sich StageControl einen Verlauf der Dreiecke von der rechten Seite auf die linke Seite. Wie in der Abbildung \ref{fig:Informationsseite} zu sehen ist.
+\newpage
+Auf den nächsten beiden Seiten befinden sich die Informationen. Auf der linken Innenseite wird erklärt, was StageControl macht und wieso es wichtig ist, dass diese Arbeitsweise automatisiert wird. Auf der rechten Innenseite wird erklärt wie StageControl funktioniert. Es dient als Anleitung, sodass die/der Leserin/Leser eine kurze Beschreibung hat. Somit ist ersichtlich, wie die Steuerung von Tonanlagen mit StageControl funktioniert. Um in diesen Innenseiten des Flyers auch etwas Farbe zu bekommen, wurden hier dieselben Dreiecke wie auf der Titelseite verwendet. Somit wirkt es nicht kalt, da der Text mithilfe der Dreiecke umschlossen wird. Um die Innenseiten ansprechender zu gestalten, überlegte sich StageControl einen Verlauf der Dreiecke von der rechten Seite auf die linke Seite. Wie in der Abbildung \ref{fig:Informationsseite} zu sehen ist.
 
 \begin{figure}[H]
 	\centering
@@ -1650,7 +1701,8 @@ Auf den nächsten beiden Seiten befindet sich die Informationsseite. Auf der lin
 	\label{fig:Informationsseite}
 \end{figure} 
 
-Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der Abbildung \ref{fig:Teamseite} ersichtlich ist. Das Bild vom StageControl Team wurde fotografiert und anschließend bearbeitet. Dadurch, dass das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag unter 300\% kommen. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen des Lesers zu gewinnen. Außerdem bekommt der Leser einen ersten Einblick vom Team und kann hiermit schon feststellen, ob ihm das Team, sowie das Konzept zusagt. Weiters wird das Team von StageControl beschrieben und erklärt wie wir es geschafft haben, uns dieser Herausforderung zu stellen.
+\newpage
+Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der Abbildung \ref{fig:Teamseite} ersichtlich ist. Das Bild vom StageControl Team wurde fotografiert und anschließend bearbeitet. Da das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag unter 300 \% kommen. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen der/des Leserin/Lesers zu gewinnen. Außerdem bekommt die/der Leserin/Leser einen ersten Einblick vom Team und kann hiermit schon feststellen, ob ihm das Team, sowie das Konzept zusagt. Weiters wird das Team von StageControl beschrieben und erklärt, wie Herausforderungen gemeistert wurden.
 
 \begin{figure}[H]
 	\centering
@@ -1659,10 +1711,10 @@ Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der 
 	\label{fig:Teamseite}
 \end{figure} 
 
-Die einzelnen Themen im Flyer sind wichtig, um somit dem Leser einen umfassenden Einblick in StageControl zu geben und sie zu begeistern StageControl zu verwenden. Durch der Kombination von Informationen und des Designs wurde ein informativer Flyer entwickelt. 
+Die einzelnen Themen im Flyer sind wichtig, um den Leserinnen und Leser einen umfassenden Einblick in StageControl zu geben und sie zu animieren StageControl zu verwenden. Durch die Kombination von Informationen und Design wurde ein informativer Flyer entwickelt. 
 
-\section{Logo Animation}
-Für die Erstellung einer Animation vom Logo wurde das Programm Adobe After Effects verwendet. Als erstes wurde die Illustratordatei von dem Logo importiert, indem eine neue Komposition erstellt wurde. Wobei hier darauf geachtet werden muss, dass die Ebenengrößen beibehalten werden. Die Kompositionsdateien werden links im Projekt-Panel angezeigt, wie in der nächsten Abbildung \ref{fig:Projekt-Panel} zu sehen ist.
+\section{Logoanimation}
+Für die Erstellung einer Logoanimation wurde das Programm Adobe After Effects verwendet. Als erstes wurde die Illustratordatei des Logos importiert, indem eine neue Komposition erstellt wurde. Wobei hier darauf geachtet werden musste, dass die Ebenengrößen beibehalten werden. Die Kompositionsdateien werden links im Projekt-Panel angezeigt, wie in der nächsten Abbildung \ref{fig:Projekt-Panel} zu sehen ist.
 
 \begin{figure}[H]
 	\centering
@@ -1680,7 +1732,8 @@ Mit einem Doppelklick auf die Animationskomposition, wird die Datei geöffnet un
 	\label{fig:Zeitleiste}
 \end{figure} 
 
-Da jeder Balken und Buchstabe eine eigene Ebene war, konnte in der Zeitleiste einfach die jeweilige Ebene an die gewünschte Position hingeschoben werden. Somit konnte die Annordnung der Balken und Buchstaben in Sekundenabständen mittels einem Verlauf dargestellt werden. Mithilfe des Vorschau-Panels konnte das Ergebnis der Animation direkt angeschaut werden. 
+\newpage
+Da jeder Balken und Buchstabe eine eigene Ebene ist, kann in der Zeitleiste einfach die jeweilige Ebene an die gewünschte Position geschoben werden. Somit kann die Annordnung der Balken und Buchstaben in Sekundenabständen mittels eines Verlaufs dargestellt werden. Mithilfe des Vorschau-Panels kann das Ergebnis der Animation direkt angeschaut werden. 
 
 \begin{figure}[H]
 	\centering
@@ -1689,9 +1742,10 @@ Da jeder Balken und Buchstabe eine eigene Ebene war, konnte in der Zeitleiste ei
 	\label{fig:Vorschau-Panel}
 \end{figure} 
 
+\newpage
 \section{SD-Kartensicherung}
-Für das Klonen von einer SD-Karte wird eine zusätzliche SD-Karte, sowie ein SD-Kartenleser benötigt. Als erstes wählten wir das Programm Win32 Disk Imager aus und installierten es. Den Prozess des SD-Karten klonen machten wir mit folgender Anleitung. \parencite{SD-Kartenklonen}
-Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als nächstes wurde Win32 Disk Imager gestartet und rechts oben im Programm in der Dropdown-Liste „Device“ das Laufwerk des Kartenlesers ausgewählt. Dann wurde auf das Ordner Symbol links daneben geklickt und der Speicherort eingegeben. Als nächstes wurde auf den Button „Read“ geklickt, um den Vorgang zu starten. Nach dem Prozess wurde die SD-Karte entfernt und die leere SD-Karte in das Lesegerät gesteckt. Es wurde sichergestellt, dass die zuvor erstellte Image-Datei ausgewählt ist, falls dies nicht der Fall wäre, sollte es durch das Ordner Symbol wieder eingestellt werden. Danach wurde wieder der Kartenleser in „Device“ ausgewählt und abschließend auf den Button „Write“ geklickt. Nun wurde auf der zweiten SD-Karte eine exakte Kopie von der ersten SD-Karte erstellt. In der nachstehenden Abbildung \ref{fig:Win32 Disk Imager} ist der Prozess der SD-Karten Sicherung zu erkennen.
+Für das Klonen einer SD-Karte wird eine zusätzliche SD-Karte, sowie ein SD-Kartenleser benötigt. Zuerst wird das Programm Win32 Disk Imager ausgewählt und installiert. Die SD-Karte wurde mittels folgender Anleitung geklont. \parencite{SD-Kartenklonen}
+Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als nächstes wurde Win32 Disk Imager gestartet und rechts oben im Programm in der Dropdown-Liste „Device“ das Laufwerk des Kartenlesers ausgewählt. Dann wurde auf das Ordner Symbol links daneben geklickt und der Speicherort eingegeben. Als nächstes wurde auf den Button „Read“ geklickt, um den Vorgang zu starten. Nach dem Prozess wurde die SD-Karte entfernt und die leere SD-Karte in das Lesegerät gesteckt. Es wurde sichergestellt, dass die zuvor erstellte Image-Datei ausgewählt ist, falls dies nicht der Fall wäre, muss es durch das Ordner Symbol wieder eingestellt werden. Danach wurde wieder der Kartenleser in „Device“ ausgewählt und abschließend auf den Button „Write“ geklickt. Nun wurde auf der zweiten SD-Karte eine exakte Kopie der ersten SD-Karte erstellt. In der nachstehenden Abbildung \ref{fig:Win32 Disk Imager} ist der Prozess der SD-Karten Sicherung zu erkennen.
 
 \begin{figure}[H]
 	\centering
@@ -1700,9 +1754,10 @@ Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als n
 	\label{fig:Win32 Disk Imager}
 \end{figure}
 
-\section{Raspberry Pi als Access Point}
-Der Einsatz des Raspberry Pis als Access Point dient, dazu die Services wie Dnsmasq und Hostapd zu nutzen um ein lokales Wlan-Netzwerk aufzubauen. Da der Raspberry Pi ein WLAN-Modul besitzt, wurde dieser als AccessPoint eingerichtet, somit kann das Netzwerk überall aufgebaut werden.  
-Für das konfigurieren des Raspberry Pis als Access Point wurde die Anleitung von AZ-Delivery \textit{"Raspberry Pi als AccessPoint"} zur Hilfe genommen. Als erstes wurde die Wlan-Netzwerkschnittstelle mit einer festen IP konfiguriert. Diese Konfiguration ist wichtig, da der Raspberry Pi nun eine feste IP-Adresse auf der WLAN-Schnittstelle bekommt. Eine WLAN(Wireless Local Area Network)-Schnittstelle ist eine drahtlose Netzwerkschnittstelle, die es ermöglicht eine Verbindung mit dem WLAN herzustellen. Als nächstes wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert.  Danach wurde der Raspberry PI neugestartet und ein DHCP-, sowie DNS-Server installiert und konfiguriert. Ein DHCP Server, auch Dynamic Host Configuration Protocol Server genannt, stellt einem Internetprotokollhost automatisch seine IP-Adresse zuweist. Ein DNS-Server hingegen funktioniert, wie ein Telefonbuch, es verwaltet die Domain und deren zugehörige IP-Adressen. Der DNS-Server übersetzt die Domainanforderungen in IP-Adressen und steuert dabei, welchen Server ein Endnutzer erreicht, wenn er in seinem Browser einen Domain Namen eingibt.  Zum Schluss wurde noch ein Access Point installiert. Der AccessPoint wurde konfiguriert mit dem Namen "raspberry-wlan" und dem Passwort "stagecontrol". Nun kann mit dem WLAN eine Verbindung hergestellt werden. \parencite{RaspberryPiAccessPoint}
+\newpage
+\section{Raspberry Pi als Access-Point} \label{RaspberryAccessPoint}
+Der Einsatz des Raspberry Pis als Access Point dient dazu, die Services wie Dnsmasq und Hostapd zu nutzen um ein lokales Wlan-Netzwerk aufzubauen. Da der Raspberry Pi ein WLAN-Modul besitzt, wurde dieser als Access-Point eingerichtet, somit kann das Netzwerk überall aufgebaut werden.  
+Für das Konfigurieren des Raspberry Pis als Access-Point wurde die Anleitung von AZ-Delivery zur Hilfe genommen. Als erstes wurde die Wlan-Netzwerkschnittstelle mit einer festen IP konfiguriert. Diese Konfiguration ist wichtig, da der Raspberry Pi nun eine feste IP-Adresse auf der WLAN-Schnittstelle bekommt. Eine WLAN(Wireless Local Area Network)-Schnittstelle ist eine drahtlose Netzwerkschnittstelle, die es ermöglicht eine Verbindung mit dem WLAN herzustellen. Als nächstes wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert.  Danach wurde der Raspberry PI neugestartet und ein DHCP-, sowie DNS-Server installiert und konfiguriert. Ein DHCP-Server, auch Dynamic Host Configuration Protocol Server genannt, weist einem Internetprotokollhost automatisch seine IP-Adresse zu. Ein DNS-Server hingegen funktioniert, wie ein Telefonbuch, es verwaltet die Domain und deren zugehörige IP-Adressen. Der DNS-Server übersetzt die Domainanforderungen in IP-Adressen und steuert dabei, welchen Server ein Endnutzer erreicht, wenn er in seinem Browser einen Domain Namen eingibt.  Zum Schluss wurde noch ein Access Point installiert. Der AccessPoint wurde konfiguriert mit dem Namen "raspberry-wlan" und dem Passwort "stagecontrol". Nun kann mit dem WLAN eine Verbindung hergestellt werden. \parencite{RaspberryPiAccessPoint}
 
 \begin{figure}[H]
 	\centering
@@ -1711,6 +1766,7 @@ Für das konfigurieren des Raspberry Pis als Access Point wurde die Anleitung vo
 	\label{fig:Peer to Peer Netzwerk} 
 \end{figure}
 
+\newpage
 Damit das Wlan gestartet wird wurde folgende Commandozeile eingegeben: 
 \begin{lstlisting}
 	sudo ip addr add 192.168.10.10/24 dev wlan0 
@@ -1736,6 +1792,7 @@ Im File /etc/dnsmasq.conf wurde die Schnittstelle vom Internet eingerichtet:
 
 Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist eine Nummer von einem Endgerät, die spezifisch für ein Gerät ist. Anhand von dieser Nummer werden über die Verbindung laufende Daten den Geräten zugeordnet. Nach jeder Veränderung wurde der Raspberry Pi neugestartet. 
 
+\newpage
 \section{Gerüstbau}
 StageControl benötigt ein Gerüst, in das ein Mischpult hineingestellt wird, um eine sichere Ausführung der automatisierten Tonausrichtung zu gewährleisten. 
 
@@ -1748,7 +1805,7 @@ StageControl benötigt ein Gerüst, in das ein Mischpult hineingestellt wird, um
 	\label{fig:Gerüstbau}
 \end{figure}
 
-
+\newpage
 \subsection{Grundsätzliche Funktionalität}
 Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurden zwei verschiebbare Stangen befestigt, auf der die Servomotoren montiert werden können.\\
 An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB.
@@ -1761,7 +1818,7 @@ An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und eine
 \end{figure}
 
 
-
+\newpage
 \subsection{Verwendete Materialien}
 Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 10 × 10 × 1000 mm verwendet, um den Rahmen zu konstruieren. Die Stangen wurden mit Schrauben und Muttern befestigt.\\
 
@@ -1792,7 +1849,7 @@ Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 
 
 
 
-
+\newpage
 Um die Servomotoren an unterschiedliche Mischpulte anzupassen, wurden die Servomotoren auf einer verstellbaren Aluminiumflachstange montiert, auf der diese verschoben werden können. Zusätzlich kann man die Servomotoren auch horizontal justieren, indem die Mutter, die die Servomotoren hält, löst. \\
 Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzplatten als Boden eingesetzt.
 
@@ -1807,6 +1864,7 @@ Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzpla
 \section{Servomotoren}
 Die Servomotoren sind das Stück Hardware, ohne das die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der den Kriterien entspricht. Diese Servomotoren müssen sehr robust sein damit sie etwaige mechanische Einwirkungen aushalten. Außerdem müssen die Motoren wasserfest sein, um auch bei Außeneinsätzen nutzbar zu sein. 
 
+\newpage
 \subsection{Servomotoren Auswahl}
 
 Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servomotoren verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.\\
@@ -1822,6 +1880,8 @@ Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 1
 	\caption[Servomotoren Anpassungen]{Servomotoren Anpassungen}
 	\label{fig:Servomotoren Gestell}
 \end{figure}
+
+\newpage
 Außerdem musste bei den Servomotoren ein Teil des originalen Gehäuses abgeschliffen werden, um genug Platz für die Feststellschrauben zu haben.
 
 \begin{figure}[H]
@@ -1859,10 +1919,12 @@ Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verf
 	\label{fig:Regler-Aufsätze Versionen}
 \end{figure}
 
+\newpage
 \subsection{Steuerlogik} \label{Steuerlogik}
 Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkel Grad umgewandelt werden.Zur Veranschaulichung der Berechnung:\\
 Die/Der Künstlerin/Künstler befindet sich auf der Bühne bei der Position X=5m, die Extrempunkte der Bühne sind X1=0m und X2=10m.\\
 Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt und rechnet diese anhand des Extremwerts X2 in Winkelgrad um. Das bedeutet bei X2=10m und Position des Interpreten bei 5m, dass sich der Servo, der für genau die Person zuständig ist, auf 90° stellen muss. \\
+
 
 \begin{lstlisting}
 	def move_servo(value):
@@ -1887,6 +1949,7 @@ Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt un
 	print(f"Error moving servo: {e}")
 \end{lstlisting}
 
+\newpage
 \section{ESP32-UWB Gehäuse und Stromversorgung}
 In diesem Kapitel wird die Gehäuseentwicklung für die ESP32 UWB-Module inklusive ihrer Stromversorgung mittels wiederaufladbaren Akkus eingegangen. Das Gehäuse schützt die ESP32 UWB-Module und die Akkupacks im aktiven Betrieb.
 
@@ -1903,6 +1966,7 @@ Um ein sicheres Gehäuse für den ESP32 und dessen Stromversorgung zu schaffen, 
 Um Akku und ESP32 vor  mechanischen Außeneinwirkungen zu schützen wurde Styropor an den beiden Plastikdeckel geklebt. Die Deckel werden mit 4 Stück M2 Schrauben fixiert. 
 Die Deckelmaße sind 82 x 83 x 2 mm. An der Oberseite wurde ein Gürtelclip, ebenfalls 3D gedruckt, mittels M4x10 Schrauben befestigt.
 
+\newpage
 \subsection{Entwicklungsprozess Gehäuse}
 Das erste Modell des Gehäuses bestand aus 4 Seitenwänden und einer Bodenplatte. Der ESP32 wurde an den hervorstehenden Platten mittels 4 M2 Schrauben befestigt. Wie im fertigen Gehäuse wurde auch hier der Akkuplatz unterhalb des ESP32 angesetzt. Es wurde kein Deckel für diese Version angefertigt, weil in der Planung kein Deckel vorhergesehen war, da der ESP32 über einen Display verfügt. \\
 Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Diese verfügt über vier Seitenwände und jeweils einen Deckel, um den Zugriff auf beiden Seiten zu gewährleisten. Die Deckel sind aus Plastik und haben vier M2.5 Löcher, die auf die Plastikplatten hinaufgeschraubt werden können.
@@ -1932,6 +1996,7 @@ Im Programm Bambu Studio wurde die STL Datei importiert. Unter dem Menüpunkt Pr
 	\label{fig:BambuStudio} 
 \end{figure}
 
+\newpage
 \subsection{PLA}
 Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet. Dieses Filament bietet folgende Eigenschaften: Robustheit, Kratzfestigkeit, geringer Verzug (Warping) und Farbechtheit \parencite{PLAEigenschaften}. Warping ist das Verziehen des Materials, meist nach oben. Dies tritt dann auf wenn, unterschiedliche Temperaturen und Abkühlgeschwindigkeiten der einzelnen Schichten vorliegen. Während des Kühlprozesses kommt es zur Schrumpfung des Materials, wobei Warping begünstigt wird \parencite{Warping}.
 
@@ -1942,7 +2007,7 @@ Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstec
 	\label{fig:PLA} 
 \end{figure}
 
-
+\newpage
 \subsection{BambuLab A1 - 3D-Drucker}
 Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210 °C am Extruder und ca. 60 °C auf der Druckplatte. Dies ist nötig, um einen idealen Druckvorgang seitens des 3D Druckers zu gewährleisten.
 
@@ -1953,9 +2018,11 @@ Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. 
 	\label{fig: BambuLabA1}
 \end{figure}
 
+\newpage
 \section{ESP32-UWB Stromversorgung}
 Die externe Stromversorgung der ESP32 UWB Module erfolgt bei 4 von 5 Stück mittels 1900 mAh wiederaufladbaren Akkus. Die ESPs werden mit einer Spannung von 4,8V betrieben. So wird gewährleistet, dass ein Auftritt auf einer Bühne reibungslos durchgeführt werden kann.\\
 Der letzte ESP32 wird mittels USB-Kabel mit Strom versorgt, da der EPS am Gerüst neben dem Raspberry Pi angebracht wird und über diesen versorgt wird.\\
+
 
 Mit folgender Formel lässt sich der Stromverbauch für die ESP32 UWBs mit OLED Display berechnen:
 
@@ -1996,6 +2063,7 @@ Ebenfalls wurden die Akkupacks modifiziert. Der originale Anschluss (ein 3-polig
 \section{Raspberry Pi}
 Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden die Servomotoren per Jumper Wire verbunden, um die Servos mit Winkeldaten, Strom und einer Erdung zu versorgen. Zudem wird der am Gerüst befestigte ESP32 UWB \textit{(Anchor 0)} mittels USB C Kabel über dem Raspberry Pi mit Strom versorgt. 
 
+\newpage
 \subsection{Raspberry Pi Pins}
 Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
 Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires benötigt: sechs für die direkte Verbindung und drei zusätzliche zur Verlängerung der Kabel für den zweiten Servomotor. Die Jumper-Wires vom Raspberry Pi werden in die entsprechenden Female-Connectoren der Servomotoren bzw. der Verlängerungskabel gesteckt.
@@ -2009,9 +2077,10 @@ Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires be
 
 
 \subsection{Signalverarbeitung}
-In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \textit{Steuerlogik} beschriebenen Abläufen. \\
-Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches die Daten, wie im Kapitel \textit{"Raspberry Pi als Access Point"} beschrieben, an den verarbeitenden Raspberry Pi sendet	.
+In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \ref{Steuerlogik} beschriebenen Abläufen. \\
+Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches die Daten, wie im Kapitel \ref{"RaspberryAccessPoint"} beschrieben, an den verarbeitenden Raspberry Pi sendet	.
 
+\newpage
 \section{Programmierung}
 \subsection{Thonny}
 Um die Servosteuerung zu programmieren wurde die IDE Thonny verwendet. Diese eignete sich besonders, da die IDE bereits am Raspberry Pi vorinstalliert ist und sich einfach bedienen lässt. Durch diese Vorinstallation des Programms konnte der Code direkt für die Hardware getestet werden, ohne etwaige Einstellungen zu treffen.
@@ -2031,6 +2100,7 @@ Folgende Libraries wurden verwendet:
 \subsection{Datenbankverbindung}
 Um bei einem Ausfall des Systems und bei einem folgenden Neustart nicht den Prozess des Kalibrierens während einer Bühnenperformance durchführen zu müssen, werden die Abstände ,\textit{( in der Datenbank: "maxDistances")}, aus der Datenbank über eine Select-Anweisung geholt. So kann nach einem Ausfall der Betrieb wiederhergestellt werden. Vom Raspberry Pi werden keine Daten an die Datenbank geschickt, da dies zu viel Bandbreite und einen negativen Einfluss auf die Geschwindigkeit der Datenbank hat.
 
+\newpage
 \section{Mischpult}
 Am Mischpult selbst wird nur der 3D gedruckte Aufsatz des Servomotors am Pan-Drehpotentiometers des verwendeten Kanals angebracht. Mehr muss am Mischpult selbst nicht gemacht werden, um StageControl einzusetzen. Zum Testen der Steuerung wurde das Behringer Xenyx 1204USB verwendet.
 
