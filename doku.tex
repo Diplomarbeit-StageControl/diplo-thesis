@@ -1067,12 +1067,12 @@ Alles in allem bietet Adobe After Effects einige Funktionen, die es ermöglicht 
 \chapter{Ergebnisdokumentation}
 \section{Einleitung}
 \subsection{Was ist StageControl?}
-StageControl ist eine innovative Lösung zur Automatisierung von Tonausrichtung auf Bühnen. Aktuell wird die Steuerung von Tonanlagen meist manuell von einem Tontechniker übernommen, um den gewünschten Stereo-Effekt zu erzielen.
+StageControl ist eine innovative Lösung zur Automatisierung von Tonausrichtung auf Bühnen. Aktuell wird die Steuerung von Tonanlagen meist manuell von einer/einem Tontechnikerin/Tontechniker übernommen, um den gewünschten Stereo-Effekt zu erzielen.
 
-Durch ESP32 UWB-Sensoren wird die Position der/des Künstlerin/Künstlers auf der Bühne bestimmt. Die Kalibrierung erfolgt von der Aufführung dadurch, dass eine/ein Darstellerin/Darsteller die Bühne abschreiten muss um so die Breite und die Länge zu definieren. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels der Servomotoren zu ermöglichen.
+Durch ESP32 UWB-Sensoren wird die Position der/des Künstlerin/Künstlers auf der Bühne bestimmt. Die Kalibrierung erfolgt vor der Aufführung dadurch, dass eine/ein Darstellerin/Darsteller die Bühne abschreiten muss, um so die Breite und die Länge zu definieren. Die Daten werden an einen Raspberry Pi gesendet und weiterverarbeitet, um die automatische Steuerung der Tonanlage mittels Servomotoren zu ermöglichen.
 
 \subsection{Themenabgrenzung}
-StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. Es kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellerinnen/Darstellern oder Musikerinnen/Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
+StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. StageControl kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellerinnen/Darstellern oder Musikerinnen/Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
 
 \subsection{Entwicklungsprozesse}  
 Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermöglicht eine strukturierte Planung der Arbeitspakete, die anschließend schrittweise umgesetzt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder effizient und unabhängig erfolgen.  
@@ -1080,7 +1080,7 @@ Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermög
 Zur kontinuierlichen Dokumentation des Programmcodes sowie aller weiteren Entwicklungsfortschritte wird das Versionskontrollsystem GitHub verwendet. Dies stellt eine transparente Nachverfolgbarkeit der Änderungen sicher und erleichtert die Zusammenarbeit im Team.
 
 \section{Entwicklung}
-Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
+Die Entwicklung wurde mit folgenden Programmen und Programmiersprachen umgesetzt.
 
 \textbf{Arduino IDE} \ – IDE für ESP32 UWB Entwicklung \\
 \textbf{IntelliJ IDEA} \ – IDE für Entwicklung des GUI \\
@@ -1091,11 +1091,11 @@ Die Entwicklung wurde mit folgenden Programmen \& Programmiersprachen umgesetzt.
 \textbf{VMware Workstation Pro} \ - Virtuelle Maschine
 
 \subsection{JavaFX statt Android Studio}
-Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee wurde aber aufgrund von diversen Gründen (Kompatibilität) verworfen. Schlussendlich fiel die Entscheidung auf JavaFX, da es sich in diesem Anwendungsfall besonders eignet. 
+Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee wurde aber aufgrund von Kompatibilitätsgründen verworfen. Schlussendlich fiel die Entscheidung auf JavaFX, da es sich für diesen Anwendungsfall besonders eignet. 
 
 \section{Verschiedene Arten von UWB Sensoren}
 
-Es wurde mit verschiedene Arten von ESP32 UWB Modulen gearbeitet: 
+Es wurde mit verschiedenen Arten von ESP32 UWB Modulen gearbeitet: 
 
 \begin{table}[h]
 	\centering
@@ -1118,7 +1118,7 @@ Es wurde mit verschiedene Arten von ESP32 UWB Modulen gearbeitet:
 		\hline
 		Apple Interoperable & N & N & Y \\
 		\hline
-		Suitable for & Long distance needed & Long distance needed & Product development \\
+		Suitable for & long distance needed & long distance needed & product development \\
 		\hline
 	\end{tabular}
 	\caption{Comparison of UWB Modules}
@@ -1127,7 +1127,7 @@ Es wurde mit verschiedene Arten von ESP32 UWB Modulen gearbeitet:
 \end{table}
 
 \subsection{ESP32 mit MPU-6050}
-Die Grundidee ist mit Hilfe eines Beschleunigungssensors (MPU-6050), die genaue Position über Trägheitsnavigation zu ermitteln. Dabei ist bei der Berechnung außerdem zu beachten, dass man die Erdbeschleunigung wegrechnen muss. Der MPU-6050 liefert Beschleunigungsdaten, diese mussten zu Positionsdaten umgerechnet werden, was schlussendlich zu diversen und unerklärlichen Fehlern führte. Deshalb wurde diese Idee verworfen und es wurde mit der UWB-Technolgie fortgefahren. \parencite{MPU6050}
+Die Grundidee ist mit Hilfe eines Beschleunigungssensors (MPU-6050), die genaue Position über Trägheitsnavigation zu ermitteln. Dabei ist bei der Berechnung außerdem zu beachten, dass man die Erdbeschleunigung wegrechnen muss. Der MPU-6050 liefert Beschleunigungsdaten, diese müssen zu Positionsdaten umgerechnet werden, was schlussendlich zu diversen und unerklärlichen Fehlern führte. Deshalb wurde diese Idee verworfen und es wurde mit der UWB-Technolgie fortgefahren. \parencite{MPU6050}
 
 \subsection{ESP32 UWB Pro}
 
@@ -1157,11 +1157,11 @@ Wichtig zu beachten ist, dass der Tag einen ähnlichen Code verwendet. Allerding
 
 \subsubsection{UWB}
 
-UWB steht für Ultrawideband und ist eine Funktechnologie aus den 1960er Jahren. Diese Art von Kommunikationstechnologie ist darauf spezialisiert superschnell kurze Distanzen auszutauschen. Die hohe Präzision kann bis auf wenige Zentimeter genau verwendet werden. \parencite{UWB}
+UWB steht für Ultrawideband und ist eine Funktechnologie aus den 1960er Jahren. Diese Art von Kommunikationstechnologie ist darauf spezialisiert superschnell Daten auf kurze Distanzen auszutauschen. Die hohe Präzision kann bis auf wenige Zentimeter genau verwendet werden. \parencite{UWB}
 
 \subsubsection{Pinbelegung}
 
-Die Pinbelegung ist wichtig, da die Module über diese kommunizieren und müssen, sowohl beim Anchor als auch Tag Modul gleich belegt werden. Außerdem ist zu betonen, dass jedes Modul, egal ob Anchor oder Tag eine eindeutige und einzigartige ID benötigen, um im System zu funktionieren.Um die Mikrocontroller zu programmieren, wurde als IDE Arduino verwendet, die Programmiersprache ist C++.
+Die Pinbelegung ist wichtig, da die Module über diese kommunizieren und sie müssen sowohl beim Anchor als auch Tag Modul gleich belegt werden. Außerdem ist zu betonen, dass jedes Modul, egal ob Anchor oder Tag eine eindeutige und einzigartige IDs benötigen, um im System zu funktionieren.Um die Mikrocontroller zu programmieren, wurde als IDE Arduino verwendet, die Programmiersprache ist C++.
 
 \newpage
 \textbf{Anchor:}
@@ -1294,7 +1294,7 @@ Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus 
 
 \subsection{Einrichtung Bühne}
 \label{Einrichtung Bühne}
-Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position zu bestimmen. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von Abschreitung der Bühne und über das GUI (=Graphical User Interface) per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, startet die Visualisierung.
+Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von Abschreitung der Bühne und über das GUI (=Graphical User Interface) per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, startet die Visualisierung.
 
 \subsection{Berechnung der Anchorpositionen}
 Um die Anchorpositionen korrekt zu ermitteln wurden folgende Berechnungen für den yAnchor und den xAnchor durchgeführt.
@@ -1317,7 +1317,7 @@ Bei dem yAnchor gehen wir immer von einem \textit{x = 0} aus, um die Grenze des 
 \end{lstlisting}
 
 \newpage
-Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Dreiecke vorstellen und dieses mithilfe der Kreisgleichung berechnen.
+Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Dreiecke vorstellen und diese mithilfe der Kreisgleichung berechnen.
 \begin{lstlisting}[style=Java, caption=Berechnung xAnchor, captionpos=b]
 	private void setXAnchorPosition() {
 		try {
@@ -1350,7 +1350,7 @@ Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit Trägheitsnavi
 
 \textbf{Trilateration}
 
-Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen, dadurch, dass diese  bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
+Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen. Da diese bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
 
 Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt, die getrennten Daten werden dann in die Variablen d1, d2 und d3 eingetragen und mit den bereits bekannten Punkten baseAnchor, yAnchor und xAnchor berechnet.
 
@@ -1452,11 +1452,11 @@ Dieser Code stellt diese Szene dar:
 \end{figure}
 
 
-Jede Klasse bekommt einen Controller. Zum Beispiel: \textit{Main.java} hat einen Controller \textit{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Nezwerkoperationen durchngeführt werden, wurde eine Klasse \textit{NetworkSocket} erstellt, um die Operationen in einem anderen Thread des Programmes abspielen zu lassen. 
+Jede Klasse bekommt einen Controller. Zum Beispiel: \textit{Main.java} hat einen Controller \textit{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Netzwerkoperationen durchgeführt werden, wurde eine Klasse \textit{NetworkSocket} erstellt, um die Operationen in einem anderen Thread des Programmes abspielen zu lassen. 
 
 \newpage
 \subsection{GUI-Design}
-Um alle Szenen korrekt zu laden haben wurde eine Logo-Animation eingefügt. Damit schafft man außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters um ein einheitliches Design zu gewährleisten, wurde jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Expierence wurde vereinfacht und für den Enduser optimiert.   
+Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Damit schafft man außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters wurde um ein einheitliches Design zu gewährleisten, jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Experience wurde vereinfacht und für den Enduser optimiert.   
 
 %% After setup hinzufügen
 \begin{figure}[H]
@@ -1475,10 +1475,10 @@ Um eine korrekte Positionsbestimmung zu gewährleisten, müssen die ESP32-UWB-Se
 In diesem Abschnitt werden die Transferprotokolle thematisiert.
 
 \subsection{UDP}
-UDP (=User Datagram Protocol) ist ein Kommunikationsprotokoll, welches eine Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Es wird verwendet, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür wird eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst verwendet. Über den Port 80 sendet der ESP32 UWB, dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet aus den Daten die Position des Tags. Wiederum sendet das GUI über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
+UDP (=User Datagram Protocol) ist ein Kommunikationsprotokoll, welches eine Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Es wird verwendet, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür wird eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst verwendet. Über den Port 80 sendet der ESP32 UWB dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet aus den Daten die Position des Tags. Wiederum sendet das GUI über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
 
 \subsection{MQTT}
-MQTT (=Message Queuing Telemetry Transport) ist ein offenes Protokoll für Verbindungen in unzuverlässige Netzwerke oder eingeschränkten Bandbreitenressourcen. \parencite{MQTT}
+MQTT (=Message Queuing Telemetry Transport) ist ein offenes Protokoll für Verbindungen in unzuverlässigen Netzwerken oder eingeschränkten Bandbreitenressourcen. \parencite{MQTT}
 
 \subsection{MQTT vs UDP}
 In der unteren Tabelle sieht man die Unterschiede zwischen MQTT und UDP.
@@ -1518,7 +1518,7 @@ Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{P
 \end{figure}
 
 \subsection{VMware Workstation Pro}
-Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der die PostgreSQL-Datenbank läuft. Da weder Ressourcen noch der Zugang zu einem physischen Server zur Verfügung stand, fiel die Entscheidung auf eine digitale Lösung. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
+Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der die PostgreSQL-Datenbank läuft. Da weder Ressourcen noch der Zugang zu einem physischen Server zur Verfügung standen, fiel die Entscheidung auf eine digitale Lösung. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
 
 \subsection{Datenbankstruktur}
 Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
@@ -1599,7 +1599,7 @@ Bei der Corporate Identity beschäftigt sich StageControl mit der Namensfindung,
 
 \subsection{Namensfindung}
 Ein ausschlaggebender Teil einer Marke ist der Name, dieser sollte gut überlegt sein. Für die Namensfindung von StageControl wurde ein Meeting mit dem Projektteam veranlasst, in welchem Namensvorschläge überlegt und präsentiert wurden. 
-Anfänglich lag der Fokus auf den Worten ‘Stage‘, ‘Automation‘ und ‘Sound‘, da es hauptsächlich um die Steuerung von Audioanlagen auf einer Bühne geht. In diesem Zusammenhang sammelten wir Namensideen, die in der nachstehenden Abbildung \ref{fig:Brainstorming_Namensfindung} aufgelistet sind. 
+Anfänglich lag der Fokus auf den Worten ‘Stage‘, ‘Automation‘ und ‘Sound‘, da es hauptsächlich um die Steuerung von Audioanlagen auf einer Bühne geht. In diesem Zusammenhang wurden Namensideen gesammelt, die in der nachstehenden Abbildung \ref{fig:Brainstorming_Namensfindung} aufgelistet sind. 
 
 \begin{figure}[H]
 	\centering
@@ -1612,7 +1612,7 @@ Schlussendlich einigte sich das Projektteam auf den Namen StageControl, da es ge
 
 \newpage
 \subsection{Unternehmensfarben}
-Das Team entschied sich für blaue Töne als Unternehmensfarben. Die Farbe Blau steht für Treue, Sicherheit, Kreativität, Produktivität und Technik. \parencite{BedeutungderFarbeBlau} Diese Merkmale möchte StageControl ausstrahlen. Die ausgewählte Farbpalette von StageControl ist in der Abbildung \ref{fig:Hexcode} zu sehen. 
+Das Team entschied sich für blaue Farbtöne als Unternehmensfarben. Die Farbe Blau steht für Treue, Sicherheit, Kreativität, Produktivität und Technik. \parencite{BedeutungderFarbeBlau} Diese Merkmale möchte StageControl ausstrahlen. Die ausgewählte Farbpalette von StageControl ist in der Abbildung \ref{fig:Hexcode} zu sehen. 
 
 \begin{figure}[H]
 	\centering
@@ -1632,10 +1632,10 @@ Nach der Festlegung des Projektteamnamens überlegte sich StageControl Ideen, wi
 	\label{fig:Logoentwurf1}
 \end{figure}
 
-Doch dieser Ansatz vom Logo passte nicht zu StageControl. Es war nichts Einzigartiges und es war nicht einprägsam. Weiters beinhaltete der erste Entwurf zu viel Text. 
+Doch dieser Ansatz passte nicht zu StageControl. Es war nicht einzigartig und es war nicht einprägsam. Weiters beinhaltete der erste Entwurf zu viel Text. 
 
 \newpage
-Als zweiten Entwurf wurden Soundbalken dargestellt, sodass die ursprüngliche Idee auch im Logo zu sehen ist. Da im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist, worum es sich handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig, wodurch es nicht zu StageControl passt. 
+Im zweiten Entwurf wurden Soundbalken dargestellt, weil im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist, worum es sich handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig. 
 
 \begin{figure}[H]
 	\centering
@@ -1644,7 +1644,7 @@ Als zweiten Entwurf wurden Soundbalken dargestellt, sodass die ursprüngliche Id
 	\label{fig:Logoentwurf2}
 \end{figure}
 
-Der dritte und letzte Entwurf bestand ebenfalls als Soundbalken. Nur wurde hier eine anderen Anordnung, sowie eine andere Position des Textes gewählt. Weiters wurde bei diesem Logo der Rahmen ansprechender designt, sodass das Logo modern wirkt und einprägsamer ist. In Abbildung \ref{fig:Logo StageControl} ist das endgültige Logo zu sehen.
+Der dritte und letzte Entwurf bestand ebenfalls aus Soundbalken. Nur wurde hier eine andere Anordnung, sowie eine andere Position des Textes gewählt. Weiters wurde bei diesem Logo der Rahmen ansprechender designt, sodass das Logo modern wirkt und einprägsamer ist. In Abbildung \ref{fig:Logo StageControl} ist das endgültige Logo zu sehen.
 
 \begin{figure}[H]
 	\centering
@@ -1655,13 +1655,13 @@ Der dritte und letzte Entwurf bestand ebenfalls als Soundbalken. Nur wurde hier 
 
 \newpage
 \subsubsection{Erstellung des Logos}
-Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkte setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein, sowie ausblenden. Außerdem hat das Projektteam mit diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
+Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkte setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein-, sowie ausblenden. Außerdem hat das Projektteam mit diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
 
 Nach der Wahl des Programmes wurde der erste Prototyp des Logos entworfen. Den Beginn der Logofertigstellung bildeten die Soundbalken in unterschiedlichen Größen, hierfür wurde für jeden Balken eine eigene Ebene erstellt. Die Soundbalken wurden als Rechtecke eingefügt und die Ecken abgerundet. Nach dem Erstellen dieser Balken wurden diese blau eingefärbt. 
 
 Danach wurde überlegt, ob der Projektname rechts, oben oder unten positioniert werden soll. Letztendlich wurde der Text unter den Soundbalken positioniert, da der Name hier am übersichtlichsten erscheint. Hierbei wurde auch jeder Buchstabe in einer eigenen Ebene angelegt. 
 
-Als nächstes stand die Wahl der Schriftart des Logos an. Die Entscheidung fiel auf die Schrift „Futura PT Demi“, da diese gut zum Logo und zur Arbeit passte. Die Schrift sollte nicht zu dünn sein, sodass diese gut leserlich ist und nicht im Logo untergeht. Als Schriftgröße wurde 27pt gewählt, da der Text sonst im Logo untergehen würde. 
+Als nächstes stand die Wahl der Schriftart des Logos an. Die Entscheidung fiel auf die Schrift „Futura PT Demi“, da diese gut zum Logo und zur Arbeit passt. Die Schrift sollte nicht zu dünn sein, sodass diese gut leserlich ist und nicht im Logo untergeht. Als Schriftgröße wurde 27pt gewählt, da der Text sonst im Logo verloren geht. 
 
 Schlussendlich fehlte noch ein Rahmen für das Logo. Es sollte nichts Einfaches sein, da ein Kreis oder ein Rechteck zuwenig Aufmerksamkeit erregt. Durch die drei abgerundeten Ecken  wirkt das Logo modern. Es scheint so, als würde eine Nachricht aufpoppen. 
 
@@ -1669,20 +1669,20 @@ Schlussendlich fehlte noch ein Rahmen für das Logo. Es sollte nichts Einfaches 
 Um Interessentinnen/Interessenten von StageControl zu überzeugen, wurde als Werbematerial ein Flyer erstellt, der für die Bekanntheit der Marke sorgen soll.
 
 \subsection{Flyer}
-Der Flyer ist eines der wichtigsten Werbemitteln im Marketing. Ein Flyer muss handlich sein und eine perfekte Größe zum Lesen haben. Er ist unabhängig vom Internet und billiger als große Plakatwerbungen oder Anzeigen. Weiters ist ein Flyer informativer als eine Anzeige und es lässt die Leserinnen und Leser mehr über das Unternehmen oder das Projekt erfahren. Ein Flyer ist außerdem nicht nur ein Fließtext, er beinhaltet auch Bilder und verschiedene Designs, welche zum Weiterlesen anregen. Der Flyer soll nicht zu viel Text beinhalten, da dies zu kompliziert oder uninteressant wirken kann. Besser ist es, wenn ein Flyer schlicht und in einem ansprechenden Design gestaltet wird. \parencite{VorteilevonFlyern}
+Der Flyer ist eines der wichtigsten Werbemittel im Marketing. Ein Flyer muss handlich sein und eine perfekte Größe zum Lesen haben. Er ist unabhängig vom Internet und billiger als große Plakatwerbungen oder Anzeigen. Weiters ist ein Flyer informativer als eine Anzeige und er lässt die Leserinnen/Leser mehr über das Unternehmen oder das Projekt erfahren. Ein Flyer ist außerdem nicht nur ein Fließtext, er beinhaltet auch Bilder und verschiedene Designs, welche zum Weiterlesen anregen. Der Flyer soll nicht zu viel Text beinhalten, da dies zu kompliziert oder uninteressant wirken kann. Besser ist es, wenn ein Flyer schlicht und in einem ansprechenden Design gestaltet wird. \parencite{VorteilevonFlyern}
 
 \newpage
 \subsubsection{Erstellung des Flyers}
-Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Schon am Anfang stand fest, dass der Flyer 4 Seiten haben wird. Der nächste Schritt war die Planung des Flyers, hinsichtlich Inhalt und Gestaltung. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Definiert wurde pro Seite eine Höhe von 210 mm und einer Breite von 100 mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Um alle vier Seiten des Flyers bearbeiten zu können, verfügt das Dokument zwei Seiten. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
+Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Schon am Anfang stand fest, dass der Flyer 4 Seiten haben wird. Der nächste Schritt war die Planung des Flyers, hinsichtlich Inhalt und Gestaltung. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Definiert wurde pro Seite eine Höhe von 210 mm und einer Breite von 100 mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
 
-Das Design und das Layout wurden sorgfältig ausgewählt, um ein einheitliches Erscheinungsbild darzustellen. Das Farbkonzept der Unternehmensfarben wurde beibehalten. Zudem wurde auch das Logo von Stage Control verwendet. Als Designelemente entschieden wir uns für Dreiecke, da diese gut zu unserem Design passten. 
+Das Design und das Layout wurden sorgfältig ausgewählt, um ein einheitliches Erscheinungsbild darzustellen. Das Farbkonzept der Unternehmensfarben wurde beibehalten. Zudem wurde auch das Logo von Stage Control verwendet. Als Designelemente entschieden wir uns für Dreiecke, da diese gut zum Design passen. 
 
 Die Schriftart Genos wird für die Textinhalte des Flyers verwendet. Diese Schriftart ist gut leserlich. Durch die Kombination von selbstgemachten Fotos, Formen, Farben und der modernen Schriftart wirkt der Flyer sehr ansprechend. 
 
 \newpage
 \subsubsection{Inhalt des Flyers}
 Die Titelseite des Flyers beinhaltet rechts oben das Logo von StageControl. Wie in der Abbildung \ref{fig:Titelseite} zu sehen ist, wurde ein Foto von einem Mischpult verwendet. Rund um das Foto wurden Dreiecke als Designobjekte verwendet, da diese dynamisch und modern wirken. Weiters soll die grafische Gestaltung das Interesse am Flyer bzw. am Produkt wecken. 
-Als Schriftgröße des Namens wurde 34pt verwendet, da es eines der wesentlichen Details der Titelseite. Der Name wurde von der Kurzbeschreibung mit 19pt geschrieben ist und ist mittels einer Linie getrennt. Somit ist die Kurzbeschreibung abgetrennt von der Überschrift und die Titelseite wirkt ansprechender.
+Als Schriftgröße des Namens wurde 34pt verwendet, da es das wesentliche Detail der Titelseite ist. Die Kurzbeschreibung wurde mit 19pt geschrieben und ist mittels einer Linie vom Namen getrennt. Somit wirkt die Titelseite ansprechender.
 
 \begin{figure}[H]
 	\centering
@@ -1692,7 +1692,7 @@ Als Schriftgröße des Namens wurde 34pt verwendet, da es eines der wesentlichen
 \end{figure}
 
 \newpage
-Auf den nächsten beiden Seiten befinden sich die Informationen. Auf der linken Innenseite wird erklärt, was StageControl macht und wieso es wichtig ist, dass diese Arbeitsweise automatisiert wird. Auf der rechten Innenseite wird erklärt wie StageControl funktioniert. Es dient als Anleitung, sodass die/der Leserin/Leser eine kurze Beschreibung hat. Somit ist ersichtlich, wie die Steuerung von Tonanlagen mit StageControl funktioniert. Um in diesen Innenseiten des Flyers auch etwas Farbe zu bekommen, wurden hier dieselben Dreiecke wie auf der Titelseite verwendet. Somit wirkt es nicht kalt, da der Text mithilfe der Dreiecke umschlossen wird. Um die Innenseiten ansprechender zu gestalten, überlegte sich StageControl einen Verlauf der Dreiecke von der rechten Seite auf die linke Seite. Wie in der Abbildung \ref{fig:Informationsseite} zu sehen ist.
+Auf den nächsten beiden Seiten befinden sich die Informationen. Auf der linken Innenseite wird erklärt, was StageControl macht und wieso es wichtig ist, dass diese Arbeitsweise automatisiert wird. Auf der rechten Innenseite wird erklärt wie StageControl funktioniert. Es dient als Anleitung für die/den Leserin/Leser. Somit ist ersichtlich wie die Steuerung von Tonanlagen mit StageControl funktioniert. Um in diese Innenseiten des Flyers auch etwas Farbe zu bekommen, wurden hier dieselben Dreiecke wie auf der Titelseite verwendet. Daher wirkt es nicht kalt, da der Text mithilfe der Dreiecke umschlossen wird. Um die Innenseiten ansprechender zu gestalten, überlegte sich StageControl einen Verlauf der Dreiecke von der rechten Seite auf die linke Seite. Wie in der Abbildung \ref{fig:Informationsseite} zu sehen ist.
 
 \begin{figure}[H]
 	\centering
@@ -1702,7 +1702,7 @@ Auf den nächsten beiden Seiten befinden sich die Informationen. Auf der linken 
 \end{figure} 
 
 \newpage
-Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der Abbildung \ref{fig:Teamseite} ersichtlich ist. Das Bild vom StageControl Team wurde fotografiert und anschließend bearbeitet. Da das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag unter 300 \% kommen. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen der/des Leserin/Lesers zu gewinnen. Außerdem bekommt die/der Leserin/Leser einen ersten Einblick vom Team und kann hiermit schon feststellen, ob ihm das Team, sowie das Konzept zusagt. Weiters wird das Team von StageControl beschrieben und erklärt, wie Herausforderungen gemeistert wurden.
+Auf der letzten Seite stellt sich das Team von StageControl vor, siehe Abbildung \ref{fig:Teamseite}. Das StageControl Team wurde fotografiert und das Foto anschließend bearbeitet. Da das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag unter 300 \% kommen. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen der/des Leserin/Lesers zu gewinnen. Außerdem bekommt die/der Leserin/Leser einen ersten Eindruck vom Team und kann so schon feststellen, ob das Team sympathisch ist, sowie ob das Konzept zusagt. Weiters wird das Team von StageControl beschrieben und erklärt, wie Herausforderungen gemeistert wurden.
 
 \begin{figure}[H]
 	\centering
@@ -1711,7 +1711,7 @@ Auf der letzten Seite stellt sich das Team von StageControl vor, welches in der 
 	\label{fig:Teamseite}
 \end{figure} 
 
-Die einzelnen Themen im Flyer sind wichtig, um den Leserinnen und Leser einen umfassenden Einblick in StageControl zu geben und sie zu animieren StageControl zu verwenden. Durch die Kombination von Informationen und Design wurde ein informativer Flyer entwickelt. 
+Die einzelnen Themen im Flyer sind wichtig, um den Leserinnen und Lesern einen umfassenden Einblick in StageControl zu geben und sie zu animieren StageControl zu verwenden. Durch die Kombination von Informationen und Design wurde ein informativer Flyer entwickelt. 
 
 \section{Logoanimation}
 Für die Erstellung einer Logoanimation wurde das Programm Adobe After Effects verwendet. Als erstes wurde die Illustratordatei des Logos importiert, indem eine neue Komposition erstellt wurde. Wobei hier darauf geachtet werden musste, dass die Ebenengrößen beibehalten werden. Die Kompositionsdateien werden links im Projekt-Panel angezeigt, wie in der nächsten Abbildung \ref{fig:Projekt-Panel} zu sehen ist.
@@ -1745,7 +1745,7 @@ Da jeder Balken und Buchstabe eine eigene Ebene ist, kann in der Zeitleiste einf
 \newpage
 \section{SD-Kartensicherung}
 Für das Klonen einer SD-Karte wird eine zusätzliche SD-Karte, sowie ein SD-Kartenleser benötigt. Zuerst wird das Programm Win32 Disk Imager ausgewählt und installiert. Die SD-Karte wurde mittels folgender Anleitung geklont. \parencite{SD-Kartenklonen}
-Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als nächstes wurde Win32 Disk Imager gestartet und rechts oben im Programm in der Dropdown-Liste „Device“ das Laufwerk des Kartenlesers ausgewählt. Dann wurde auf das Ordner Symbol links daneben geklickt und der Speicherort eingegeben. Als nächstes wurde auf den Button „Read“ geklickt, um den Vorgang zu starten. Nach dem Prozess wurde die SD-Karte entfernt und die leere SD-Karte in das Lesegerät gesteckt. Es wurde sichergestellt, dass die zuvor erstellte Image-Datei ausgewählt ist, falls dies nicht der Fall wäre, muss es durch das Ordner Symbol wieder eingestellt werden. Danach wurde wieder der Kartenleser in „Device“ ausgewählt und abschließend auf den Button „Write“ geklickt. Nun wurde auf der zweiten SD-Karte eine exakte Kopie der ersten SD-Karte erstellt. In der nachstehenden Abbildung \ref{fig:Win32 Disk Imager} ist der Prozess der SD-Karten Sicherung zu erkennen.
+Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als nächstes wurde Win32 Disk Imager gestartet und rechts oben im Programm in der Dropdown-Liste „Device“ das Laufwerk des Kartenlesers ausgewählt. Dann wurde auf das Ordnersymbol links daneben geklickt und der Speicherort eingegeben. Als nächstes wurde auf den Button „Read“ geklickt, um den Vorgang zu starten. Nach dem Prozess wurde die SD-Karte entfernt und die leere SD-Karte in das Lesegerät gesteckt. Es wurde sichergestellt, dass die zuvor erstellte Image-Datei ausgewählt ist, falls dies nicht der Fall wäre, muss es durch das Ordner Symbol wieder eingestellt werden. Danach wurde wieder der Kartenleser in „Device“ ausgewählt und abschließend auf den Button „Write“ geklickt. Nun wurde auf der zweiten SD-Karte eine exakte Kopie der ersten SD-Karte erstellt. In der nachstehenden Abbildung \ref{fig:Win32 Disk Imager} ist der Prozess der SD-Kartensicherung zu erkennen.
 
 \begin{figure}[H]
 	\centering
@@ -1755,9 +1755,9 @@ Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als n
 \end{figure}
 
 \newpage
-\section{Raspberry Pi als Access-Point} \label{RaspberryAccessPoint}
+\section{Raspberry Pi als Access Point} \label{RaspberryAccessPoint}
 Der Einsatz des Raspberry Pis als Access Point dient dazu, die Services wie Dnsmasq und Hostapd zu nutzen um ein lokales Wlan-Netzwerk aufzubauen. Da der Raspberry Pi ein WLAN-Modul besitzt, wurde dieser als Access-Point eingerichtet, somit kann das Netzwerk überall aufgebaut werden.  
-Für das Konfigurieren des Raspberry Pis als Access-Point wurde die Anleitung von AZ-Delivery zur Hilfe genommen. Als erstes wurde die Wlan-Netzwerkschnittstelle mit einer festen IP konfiguriert. Diese Konfiguration ist wichtig, da der Raspberry Pi nun eine feste IP-Adresse auf der WLAN-Schnittstelle bekommt. Eine WLAN(Wireless Local Area Network)-Schnittstelle ist eine drahtlose Netzwerkschnittstelle, die es ermöglicht eine Verbindung mit dem WLAN herzustellen. Als nächstes wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert.  Danach wurde der Raspberry PI neugestartet und ein DHCP-, sowie DNS-Server installiert und konfiguriert. Ein DHCP-Server, auch Dynamic Host Configuration Protocol Server genannt, weist einem Internetprotokollhost automatisch seine IP-Adresse zu. Ein DNS-Server hingegen funktioniert, wie ein Telefonbuch, es verwaltet die Domain und deren zugehörige IP-Adressen. Der DNS-Server übersetzt die Domainanforderungen in IP-Adressen und steuert dabei, welchen Server ein Endnutzer erreicht, wenn er in seinem Browser einen Domain Namen eingibt.  Zum Schluss wurde noch ein Access Point installiert. Der AccessPoint wurde konfiguriert mit dem Namen "raspberry-wlan" und dem Passwort "stagecontrol". Nun kann mit dem WLAN eine Verbindung hergestellt werden. \parencite{RaspberryPiAccessPoint}
+Für das Konfigurieren des Raspberry Pis als Access Point wurde die Anleitung von AZ-Delivery zur Hilfe genommen. Als erstes wurde die Wlan-Netzwerkschnittstelle mit einer festen IP konfiguriert. Diese Konfiguration ist wichtig, da der Raspberry Pi nun eine feste IP-Adresse auf der WLAN-Schnittstelle bekommt. Eine WLAN(Wireless Local Area Network)-Schnittstelle ist eine drahtlose Netzwerkschnittstelle, die es ermöglicht eine Verbindung mit dem WLAN herzustellen. Als nächstes wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert. Danach wurde der Raspberry PI neugestartet und ein DHCP-, sowie DNS-Server installiert und konfiguriert. Ein DHCP-Server, auch Dynamic Host Configuration Protocol Server genannt, weist einem Internetprotokollhost automatisch seine IP-Adresse zu. Ein DNS-Server hingegen funktioniert, wie ein Telefonbuch. Es verwaltet die Domain und deren zugehörige IP-Adressen. Der DNS-Server übersetzt die Domainanforderungen in IP-Adressen und steuert dabei welchen Server ein Endnutzer erreicht, wenn er in seinem Browser einen Domain Namen eingibt.  Zum Schluss wurde noch ein Access Point installiert. Der Access Point wurde konfiguriert mit dem Namen "raspberry-wlan" und dem Passwort "stagecontrol". Nun kann mit dem WLAN eine Verbindung hergestellt werden. \parencite{RaspberryPiAccessPoint}
 
 \begin{figure}[H]
 	\centering
@@ -1807,7 +1807,7 @@ StageControl benötigt ein Gerüst, in das ein Mischpult hineingestellt wird, um
 
 \newpage
 \subsection{Grundsätzliche Funktionalität}
-Um dies sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurden zwei verschiebbare Stangen befestigt, auf der die Servomotoren montiert werden können.\\
+Um die Stabilität sicherzustellen, wurde ein Gerüst aus Aluminiumstangen und Holzplatten gefertigt. Es ermöglicht, unterschiedlich große Mischpulte in das Gerüst zu stellen, ohne jegliche Anpassungen vornehmen zu müssen. Oberhalb wurden zwei verschiebbare Stangen befestigt, auf der die Servomotoren montiert werden können.\\
 An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und einen ESP32 UWB.
 
 \begin{figure}[H]
@@ -1820,7 +1820,7 @@ An der Seite des Gerüsts befindet sich ein Platz für den Raspberry Pi und eine
 
 \newpage
 \subsection{Verwendete Materialien}
-Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 10 × 10 × 1000 mm verwendet, um den Rahmen zu konstruieren. Die Stangen wurden mit Schrauben und Muttern befestigt.\\
+Für die Rahmenkonstruktion wurden 4 x 1 m große Aluminiumstangen mit den Maßen 10 × 10 × 1000 mm verwendet. Die Stangen wurden mit Schrauben und Muttern befestigt.\\
 
 \begin{table} [H]
 	\begin{tabular}{ |p{3.3cm} |p{4.8cm}|p{4.8cm}| }
@@ -1844,7 +1844,7 @@ Für den Bau des Gerüsts wurden 4 x 1 m große Aluminiumstangen mit den Maßen 
 		\textbf{Muttern / Flügelmuttern}& 42 Muttern + 2 Flügelmuttern & \\
 		\hline	
 	\end{tabular}
-	\caption{Stückliste Verwendete Materialien} 
+	\caption{Stückliste verwendete Materialien} 
 \end{table} 
 
 
@@ -1862,18 +1862,18 @@ Um einen besseren Halt für die Mischpulte zu gewährleisten wurden zwei Holzpla
 
 
 \section{Servomotoren}
-Die Servomotoren sind das Stück Hardware, ohne das die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der den Kriterien entspricht. Diese Servomotoren müssen sehr robust sein damit sie etwaige mechanische Einwirkungen aushalten. Außerdem müssen die Motoren wasserfest sein, um auch bei Außeneinsätzen nutzbar zu sein. 
+Die Servomotoren sind jenes Stück Hardware, ohne das die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen der den Kriterien entspricht. Diese Servomotoren müssen sehr robust sein, damit sie etwaige mechanische Einwirkungen aushalten. Außerdem müssen die Motoren wasserfest sein, um auch bei Außeneinsätzen nutzbar zu sein. 
 
 \newpage
 \subsection{Servomotoren Auswahl}
 
-Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servomotoren verwendet. Dieser wird über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.\\
+Im Rahmen dieser Diplomarbeit wurde zur Steuerung der Drehpotentiometer die Savöx SH-0255MG Servomotoren verwendet. Diese werden über ein Python-Skript mit den entsprechenden Winkeldaten angesteuert. Die genaue Berechnungsmethode wird im Kapitel \ref{Steuerlogik} detailliert erläutert.\\
 Die ersten Tests der Steuerung wurden mit den Standard Servomotoren von BerryBase, mit der Bezeichnung SG92R Micro Servo, durchgeführt.
 
 \section{Servomotoren Anpassungen}
-Die Servomotoren werden in einen eigens angefertigten Gestell gelegt und dann mittels 2 M4 x 20 Schrauben niedergeschraubt. Durch dieses Gestell werden die Servomotoren vor etwaigen mechanischen Einflüssen geschützt. \\
+Die Servomotoren werden in ein eigens angefertigtes Gestell gelegt und dann mittels 2 M4 x 20 Schrauben niedergeschraubt. Durch dieses Gestell werden die Servomotoren vor etwaigen mechanischen Einflüssen geschützt. \\
 Das Servomotorgestell bestehst aus einem Stahlaufnahmeteil, einem Motorklemmteil und einem Kopplungsstück zwischen dem Servomotor und dem Aufnahmeteil.\\
-Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 10x10x1000mm Aluminiumstange mittels zweier Flügelmuttern niedergeschraubt.\\
+Dieses Gestell wird dann mit dem Servomotor zwischen dem Flachprofil und einer 10 x 10 x 1000 mm Aluminiumstange mittels zweier Flügelmuttern niedergeschraubt.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/Servo-Gestell.jpg}
@@ -1893,7 +1893,7 @@ Außerdem musste bei den Servomotoren ein Teil des originalen Gehäuses abgeschl
 
 
 \section{Servomotor-Aufsatz}
-Um den zuverlässigen Betrieb des Servomotors zu gewährleisten, wurde ein Aufsatz für den Servomotor im 3D-Druckverfahren hergestellt. Der Aufsatz besteht aus einem 4 cm Zylinder mit einer vertikalen Öffnung für die  Abtriebswelle (Spline Shaft)  und einem rechteckigen Oberteil, das aus dem Zylinder im 45 Grad-Winkel herausragt, auf das der originalen Aufsatz des Servomotors geschraubt werden kann. Der Zylinder wird so auf dem Drehpotentiometer platziert, dass die Aussparung des Potentiometers mit der Öffnung des Aufsatzes übereinstimmt. Dadurch wird ein Übersteuern des Servomotors verhindert.
+Um den zuverlässigen Betrieb der Servomotoren zu gewährleisten, wurde ein Aufsatz für die Servomotoren im 3D-Druckverfahren hergestellt. Ein Aufsatz besteht aus einem 4 cm Zylinder mit einer vertikalen Öffnung für die  Abtriebswelle (Spline Shaft)  und einem rechteckigen Oberteil, das aus dem Zylinder im 45 Grad-Winkel herausragt, darauf kann der originale Aufsatz des Servomotors geschraubt werden kann. Der Zylinder wird so auf dem Drehpotentiometer platziert, dass die Aussparung des Potentiometers mit der Öffnung des Aufsatzes übereinstimmt. Dadurch wird ein Übersteuern des Servomotors verhindert.
 
 \begin{figure}[H]
 	\centering
@@ -1921,7 +1921,7 @@ Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verf
 
 \newpage
 \subsection{Steuerlogik} \label{Steuerlogik}
-Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkel Grad umgewandelt werden.Zur Veranschaulichung der Berechnung:\\
+Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkelgrad umgewandelt werden. Zur Veranschaulichung der Berechnung:\\
 Die/Der Künstlerin/Künstler befindet sich auf der Bühne bei der Position X=5m, die Extrempunkte der Bühne sind X1=0m und X2=10m.\\
 Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt und rechnet diese anhand des Extremwerts X2 in Winkelgrad um. Das bedeutet bei X2=10m und Position des Interpreten bei 5m, dass sich der Servo, der für genau die Person zuständig ist, auf 90° stellen muss. \\
 
@@ -1951,7 +1951,7 @@ Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt un
 
 \newpage
 \section{ESP32-UWB Gehäuse und Stromversorgung}
-In diesem Kapitel wird die Gehäuseentwicklung für die ESP32 UWB-Module inklusive ihrer Stromversorgung mittels wiederaufladbaren Akkus eingegangen. Das Gehäuse schützt die ESP32 UWB-Module und die Akkupacks im aktiven Betrieb.
+In diesem Kapitel wird auf die Gehäuseentwicklung für die ESP32 UWB-Module inklusive ihrer Stromversorgung mittels wiederaufladbaren Akkus eingegangen. Das Gehäuse schützt die ESP32 UWB-Module und die Akkupacks im aktiven Betrieb.
 
 \begin{figure}[H]
 	\centering
@@ -1963,13 +1963,13 @@ In diesem Kapitel wird die Gehäuseentwicklung für die ESP32 UWB-Module inklusi
 
 \subsection{Generelle Überlegungen}
 Um ein sicheres Gehäuse für den ESP32 und dessen Stromversorgung zu schaffen, wurde ein 3D-Modell erstellt und ausgedruckt, in das der ESP32 mittels 4 Stück M2-Schrauben verschraubt werden kann. Dieser befindet sich dann in der Mitte des Gehäuses. Unterhalb des ESP32 liegt das Akkupack, das den ESP32 mit Strom versorgt.
-Um Akku und ESP32 vor  mechanischen Außeneinwirkungen zu schützen wurde Styropor an den beiden Plastikdeckel geklebt. Die Deckel werden mit 4 Stück M2 Schrauben fixiert. 
-Die Deckelmaße sind 82 x 83 x 2 mm. An der Oberseite wurde ein Gürtelclip, ebenfalls 3D gedruckt, mittels M4x10 Schrauben befestigt.
+Die Deckel werden mit 4 Stück M2 Schrauben fixiert. \\
+Die Deckelmaße sind 82 x 83 x 2 mm. An der Oberseite wurde ein Gürtelclip, ebenfalls 3D gedruckt und mittels M4x10 Schrauben befestigt.
 
 \newpage
 \subsection{Entwicklungsprozess Gehäuse}
 Das erste Modell des Gehäuses bestand aus 4 Seitenwänden und einer Bodenplatte. Der ESP32 wurde an den hervorstehenden Platten mittels 4 M2 Schrauben befestigt. Wie im fertigen Gehäuse wurde auch hier der Akkuplatz unterhalb des ESP32 angesetzt. Es wurde kein Deckel für diese Version angefertigt, weil in der Planung kein Deckel vorhergesehen war, da der ESP32 über einen Display verfügt. \\
-Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Diese verfügt über vier Seitenwände und jeweils einen Deckel, um den Zugriff auf beiden Seiten zu gewährleisten. Die Deckel sind aus Plastik und haben vier M2.5 Löcher, die auf die Plastikplatten hinaufgeschraubt werden können.
+Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Dieses verfügt über vier Seitenwände und jeweils einen Deckel, um den Zugriff auf beiden Seiten zu gewährleisten. Die Deckel sind aus Plastik und haben vier M2.5 Löcher, die auf die Plastikplatten hinaufgeschraubt werden können.
 
 \begin{figure}[H]
 	\centering
@@ -2009,7 +2009,7 @@ Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstec
 
 \newpage
 \subsection{BambuLab A1 - 3D-Drucker}
-Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210 °C am Extruder und ca. 60 °C auf der Druckplatte. Dies ist nötig, um einen idealen Druckvorgang seitens des 3D Druckers zu gewährleisten.
+Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca 210 °C am Extruder und ca. 60 °C auf der Druckplatte. Dies ist nötig, um einen idealen Druckvorgang seitens des 3D-Druckers zu gewährleisten.
 
 \begin{figure}[H]
 	\centering
@@ -2050,7 +2050,7 @@ Die Akkupacks werden mit dem ANSMANN Ladegerät ACS48, das speziell für 4- bis 
 	\label{fig:Akkupacks}
 \end{figure}
 
-Ebenfalls wurden die Akkupacks modifiziert. Der originale Anschluss (ein 3-poliger Steckverbinder) der Akkupacks war zu groß, um in die Stromversorgungsbuchse der ESPs zu passen. Daher wurden die Anschlüsse der Akkupacks entfernt und durch neue MiniAMP-Anschlüsse ersetzt, damit diese in die Buchsen der ESP32 passen.
+Akkupacks wurden ebenfalls modifiziert. Der originale Anschluss (ein 3-poliger Steckverbinder) der Akkupacks war zu groß, um in die Stromversorgungsbuchse der ESPs zu passen. Daher wurden die Anschlüsse der Akkupacks entfernt und durch neue MiniAMP-Anschlüsse ersetzt, damit diese in die Buchsen der ESP32 passen.
 
 \begin{figure}[H]
 	\centering
@@ -2065,7 +2065,7 @@ Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden
 
 \newpage
 \subsection{Raspberry Pi Pins}
-Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Pins 11 und 13 werden zur Datenübertragung genutzt.\\
+Zur Ansteuerung der Servomotoren wurden die Pins 2 und 4 (+5V), 6 und 9 (Ground) sowie 11 und 13 (GPIO17/27) verwendet. Die Pins 2 und 4 stellen die Stromversorgung der Servomotoren sicher. Die Pins 6 und 9 schließen den Stromkreis und dienen der Stromrückführung. Die Pins 11 und 13 werden zur Datenübertragung genutzt.\\
 Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires benötigt: sechs für die direkte Verbindung und drei zusätzliche zur Verlängerung der Kabel für den zweiten Servomotor. Die Jumper-Wires vom Raspberry Pi werden in die entsprechenden Female-Connectoren der Servomotoren bzw. der Verlängerungskabel gesteckt.
 
 \begin{figure}[H]
@@ -2078,7 +2078,7 @@ Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires be
 
 \subsection{Signalverarbeitung}
 In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \ref{Steuerlogik} beschriebenen Abläufen. \\
-Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches die Daten, wie im Kapitel \ref{"RaspberryAccessPoint"} beschrieben, an den verarbeitenden Raspberry Pi sendet	.
+Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches die Daten, wie im Kapitel \ref{RaspberryAccessPoint} beschrieben, an den verarbeitenden Raspberry Pi sendet	.
 
 \newpage
 \section{Programmierung}
