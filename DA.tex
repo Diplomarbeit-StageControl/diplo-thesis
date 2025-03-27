@@ -43,6 +43,8 @@
 \usepackage{menukeys}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{ifthen}
 
 
 
@@ -69,6 +71,8 @@
 \setcounter{biburlucpenalty}{9000}% Großbuchstaben
 %Literaturdatenbank einbinden
 \addbibresource{Bibliography.bib}
+
+
 
 
 \lstset{literate=%
@@ -213,15 +217,10 @@
 	
 	\newpage
 	\phantomsection
-	\printbibliography[heading=bibintoc]
-	
+	\include{anhang}
 	\listoffigures
 	\listoftables
-	
-	\include{begleitprotokoll}
-	\include{anhang}
-	
-	
+	\printbibliography[heading=bibintoc]
 \end{document}
 
 
