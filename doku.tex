@@ -15,9 +15,9 @@
 	\ifthenelse{\value{page} < 26}{Pirringer}{%
 		\ifthenelse{\value{page} < 34}{Becksteiner}{%
 			\ifthenelse{\value{page} < 48}{Pospichal}{%
-				\ifthenelse{\value{page} < 67}{Becksteiner}{%
-					\ifthenelse{\value{page} < 83}{Pospichal}{%
-						\ifthenelse{\value{page} < 102}{Pirringer}{}
+				\ifthenelse{\value{page} < 68}{Becksteiner}{%
+					\ifthenelse{\value{page} < 84}{Pospichal}{%
+						\ifthenelse{\value{page} < 103}{Pirringer}{}
 					}%
 				}%
 			}%
@@ -1072,7 +1072,7 @@ UWB steht für Ultrawideband und ist eine Funktechnologie aus den 1960er Jahren.
 
 \section{Verschiedene Arten von UWB Sensoren}
 
-Es wurde mit verschiedenen Arten von ESP32 UWB Modulen gearbeitet: 
+Es wurde mit verschiedenen Arten von ESP32 UWB Modulen gearbeitet \parencite{ArtenSensorn}: 
 
 \begin{table}[h]
 	\centering
@@ -1085,22 +1085,15 @@ Es wurde mit verschiedenen Arten von ESP32 UWB Modulen gearbeitet:
 		\hline
 		Core UWB & DW1000 & DW1000 & DW3000 \\
 		\hline
-		Screen & N & Y & N \\
+		Bildschirmm & N & Y & N \\
 		\hline
-		Measuring Distance (m) & 200 & 200 & 20 \\
+		Messdistanz (m) & 200 & 200 & 200 \\
 		\hline
-		Battery Socket & N & Y & N \\
-		\hline
-		UWB Channel & 2/5 & 2/5 & 5/9 \\
-		\hline
-		Apple Interoperable & N & N & Y \\
-		\hline
-		Suitable for & long distance needed & long distance needed & product development \\
+		Batterieanschluss & N & Y & N \\
 		\hline
 	\end{tabular}
 	\caption{Comparison of UWB Modules}
 	\label{tab:uwb_comparison}
-	\parencite{ArtenSensorn}
 \end{table}
 
 \subsection{ESP32 mit MPU-6050}
@@ -1267,57 +1260,136 @@ Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus 
 
 \subsection{Einrichtung Bühne}
 \label{Einrichtung Bühne}
-Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors, werden mithilfe von Abschreitung der Bühne und über das GUI \texttt{(=Graphical User Interface)} per Button click gesetzt. Erst wenn dieser Schritt abgeschlossen wurde, startet die Visualisierung.
+Um eine Bühne einzurichten müssen die Länge (x) und die Breite (y) bekannt sein, um eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 (baseAnchor) immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors (yAnchor, xAnchor), werden mithilfe von Abschreitung der Bühne und über das GUI \texttt{(=Graphical User Interface)} per Button click gesetzt. Die Platzierung erfolgt dann entlang der Bühne, sinnvoller Weise wird der yAnchor am hinteren rechten oder linken Ende und der xAnchor auf der rechten oder linken mittleren Position der Bühne platziert. Die Berechnung bestimmt dann die korrekte Position der Anchors und die Visualisierung kann beginnen. 
 
 \subsection{Berechnung der Anchorpositionen}
 Um die Anchorpositionen korrekt zu ermitteln wurden folgende Berechnungen für den yAnchor und den xAnchor durchgeführt.
 
-Bei dem yAnchor gehen wir immer von einem \texttt{x = 0} aus, um die Grenze des Koordinatensystems zu setzen und somit negative Schnittpunkte direkt herauszufiltern. Und setzen den \texttt{y} Wert auf die letzte gemessene Distanz vom Base Anchor. Dieser Wert wird durch die Methode \texttt{getLastArrayElement(baseAnchorRangeArray)} ermittelt.
+\textbf{yAnchor:}
+
+Bei dem yAnchor gehen wir immer von einem \texttt{x = 0} aus, um die Grenze des Koordinatensystems zu setzen und somit negative Schnittpunkte direkt herauszufiltern. Dafür bewegt man sich zu der Position des yAnchors und der gemessene Wert, also die Distanz von dem base Anchor zum yAnchor wird der \texttt{y} Wert. Dieser Wert wird durch die Methode \texttt{getFromBaseToTag()} ermittelt und mit folgendem Code gesetzt.
 \begin{lstlisting}[style=Java, caption=Berechnung yAnchor, captionpos=b]
-         yAnchor[1] = getLastArrayElement(baseAnchorRangeArray);
-     
+     yAnchor[1] = getFromBaseToTag();
      statusLabel.setText("Anchor 2 set at X: " + yAnchor[0] + ", Y: " + yAnchor[1]);
      System.out.println("Anchor 2 set at X: " + yAnchor[0] + ", Y: " + yAnchor[1]);
      
+     positionCalculator.setYAnchor(yAnchor[1]);
      drawAnchors();
      yAnchorButton.setDisable(true);
 \end{lstlisting}
 
 \newpage
-Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Schnittpunkte vorstellen und diese mithilfe der Kreisgleichung und einer quadratischen Gleichung berechnen. Mit den Methoden \texttt{getY1(), getX()} berechnen wir die genaue Koordinate bei diesem Punkt.
+\textbf{xAnchor:}
 
-\begin{lstlisting}[style=Java, caption=getX und getY1 Berechnung, captionpos=b]
-	private double getY1(double distanceYX, double distanceBaseX) {
-		double yDistance = yAnchor[1];
-		return Math.abs((yDistance * yDistance + distanceBaseX * distanceBaseX - distanceYX * distanceYX) /(2 * yDistance));
+Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Schnittpunkte vorstellen und diese mithilfe der Kreisgleichung und einer quadratischen Gleichung berechnen. Mit der Methode \texttt{getXAnchor()} aus der \texttt{PositionCalculator} Klasse werden die genauen Koordinaten des xAnchors berechnet.
+
+Die Berechnung der y-Position des xAnchors sieht mathematisch wie folgt aus:
+\begin{gather*}
+	K_1 \quad x^2 + y^2 = r_{1}^{2} \\
+	K_2 \quad (x - x_{3})^2 + (y - y_{3})^2 = r_{2}^{2} \\
+	K_2 \quad x^2 - 2x_{3}x + x_{3}^{2} + y^2 - 2y_{3}y + y_{3}^{2} = r_{2}^{2} \\
+	-K_1 \quad -x^2 - y^2 = -r_{1}^{2} \\
+	-2x_{3}x - 2y_{3}y + x_{3}^{2} + y_{3}^{2} = r_{2}^{2} - r_{1}^{2} \\
+	-2x_{3}x - 2y_{3}y = r_{2}^{2} - r_{1}^{2} - x_{3}^{2} - y_{3}^{2} \\
+	x_{3}x + y_{3}y = C \\
+	y_{3}y = C - x_{3}x \\
+	y = \frac{C - x_{3}x}{y_{3}}
+\end{gather*}
+
+\begin{gather*}
+	x^2 + \left( \frac{C - x_3 x}{y_3} \right)^2 = r_1^2 \\
+	x^2 + \frac{C^2}{y_3^2} - \frac{2x_3 Cx}{y_3^2} + \frac{x_3^2}{y_3^2} - r_1^2 = 0 \\
+	x^2 + \frac{x_3^2}{y_3^2} - \frac{2x_3 C}{y_3}x + \frac{C^2}{y_3^2} - r_1^2 = 0\\
+	\left( 1 + \frac{x_3^2}{y_3^2} \right)^2x^2 - \frac{2x_3 C}{y_3^2}x + \frac{C^2}{y_3^2} - r_1^2 = 0 \\
+	a = 1 + \frac{x_3^2}{y_3^2} \\
+	b = -\frac{2x_3 C}{y_3^2} \\
+	c = \frac{C^2}{y_3^2} - r_1^2
+\end{gather*}
+
+Diese Berechnung dient der Bestimmung der Schnittpunkte zweier Kreise \texttt{K1, K2} in einem Koordinatensystem. Dabei wird eine lineare Beziehung zwischen den \texttt{x- } und \texttt{y-} Koordinaten der möglichen Schnittpunkte hergeleitet. Diese Beziehung wird in die Kreisgleichung eingesetzt, wodurch eine quadratische Gleichung für die x-Koordinate entsteht. Aus der Lösung der Gleichung kann man entnehmen, ob es einen Schnittpunkt gibt. Die x-Koordinate wird dann für die Berechnung der y-Koordinate verwendet.
+\newpage
+
+Die Berechnung wurde mit Hilfe von Java vereinfacht und sieht wie folgt aus:
+\begin{lstlisting}[style=Java, caption=Auszug aus PositionCalculator.java, captionpos=b]
+	 public double[] getXAnchor(double rFromBaseToTag, double rFromYToTag) {
+		y3 = getXAnchorY1(rFromBaseToTag, rFromYToTag);
+		x3 = getXAnchorX(rFromBaseToTag, rFromYToTag);
+		double[] result = {x3, y3};
+		System.out.println("x Anchor: (" + x3 + " / " + y3 + ")");
+		return result;
 	}
 	
-	private double getX(double distanceBaseAnchorXAnchor, double y1) {
-		return Math.abs(Math.sqrt((distanceBaseAnchorXAnchor*distanceBaseAnchorXAnchor) - (y1*y1)));
+	
+	public double getXAnchorY1(double rFromBaseToTag, double rFromYToTag) {
+		return (y*y + rFromBaseToTag*rFromBaseToTag - rFromYToTag*rFromYToTag)/(2*y);
+	}
+	
+	public double getXAnchorX(double rFromBaseToTag, double rFromYToTag) {
+		return Math.sqrt(rFromBaseToTag*rFromBaseToTag - getXAnchorY1(rFromBaseToTag, rFromYToTag)*getXAnchorY1(rFromBaseToTag, rFromYToTag));
 	}
 \end{lstlisting}
 
-\begin{lstlisting}[style=Java, caption=Berechnung xAnchor, captionpos=b]
+\begin{lstlisting}[style=Java, caption=xAnchor Berechnung, captionpos=b]
 	private void setXAnchorPosition() {
-	        double distanceYAnchorXAnchor = getLastArrayElement(yAnchorRangeArray);
-	double distanceBaseAnchorXAnchor = getLastArrayElement(baseAnchorRangeArray);
+	xAnchor = positionCalculator.getXAnchor(getFromBaseToTag(), getFromYToTag());
 	
-	double y = getY1(distanceYAnchorXAnchor, distanceBaseAnchorXAnchor);
-	double x = getX(distanceBaseAnchorXAnchor, y);
-	
-	xAnchor[0] = x;
-	xAnchor[1] = y;
-	
-	System.out.println("distanceYAnchorXAnchor: " + distanceYAnchorXAnchor + "distanceBaseAnchorXAnchor: " + distanceBaseAnchorXAnchor);
-	System.out.println("y: " + y + "x: " + x);
-	
-	statusLabel.setText("Anchor 3 set at X: " + x + ", Y: " + y);
-	System.out.println("Anchor 3 set at X: " + x + ", Y: " + y);
+	statusLabel.setText("Anchor 3 set at X: " + xAnchor[0] + ", Y: " + xAnchor[1]);
+	System.out.println("Anchor 3 set at X: " + xAnchor[0] + ", Y: " + xAnchor[1]);
 	
 	drawAnchors();
 	xAnchorButton.setDisable(true);
-	}
+}
 \end{lstlisting}
+\newpage
+\subsection{Ausrichtung Bühne}
+Da es nicht immer möglich ist, sicherzustellen, dass eine Bühne exakt gerade und perfekt zentriert ist, setzen wir zwei Referenzpunkte – einen auf der rechten und einen auf der linken Seite der Bühne und berechnen sich die relative Postion des Tags zu dem jeweiligen Punkt.  
+
+Die Gleichung einer Geraden durch zwei gegebene Punkte \( (x_R, y_R) \) und \( (x_L, y_L) \) lautet:
+
+\begin{equation*}
+	m = \frac{y_L - y_R}{x_L - x_R}
+\end{equation*}
+
+\begin{equation*}
+	b = y_L - m \cdot x_L
+\end{equation*}
+
+Ein Punkt \( (x_P, y_P) \) soll senkrecht auf diese Gerade platziert werden. Die Gleichung für den Punkt ergibt sich aus dem Normalenvektor:
+
+\begin{equation*}
+	r = \frac{b - y_P + m \cdot x_P}{y_L + m^2 \cdot x_L}
+\end{equation*}
+
+Die Koordinaten des Lotpunktes, das ist der senkrechte Punkt auf der Gerade, sind:
+
+\begin{equation*}
+	x_{P'} = x_P - m \cdot x_L \cdot r
+\end{equation*}
+
+\begin{equation*}
+	y_{P'} = y_P + r \cdot y_L
+\end{equation*}
+
+ 
+Die Methode \texttt{getPositionRelativeToRightSpeaker(double[] tagPosition)} liefert eine Prozentangabe anhand der Position des Tags, die angibt, wie weit sich der Punkt zwischen den Lautsprechern befindet (0 \% = direkt am rechten Lautsprecher, 100 \% = direkt am linken Lautsprecher), dass ist wichtig für die korrekte Bestimmung des Servowinkels.
+
+\begin{lstlisting}[style=Java, caption=Auszug aus EqualizerSettingCalculator.java, captionpos=b]
+public double getPositionRelativeToRightSpeaker(double[] tagPosition) {
+	
+	double xp = tagPosition[0];
+	double yp = tagPosition[1];
+	double xl = leftSpeakerPosition[0];
+	double yl = leftSpeakerPosition[1];
+	double r = (b-yp+m*xp)/(yl+m*m*xl);
+	
+	double perpenticularPoint[] = {0, 0};
+	perpenticularPoint[0] = xp-m*xl*r;
+	perpenticularPoint[1] = yp+r*yl;
+	
+	return getPercent(perpenticularPoint);
+}
+\end{lstlisting}
+
 
 
 \newpage
@@ -1326,9 +1398,8 @@ Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit Trägheitsnavi
 
 \subsubsection{Trilateration}
 
-Um Trilateration zu verwenden, müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen. Da diese bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen d1, d2 und d3 werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
+ Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt. Diese Daten werden für die Trilateration zu verwendet, jedoch müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen. Da diese bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen \texttt{baseAnchorRange, yAnchorRange} und \texttt{xAnchorRange} werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet. Um aber korrektere Daten zu erhalten wird die Methode \texttt{filter()} aufgerufen. Siehe \ref{KalibrierungDerDaten}
 
-Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt, die getrennten Daten werden dann in die Variablen d1, d2 und d3 eingetragen und mit den bereits bekannten Punkten baseAnchor, yAnchor und xAnchor berechnet.
 
 \begin{figure}[H]
 	\centering
@@ -1344,7 +1415,7 @@ Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet 
 	\label{fig:JSONData}
 \end{figure}
 
-
+Diese Skizze zeigt einen Auszug aus der Positionsbestimmung mit Hilfe von Trilateration
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\linewidth]{images/Trilaterationskizze.png}
@@ -1353,30 +1424,19 @@ Einfach erklärt funktioniert die Trilateration wie folgt: Der ESP32 UWB sendet 
 \end{figure}
 
 \newpage
+Um die Genauigkeit der Position zu maximieren werden die x- und y-Position zusammengerechnet und dann gemittelt, dies verhindert geringe Abweichung in der Berechnung. Der Code für die Bestimmung der Postion einer Person auf einer Bühne. 
 \begin{lstlisting}[style=Java, caption=Trilateration in Java, captionpos=b]
-	private double[] trilaterate(double d1, double d2, double d3) {
-		double xBaseAnchor = baseAnchor[0];
-		double yBaseAnchor = baseAnchor[1];
+	public double[] getTagPosition(double rFromBaseToTag, double rFromYToTag, double rFromXToTag) {
+		double[] positionBaseY;
+		double[] positionBaseX;
 		
-		double xYAnchor = yAnchor[0];
-		double yYAnchor = yAnchor[1];
-		
-		double xXAnchor = xAnchor[0];
-		double yXAnchor = xAnchor[1];
-		
-		double deltaX1 = 2 * (xYAnchor - xBaseAnchor);
-		double deltaY1 = 2 * (yYAnchor - yBaseAnchor);
-		double constant1 = d1 * d1 - d2 * d2 - xBaseAnchor * xBaseAnchor + xYAnchor * xYAnchor - yBaseAnchor * yBaseAnchor + yYAnchor * yYAnchor;
-		
-		double deltaX2 = 2 * (xXAnchor - xBaseAnchor);
-		double deltaY2 = 2 * (yXAnchor - yBaseAnchor);
-		double constant2 = d1 * d1 - d3 * d3 - xBaseAnchor * xBaseAnchor + xXAnchor * xXAnchor - yBaseAnchor * yBaseAnchor + yXAnchor * yXAnchor;
-		
-		double x = (constant1 * deltaY2 - constant2 * deltaY1) / (deltaX1 * deltaY2 - deltaY1 * deltaX2);
-		double y = (constant1 * deltaX2 - deltaX1 * constant2) / (deltaY1 * deltaX2 - deltaX1 * deltaY2);
-		
-		return new double[]{x, y};
+		positionBaseY = getTagPositionFromBaseToYAnchor(rFromBaseToTag, rFromYToTag);
+		positionBaseX = getTagYPositionFromBaseToXAnchor(positionBaseY, rFromBaseToTag, rFromXToTag);
+		double[] averagePosition = {(positionBaseX[0] + positionBaseY[0])/2.0, (positionBaseX[1] + positionBaseY[1])/2.0};
+		return averagePosition;
 	}
+	
+	 double[] tagPosition = positionCalculator.getTagPosition(getFromBaseToTag(), getFromYToTag(), getFromXToTag());
 \end{lstlisting}
 
 \newpage
@@ -1428,13 +1488,12 @@ Dieser Code stellt diese Szene dar:
 \end{figure}
 
 
-Jede Klasse bekommt einen Controller. Zum Beispiel: \texttt{Main.java} hat einen Controller \texttt{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Netzwerkoperationen durchgeführt werden, wurde die Klasse \texttt{NetworkSocketListener} erstellt, um den Empfang von Daten in einem separaten Thread des Programms auszuführen. Zudem wurde die Klasse \texttt{NetworkSocketSender} implementiert, die für das Senden von Daten an den Raspberry Pi verantwortlich ist.
+Jede Klasse bekommt einen Controller. Zum Beispiel: \texttt{Main.java} hat einen Controller \texttt{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Netzwerkoperationen durchgeführt werden, wurde die Klasse \texttt{NetworkSocketListener.java} erstellt, um den Empfang von Daten in einem separaten Thread des Programms auszuführen. Zudem wurde die Klasse \texttt{NetworkSocketSender.java} implementiert, die für das Senden von Daten an den Raspberry Pi verantwortlich ist. Die Berechnung des Tags und die Bestimmung der Anchors wurde in den \texttt{PositionsCalculator.java} ausgelagert, um den Code übersichtlicher und einfacher zugreifbar zu gestalten. 
 
 \newpage
 \subsection{GUI-Design}
 Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Damit schafft man außerdem einen Wiedererkennungswert, welcher uns sehr wichtig ist. Weiters wurde um ein einheitliches Design zu gewährleisten, jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Experience wurde vereinfacht und für den Enduser optimiert.   
 
-%% After setup hinzufügen
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{images/stagecontrol.png}
@@ -1445,7 +1504,7 @@ Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Damit sch
 \section{Fehlerermittlung und Korrektur}
 Um eine korrekte Positionsbestimmung zu gewährleisten, müssen die ESP32-UWB-Sensoren eine Sichtverbindung haben, da die Frequenz durch Objekte gestört werden kann. Daher wird empfohlen, die Anchor mindestens zwei Meter über der Bühne zu positionieren.
 
-Es kommt bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte bekommen kann. Das verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
+Es kommt bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte oder unrealistisch hohe Daten bekommen kann, um dem entgegen zu wirken. Das verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
 
 Durch bewusste Korrektur und Bereinigung der Daten wie in \ref{KalibrierungDerDaten} erwähnt wurde, wurde das Problem zur Gänze gelöst.
 
