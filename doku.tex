@@ -1832,7 +1832,7 @@ Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist die Nummer
 
 \newpage
 \section{Gerüstbau}
-StageControl benötigt ein Gerüst, in das ein Mischpult hineingestellt wird, um eine sichere Ausführung der automatisierten Tonausrichtung zu gewährleisten. 
+Für die sichere Ausführung der automatisierten Tonausrichtung im Rahmen von StageControl ist ein stabiles und passgenaues Gerüst erforderlich, in das das Mischpult integriert wird. Dieses Gerüst stellt sicher, dass das Mischpult während des Betriebs stabil positioniert bleibt und ermöglicht eine präzise Ausrichtung der Tonausrichtungseinrichtungen.
 
 
 \begin{figure}[H]
@@ -1900,6 +1900,8 @@ Um einen besseren Halt für die Mischpulte zu gewährleisten, wurden zwei Holzpl
 
 
 \section{Servomotoren}
+Die Servomotoren fungieren als Schnittstelle zwischen der Datenverarbeitung auf dem Raspberry Pi und dem Mischpult. Sie werden am Pan-Kanal des Mischpults positioniert und direkt auf die Drehpotentiometer aufgesetzt, um eine präzise Steuerung zu ermöglichen.
+
 Die Servomotoren sind jenes Stück Hardware, ohne das die automatische Tonausrichtung nicht funktionieren kann, deshalb ist es wichtig einen passenden Motor auszuwählen, der den Kriterien entspricht. Diese Servomotoren müssen sehr robust sein, damit sie etwaige mechanische Einwirkungen aushalten. Außerdem müssen die Motoren wasserfest sein, um auch bei Außeneinsätzen nutzbar zu sein. 
 
 \newpage
@@ -1948,6 +1950,16 @@ Um den idealen Aufsatz für die Drehpotentiometersteuerung zu entwickeln, waren 
 Beim Testen zeigten sich jedoch sofort einige Probleme: Da es keine feste Verbindung zwischen der Spline Shaft und dem Aufsatz gab, drehte dieser über dem Drehpotentiometer durch. Zudem fehlte eine Ausbuchtung für den hervorstehenden Teil des Drehpotentiometers, die für die manuelle Ausrichtung von Vorteil ist.\\
 Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verfügt nun über die in der Einleitung genannten Eigenschaften.
 
+\subsection{Notwendige Schritte in Blender}
+Zunächst wurde in Blender die Maßeinheit von Meter auf Millimeter umgestellt. Anschließend wurde ein hohler Zylinder mit einer Wandstärke von 1 mm, einer Höhe von 18,5 mm und einem Durchmesser von 12,2 mm erstellt. Auf diesen Zylinder wurde ein kleinerer Zylinder mit einer Höhe von 1,61 mm und einem Durchmesser von 11,5 mm platziert.  
+
+Um eine Aussparung für das Drehpotentiometer zu schaffen, wurde ein Quader mit den Abmessungen 35 mm Höhe, 2 mm Breite und 2 mm Länge erstellt. Dieser Quader wurde mittig an der Wand des Zylinders positioniert und mithilfe des Boolean Difference Tools ausgeschnitten.  
+
+Darauf wurde ein weiterer Quader mit den Abmessungen 7 mm Höhe, 30 mm Länge und 9 mm Breite platziert. In diesen Quader wurden zwei Zylinder mit einer Höhe von 4,1 mm und einem Durchmesser von 4 mm am Anfang und Ende eingefügt und mithilfe des Boolean Difference Tools ausgeschnitten.  
+
+Die so entstandenen Löcher dienen dazu, zwei Gewinde einzulöten, an denen das Verbindungsteil zwischen Servomotor und Aufsatz befestigt wird.
+
+Unterhalb dieses Quaders wurden zwei kleinere Quader mit den Abmessungen 5,45 mm Höhe, 9,44 mm Breite und 9 mm Länge erstellt. Diese beiden Quader wurden entlang der Diagonalen positioniert und anschließend mit dem Boolean Difference Tool ausgeschnitten.
 
 \begin{figure}[H]
 	\centering
@@ -1959,10 +1971,7 @@ Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verf
 
 \newpage
 \subsection{Steuerlogik} \label{Steuerlogik}
-Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkelgrad umgewandelt werden. Zur Veranschaulichung der Berechnung:\\
-Die/Der Künstlerin/Künstler befindet sich auf der Bühne bei der Position X=5m, die Extrempunkte der Bühne sind X1=0m und X2=10m.\\
-Der Raspberry Pi bekommt die Position des Künstlers mittels UDP übermittelt und rechnet diese anhand des Extremwerts X2 in Winkelgrad um. Das bedeutet bei X2=10m und Position des Interpreten bei 5m, dass sich der Servo, der für genau die Person zuständig ist, auf 90° stellen muss. \\
-
+Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkelgrad umgewandelt werden.
 
 \begin{lstlisting}
 	def move_servo(value):
@@ -2009,24 +2018,42 @@ Die Deckelmaße sind 82 x 83 x 2 mm. An der Oberseite wurde ein Gürtelclip, ebe
 Das erste Modell des Gehäuses bestand aus 4 Seitenwänden und einer Bodenplatte. Der ESP32 wurde an den hervorstehenden Platten mittels 4 M2 Schrauben befestigt. Wie im fertigen Gehäuse wurde auch hier der Akkuplatz unterhalb des ESP32 angesetzt. Es wurde kein Deckel für diese Version angefertigt, weil in der Planung kein Deckel vorhergesehen war, da der ESP32 über einen Display verfügt. \\
 Die nächste Version ist die endgültige Version des ESP32 Gehäuses. Dieses verfügt über vier Seitenwände und jeweils einen Deckel, um den Zugriff auf beiden Seiten zu gewährleisten. Die Deckel sind aus Plastik und haben vier M2.5 Löcher, die auf die Plastikplatten hinaufgeschraubt werden können.
 
+\subsection{Notwendige Schritte in Blender}
+Als erstes wurde wieder von Meter in Millimeter umgestellt. Danach wurden zwei Quader eingefügt, wie in Abbildung \ref{Gehäuse} zu sehen ist. Dann wurden zwei weitere Quader eingefügt, die acht Löcher haben, in die Gewinde für die Deckel eingelötet wurden.
+
+Ebenfalls wurden nochmals zwei Quader eingefügt, ein schmälerer und ein breiterer, diese wurden mittig, entlang der dünneren Seitenwände platziert. Es wurden ebenfalls in den beiden mittig platzierten Quadern Platz für Gewinde mittels dem Boolean Difference Tool geschaffen. Auf diese Gewinde kann dann der ESP32 hinaufgeschraubt werden.
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/ESP32_Gehäuse.png}
 	\caption[ESP32-UWB Gehäuse]{ESP32-UWB Gehäuse}
 	\label{fig:ESP32-UWB Gehäuse}
+	\label{Gehäuse}
 \end{figure}
 
 
 \section{3D Prototyping}
 Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert, die im Rahmen von StageControl gebraucht wurden, wie die Gehäuse für die ESP32 UWBs, der Servomotoraufsatz und der Clip zum Anstecken an der Hose. Diese Modelle wurden dann in das STL Dateiformat exportiert, um es für das Sclicer Programm Bambu Studio lesbar zu machen. Danach wurde die gesclicte Datei an den Bambu Lab A1 via WLAN geschickt und ausgedruckt.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Clip.png}
+	\caption[Servomotor Aufsatz]{Servomotor Aufsatz}
+	\label{fig:ESP32-Aufsatz}
+	\label{Servomotor Aufsatz}
+\end{figure}
+
 \subsection{Bambu Studio}
 Bambu Studio wurde verwendet, weil dieses Programm explizit für die Bambu Lab Drucker entwickelt wurde und über wichtige Funktionen verfügt, die das Drucken mit einem Bambu Lab Drucker erst ermöglichen. Wie zum Beispiel: Sclicing der STL Datei in G-Code, Druckersteuerung und Überwachung des Druckvorgangs und Filamentverwaltung bei der verschiedene Filamenttypen mit unterschiedlichen Temperaturprofilen eingestellt werden können.
 
 
 \subsection{Einstellungen Bambu Studio}
-Im Programm Bambu Studio wurde die STL Datei importiert. Unter dem Menüpunkt Preview kann nun das Modell angeschaut werden. Danach wurde im linken Abschnitt des Printer Menüs im Unterpunkt Support, Enable Support angeklickt um Support-Stützen zu aktivieren, damit die herausstehende Auflage, auf die der ESP32 UWB hinaufgeschraubt wird, gedruckt werden kann. Zusätzlich wurde so sichergestellt, dass die unteren Löcher für die M2.5 Gewinde auch gedruckt werden konnten. Mit diesen Einstellungen kann vermieden werden, dass der Drucker fehlerhaft druckt und der Druck abgebrochen und neugestartet werden muss.
+Im Programm Bambu Studio wurde die STL-Datei, die zuvor aus Blender exportiert wurde, importiert. Das STL-Format wurde gewählt, da es ein universell lesbares Format ist und somit von jedem 3D-Drucker verarbeitet werden kann.  
 
+Unter dem Menüpunkt Preview konnte das Modell zunächst visuell überprüft werden. Anschließend wurde im linken Abschnitt des Printer-Menüs im Unterpunkt Support die Option Enable Support aktiviert, um Stützstrukturen zu generieren. Diese waren erforderlich, um die herausstehende Auflage, auf die der ESP32 UWB montiert wird, stabil zu drucken. Zusätzlich wurde so sichergestellt, dass die unteren Löcher für die M2.5-Gewinde korrekt gedruckt wurden.  
+
+Durch diese Einstellungen konnte verhindert werden, dass der Drucker fehlerhaft arbeitet, was einen Abbruch und Neustart des Druckvorgangs erforderlich machen würde. Die Stützstrukturen waren notwendig, da der 3D-Drucker nicht in der Lage ist, freitragende Elemente ohne eine ausreichende Unterlage zu drucken.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/BambuStudio.jpg}
@@ -2036,7 +2063,7 @@ Im Programm Bambu Studio wurde die STL Datei importiert. Unter dem Menüpunkt Pr
 
 \newpage
 \subsection{PLA}
-Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet. Dieses Filament bietet folgende Eigenschaften: Robustheit, Kratzfestigkeit, geringer Verzug (Warping) und Farbechtheit \parencite{PLAEigenschaften}. Warping ist das Verziehen des Materials, meist nach oben. Dies tritt dann auf, wenn unterschiedliche Temperaturen und Abkühlgeschwindigkeiten der einzelnen Schichten vorliegen. Während des Kühlprozesses kommt es zur Schrumpfung des Materials, wobei Warping begünstigt wird \parencite{Warping}.
+Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstecken, wurde das Filament PLA verwendet, da dieses zur Zeit der Fertigung zur Verfügung stand.
 
 \begin{figure}[H]
 	\centering
@@ -2047,7 +2074,9 @@ Zum Drucken der ESP32 Gehäuse, der Servomotoraufsätze und der Clips zum Anstec
 
 \newpage
 \subsection{BambuLab A1 - 3D-Drucker}
-Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrscht eine Temperatur von ca 210 °C am Extruder und ca. 60 °C auf der Druckplatte. Dies ist nötig, um einen idealen Druckvorgang seitens des 3D-Druckers zu gewährleisten.
+Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. Am Drucker herrschte eine Temperatur von ca. 210 °C am Extruder und ca. 60 °C auf der Druckplatte. Diese Temperaturen sind notwendig, um einen idealen Druckvorgang sicherzustellen und eine gute Haftung des Druckmaterials auf der Druckplatte zu gewährleisten.  
+
+Für den Druck wurden die Standard-Einstellungen des 3D-Druckers verwendet, um eine zuverlässige und gleichmäßige Druckqualität zu erzielen.
 
 \begin{figure}[H]
 	\centering
@@ -2058,9 +2087,9 @@ Um alle 3D-modellierten Objekte auszudrucken, wurde der Bambu Lab A1 verwendet. 
 
 \newpage
 \section{ESP32-UWB Stromversorgung}
-Die externer Stromversorgung der ESP32 UWB Module erfolgt bei 4 von 5 Stück mittels 1900 mAh wiederaufladbaren Akkus. Die ESPs werden mit einer Spannung von 4,8V betrieben. So wird gewährleistet, dass ein Auftritt auf einer Bühne reibungslos durchgeführt werden kann.\\
-Der letzte ESP32 wird mittels USB-Kabel mit Strom versorgt, da der EPS am Gerüst neben dem Raspberry Pi angebracht wird und über diesen versorgt wird.\\
+Die externe Stromversorgung der ESP32 UWB-Module erfolgt bei vier von fünf Geräten mittels NiMh 1900 mAh wiederaufladbaren Akkus. Die ESPs werden mit einer Spannung von 4,8 V betrieben, wodurch sichergestellt wird, dass ein Auftritt auf einer Bühne reibungslos durchgeführt werden kann.  
 
+Das fünfte ESP32-Modul wird hingegen über ein USB-Kabel mit Strom versorgt, da es am Gerüst neben dem Raspberry Pi angebracht ist und direkt von diesem mit Energie gespeist wird.
 
 Mit folgender Formel lässt sich der Stromverbauch für die ESP32 UWBs mit OLED Display berechnen:
 
@@ -2088,7 +2117,7 @@ Die Akkupacks werden mit dem ANSMANN Ladegerät ACS48, das speziell für 4- bis 
 	\label{fig:Akkupacks}
 \end{figure}
 
-Akkupacks wurden ebenfalls modifiziert. Der originale Anschluss (ein 3-poliger Steckverbinder) der Akkupacks war zu groß, um in die Stromversorgungsbuchse der ESPs zu passen. Daher wurden die Anschlüsse der Akkupacks entfernt und durch neue MiniAMP-Anschlüsse ersetzt, damit diese in die Buchsen der ESP32 passen.
+Die Akkupacks wurden ebenfalls modifiziert. Der originale Anschluss, ein 3-poliger Steckverbinder, war zu groß, um in die Stromversorgungsbuchse der ESP32 zu passen. Daher wurden die vorhandenen Anschlüsse entfernt und durch neue MiniAMP-Anschlüsse ersetzt, die kompatibel mit den ESP32-Buchsen sind. Diese neuen Anschlüsse wurden anschließend mit den Akkupacks verlötet, um eine sichere und stabile Verbindung zu gewährleisten.
 
 \begin{figure}[H]
 	\centering
@@ -2099,6 +2128,8 @@ Akkupacks wurden ebenfalls modifiziert. Der originale Anschluss (ein 3-poliger S
 \end{figure}
 
 \section{Raspberry Pi}
+Er wurde für die Durchführung der Diplomarbeit ausgewählt, da er kompakte Abmessungen aufweist, Daten über das UDP-Protokoll empfangen kann und in der Lage ist, Servomotoren anzusteuern.
+
 Der Raspberry Pi fungiert als Steuergerät für die Servomotoren, mit ihm werden die Servomotoren per Jumper Wire verbunden, um die Servos mit Winkeldaten, Strom und einer Erdung zu versorgen. Zudem wird der am Gerüst befestigte ESP32 UWB \textit{(Anchor 0)} mittels USB C Kabel über dem Raspberry Pi mit Strom versorgt. 
 
 \newpage
@@ -2115,13 +2146,15 @@ Insgesamt werden für die Inbetriebnahme der Servosteuerung neun Jumper-Wires be
 
 
 \subsection{Signalverarbeitung}
-In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \ref{Steuerlogik} beschriebenen Abläufen. \\
+In dieser Diplomarbeit wird zur Übertragung der Positionsdaten ein eigenes WLAN verwendet, das auf einem separaten Raspberry Pi eingerichtet wurde. Dieses wurde gewählt, da es den Vorteil bietet, eine unabhängige und stabile Netzwerkverbindung zu gewährleisten. Zudem ermöglicht die Nutzung eines Raspberry Pi eine flexible Anpassung der Netzwerkinfrastruktur und die einfache Integration von zusätzlicher Software zur Überwachung und Verwaltung der Verbindung. Diese Lösung sorgt für eine optimierte Leistung des Systems, insbesondere in einer Umgebung mit hohen Anforderungen an die Echtzeitkommunikation.
+
+Der Raspberry Pi, der für die Servosteuerung verantwortlich ist, empfängt die Positionsdaten und verarbeitet diese gemäß den im Kapitel \ref{Steuerlogik} beschriebenen Abläufen. \\
 Diese Daten werden mittels des UDP-Protokolls über das Raspberry-WLAN übertragen, welches die Daten, wie im Kapitel \ref{RaspberryAccessPoint} beschrieben, an den verarbeitenden Raspberry Pi sendet	.
 
 \newpage
 \section{Programmierung}
 \subsection{Thonny}
-Um die Servosteuerung zu programmieren wurde die IDE Thonny verwendet. Diese eignete sich besonders, da die IDE bereits am Raspberry Pi vorinstalliert ist und sich einfach bedienen lässt. Durch diese Vorinstallation des Programms konnte der Code direkt für die Hardware getestet werden, ohne etwaige Einstellungen treffen zu müssen.
+Für die Programmierung der Servosteuerung wurde die Entwicklungsumgebung Thonny verwendet. Diese erwies sich als besonders geeignet, da sie bereits standardmäßig auf dem Raspberry Pi vorinstalliert ist und eine benutzerfreundliche Bedienung bietet. Durch die vorhandene Vorinstallation konnte der Code unmittelbar für die Servomotoren getestet werden, ohne zusätzliche Konfigurationsschritte oder Installationen durchführen zu müssen.
 
 \subsection{Python}
 Für die Programmierung der Servosteuerung wurde Python verwendet, weil Python über Libraries und Packages verfügt, die für die Servosteuerung von Vorteil sind. Diese Libraries eignen sich besonders, da sie direkt am Raspberry Pi einsetzbar sind und somit keine zusätzlichen Einstellungen getroffen werden müssen.
@@ -2136,7 +2169,7 @@ Folgende Libraries wurden verwendet:
 \end{lstlisting}
 
 \subsection{Datenbankverbindung}
-Um bei einem Ausfall des Systems und bei einem folgenden Neustart nicht den Prozess des Kalibrierens während einer Bühnenperformance durchführen zu müssen, werden die Abstände ,\textit{( in der Datenbank: "maxDistances")}, aus der Datenbank über eine Select-Anweisung geholt. So kann nach einem Ausfall der Betrieb wiederhergestellt werden. Vom Raspberry Pi werden keine Daten an die Datenbank geschickt, da dies zu viel Bandbreite und einen negativen Einfluss auf die Geschwindigkeit der Datenbank hat.
+Um bei einem Ausfall des Systems und bei einem folgenden Neustart nicht den Prozess des Kalibrierens während einer Bühnenperformance durchführen zu müssen, werden die Abstände ,(\textit{ in der Datenbank: "maxDistances"}), aus der Datenbank über eine Select-Anweisung geholt. So kann nach einem Ausfall der Betrieb wiederhergestellt werden.
 
 \newpage
 \section{Mischpult}
