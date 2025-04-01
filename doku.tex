@@ -15,9 +15,9 @@
 	\ifthenelse{\value{page} < 26}{Pirringer}{%
 		\ifthenelse{\value{page} < 33}{Becksteiner}{%
 			\ifthenelse{\value{page} < 48}{Pospichal}{%
-				\ifthenelse{\value{page} < 68}{Becksteiner}{%
+				\ifthenelse{\value{page} < 69}{Becksteiner}{%
 					\ifthenelse{\value{page} < 84}{Pospichal}{%
-						\ifthenelse{\value{page} < 103}{Pirringer}{}
+						\ifthenelse{\value{page} < 104}{Pirringer}{}
 					}%
 				}%
 			}%
@@ -624,6 +624,7 @@ Ein Beschleunigungssensor funktioniert nach dem gleichen Prinzip, wie ein Gyrosk
 \end{figure}
 
 \subsection{Trägheitsnavigation}
+\label{Trägheitsnavigation}
 
 Die Trägheitsnavigation nutzt die physikalische Eigenschaften der Trägheit, um eine fortlaufende Berechnung der Position, Orientierung und Geschwindigkeit eines Objekts zu ermöglichen. \parencite{Traegheitsnavigation} Es ist immer nur die Anfangsposition bekannt. Anhand dieser wird die spätere Position eines Objektes errechnet. Auch in GPS-gestörten Umgebungen z.B. Gebäuden, funktioniert die Trägheitsnavigation. 
 
@@ -1066,7 +1067,7 @@ Die Entwicklung wurde mit folgenden Programmen und Programmiersprachen umgesetzt
 \textbf{VMware Workstation Pro} \ - Virtuelle Maschine
 
 \subsection{JavaFX statt Android Studio}
-Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee wurde aber aufgrund von Kompatibilitätsgründen verworfen. Schlussendlich fiel die Entscheidung auf JavaFX, da es sich für diesen Anwendungsfall besonders eignet. 
+Anfangs war geplant mit Android Studio und Kotlin eine App zu entwickeln. Diese Idee wurde aber aufgrund von Kompatibilitätsgründen und Performancegründen verworfen. Schlussendlich fiel die Entscheidung auf JavaFX, da es sich für diesen Anwendungsfall besonders eignet. 
 
 \subsection{UWB}
 
@@ -1103,29 +1104,30 @@ Die Grundidee war mit Hilfe eines Beschleunigungssensors (MPU-6050), die genaue 
 
 \subsection{ESP32 UWB Pro}
 
-Der ESP32 wurde bereits \ref{ESP32} thematisiert. Es wurde ein ESP32 mit UWB (=Ultrawideband) Funktion und DW1000Ranging Bibliothek verwendet, um sich die Distanzen zwischen Anchor und Tag angeben lassen zu können. Diese Module unterscheiden sich wie folgt:
+Der ESP32 wurde bereits \ref{ESP32} thematisiert. Es wurde ein ESP32 mit UWB \texttt{(= Ultrawideband)} Funktion und DW1000Ranging Bibliothek verwendet, um sich die Distanzen berechnen zu können. Diese Module unterscheiden sich wie folgt:
 
 \subsubsection{Tag}
-
-Um einen Tag zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
+Der Tag ist ein bewegliches Objekt, von welchem die Position bestimmt wird. Um diesen zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
 \begin{lstlisting}[style=C++, caption=Tag Initialisierung, captionpos=b]
 	#define TAG_ADD "7D:00:22:EA:82:60:3B:9C"
 	DW1000Ranging.startAsTag(TAG_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER);
-\end{lstlisting}  
+\end{lstlisting}
 
 \subsubsection{Anchor}
 
-Um einen Anchor zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
+Der Anchor ist ein fixer Referenzpunkt, der für die Positionsbestimmung benötigt wird. Um diesen zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
 \begin{lstlisting}[style=C++, caption=Anchor Initialisierung, captionpos=b]
 	#define ANCHOR_ADD "86:17:5B:D5:A9:9A:E2:9C"
 	DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER, false);
 \end{lstlisting} 
 
-Die Funktion \textit{.startAsAnchor} erhält die folgenden Parameter: den Modus – in diesem Fall \textit{LONGDATA\textunderscore RANGE\textunderscore LOWPOWER} – sowie den Boolean-Wert \textit{false}. Dieser Wert bedeutet, dass keine zufällige Kurzadresse zugewiesen wird, sodass der Tag erkennen kann, welcher Anchor es ist.
+Dabei sind die \texttt{TAG\_ADD} bzw. die \texttt{ANCHOR\_ADD}, die eindeutige Zugriffsadresse, die auch als MAC-Adresse bezeichnet wird. Diese wird vewendet, um die Kommunikation zwischen den einzelnen Geräte zu gewährleisten.
 
-Dieser Modus ist jedoch der einzige, welcher die richtigen Abstandwerte zwischen Anchor und Tag liefert, deshalb wurde dieser gewählt.
+Die Funktion \texttt{.startAsAnchor} erhält die folgenden Parameter: den Modus – in diesem Fall \\ \texttt{LONGDATA\textunderscore RANGE\textunderscore LOWPOWER} Dieser Modus ist jedoch der einzige, welcher die richtigen Abstandwerte zwischen Anchor und Tag liefert, deshalb wurde dieser gewählt. Es gäbe noch andere Modi, diese sind aber für unseren Anwendungsfall nicht relevant und somit nicht erwähnenswert. Wichtig zu beachten ist, dass der Tag einen ähnlichen Code verwendet. Allerdings bleibt der Parameter für die Kurzadresse leer, um Verbindungsprobleme zu vermeiden. Der Modus muss dabei identisch sein.
 
-Wichtig zu beachten ist, dass der Tag einen ähnlichen Code verwendet. Allerdings bleibt der Parameter für die Kurzadresse leer, um Verbindungsprobleme zu vermeiden. Der Modus muss dabei identisch sein.
+Der Boolean-Wert \texttt{false} wird hinzugefügt, um  keine zufällige MAC-Adresse zuzuweisen, sodass der Tag erkennen kann, welcher Anchor es ist.
+
+%% Abbildung Anchor und Tag!!!! 
 
 \newpage
 \subsubsection{Pinbelegung}
@@ -1163,7 +1165,7 @@ Die Pinbelegung ist wichtig, da die Module über diese kommunizieren und sie mü
 
 \newpage
 \section{Arduino Entwicklung}
-Um Mikrocontroller ansprechen und programmieren zu können, muss man sich für eine IDE entscheiden, hierbei ist die Arduino IDE, \parencite{Arduino} die bekannteste und einfachste.
+Um Mikrocontroller ansprechen und programmieren zu können, muss man sich für eine IDE entscheiden, hierbei ist die Arduino IDE, die bekannteste und einfachste. \parencite{Arduino}
 
 Um ein ESP32 zu verwenden, muss man die vom Hersteller Espressif bereitgestellte Bibliothek \\ \texttt{Arduino\_ESP32\_OTA} installieren. Anschließend verbindet man den Mikrocontroller mittels USB-C-Kabel mit dem Computer. In der Arduino IDE kann man den ESP32 dann auswählen und den Code auf den Mikrocontroller übertragen.
 
@@ -1197,7 +1199,7 @@ Um den ESP32 zu compilen, die Funktion von UWB und andere Funktionen zu verwende
 In diesem Abschnitt wird das Setup des Projektes, also Bühneneinrichtung, Kalibrierung, usw. thematisiert.
 
 \subsection{Anchor und Tag Setup}
-Um das Setup zu starten, muss man auf einige Dinge achten (Aufstellung der Anchors siehe Grafik \ref{fig:AnchorTagSetup}, siehe \ref{Einrichtung Bühne} Einrichtung der Bühne, siehe \ref{KalibrierungDerDaten} Kalibrierung der Daten). In nachfolgender Grafik ist das grundlegende Setup dargestellt.
+Um das Setup zu starten, sind mehrere Aspekte zu beachten. (Aufstellung der Anchors siehe Grafik \ref{fig:AnchorTagSetup}, siehe \ref{Einrichtung Bühne} Einrichtung der Bühne, siehe \ref{KalibrierungDerDaten} Kalibrierung der Daten). In nachfolgender Grafik ist das grundlegende Setup dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -1206,34 +1208,44 @@ Um das Setup zu starten, muss man auf einige Dinge achten (Aufstellung der Ancho
 	\label{fig:AnchorTagSetup}
 \end{figure}
 
-Die roten Kreise stellen die Anchors dar, welche immer in einem Dreieck platziert werden müssen. Die blauen Kreise sind die Tags, welche beliebig hinzugefügt werden können. Die schwarzen Linien sind die Abstände zwischen den Tags und den Anchors, diese werden für die Trilateration und für die genaue Bestimmung auf der Bühne benötigt. Um einen einwandfreien Gebrauch dieses Systems zu gewährleisten, müssen alle drei Anchors vor dem Tag initialisiert werden. 
+Die roten Kreise stellen die Anchors dar, diese werden gemäß der Systemanforderungen immer in einer dreiecksförmigen Anordnung platziert. Die blauen Kreise sind die Tags, welche beliebig hinzugefügt werden können. Die schwarzen Linien repräsentieren die Abstände zwischen den Tags und den Anchors, diese werden für die Trilateration und für die genaue Bestimmung auf der Bühne benötigt. Um einen einwandfreien Gebrauch dieses Systems zu gewährleisten, müssen alle drei Anchors vor dem Tag initialisiert werden. 
 
 \newpage
+\section{Fehlerermittlung und Korrektur}
+Um eine korrekte Positionsbestimmung zu gewährleisten, müssen die ESP32-UWB-Sensoren eine Sichtverbindung haben, da die Frequenz durch Objekte gestört werden kann. Es wird daher empfohlen, die Anchors mindestens zwei Meter über der Bühne zu positionieren.
+
+Es kommt bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte oder unrealistisch hohe Daten bekommen kann. Das verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
+
+Durch bewusste Korrektur und Bereinigung der Daten wie in \ref{KalibrierungDerDaten} erwähnt, wurde das Problem zur Gänze gelöst.
+
 \subsection{Kalibrierung der Daten}
 \label{KalibrierungDerDaten}
-Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus vier rohen Rangedaten (in einem Array gespeichert). Die bereinigten Daten werden dann zur Berechnung der Position verwendet. In Fall von StageControl werden alle Daten die < 0 und Daten, die über 50 \% > als der Ursprungswert sind, herausgefiltert. Außerdem wird ein Counter (\texttt{faultCounter}) eingebaut, um ab einer gewissen Anzahl an Versuchen, ein neues Array zu erstellen. 
+Der Mittelwert wird aus den vier rohen Rangedaten in einem Array gespeichert, dies wird verwendet, um es strukturiert und effizient zu halten. Dieser Wert dient dazu ein zentrales Maß zwischen allen rohen Daten zu erhalten. Die bereinigten Daten werden dann zur Berechnung der Position verwendet. In Fall von StageControl werden alle Daten die kleiner 0 und Daten, die über 50 \% größer als der Ursprungswert sind, herausgefiltert. Außerdem wird ein Counter \texttt{faultCounter} eingebaut, um ab einer gewissen Anzahl an falschen Daten, ein neues Array zu erstellen. 
 
 \begin{lstlisting}[style=Java, caption=Kalibrierung der Daten, captionpos=b]
 	private void filter() {
-		if (arrayD1.size() < arraySize) {
-			arrayD1.add(latestD1);
-			return;
-		}
-		if (arrayD2.size() < arraySize) {
-			arrayD2.add(latestD2);
-			return;
-		}
-		if (arrayD3.size() < arraySize) {
-			arrayD3.add(latestD3);
-			return;
-		}
+		checkAndCorrectArray(baseAnchorRangeArray, baseAnchorRange, faultD1Counter);
+		checkAndCorrectArray(yAnchorRangeArray, yAnchorRange, faultD2Counter);
+		checkAndCorrectArray(xAnchorRangeArray, xAnchorRange, faultD3Counter);
 		
-		checkAndCorrectArray(arrayD1, latestD1, faultD1Counter);
-		checkAndCorrectArray(arrayD2, latestD2, faultD2Counter);
-		checkAndCorrectArray(arrayD3, latestD3, faultD3Counter);
+		if (baseAnchorRangeArray.size() < arraySize) {
+			baseAnchorRangeArray.add(baseAnchorRange);
+			return;
+		}
+		if (yAnchorRangeArray.size() < arraySize) {
+			yAnchorRangeArray.add(yAnchorRange);
+			return;
+		}
+		if (xAnchorRangeArray.size() < arraySize) {
+			xAnchorRangeArray.add(xAnchorRange);
+			return;
+		}
 	}
 	
 	private void checkAndCorrectArray (List<Double> array, double latestData, int faultCounter) {
+		if (latestData < 0) return;
+		if (latestData > 150) return;
+		
 		if ((latestData < getAvg(array) / (double) lowerBound) || (latestData > getAvg(array) * upperBound)) {
 			array.remove(0);
 			array.add(latestData);
@@ -1241,7 +1253,6 @@ Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus 
 		} else {
 			faultCounter++;
 		}
-		
 		if (faultCounter > faultBound) {
 			array.clear();
 			array.add(latestData);
@@ -1258,44 +1269,65 @@ Die Kalibrierung erfolgt im Code des GUIs. Dieser erstellt einen Mittelwert aus 
 	}
 \end{lstlisting}
 
+\textbf{filter}
+
+Die Methode \texttt{filter()} prüft, ob die Arrays \texttt{baseAnchorRangeArray, yAnchorRangeArray und \\ xAnchorRangeArray} ihre maximale Größe bereits erreicht haben. Wenn nicht wird der neuste Wert von den Sensoren dem entsprechenden Array hinzugefügt. Wenn die maximale Größe erreicht ist, wird die Methode \\ \texttt{checkAndCorrectArray(List<Double> array, double latestData, int faultCounter)} aufgerufen, um die Daten zu überprüfen und gegebenenfalls zu korrigieren.
+
+\textbf{checkAndCorrectArray}
+
+Die Methode \texttt{checkAndCorrectArray(List<Double> array, double latestData, int faultCounter)} \\ prüft, ob der neueste Wert von \texttt{baseAnchorRange, yAnchorRange oder xAnchorRange} innerhalb eines zulässigen Bereichs liegt, der auf dem Durchschnitt der Liste sowie den Grenzwerten \texttt{lowerBound und \\ upperBound} basiert. Wenn der Wert außerhalb dieses Bereichs liegt, wird der erste Wert aus der Liste entfernt und der neueste Wert hinzugefügt, während der Fehlerzähler zurückgesetzt wird. Sollte der Fehlerzähler den festgelegten Grenzwert \texttt{faultBound} überschreiten, wird die gesamte Liste gelöscht und nur der neueste Wert eingefügt.
+
+\textbf{getAvg}
+
+Berechnet den Durchschnitt der Werte in der Liste \texttt{array}, indem alle Werte summiert und durch die Anzahl der Elemente in der Liste geteilt werden.
 
 \subsection{Einrichtung Bühne}
 \label{Einrichtung Bühne}
-Um eine Bühne einzurichten müssen Länge (x) und die Breite (y) bekannt sein, um so eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 (baseAnchor) immer auf einer fixen Position (0,0) sitzt. Die weiteren zwei Anchors (yAnchor, xAnchor), werden mithilfe von Abschreitung der Bühne und über das GUI \texttt{(=Graphical User Interface)} per Button click gesetzt. Die Platzierung erfolgt dann entlang der Bühne, sinnvoller Weise wird der yAnchor am hinteren rechten oder hinteren linken Ende und der xAnchor auf der rechten oder linken mittleren Position der Bühne platziert. Die Berechnung bestimmt dann die korrekte Position der Anchors und die Visualisierung kann beginnen. 
+Um eine Bühne einzurichten müssen Länge \texttt{x} und die Breite \texttt{y} bekannt sein, um so eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 \texttt{baseAnchor} immer auf einer fixen Position \texttt{(0,0)} sitzt, um ein geeignetes Koordinatensystem aufzuziehen. Die weiteren zwei Anchors \texttt{yAnchor und xAnchor}, werden mithilfe von Abschreitung der Bühne und über das GUI \texttt{(=Graphical User Interface)} per Button gesetzt. Die Berechnung bestimmt dann die korrekte Position der Anchors und die Visualisierung \ref{Trilateration} kann beginnen. 
 
 \subsection{Berechnung der Anchorpositionen}
 Um die Anchorpositionen korrekt zu ermitteln wurden folgende Berechnungen für den yAnchor und den xAnchor durchgeführt.
 
 \textbf{yAnchor:}
 
-Beim yAnchor gehen wir immer von einem \texttt{x = 0} aus, um die Grenze des Koordinatensystems zu setzen und somit negative Schnittpunkte direkt herauszufiltern. Dafür bewegt man sich zur Position des yAnchors und der gemessene Wert, also die Distanz vom base Anchor zum yAnchor wird der \texttt{y} Wert. Dieser Wert wird durch die Methode \texttt{getFromBaseToTag()} ermittelt und mit folgendem Code gesetzt.
+Beim yAnchor gehen wir immer von einem \texttt{x = 0} aus. Dies dient dafür die Grenze und die Eindeutigkeit des Koordinatensystems zu bestimmen und negative Schnittpunkte direkt herauszufiltern. (siehe Skizze \ref{yAnchor-Berechnung}). Dafür bewegt man sich zur Position des yAnchors und der gemessene Wert, also die Distanz vom base Anchor zum yAnchor wird der \texttt{y} Wert. Dieser Wert wird durch die Methode \texttt{getFromBaseToTag()} ermittelt und mit folgendem Code gesetzt.
 \begin{lstlisting}[style=Java, caption=Berechnung yAnchor, captionpos=b]
+	private void setYAnchorPosition() {
      yAnchor[1] = getFromBaseToTag();
-     statusLabel.setText("Anchor 2 set at X: " + yAnchor[0] + ", Y: " + yAnchor[1]);
-     System.out.println("Anchor 2 set at X: " + yAnchor[0] + ", Y: " + yAnchor[1]);
-     
      positionCalculator.setYAnchor(yAnchor[1]);
      drawAnchors();
      yAnchorButton.setDisable(true);
+    }
 \end{lstlisting}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/yAnchor.jpeg}
+	\caption[yAnchor]{yAnchor}
+	\label{fig:yAnchor}
+\end{figure}
 
 \newpage
 \textbf{xAnchor:}
 
-Bei dem xAnchor funktioniert das Ganze etwas anders und ist deutlich komplizierter. Hierbei muss man sich zwei Schnittpunkte vorstellen und diese mithilfe einer Kreisgleichung und einer quadratischen Gleichung berechnen. Mit der Methode \texttt{getXAnchor()} aus der \texttt{PositionCalculator} Klasse werden die genauen Koordinaten des xAnchors berechnet.
+Bei dem xAnchor funktioniert die Bestimmung der Koordinaten anders und ist deutlich komplizierter. Für die Brechnung werden aus zwei Schnittpunkte und mithilfe der Kreisgleichungen und einer quadratischen Gleichung die Koordinaten berechnet. Mit der Methode \texttt{getXAnchor()} aus der \texttt{PositionCalculator} Klasse werden die genauen Koordinaten des xAnchors berechnet.
 
 Die Berechnung der y-Position des xAnchors sieht mathematisch wie folgt aus:
+\label{BerechnungXAnchor}
 \begin{gather*}
-	K_1 \quad x^2 + y^2 = r_{1}^{2} \\
-	K_2 \quad (x - x_{3})^2 + (y - y_{3})^2 = r_{2}^{2} \\
-	K_2 \quad x^2 - 2x_{3}x + x_{3}^{2} + y^2 - 2y_{3}y + y_{3}^{2} = r_{2}^{2} \\
-	-K_1 \quad -x^2 - y^2 = -r_{1}^{2} \\
+	K_1: \quad x^2 + y^2 = r_{1}^{2} \\
+	K_2: \quad (x - x_{3})^2 + (y - y_{3})^2 = r_{2}^{2} \\
+	\quad x^2 - 2x_{3}x + x_{3}^{2} + y^2 - 2y_{3}y + y_{3}^{2} = r_{2}^{2} \\
+	 \quad -x^2 - y^2 = -r_{1}^{2} \\
 	-2x_{3}x - 2y_{3}y + x_{3}^{2} + y_{3}^{2} = r_{2}^{2} - r_{1}^{2} \\
 	-2x_{3}x - 2y_{3}y = r_{2}^{2} - r_{1}^{2} - x_{3}^{2} - y_{3}^{2} \\
 	x_{3}x + y_{3}y = C \\
 	y_{3}y = C - x_{3}x \\
 	y = \frac{C - x_{3}x}{y_{3}}
 \end{gather*}
+
+Die Konstante \texttt{\ensuremath{C= x_3 x + y_3 y}} wird für die weitere Berechnung benötigt und in der folgenden Gleichung eingesetzt.
 
 \begin{gather*}
 	x^2 + \left( \frac{C - x_3 x}{y_3} \right)^2 = r_1^2 \\
@@ -1307,7 +1339,7 @@ Die Berechnung der y-Position des xAnchors sieht mathematisch wie folgt aus:
 	c = \frac{C^2}{y_3^2} - r_1^2
 \end{gather*}
 
-Diese Berechnung dient der Bestimmung der Schnittpunkte zweier Kreise \texttt{K1, K2} in einem Koordinatensystem. Dabei wird eine lineare Beziehung zwischen den \texttt{x- } und \texttt{y-} Koordinaten der möglichen Schnittpunkte hergeleitet. Diese Beziehung wird in die Kreisgleichung eingesetzt, wodurch eine quadratische Gleichung für die x-Koordinate entsteht. Aus der Lösung der Gleichung kann man entnehmen, ob es einen Schnittpunkt gibt. Die x-Koordinate wird dann für die Berechnung der y-Koordinate verwendet.
+Diese Berechnung dient der Bestimmung der Schnittpunkte zweier Kreise \texttt{K1, K2} in einem Koordinatensystem. Dabei wird eine Beziehung zwischen den \texttt{x- } und \texttt{y-} Koordinaten der möglichen Schnittpunkte hergeleitet. Diese Beziehung wird in die Kreisgleichung eingesetzt, wodurch eine quadratische Gleichung für die x-Koordinate entsteht. Die x-Koordinate wird dann für die Berechnung der y-Koordinate verwendet.
 \newpage
 
 Die Berechnung wurde mit Hilfe von Java vereinfacht und sieht wie folgt aus:
@@ -1316,7 +1348,6 @@ Die Berechnung wurde mit Hilfe von Java vereinfacht und sieht wie folgt aus:
 		y3 = getXAnchorY1(rFromBaseToTag, rFromYToTag);
 		x3 = getXAnchorX(rFromBaseToTag, rFromYToTag);
 		double[] result = {x3, y3};
-		System.out.println("x Anchor: (" + x3 + " / " + y3 + ")");
 		return result;
 	}
 	
@@ -1330,20 +1361,21 @@ Die Berechnung wurde mit Hilfe von Java vereinfacht und sieht wie folgt aus:
 	}
 \end{lstlisting}
 
+Diese Methoden ermöglichen die Berechnung eines Ankerpunkts, basierend auf der Geometrie zweier Kreise, die durch ihre Radien gegeben sind. Für die Implementierung wurden die oben angegeben Gleichungen \ref{BerechnungXAnchor} verwendet.
+
 \begin{lstlisting}[style=Java, caption=xAnchor Berechnung, captionpos=b]
 	private void setXAnchorPosition() {
 	xAnchor = positionCalculator.getXAnchor(getFromBaseToTag(), getFromYToTag());
-	
-	statusLabel.setText("Anchor 3 set at X: " + xAnchor[0] + ", Y: " + xAnchor[1]);
-	System.out.println("Anchor 3 set at X: " + xAnchor[0] + ", Y: " + xAnchor[1]);
-	
 	drawAnchors();
 	xAnchorButton.setDisable(true);
 }
 \end{lstlisting}
+
+Diese Methode zeichnet und setzt den Ankerpunkt in dem GUI. 
+
 \newpage
-\subsection{Ausrichtung Bühne}
-Da es nicht immer möglich ist, sicherzustellen, dass eine Bühne exakt gerade und perfekt zentriert ist, werden zwei Referenzpunkte – einen auf der rechten und einer auf der linken Seite der Bühne und dann wird die relative Position des Tags zu dem jeweiligen Punkt berechnet.  
+\section{Ausrichtung Bühne}
+Da es nicht immer möglich ist, sicherzustellen, dass eine Bühne exakt gerade und perfekt zentriert ist, werden zwei Referenzpunkte – einer auf der rechten und einer auf der linken Seite der Bühne platziert.
 
 Die Gleichung einer Geraden durch zwei gegebene Punkte \( (x_R, y_R) \) und \( (x_L, y_L) \) lautet:
 
@@ -1371,9 +1403,6 @@ Die Koordinaten des Lotpunktes, das ist der senkrechte Punkt auf der Gerade, sin
 	y_{P'} = y_P + r \cdot y_L
 \end{equation*}
 
- 
-Die Methode \texttt{getPositionRelativeToRightSpeaker(double[] tagPosition)} liefert eine Prozentangabe anhand der Position des Tags, die angibt, wie weit sich der Punkt zwischen den Lautsprechern befindet (0 \% = direkt am rechten Lautsprecher, 100 \% = direkt am linken Lautsprecher), das ist wichtig für die korrekte Bestimmung des Servowinkels.
-
 \begin{lstlisting}[style=Java, caption=Auszug aus EqualizerSettingCalculator.java, captionpos=b]
 public double getPositionRelativeToRightSpeaker(double[] tagPosition) {
 	
@@ -1391,16 +1420,17 @@ public double getPositionRelativeToRightSpeaker(double[] tagPosition) {
 }
 \end{lstlisting}
 
+Die Methode \texttt{getPositionRelativeToRightSpeaker(double[] tagPosition)} berechnet eine Prozentangabe, die die Position eines Punktes relativ zu den Lautsprechern angibt. abei entspricht ein Wert von 0\% der Position des Punktes direkt am rechten Lautsprecher, während 100\% die Position direkt am linken Lautsprecher darstellt, das ist wichtig für die korrekte Bestimmung des Servowinkels.
 
 
 \newpage
 \subsection{Positionsbestimmung auf einer Bühne}
-Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit Trägheitsnavigation umgesetzt, sondern mithilfe von Trilateration. 
+Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit \ref{Trägheitsnavigation} Trägheitsnavigation umgesetzt, sondern mithilfe von Trilateration. 
 
 \subsubsection{Trilateration}
+\label{Trilateration}
 
- Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt. Diese Daten werden für die Trilateration verwendet, jedoch müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen. Da diese bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen \texttt{baseAnchorRange, yAnchorRange} und \texttt{xAnchorRange} werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet. Um aber korrektere Daten zu erhalten wird die Methode \texttt{filter()} aufgerufen. Siehe \ref{KalibrierungDerDaten}
-
+Der ESP32 UWB sendet rohe Entfernungswerte zum GUI im JSON Format, dann wird das JSON durchsucht und die Daten getrennt. Diese Daten werden für die Trilateration verwendet, jedoch müssen einige Dinge beachtet werden. Man muss drei Punkte in einem Koordinatensystem kennen. Da diese bereits bei der Einrichtung der Bühne definiert werden, kann mit folgender Berechnung die Position des Tags bestimmt werden. In den Variablen \texttt{baseAnchorRange, yAnchorRange} und \texttt{xAnchorRange} werden die rohen Rangedaten vom ESP32 eingetragen und dann berechnet.
 
 \begin{figure}[H]
 	\centering
@@ -1416,10 +1446,10 @@ Die Positionsbestimmung wurde nicht wie ursprünglich geplant mit Trägheitsnavi
 	\label{fig:JSONData}
 \end{figure}
 
-Diese Skizze zeigt einen Auszug aus der Positionsbestimmung mit Hilfe von Trilateration
+Diese Skizze zeigt einen Auszug aus der Positionsbestimmung mit Hilfe von Trilateration und das Zusammenspiel zwischen Anchor und Tag. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/Trilaterationskizze.png}
+	\includegraphics[width=0.8\linewidth]{images/Trilaterationskizze.jpeg}
 	\caption[Trilaterationskizze]{Skizze der Trilateration}
 	\label{fig:Trilaterationskizze}
 \end{figure}
@@ -1445,7 +1475,7 @@ Um die Genauigkeit der Position zu maximieren werden die x- und y-Position zusam
 In diesem Abschnitt wird das GUI thematisiert.
 
 \subsection{GUI-Setup}
-Um das Programm zu verwenden, muss sich die/der Benutzerin/Benutzer zunächst einloggen \ref{fig:StageControlViewGUI}. Die Benutzerkonten werden zuvor von einer/einem Administratorin/Administrator in der Datenbank \ref{tab:users} \texttt{users} angelegt.  
+Um das Programm zu verwenden, muss sich die/der Benutzerin/Benutzer zunächst einloggen \ref{fig:StageControlViewGUI}. Die Benutzerkonten werden zuvor von einer/einem Administratorin/Administrator in der Datenbank \ref{tab:users} \texttt{users}angelegt.  
 
 Nach dem Login gelangt man zu einer Übersicht, in der ein oder zwei Geräte (Tags) hinzugefügt werden können. Anschließend müssen die Anchors festgelegt werden. Dazu bewegt man den Tag auf der Bühne zu einer Ecke und betätigt den Knopf \texttt{Set yAnchor}. Danach wiederholt man diesen Schritt für eine weitere Ecke (oben in der Mitte), indem man den Knopf \texttt{Set xAnchor} drückt. Sobald alle Anchors gesetzt sind, wird der MaxX-Wert zwischen dem Baseanchor und yAnchor bestimmt, um den Servo zu steuern. Dies geschieht durch einen Klick auf den Knopf \texttt{Set Max X}. Mit dem Knopf \texttt{Remove Device}, kann man die Visualisierung und die Servosteuerung beenden.   
 
@@ -1488,12 +1518,11 @@ Dieser Code stellt diese Szene dar:
 	\label{fig:StageControlViewGUI}
 \end{figure}
 
-
-Jede Klasse bekommt einen Controller. Zum Beispiel: \texttt{Main.java} hat einen Controller \texttt{MainController.java}. Das hilft dabei einen guten Überblick über das Programm und seine Funktionalitäten zu behalten. Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Netzwerkoperationen durchgeführt werden, wurde die Klasse \texttt{NetworkSocketListener.java} erstellt, um den Empfang von Daten in einem separaten Thread des Programms auszuführen. Zudem wurde die Klasse \texttt{NetworkSocketSender.java} implementiert, die für das Senden von Daten an den Raspberry Pi verantwortlich ist. Die Berechnung des Tags und die Bestimmung der Anchors wurde in den \texttt{PositionsCalculator.java} ausgelagert, um den Code übersichtlicher und einfacher zugreifbar zu gestalten. 
+Die Methoden werden in Java-Klassen umgesetzt und dann in einem FXML file aufgerufen, um zu funktionieren. Da Netzwerkoperationen durchgeführt werden, wurde die Klasse \texttt{NetworkSocketListener.java} erstellt, um den Empfang von Daten in einem separaten Thread des Programms auszuführen. Zudem wurde die Klasse \texttt{NetworkSocketSender.java} implementiert, die für das Senden von Daten an den Raspberry Pi verantwortlich ist. Die Berechnung des Tags und die Bestimmung der Anchors wurde in den \texttt{PositionsCalculator.java} ausgelagert, um den Code übersichtlicher und einfacher zugreifbar zu gestalten. 
 
 \newpage
 \subsection{GUI-Design}
-Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Damit schafft man außerdem einen Wiedererkennungswert. Weiters wurde um ein einheitliches Design zu gewährleisten, jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Experience wurde vereinfacht und für den Enduser optimiert.   
+Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Weiters wurde um ein einheitliches Design zu gewährleisten, jede Szene in der Mitte oben mit dem StageControl Logo versehen. Es wurden alle Farben aus der Cooperate Identity verwendet. Die User-Experience wurde vereinfacht und für den Enduser optimiert.   
 
 \begin{figure}[H]
 	\centering
@@ -1502,15 +1531,7 @@ Um alle Szenen korrekt zu laden, wurde eine Logo-Animation eingefügt. Damit sch
 	\label{fig:StageControlGUI}
 \end{figure}
 
-\section{Fehlerermittlung und Korrektur}
-Um eine korrekte Positionsbestimmung zu gewährleisten, müssen die ESP32-UWB-Sensoren eine Sichtverbindung haben, da die Frequenz durch Objekte gestört werden kann. Es wird daher empfohlen, die Anchors mindestens zwei Meter über der Bühne zu positionieren.
-
-Es kommt bei der Visualisierung zu Problemen, da die GUI von den ESPs negative Werte oder unrealistisch hohe Daten bekommen kann. Das verhindert die korrekte Positionsbestimmung und schlussendlich auch die korrekte Berechnung für den Servowinkel. 
-
-Durch bewusste Korrektur und Bereinigung der Daten wie in \ref{KalibrierungDerDaten} erwähnt, wurde das Problem zur Gänze gelöst.
-
 \section{Transferprotokolle}
-In diesem Abschnitt werden die Transferprotokolle thematisiert.
 
 \subsection{UDP}
 UDP \texttt{(=User Datagram Protocol)} ist ein Kommunikationsprotokoll, welches eine Verbindung mit geringer Verlusttolerenz zwischen dem Internet und einer Anwendung herstellt. UDP ermöglicht die Prozess-zu-Prozess Kommunikation. Es wird verwendet, um die Daten vom ESP32 UWB an den RaspberryPi mit der Servosteuerung zu senden, und dort den Servowinkel zu berechnen. Hierfür wird eine statische IP bei sowohl RaspberryPi als auch bei dem ESP32 UWB selbst verwendet. Über den Port 80 sendet der ESP32 UWB dann das Paket in einem JSON Format zum GUI. Dieser verarbeitet dies in einer Funktion und berechnet aus den Daten die Position des Tags. Wiederum sendet das GUI über UDP dem RaspberryPi die Position für die Winkelberechnung. \parencite{UDP}
@@ -1518,8 +1539,10 @@ UDP \texttt{(=User Datagram Protocol)} ist ein Kommunikationsprotokoll, welches 
 \subsection{MQTT}
 MQTT \texttt{(=Message Queuing Telemetry Transport)} ist ein offenes Protokoll für Verbindungen in unzuverlässigen Netzwerken oder eingeschränkten Bandbreitenressourcen. \parencite{MQTT}
 
+\newpage
 \subsection{MQTT vs UDP}
-In der unteren Tabelle sieht man die Unterschiede zwischen MQTT und UDP.
+Um die Unterschiede zwischen den Netzwerkprotokollen MQTT und UDP besser zu verstehen wurde die beiden Technologien in Bezug auf ihre jeweiligen Merkmale und Anwendungsfälle in einer Tabelle dargestellt. 
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|}
