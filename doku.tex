@@ -2040,24 +2040,26 @@ Unterhalb dieses Quaders wurden zwei kleinere Quader mit den Abmessungen 5,45 mm
 
 \newpage
 \subsection{Steuerlogik} \label{Steuerlogik}
-Die Servomotoren werden immer dann bewegt, wenn sich die Künstlerin oder der Künstler auf der Bühne bewegt. Sobald der ESP32 UWB-Tag eine Positionsveränderung des Interpreten relativ zu den fest installierten Ankerpunkten erfasst, wird die neue Position in Winkelgrad umgerechnet und mittels UDP-Protokoll an den Raspberry Pi übertragen.  
+Die Servomotoren werden immer dann bewegt, wenn sich die Künstlerin oder der Künstler auf der Bühne fortbewegt. Sobald der ESP32 UWB-Tag eine Positionsveränderung des Interpreten relativ zu den installierten Anchors erfasst, wird die neue Position als prozentualer Wert berechnet und mittels UDP-Protokoll an den Raspberry Pi übertragen.
 
-Auf Basis dieser Winkelwerte steuert der Raspberry Pi die Servomotoren, sodass die Tonausrichtung automatisch an die veränderte Position der Künstlerin oder des Künstlers angepasst wird. Dieses System ermöglicht eine präzise Klangsteuerung in Echtzeit.
+Basierend auf diesen Prozentwerten wandelt der Raspberry Pi die Daten in Winkelgrade um und steuert die Servomotoren entsprechend. Dadurch wird die Tonausrichtung automatisch an die veränderte Position der Künstlerin oder des Künstlers angepasst. Dieses System ermöglicht eine präzise Klangsteuerung.
 
 \begin{lstlisting}[language=Python]
-	def move_servo(angle):
-	global pwm
+	def move_servo_from_percentage(percentage):
 	
 	try:
-	if angle < 0 or angle > 180:
-	print(f"Invalid angle: {angle}. Must be between 0 and 180.")
+	if not (0 <= percentage <= 100):
+	print(f"Invalid percentage: {percentage}. Must be between 0 and 100.")
 	return
 	
+	
+	angle = (percentage / 100) * 180
+	
 	duty = 2 + (angle / 18)
-	print(f"Moving servo to {angle} angle (Duty Cycle: {duty})")
+	print(f"Moving servo to {angle:.1f} angle ({percentage}%) (Duty Cycle: {duty:.2f})")
 	
 	pwm.ChangeDutyCycle(duty)
-	sleep(0.3)
+	time.sleep(0.3)
 	pwm.ChangeDutyCycle(0)
 	
 	except Exception as e:
