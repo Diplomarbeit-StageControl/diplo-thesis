@@ -2040,26 +2040,25 @@ Unterhalb dieses Quaders wurden zwei kleinere Quader mit den Abmessungen 5,45 mm
 
 \newpage
 \subsection{Steuerlogik} \label{Steuerlogik}
-Die Servomotoren werden immer dann bewegt, wenn sich die/der Künstlerin/Künstler auf der Bühne bewegt. Das bedeutet: immer wenn der ESP32 UWB-Tag eine Veränderung der Position des Interpreten anhand der Anchor Positionen misst, wird diese Position an den Raspberry Pi mittels MQTT-Protokoll geschickt und mit einem Python Programm in Winkelgrad umgewandelt. Anhand dieser Winkel kann sich nun der Servomotor bewegen. Wobei immer bedacht werden muss, vor dem Verarbeiten der Position, das nur die X-Achse der Bühne für die Berechnung beachtet wird und so Position X=0 = 0° und maxX=180° sind. Anhand dieser Extremwerte kann dann die Position in Winkelgrad umgewandelt werden.
+Die Servomotoren werden immer dann bewegt, wenn sich die Künstlerin oder der Künstler auf der Bühne bewegt. Sobald der ESP32 UWB-Tag eine Positionsveränderung des Interpreten relativ zu den fest installierten Ankerpunkten erfasst, wird die neue Position in Winkelgrad umgerechnet und mittels UDP-Protokoll an den Raspberry Pi übertragen.  
 
-\begin{lstlisting}
-	def move_servo(value):
-	global max_x
+Auf Basis dieser Winkelwerte steuert der Raspberry Pi die Servomotoren, sodass die Tonausrichtung automatisch an die veränderte Position der Künstlerin oder des Künstlers angepasst wird. Dieses System ermöglicht eine präzise Klangsteuerung in Echtzeit.
+
+\begin{lstlisting}[language=Python]
+	def move_servo(angle):
+	global pwm
 	
 	try:
-	if max_x is None or max_x == 0:
-	print(f"Invalid max_x value: {max_x}. Servo will not move.")
+	if angle < 0 or angle > 180:
+	print(f"Invalid angle: {angle}. Must be between 0 and 180.")
 	return
 	
-	angle = (value / max_x) * 180
-	angle = max(0, min(180, angle)) 
-	
 	duty = 2 + (angle / 18)
-	print(f"Moving servo to {angle} (Duty Cycle: {duty})")
+	print(f"Moving servo to {angle} angle (Duty Cycle: {duty})")
 	
 	pwm.ChangeDutyCycle(duty)
 	sleep(0.3)
-	pwm.ChangeDutyCycle(0) 
+	pwm.ChangeDutyCycle(0)
 	
 	except Exception as e:
 	print(f"Error moving servo: {e}")
