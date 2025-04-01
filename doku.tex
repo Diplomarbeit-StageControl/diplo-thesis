@@ -12,12 +12,12 @@
 \fancyhf{} % Leert Kopf- und Fußzeile
 \fancyfoot[C]{Seite \thepage} % Seitenzahl in der Mitte
 \fancyfoot[R]{% Autoren rechts
-	\ifthenelse{\value{page} < 26}{Pirringer}{%
+	\ifthenelse{\value{page} < 25}{Pirringer}{%
 		\ifthenelse{\value{page} < 33}{Becksteiner}{%
 			\ifthenelse{\value{page} < 48}{Pospichal}{%
-				\ifthenelse{\value{page} < 69}{Becksteiner}{%
-					\ifthenelse{\value{page} < 84}{Pospichal}{%
-						\ifthenelse{\value{page} < 104}{Pirringer}{}
+				\ifthenelse{\value{page} < 71}{Becksteiner}{%
+					\ifthenelse{\value{page} < 88}{Pospichal}{%
+						\ifthenelse{\value{page} < 108}{Pirringer}{}
 					}%
 				}%
 			}%
@@ -1023,11 +1023,11 @@ Das Corporate Behaviour beschäftigt sich mit dem Benehmen und dem Umgang der Mi
 \section{Adobe Programme}
 Für die Umsetzung vom Logo, Flyer und der Animation wurden einige Programme verwendet.
 
-\subsection{Adobe Indesign}
+\subsection{Adobe InDesign}
 Adobe Indesign ist ein Programm, welches zum Designen von Printmedien, wie Broschüren und Flyern dient.
 Adobe Indesign wurde ebenfalls für die Gestaltung des Flyers von StageControl verwendet. Das Programm stellt eine breite Auswahl von Werkzeugen und Funktionen bereit. Weiters können verschiedene Schriftarten und Textformate eingesetzt werden, womit sich die Lesbarkeit verbessert. Darüber hinaus kann das Layout auf die verschiedensten Seitenformate optimiert werden. Mithilfe der Absatz- und Zeichenformatfunktion kann eine durchgehende Formatierung sichergestellt werden. \parencite{AdobeIndesign}
 
-Zusammengefasst: Adobe Indesign ist ein sehr leistungsstarkes Programm mit zahlreichen Funktionen. Es ermöglicht hochwertiges Werbematerial zu erstellen.
+Zusammengefasst: Adobe InDesign ist ein sehr leistungsstarkes Programm mit zahlreichen Funktionen. Es ermöglicht hochwertiges Werbematerial zu erstellen.
 
 \subsection{Adobe Illustrator}
 Adobe Illustrator wird oft für Vektorgrafiken verwendet. Mit diesem Programm werden Logos, Grafiken und Illustrationen erstellt. Die Grafiken bestehen aus Punkten, Linen und Kurven anstatt aus Pixeln. Deshalb werden diese in jeder Größe scharf angezeigt. Mithilfe des Formerstellungswerkzeug können komplexere Formen kreiert werden, sowie auch 3D Abbildungen oder Farbverläufe. \parencite{AdobeIllustrator}
@@ -1051,8 +1051,6 @@ Durch ESP32 UWB-Sensoren wird die Position der/des Künstlerin/Künstlers auf de
 StageControl ist eine neuartige Lösung, für die es derzeit keine vergleichbare Anwendung gibt. StageControl kombiniert technische Navigation auf einer Bühne mit einer intuitiven GUI-Visualisierung, um die Position von Darstellerinnen/Darstellern oder Musikerinnen/Musikern in Echtzeit zu bestimmen. Durch den Einsatz von ESP32 UWB-Sensoren und einer präzisen Berechnung mittels Trilateration ermöglicht StageControl eine automatisierte und effiziente Steuerung von Toneffekten.
 
 \subsection{Entwicklungsprozesse}  
-Die Umsetzung von StageControl folgt dem Wasserfall-Modell. Dieses Modell ermöglicht eine strukturierte Planung der Arbeitspakete, die anschließend schrittweise umgesetzt werden. Dadurch kann die Zuweisung von Aufgaben an die Teammitglieder effizient und unabhängig erfolgen.  
-
 Zur kontinuierlichen Dokumentation des Programmcodes sowie aller weiteren Entwicklungsfortschritte wird das Versionskontrollsystem GitHub verwendet. Dies stellt eine transparente Nachverfolgbarkeit der Änderungen sicher und erleichtert die Zusammenarbeit im Team.
 
 \section{Entwicklung}
@@ -1113,6 +1111,14 @@ Der Tag ist ein bewegliches Objekt, von welchem die Position bestimmt wird. Um d
 	DW1000Ranging.startAsTag(TAG_ADD, DW1000.MODE_LONGDATA_RANGE_LOWPOWER);
 \end{lstlisting}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Tag.jpg}
+	\caption[ESP32 Tag]{ESP32 Tag}
+	\label{fig:ESP32-Tag}
+\end{figure}
+
+\newpage
 \subsubsection{Anchor}
 
 Der Anchor ist ein fixer Referenzpunkt, der für die Positionsbestimmung benötigt wird. Um diesen zu initialisieren, muss im Code folgende Zeile hinzugefügt werden.
@@ -1127,7 +1133,13 @@ Die Funktion \texttt{.startAsAnchor} erhält die folgenden Parameter: den Modus 
 
 Der Boolean-Wert \texttt{false} wird hinzugefügt, um  keine zufällige MAC-Adresse zuzuweisen, sodass der Tag erkennen kann, welcher Anchor es ist.
 
-%% Abbildung Anchor und Tag!!!! 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Anchor.jpg}
+	\caption[ESP32 Anchor]{ESP32 Anchor}
+	\label{fig:ESP32-Anchor}
+\end{figure}
+
 
 \newpage
 \subsubsection{Pinbelegung}
@@ -1221,7 +1233,7 @@ Durch bewusste Korrektur und Bereinigung der Daten wie in \ref{KalibrierungDerDa
 \subsection{Kalibrierung der Daten}
 \label{KalibrierungDerDaten}
 Der Mittelwert wird aus den vier rohen Rangedaten in einem Array gespeichert, dies wird verwendet, um es strukturiert und effizient zu halten. Dieser Wert dient dazu ein zentrales Maß zwischen allen rohen Daten zu erhalten. Die bereinigten Daten werden dann zur Berechnung der Position verwendet. In Fall von StageControl werden alle Daten die kleiner 0 und Daten, die über 50 \% größer als der Ursprungswert sind, herausgefiltert. Außerdem wird ein Counter \texttt{faultCounter} eingebaut, um ab einer gewissen Anzahl an falschen Daten, ein neues Array zu erstellen. 
-
+\newpage
 \begin{lstlisting}[style=Java, caption=Kalibrierung der Daten, captionpos=b]
 	private void filter() {
 		checkAndCorrectArray(baseAnchorRangeArray, baseAnchorRange, faultD1Counter);
@@ -1241,7 +1253,6 @@ Der Mittelwert wird aus den vier rohen Rangedaten in einem Array gespeichert, di
 			return;
 		}
 	}
-	
 	private void checkAndCorrectArray (List<Double> array, double latestData, int faultCounter) {
 		if (latestData < 0) return;
 		if (latestData > 150) return;
@@ -1258,7 +1269,6 @@ Der Mittelwert wird aus den vier rohen Rangedaten in einem Array gespeichert, di
 			array.add(latestData);
 		}
 	}
-	
 	private double getAvg(List<Double> array){
 		Iterator<Double> iter = array.iterator();
 		double sum = 0;
@@ -1284,7 +1294,7 @@ Berechnet den Durchschnitt der Werte in der Liste \texttt{array}, indem alle Wer
 \subsection{Einrichtung Bühne}
 \label{Einrichtung Bühne}
 Um eine Bühne einzurichten müssen Länge \texttt{x} und die Breite \texttt{y} bekannt sein, um so eine Position bestimmen zu können. Um dies zu gewährleisten wird ein 3-Anchor 2-Tag System verwendet. Wobei Anchor 1 \texttt{baseAnchor} immer auf einer fixen Position \texttt{(0,0)} sitzt, um ein geeignetes Koordinatensystem aufzuziehen. Die weiteren zwei Anchors \texttt{yAnchor und xAnchor}, werden mithilfe von Abschreitung der Bühne und über das GUI \texttt{(=Graphical User Interface)} per Button gesetzt. Die Berechnung bestimmt dann die korrekte Position der Anchors und die Visualisierung \ref{Trilateration} kann beginnen. 
-
+\newpage
 \subsection{Berechnung der Anchorpositionen}
 Um die Anchorpositionen korrekt zu ermitteln wurden folgende Berechnungen für den yAnchor und den xAnchor durchgeführt.
 
@@ -1569,7 +1579,7 @@ Um die Unterschiede zwischen den Netzwerkprotokollen MQTT und UDP besser zu vers
 
 \newpage
 \section{Datenbank}
-Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{PostgreSQL}, ein wichtiger Aspekt dieser Diplomarbeit. 
+Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{PostgreSQL}. Die Datenbank dient als Grundlage für die Neuaufsetzung einer Bühne bei Ausfall.
 
 \begin{figure}[H]
 	\centering
@@ -1581,6 +1591,14 @@ Als Datenbank nutzen wir PostgreSQL. Diese Software ist Open-Source \parencite{P
 \subsection{VMware Workstation Pro}
 Die Software \texttt{VMware Workstation Pro} wurde verwendet, um eine virtuelle Maschine mit Ubuntu Server zu erstellen, auf der die PostgreSQL-Datenbank läuft. Da weder Ressourcen noch der Zugang zu einem physischen Server zur Verfügung standen, fiel die Entscheidung auf eine digitale Lösung. Außerdem ist es einfacher, eine digitale Datenbank einzurichten, als jedes Mal einen neuen physischen Server bereitzustellen.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{images/VMware.png}
+	\caption[VMware Logo]{VMware Logo}
+	\label{fig:VMware}
+\end{figure}
+
+\newpage
 \subsection{Datenbankstruktur}
 Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eindeutige ID erhält. Die Spalten enthalten die Geräte-ID (Tag 1 oder Tag 2) (\texttt{device\_id}), die maximale Distanz zwischen Anchor1 und Anchor2 auf der x-Achse (\texttt{maxdistance}) und einen Zeitstempel (\texttt{timestamp}), der automatisch den aktuellen Zeitpunkt speichert, um Daten nachvollziehen zu können.
 \begin{table}[h]
@@ -1602,7 +1620,6 @@ Die Tabelle \texttt{stagedata} speichert Sensordaten, wobei jede Zeile eine eind
 	\label{tab:stagedata}
 \end{table}
 
-\newpage
 Die Tabelle \texttt{devices} speichert Informationen über Geräte. Jedes Gerät (Tag) erhält eine eindeutige \texttt{device\_id}. Zusätzlich gibt es einen Gerätenamen (\texttt{device\_name}) und einen Gerätetyp (\texttt{device\_type}). Der Zeitstempel \texttt{created\_at} wird automatisch mit dem aktuellen Zeitpunkt gesetzt.
 \begin{table}[h]
 	\centering
@@ -1645,16 +1662,6 @@ Die Tabelle \texttt{users} speichert Benutzerinformationen. Jedes Benutzerkonto 
 
 Die Tabellen \texttt{devices} und \texttt{stagedata} stehen in einer 1-zu-N-Beziehung. Jedes Gerät in der Tabelle \texttt{devices} kann mehrere zugehörige Sensordaten in der Tabelle \texttt{stagedata} besitzen. Dies wird durch die Spalte \texttt{device\_id} in \texttt{stagedata} realisiert, die als Fremdschlüssel auf \texttt{device\_id} in \texttt{devices} verweist. Dadurch wird ermöglicht, dass alle einem existierenden Gerät zugeordnet sind. 
 
-\subsection{Nützliche Befehle für PostgreSQL}
-\textbf{psql} \ – verbindet die/den Userin/User mit der psql-Shell \\
-\textbf{\textbackslash{c}} \ – verbindet mit der Datenbank \\
-\textbf{\textbackslash{l}} \ – zeigt alle Datenbanken an \\
-\textbf{\textbackslash{d}} \ – zeigt alle Tabellen an \\
-\textbf{\textbackslash{d} tablename} \ – zeigt Tabellendetails an \\
-\textbf{\textbackslash{q}} \ – beendet psql
-
-Diese Funktionen sind die Grundlagen und helfen dabei, sich in einer Datenbank, wie PostgreSQL zurechtzufinden.
-
 \section{Corporate Identity}
 Bei der Corporate Identity beschäftigt sich StageControl mit der Namensfindung, mit Farben und dem Logo, sowie der Schriftart. Nach der Namensfindung wurden die passenden Farben gewählt und das Logo geplant und gestaltet.
 
@@ -1669,7 +1676,7 @@ Anfänglich lag der Fokus auf den Worten ‘Stage‘, ‘Automation‘ und ‘So
 	\label{fig:Brainstorming_Namensfindung}
 \end{figure}
 
-Schlussendlich einigte sich das Projektteam auf den Namen StageControl, da es genau beschreibt worum es geht.
+Schlussendlich einigte sich das Projektteam auf den Namen StageControl, da dieser genau vermittelt um was es sich handelt.
 
 \newpage
 \subsection{Unternehmensfarben}
@@ -1678,7 +1685,7 @@ Das Team entschied sich für blaue Farbtöne als Unternehmensfarben. Die Farbe B
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/Hexcode.png}
-	\caption[Die Hex Codes von StageControl]{Die Hex Codes von StageControl}
+	\caption[Farbcodes von StageControl]{Farbcodes von StageControl}
 	\label{fig:Hexcode}
 \end{figure}
 
@@ -1693,10 +1700,10 @@ Nach der Festlegung des Projektteamnamens überlegte sich StageControl Ideen, wi
 	\label{fig:Logoentwurf1}
 \end{figure}
 
-Doch dieser Ansatz passte nicht zu StageControl. Es war nicht einzigartig und es war nicht einprägsam. Weiters beinhaltete der erste Entwurf zu viel Text. 
+Doch dieser Ansatz passte nicht zu StageControl. Das Logo war nicht einzigartig und uneinprägsam. Weiters beinhaltete der erste Entwurf zu viel Text und Weißraum.
 
 \newpage
-Im zweiten Entwurf wurden Soundbalken dargestellt, weil im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist, worum es sich handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig. 
+Im zweiten Entwurf wurden Soundbalken dargestellt, weil im Namen nur die Bühnensteuerung vorkommt und nicht erkennbar ist, worum es sich handelt. In Abbildung \ref{fig:Logoentwurf2} ist der zweite Logoentwurf zu sehen. Jedoch passten die Soundbalken noch nicht. Der Entwurf wirkte schlicht und unauffällig. Die Schriftgröße wurde zu groß gewählt und der eigentliche Hintergrund verschwimmt.
 
 \begin{figure}[H]
 	\centering
@@ -1716,13 +1723,28 @@ Der dritte und letzte Entwurf bestand ebenfalls aus Soundbalken. Nur wurde hier 
 
 \newpage
 \subsubsection{Erstellung des Logos}
-Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkte setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein-, sowie ausblenden. Außerdem hat das Projektteam mit diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
+Für die Erstellung des Logos wurde das Programm Adobe Illustrator verwendet. Das Programm wird vor allem für Vektorgrafiken verwendet. Dies ist für StageControl sinnvoll, da es sich perfekt für den Druck eignet, da Vektorgrafiken beliebig skalierbar sind und die Qualität vom Logo darunter nicht leidet. Adobe Illustrator ist praktisch, da im Nachhinein jederzeit die Formen verändert werden können. Bei den Formen kann man Ankerpunkte setzen, diese können hinzugefügt, verschoben oder gelöscht werden. Weiters kann man verschiedene Ebenen erstellen und diese jederzeit ein-, sowie ausblenden. Außerdem hat das Projektteam mit diesem Programm schon einige Erfahrungen im Laufe der Schulzeit gesammelt. 
 
 Nach der Wahl des Programmes wurde der erste Prototyp des Logos entworfen. Den Beginn der Logoerstellung bildeten die Soundbalken in unterschiedlichen Größen, hierfür wurde für jeden Balken eine eigene Ebene erstellt. Die Soundbalken wurden als Rechtecke eingefügt und die Ecken abgerundet. Nach dem Erstellen dieser Balken wurden diese blau eingefärbt. 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Logo-Entwurf2.png}
+	\caption[Entwurf-Logo]{Entwurf-Logo}
+	\label{fig:Entwurf-Logo}
+\end{figure}
+
 Danach wurde überlegt, ob der Projektname rechts, oben oder unten positioniert werden soll. Letztendlich wurde der Text unter die Soundbalken positioniert, da der Name hier am übersichtlichsten erscheint. Hierbei wurde auch jeder Buchstabe in einer eigenen Ebene angelegt. 
 
+\newpage
 Als nächstes stand die Wahl der Schriftart des Logos an. Die Entscheidung fiel auf die Schrift „Futura PT Demi“, da diese perfekt zum Logo und zur Arbeit passt. Die Schrift sollte nicht zu dünn sein, sodass diese gut leserlich ist und nicht im Logo untergeht. Als Schriftgröße wurde 27pt gewählt, da der Text sonst im Logo verloren geht. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Logo-Entwurf.png}
+	\caption[Entwurf-Logo]{Entwurf-Logo 2}
+	\label{fig:Entwurf-Logo2}
+\end{figure}
 
 Schlussendlich fehlte noch ein Rahmen für das Logo. Es sollte nichts Einfaches sein, da ein Kreis oder ein Rechteck zuwenig Aufmerksamkeit erregt. Durch die drei abgerundeten Ecken  wirkt das Logo modern. Es scheint so, als würde eine Nachricht aufpoppen. 
 
@@ -1734,11 +1756,18 @@ Der Flyer ist eines der wichtigsten Werbemittel im Marketing. Ein Flyer muss han
 
 \newpage
 \subsubsection{Erstellung des Flyers}
-Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Schon am Anfang stand fest, dass der Flyer vier Seiten haben wird. Der nächste Schritt war die Planung des Flyers, hinsichtlich Inhalt und Gestaltung. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Definiert wurde pro Seite eine Höhe von 210 mm und einer Breite von 100 mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
+Für die Erstellung des Flyers wurde das Programm Adobe InDesign verwendet. Im Rahmen des Unterrichts wurde diese Software erlernt und somit konnten einige Elemente wieder verwendet werden. Schon am Anfang stand fest, dass der Flyer vier Seiten haben wird. Der nächste Schritt war die Planung des Flyers, hinsichtlich Inhalt und Gestaltung. Danach wurde ein neues Dokument in InDesign erstellt und die Grundeinstellungen wie Seitenformat, Anzahl der Seiten und Ränder festgelegt. Definiert wurde pro Seite eine Höhe von 210 mm und einer Breite von 100 mm. Das Dokument wurde im Querformat eingerichtet und Spalten erstellt, die die Seiten des Flyers bilden. Als Beschnittzugabe wurde 3mm oben, unten, rechts und links hinzugefügt, damit beim Zuschneiden genügend Platz vorhanden ist. Hierbei wurden Hilfslinien eingeblendet, da diese die Arbeitsbereiche voneinander abgrenzen. Diese wurden danach gesperrt, sodass die Hilfslinien während des Arbeitens nicht unabsichtlich verschoben werden. 
 
 Design und Layout wurden sorgfältig ausgewählt, um ein einheitliches Erscheinungsbild darzustellen. Das Farbkonzept der Unternehmensfarben wurde beibehalten. Zudem wurde auch das Logo von StageControl verwendet. Als Designelemente entschieden wir uns für Dreiecke, da diese gut zum Design passen. 
 
-Die Schriftart Genos wird für die Textinhalte des Flyers verwendet. Diese Schriftart ist gut leserlich. Durch die Kombination von selbstgemachten Fotos, Formen, Farben und der modernen Schriftart wirkt der Flyer sehr ansprechend. 
+Die Schriftart Genos wird für die Textinhalte des Flyers verwendet. Durch die Kombination von selbstgemachten Fotos, Formen, Farben und der modernen Schriftart wirkt der Flyer sehr ansprechend. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/Flyer Einstellungen.png}
+	\caption[Flyer Einstellungen]{Flyer Einstellungen}
+	\label{fig:Flyer Einstellungen}
+\end{figure}
 
 \newpage
 \subsubsection{Inhalt des Flyers}
@@ -1747,7 +1776,7 @@ Als Schriftgröße des Namens wurde 34pt verwendet, da es das wesentliche Detail
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/Titelseite.png}
+	\fbox{\includegraphics[width=0.4\linewidth]{images/Titelseite.png}}
 	\caption[Titelseite]{Titelseite}
 	\label{fig:Titelseite}
 \end{figure}
@@ -1757,17 +1786,16 @@ Auf den nächsten beiden Seiten befinden sich die Informationen. Auf der linken 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/Informationsseite.png}
+	\fbox{\includegraphics[width=0.5\linewidth]{images/Informationsseite.png}}
 	\caption[Informationsseite]{Informationsseite}
 	\label{fig:Informationsseite}
 \end{figure} 
-
 \newpage
-Auf der letzten Seite stellt sich das Team von StageControl vor, siehe Abbildung \ref{fig:Teamseite}. Das StageControl Team wurde fotografiert und das Foto anschließend bearbeitet. Da das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag auf unter 300 \% reduziert werden. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen der/des Leserin/Lesers zu gewinnen. Außerdem bekommt die/der Leserin/Leser einen ersten Eindruck vom Team und kann so schon feststellen, ob das Team sympathisch ist. Weiters wird das Team von StageControl beschrieben und erklärt, wie Herausforderungen gemeistert wurden.
+Auf der letzten Seite stellt sich das Team von StageControl vor, siehe Abbildung \ref{fig:Teamseite}. Das StageControl Team wurde fotografiert und das Foto anschließend bearbeitet. Da das Gruppenfoto zuviel Gesamtfarbauftrag hatte, musste eine selektive Farbkorrektur für Schwarz vorgenommen werden. Mithilfe von Photoshop konnte dieser Gesamtfarbauftrag auf unter 300 \% reduziert werden, da es sonst zu einem Ablegen oder Abschmieren auf den Druckbögen führt. Ein Gesamtbild des Projektteams ist wichtig um das Vertrauen der/des Leserin/Lesers zu gewinnen. Außerdem bekommt die/der Leserin/Leser einen ersten Eindruck vom Team und kann so schon feststellen, ob das Team sympathisch ist. Weiters wird das Team von StageControl beschrieben und erklärt, wie Herausforderungen gemeistert wurden.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/Teamseite.png}
+	\fbox{\includegraphics[width=0.4\linewidth]{images/Teamseite.png}}
 	\caption[Teamseite]{Teamseite}
 	\label{fig:Teamseite}
 \end{figure} 
@@ -1788,7 +1816,7 @@ Mit einem Doppelklick auf die Animationskomposition, wird die Datei geöffnet un
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/Zeitleiste.png}
+	\includegraphics[width=0.9\linewidth]{images/Zeitleiste.png}
 	\caption[Zeitleiste]{Zeitleiste}
 	\label{fig:Zeitleiste}
 \end{figure} 
@@ -1798,13 +1826,23 @@ Da jeder Balken und jeder Buchstabe eine eigene Ebene ist, kann in der Zeitleist
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/Vorschau-Panel.png}
-	\caption[Vorschau-Panel]{Vorschau-Panel}
-	\label{fig:Vorschau-Panel}
+	\includegraphics[width=0.7\linewidth]{images/Animation1.png}
+	\caption[Animation]{Animation}
+	\label{fig:Animation}
 \end{figure} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Animation2.png}
+	\caption[Animation 2]{Animation 2}
+	\label{fig:Animation-2}
+\end{figure} 
+
 
 \newpage
 \section{SD-Kartensicherung}
+Das Klonen einer SD-Karte dient der Datensicherung und der schnellen Wiederherstellung im Falle eines Defekts oder Datenverlusts. Zudem ermöglicht es die Bereitstellung identischer Softwareumgebungen, etwa für eingebettete Systeme wie den Raspberry Pi. Durch den Einsatz von Win32 Disk Imager wird eine exakte Kopie erstellt, wodurch sowohl die Dateisystemstruktur als auch die gespeicherten Daten erhalten bleiben.
+
 Für das Klonen einer SD-Karte wird eine zusätzliche SD-Karte, sowie ein SD-Kartenleser benötigt. Zuerst wird das Programm Win32 Disk Imager ausgewählt und installiert. Die SD-Karte wurde mittels folgender Anleitung geklont. \parencite{SD-Kartenklonen}
 Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als nächstes wurde Win32 Disk Imager gestartet und rechts oben im Programm in der Dropdown-Liste „Device“ das Laufwerk des Kartenlesers ausgewählt. Dann wurde auf das Ordnersymbol links daneben geklickt und der Speicherort eingegeben. Als nächstes wurde auf den Button „Read“ geklickt, um den Vorgang zu starten. Nach dem Prozess wurde die SD-Karte entfernt und die leere SD-Karte in das Lesegerät gesteckt. Es wurde sichergestellt, dass die zuvor erstellte Image-Datei ausgewählt ist, falls dies nicht der Fall wäre, muss es durch das Ordner Symbol wieder eingestellt werden. Danach wurde wieder der Kartenleser in „Device“ ausgewählt und abschließend auf den Button „Write“ geklickt. Nun wurde auf der zweiten SD-Karte eine exakte Kopie der ersten SD-Karte erstellt. In der nachstehenden Abbildung \ref{fig:Win32 Disk Imager} ist der Prozess der SD-Kartensicherung zu erkennen.
 
@@ -1817,8 +1855,15 @@ Danach wurde die zu klonende SD-Karte in den Kartenleser des PCs gesteckt. Als n
 
 \newpage
 \section{Raspberry Pi als Access Point} \label{RaspberryAccessPoint}
-Der Einsatz des Raspberry Pis als Access Point dient dazu, die Services wie Dnsmasq und Hostapd zu nutzen um ein lokales Wlan-Netzwerk aufzubauen. Da der Raspberry Pi ein WLAN-Modul besitzt, wurde dieser als Access-Point eingerichtet, somit kann das Netzwerk überall aufgebaut werden.  
-Für das Konfigurieren des Raspberry Pis als Access Point wurde die Anleitung von AZ-Delivery zur Hilfe genommen. Als erstes wurde die Wlan-Netzwerkschnittstelle mit einer festen IP konfiguriert. Diese Konfiguration ist wichtig, da der Raspberry Pi nun eine feste IP-Adresse auf der WLAN-Schnittstelle bekommt. Eine WLAN(Wireless Local Area Network)-Schnittstelle ist eine drahtlose Netzwerkschnittstelle, die es ermöglicht eine Verbindung mit dem WLAN herzustellen. Als nächstes wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert. Danach wurde der Raspberry PI neugestartet und ein DHCP-, sowie DNS-Server installiert und konfiguriert. Ein DHCP-Server, auch Dynamic Host Configuration Protocol Server genannt, weist einem Internetprotokollhost automatisch seine IP-Adresse zu. Ein DNS-Server hingegen funktioniert, wie ein Telefonbuch. Es verwaltet die Domain und deren zugehörige IP-Adressen. Der DNS-Server übersetzt die Domainanforderungen in IP-Adressen und steuert dabei welchen Server ein Endnutzer erreicht, wenn er in seinem Browser einen Domain Namen eingibt.  Zum Schluss wurde noch ein Access Point installiert. Der Access Point wurde konfiguriert mit dem Namen "raspberry-wlan" und dem Passwort "stagecontrol". Nun kann mit dem WLAN eine Verbindung hergestellt werden. \parencite{RaspberryPiAccessPoint}
+Der Einsatz eines Raspberry Pi als Access Point ermöglicht die Bereitstellung eines lokalen WLAN-Netzwerks, das für die Kommunikation zwischen den Komponenten von StageControl genutzt wird. Durch die Verwendung der Software Dnsmasq und Hostapd kann der Raspberry Pi sowohl als DHCP- als auch als DNS-Server fungieren und gleichzeitig ein eigenständiges WLAN-Netzwerk aufbauen. Dies ist besonders vorteilhaft, da es eine stabile Netzwerkverbindung gewährleistet, unabhängig von bestehenden Infrastrukturen.
+Da der Raspberry Pi über ein integriertes WLAN-Modul verfügt, wurde dieser als Access Point eingerichtet, um eine flexible und ortsunabhängige Netzwerkverbindung zu ermöglichen. Die Konfiguration erfolgte auf Basis der Anleitung von AZ-Delivery.
+Zunächst wurde die WLAN-Schnittstelle mit einer statischen IP-Adresse konfiguriert, um eine konsistente Netzwerkkommunikation sicherzustellen. Eine feste IP-Adresse auf der WLAN-Schnittstelle ist essenziell, damit sich die verbundenen Geräte zuverlässig mit dem Raspberry Pi als zentralem Netzwerkpunkt verbinden können. Anschließend wurde der DHCP-Client auf der WLAN-Schnittstelle deaktiviert, um Konflikte mit dem später installierten DHCP-Server zu vermeiden.
+Nach einem Neustart des Raspberry Pi wurde ein DHCP- sowie DNS-Server installiert und eingerichtet. Der DHCP-Server (Dynamic Host Configuration Protocol) weist den verbundenen Geräten automatisch IP-Adressen zu, wodurch eine manuelle Konfiguration entfällt. Der DNS-Server (Domain Name System) übersetzt Domain-Namen in IP-Adressen, was eine effizientere Netzwerkkommunikation ermöglicht.
+Abschließend wurde der Access Point eingerichtet und mit der SSID (Netzwerkname) "raspberry-wlan" sowie dem Passwort "stagecontrol" konfiguriert. Dadurch können sich alle für StageControl relevanten Geräte mit dem Netzwerk verbinden und untereinander kommunizieren. \parencite{RaspberryPiAccessPoint}
+
+\newpage
+\subsection{Einsatz in StageControl}
+Die Nutzung eines eigenen WLAN-Netzwerks ist für StageControl essenziell, da eine zuverlässige drahtlose Kommunikation zwischen den UWB-Sensoren, der Steuerungssoftware und den weiteren Systemkomponenten erforderlich ist. Der Einsatz des Raspberry Pi als Access Point ermöglicht eine von externen Netzwerken unabhängige, stabile Verbindung und gewährleistet damit eine zuverlässige Positionsbestimmung auf der Bühne. Zudem wird durch die unabhängige Netzwerkstruktur sichergestellt, dass die Echtzeitkommunikation zwischen den Sensoren und der Steuerungseinheit latenzarm und störungsfrei erfolgen.
 
 \begin{figure}[H]
 	\centering
@@ -1851,7 +1896,7 @@ Im File /etc/dnsmasq.conf wurde die Schnittstelle vom Internet eingerichtet:
 	dhcp-host=C8:2E:18:AD:7E:30,192.168.10.20
 \end{lstlisting} 
 
-Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist die Nummer von einem Endgerät, die spezifisch für ein Gerät ist. Anhand dieser Nummer werden über die Verbindung laufende Daten den Geräten zugeordnet. Nach jeder Veränderung wurde der Raspberry Pi neugestartet. 
+Die oben genannten MAC Adresse \textit{Media Access Code Adresse} ist die Nummer von einem Endgerät, die spezifisch für ein Gerät ist. Anhand dieser Nummer werden über die Verbindung laufende Daten den Geräten zugeordnet. Nach jeder Veränderung wurde der Raspberry Pi neugestartet. Der Autostart wird verwendet, um bei direkten Start des Raspberry Pis zu erhalten ohne manuelle Eingabe erforderlich zu machen.
 
 \newpage
 \section{Gerüstbau}
@@ -1973,6 +2018,7 @@ Um den idealen Aufsatz für die Drehpotentiometersteuerung zu entwickeln, waren 
 Beim Testen zeigten sich jedoch sofort einige Probleme: Da es keine feste Verbindung zwischen der Spline Shaft und dem Aufsatz gab, drehte dieser über dem Drehpotentiometer durch. Zudem fehlte eine Ausbuchtung für den hervorstehenden Teil des Drehpotentiometers, die für die manuelle Ausrichtung von Vorteil ist.\\
 Diese Verbesserungen wurden umgesetzt, und der fertige 3D-gedruckte Aufsatz verfügt nun über die in der Einleitung genannten Eigenschaften.
 
+\newpage
 \subsection{Notwendige Schritte in Blender}
 Zunächst wurde in Blender die Maßeinheit von Meter auf Millimeter umgestellt. Anschließend wurde ein hohler Zylinder mit einer Wandstärke von 1 mm, einer Höhe von 18,5 mm und einem Durchmesser von 12,2 mm erstellt. Auf diesen Zylinder wurde ein kleinerer Zylinder mit einer Höhe von 1,61 mm und einem Durchmesser von 11,5 mm platziert.  
 
@@ -2055,7 +2101,7 @@ Ebenfalls wurden nochmals zwei Quader eingefügt, ein schmälerer und ein breite
 	\label{Gehäuse}
 \end{figure}
 
-
+\newpage
 \section{3D Prototyping}
 Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert, die im Rahmen von StageControl gebraucht wurden, wie die Gehäuse für die ESP32 UWBs, der Servomotoraufsatz und der Clip zum Anstecken an der Hose. Diese Modelle wurden dann in das STL Dateiformat exportiert, um es für das Sclicer Programm Bambu Studio lesbar zu machen. Danach wurde die gesclicte Datei an den Bambu Lab A1 via WLAN geschickt und ausgedruckt.
 
@@ -2070,7 +2116,7 @@ Im 3D-Modellierungsprogramm Blender wurden alle Objekte modelliert, die im Rahme
 \subsection{Bambu Studio}
 Bambu Studio wurde verwendet, weil dieses Programm explizit für die Bambu Lab Drucker entwickelt wurde und über wichtige Funktionen verfügt, die das Drucken mit einem Bambu Lab Drucker erst ermöglichen. Wie zum Beispiel: Sclicing der STL Datei in G-Code, Druckersteuerung und Überwachung des Druckvorgangs und Filamentverwaltung bei der verschiedene Filamenttypen mit unterschiedlichen Temperaturprofilen eingestellt werden können.
 
-
+\newpage
 \subsection{Einstellungen Bambu Studio}
 Im Programm Bambu Studio wurde die STL-Datei, die zuvor aus Blender exportiert wurde, importiert. Das STL-Format wurde gewählt, da es ein universell lesbares Format ist und somit von jedem 3D-Drucker verarbeitet werden kann.  
 
